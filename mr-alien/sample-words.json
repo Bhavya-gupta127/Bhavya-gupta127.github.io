@@ -1,0 +1,38 @@
+[
+  {
+    "word": "Jalebi",
+    "hint": "Spiral",
+    "reason": "Piped through a cloth into hot oil in concentric spirals.",
+    "category": "food"
+  },
+  {
+    "word": "Pani Puri",
+    "hint": "Thumb",
+    "reason": "You poke a hole in the hollow crisp sphere using your thumb.",
+    "category": "food"
+  },
+  {
+    "word": "Sholay",
+    "hint": "Coin",
+    "reason": "Jai flips a two-headed coin whenever a decision has to be made.",
+    "category": "bollywood"
+  },
+  {
+    "word": "Virat Kohli",
+    "hint": "18",
+    "reason": "Has worn jersey number 18 throughout his career.",
+    "category": "cricket"
+  },
+  {
+    "word": "Desi Jugaad",
+    "hint": "Wire",
+    "reason": "Fixing anything broken with a piece of wire, tape, or a bottle cap.",
+    "category": "desilife"
+  },
+  {
+    "word": "Passport Size Photo",
+    "hint": "Blue Curtain",
+    "reason": "Ears must be visible while sitting stiffly in front of a blue studio cloth.",
+    "category": "desilife"
+  }
+]
