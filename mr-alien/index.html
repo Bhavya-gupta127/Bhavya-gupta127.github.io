@@ -33,18 +33,24 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="./styles.min.css" />
+<link rel="stylesheet" href="./styles.min.css?v=6" />
 </head>
 <body>
 <div class="ambient-orb" aria-hidden="true"></div>
 <div class="app-shell">
-<header class="top-bar" id="app-top-bar" style="display: none;">
+<header class="top-bar" id="app-top-bar">
+<div class="top-left-nav">
+<button type="button" class="ios-back-btn" id="btn-ios-back" aria-label="Go Back" title="Go Back">
+<svg class="ios-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+<span id="ios-back-label">Arcade</span>
+</button>
 <div class="brand" id="brand-home-btn" title="Main Menu">
 <div class="brand-icon" id="easter-egg-brand-icon">👽</div>
 <span class="brand-name">Mr. Alien</span>
 </div>
+</div>
 <div class="top-actions">
-<a href="https://partynights.online/" class="nav-pill-btn" title="All PartyNights.online Games" style="text-decoration: none;">
+<a href="https://partynights.online/" class="nav-pill-btn" id="btn-top-hub" title="All PartyNights.online Games" style="text-decoration: none;">
 <span>🎲</span>
 <span>Hub</span>
 </a>
@@ -52,9 +58,9 @@
 <span>🔄</span>
 <span>Restart</span>
 </button>
-<button class="nav-pill-btn" id="btn-top-menu" type="button" title="Main Menu / Setup">
+<button class="nav-pill-btn" id="btn-top-menu" type="button" title="Main Menu / Setup" style="display: none;">
 <span>🏠</span>
-<span id="btn-top-menu-label">Menu</span>
+<span id="btn-top-menu-label">Setup</span>
 </button>
 <button class="circle-btn" id="btn-open-leaderboard" type="button" title="Leaderboard">🏆</button>
 <button class="circle-btn" id="btn-sound-toggle" type="button" title="Toggle Sound">🔊</button>
@@ -62,15 +68,9 @@
 </header>
 <section id="screen-landing" class="screen active">
 <div class="landing-wrap">
-<div style="display: flex; align-items: center; justify-content: space-between; width: 100%; gap: 8px;">
-<a href="https://partynights.online/" class="nav-pill-btn" style="text-decoration: none; font-size: 0.75rem;">
-<span>←</span>
-<span>PartyNights.online</span>
-</a>
-<div class="signal-pill" style="margin: 0;">
+<div class="signal-pill">
 <span class="signal-dot"></span>
 <span>Pass 1 Phone • No Download</span>
-</div>
 </div>
 <div class="holo-stage" id="easter-egg-holo" title="Mr. Alien Core">
 <div class="holo-ring r1"></div>
@@ -413,6 +413,24 @@ Merge (+ Add)
 </div>
 </div>
 </div>
-<script src="./app.min.js"></script>
+<div id="modal-leave-warning" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="leave-modal-title">
+<div class="modal-sheet leave-warning-sheet">
+<div class="leave-warn-emblem" id="leave-modal-icon">⚠️</div>
+<span class="leave-warn-badge" id="leave-modal-badge">MISSION IN PROGRESS</span>
+<h3 class="leave-warn-title" id="leave-modal-title">Leave Active Game?</h3>
+<p class="leave-warn-desc" id="leave-modal-desc">
+Your crew is in the middle of a mission! Leaving now will end the current round and reset secret roles.
+</p>
+<div class="leave-warn-actions">
+<button type="button" class="btn-leave-stay" id="btn-leave-stay">
+<span>🛡️ Stay &amp; Keep Playing</span>
+</button>
+<button type="button" class="btn-leave-confirm" id="btn-leave-confirm">
+<span id="btn-leave-confirm-label">🚪 Leave Game</span>
+</button>
+</div>
+</div>
+</div>
+<script src="./app.min.js?v=6"></script>
 </body>
 </html>

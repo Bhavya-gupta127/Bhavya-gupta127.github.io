@@ -1,10 +1,10 @@
-// Mr. Alien — PWA Service Worker v4.0
-const CACHE_NAME = "mr-alien-pwa-v4";
+// Mr. Alien — PWA Service Worker v6.0
+const CACHE_NAME = "mr-alien-pwa-v6";
 const ASSETS = [
   "/mr-alien/",
   "/mr-alien/index.html",
-  "/mr-alien/styles.min.css",
-  "/mr-alien/app.min.js",
+  "/mr-alien/styles.min.css?v=6",
+  "/mr-alien/app.min.js?v=6",
   "/mr-alien/manifest.json",
   "/mr-alien/icon-192.png",
   "/mr-alien/icon-512.png",
@@ -28,7 +28,6 @@ self.addEventListener("activate", (event) => {
 
 self.addEventListener("fetch", (event) => {
   const url = new URL(event.request.url);
-  // Never cache /api/word so every round draws a fresh secret word from the server vault
   if (url.pathname.startsWith("/api/")) {
     return;
   }
