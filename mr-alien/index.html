@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+<meta name="theme-color" content="#05060d" />
+<title>Mr. Alien 👽 — Desi Social Deduction Party Game</title>
+<meta name="description" content="Pass one phone, decode the clues, and expose Mr. Alien! 500+ Desi words across Food, Bollywood, Cricket, Shaadi & Nostalgia." />
+<link rel="manifest" href="./manifest.json" />
+<link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="Mr. Alien" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Mr. Alien" />
+<meta property="og:title" content="Mr. Alien 👽 — The Indian Undercover Party Game" />
+<meta property="og:description" content="Someone in the room is not Human! Pass one phone, give 1-word clues, and vote out Mr. Alien. 500+ Desi words!" />
+<meta property="og:image" content="/mr-alien/og-banner.png" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Mr. Alien 👽 — The Indian Undercover Party Game" />
+<meta name="twitter:description" content="Pass one phone, give 1-word clues, and expose Mr. Alien! 500+ Desi words." />
+<meta name="twitter:image" content="/mr-alien/og-banner.png" />
+<meta name="google-adsense-account" content="ca-pub-0000000000000000" id="meta-adsense-account" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./styles.min.css" />
+</head>
+<body>
+<div class="ambient-orb" aria-hidden="true"></div>
+<div class="app-shell">
+<header class="top-bar" id="app-top-bar" style="display: none;">
+<div class="brand" id="brand-home-btn" title="Main Menu">
+<div class="brand-icon" id="easter-egg-brand-icon">👽</div>
+<span class="brand-name">Mr. Alien</span>
+</div>
+<div class="top-actions">
+<button class="nav-pill-btn" id="btn-top-restart" type="button" title="Restart Match with New Word" style="display: none;">
+<span>🔄</span>
+<span>Restart</span>
+</button>
+<button class="nav-pill-btn" id="btn-top-menu" type="button" title="Main Menu / Setup">
+<span>🏠</span>
+<span id="btn-top-menu-label">Menu</span>
+</button>
+<button class="circle-btn" id="btn-open-leaderboard" type="button" title="Leaderboard">🏆</button>
+<button class="circle-btn" id="btn-sound-toggle" type="button" title="Toggle Sound">🔊</button>
+</div>
+</header>
+<section id="screen-landing" class="screen active">
+<div class="landing-wrap">
+<div class="signal-pill">
+<span class="signal-dot"></span>
+<span>Signal Detected • Sector IN-500</span>
+</div>
+<div class="holo-stage" id="easter-egg-holo" title="Mr. Alien Core">
+<div class="holo-ring r1"></div>
+<div class="holo-ring r2"></div>
+<div class="holo-ring r3"></div>
+<div class="holo-beam"></div>
+<div class="holo-core">👽</div>
+</div>
+<div class="hero-text-block">
+<h1 class="hero-title">MR. ALIEN</h1>
+<p class="hero-subtitle">
+Someone in the room is not Human. Pass the phone, decode the clues, and expose the imposter.
+</p>
+<div class="feature-chips">
+<span class="feature-chip">📱 Pass & Play</span>
+<span class="feature-chip">🇮🇳 500 Desi Words</span>
+<span class="feature-chip">🏆 Leaderboard</span>
+</div>
+</div>
+<div style="width: 100%; display: flex; flex-direction: column; gap: 10px; align-items: center;">
+<button type="button" id="btn-enter-mission" class="btn-launch">
+<span>Enter Mission</span>
+<span>→</span>
+</button>
+<div style="width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+<button type="button" id="btn-landing-leaderboard" class="btn-ghost" style="height: 44px; font-size: 0.82rem;">
+<span>🏆 Leaderboard</span>
+</button>
+<button type="button" id="btn-share-game" class="btn-ghost" style="height: 44px; font-size: 0.82rem;">
+<span>📲 Share Game</span>
+</button>
+</div>
+<div class="landing-footer-meta" id="easter-egg-footer">
+SYS v4.0 • SERVER VAULT PROTECTED
+</div>
+</div>
+</div>
+</section>
+<section id="screen-setup" class="screen">
+<div class="panel">
+<div class="panel-header">
+<span class="panel-label" id="player-count-badge">Players (4)</span>
+<div style="display: flex; gap: 6px;">
+<button class="pill-action" id="btn-shuffle-players" type="button">Shuffle</button>
+<button class="pill-action" id="btn-clear-players" type="button">Clear</button>
+</div>
+</div>
+<form id="form-add-player" class="input-pill-bar" autocomplete="off">
+<input
+type="text"
+id="input-player-name"
+placeholder="Add player name..."
+maxlength="20"
+/>
+<button type="submit" class="btn-pill-submit">Add</button>
+</form>
+<div id="player-list" class="player-list"></div>
+<div id="setup-error" class="toast-error"></div>
+</div>
+<div class="panel settings-group">
+<div class="setting-item">
+<div class="setting-text">
+<h4>Mr. Aliens</h4>
+<p id="alien-ratio-helper">3 Humans • 1 Alien</p>
+</div>
+<div class="stepper-pill">
+<button type="button" class="step-circle" id="btn-alien-minus">−</button>
+<span class="step-number" id="alien-count-val">1</span>
+<button type="button" class="step-circle" id="btn-alien-plus">+</button>
+</div>
+</div>
+<div class="setting-item">
+<div class="setting-text">
+<h4>Vague Hint for Aliens</h4>
+<p>Subtle 1-2 word cue that only clicks in hindsight</p>
+</div>
+<label class="ios-switch">
+<input type="checkbox" id="toggle-alien-hints" checked />
+<span class="ios-track"></span>
+</label>
+</div>
+</div>
+<div>
+<div class="panel-header" style="margin-bottom: 8px; padding: 0 4px;">
+<span class="panel-label" id="word-pack-label">Word Pack (500)</span>
+</div>
+<div id="category-strip" class="category-strip"></div>
+</div>
+<button type="button" id="btn-start-game" class="btn-main">
+<span>Start Game</span>
+</button>
+<div id="ad-slot-setup" class="google-ad-slot" aria-label="Advertisement"></div>
+</section>
+<section id="screen-pass" class="screen">
+<div class="pass-top-meta">
+<span id="pass-step-text">Player 1 of 4</span>
+<div id="pass-dots" class="pass-dots"></div>
+</div>
+<div id="identity-card" class="identity-card state-cover">
+<div id="pass-cover-view" class="card-content-anim">
+<div class="ufo-badge">🛸</div>
+<span class="eyebrow" id="pass-seat-label">Pass Phone To</span>
+<h2 class="big-title" id="pass-current-player">Aarav</h2>
+<p class="subtle-note">Keep the screen angled towards you before revealing your role.</p>
+</div>
+<div id="pass-reveal-view" class="card-content-anim" style="display: none;">
+<span class="eyebrow" id="role-eyebrow">Secret Identity</span>
+<div style="font-size: 3.4rem; line-height: 1;" id="role-emoji">🧑‍🚀</div>
+<h2 class="big-title" id="role-heading">HUMAN</h2>
+<div class="secret-pill-box">
+<div class="secret-caption" id="role-secret-label">Secret Word</div>
+<div class="secret-word-text" id="role-secret-value">Pani Puri</div>
+</div>
+<p class="subtle-note" id="role-tip-text">
+Give a 1-word clue on your turn so Humans recognize you without helping Mr. Alien.
+</p>
+</div>
+</div>
+<button type="button" id="btn-pass-action" class="btn-main">
+<span>Tap to Reveal Role</span>
+</button>
+</section>
+<section id="screen-discussion" class="screen">
+<div class="hud-bar">
+<span id="disc-round-num">Round 1</span>
+<span class="hud-tag-human" id="disc-humans-count">3 Humans</span>
+<span class="hud-tag-alien" id="disc-aliens-count">1 Alien</span>
+</div>
+<div class="starter-card">
+<span class="eyebrow" style="color: var(--gold);">Randomly Chosen Starter</span>
+<div class="starter-name" id="starter-player-name">Priya Starts</div>
+<p class="subtle-note" id="starter-instructions">
+Go around in order. Tap a player's name below as they give their clue.
+</p>
+</div>
+<div class="panel">
+<div class="panel-header">
+<span class="panel-label">Speaking Order</span>
+<button class="pill-action" id="btn-reroll-starter" type="button">Re-pick Starter</button>
+</div>
+<div id="speaking-order-list" class="turn-chips"></div>
+</div>
+<div class="panel timer-strip">
+<div class="timer-digits" id="timer-readout">02:00</div>
+<div class="timer-btns">
+<button class="pill-action" id="btn-timer-toggle" type="button">Pause</button>
+<button class="pill-action" id="btn-timer-add" type="button">+30s</button>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px; margin-top: auto;">
+<button type="button" id="btn-go-to-vote" class="btn-main">
+<span>Start Voting</span>
+</button>
+<button type="button" id="btn-open-repeek" class="btn-ghost">
+<span>Forgot My Word / Role</span>
+</button>
+</div>
+</section>
+<section id="screen-voting" class="screen">
+<div class="hud-bar">
+<span id="vote-round-num">Round 1 Vote</span>
+<span class="hud-tag-human" id="vote-humans-count">3 Humans</span>
+<span class="hud-tag-alien" id="vote-aliens-count">1 Alien</span>
+</div>
+<div class="segmented-control">
+<button type="button" class="seg-btn active" id="tab-vote-group">Group Vote</button>
+<button type="button" class="seg-btn" id="tab-vote-secret">Secret Ballot</button>
+</div>
+<div id="vote-panel-group" style="display: flex; flex-direction: column; gap: 14px; flex: 1;">
+<p class="subtle-note" style="max-width: none; text-align: center;">
+Vote out loud together, then tap the player with the most votes.
+</p>
+<div id="group-suspect-grid" class="suspect-grid"></div>
+<button type="button" id="btn-skip-round-vote" class="btn-ghost" style="margin-top: auto;">
+<span>Tie / Skip Vote</span>
+</button>
+<button type="button" id="btn-confirm-group-vote" class="btn-main btn-crimson" disabled style="margin-top: 0;">
+<span>Select a Suspect</span>
+</button>
+</div>
+<div id="vote-panel-secret" style="display: none; flex-direction: column; gap: 14px; flex: 1;">
+<div id="ballot-privacy-box" class="panel" style="display: none; flex-direction: column; align-items: center; text-align: center; gap: 12px; padding: 28px 18px; margin: auto 0;">
+<span class="eyebrow" id="ballot-privacy-step">Voter 1 of 4</span>
+<h3 class="big-title" style="font-size: 1.65rem;" id="ballot-privacy-name">Pass to Aarav</h3>
+<p class="subtle-note">Tap below to cast your secret vote.</p>
+<button type="button" id="btn-open-ballot-card" class="btn-main" style="margin-top: 8px;">
+<span>Open Ballot</span>
+</button>
+</div>
+<div id="ballot-cast-box" style="display: none; flex-direction: column; gap: 12px; flex: 1;">
+<div style="text-align: center;">
+<span class="eyebrow" id="ballot-step-label">Voter 1 of 4</span>
+<h3 style="font-size: 1.3rem; font-weight: 800; margin-top: 2px;" id="ballot-voter-name">Aarav's Vote</h3>
+</div>
+<div id="secret-suspect-grid" class="suspect-grid"></div>
+<button type="button" id="btn-submit-ballot" class="btn-main" disabled>
+<span>Confirm Vote</span>
+</button>
+</div>
+<div id="ballot-results-box" style="display: none; flex-direction: column; gap: 14px; flex: 1;">
+<div class="panel" style="text-align: center;">
+<span class="eyebrow">Ballot Results</span>
+<h3 style="font-size: 1.35rem; font-weight: 800; margin: 4px 0;" id="ballot-verdict-title">Tally Complete</h3>
+<p class="subtle-note" style="margin: 0 auto;" id="ballot-verdict-sub"></p>
+</div>
+<div id="ballot-tally-list" class="clean-list"></div>
+<button type="button" id="btn-execute-ballot-verdict" class="btn-main btn-crimson">
+<span>Reveal Role</span>
+</button>
+</div>
+</div>
+<button type="button" id="btn-back-to-discussion" class="btn-ghost">
+<span>Back to Clues</span>
+</button>
+</section>
+<section id="screen-elimination" class="screen">
+<div id="elim-card" class="identity-card state-alien">
+<div class="card-content-anim">
+<span class="eyebrow" id="elim-pill">Round 1 Verdict</span>
+<div style="font-size: 3.5rem;" id="elim-icon">👽</div>
+<h2 class="big-title" id="elim-title" style="font-size: 1.85rem;">Rohan was Mr. Alien</h2>
+<p class="subtle-note" id="elim-subtitle">1 Alien still remains among the crew.</p>
+</div>
+</div>
+<button type="button" id="btn-vote-again-now" class="btn-ghost">
+<span>Vote Again Immediately</span>
+</button>
+<button type="button" id="btn-next-clue-round" class="btn-main" style="margin-top: 0;">
+<span>Next Round of Clues</span>
+</button>
+</section>
+<section id="screen-gameover" class="screen">
+<div id="gameover-card" class="identity-card state-human" style="flex: 0; padding: 22px 18px;">
+<div class="card-content-anim" style="gap: 8px;">
+<span class="eyebrow" id="gameover-pill">Game Over</span>
+<div style="font-size: 2.6rem;" id="gameover-icon">🏆</div>
+<h2 class="big-title" id="gameover-title" style="font-size: 1.75rem;">HUMANS WIN</h2>
+<p class="subtle-note" id="gameover-reason">All Aliens were eliminated.</p>
+</div>
+</div>
+<div class="panel">
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; text-align: center;">
+<div>
+<span class="panel-label" style="font-size: 0.68rem;">Secret Word</span>
+<div style="font-size: 1.02rem; font-weight: 800; color: var(--human); margin-top: 2px;" id="gameover-word">Pani Puri</div>
+</div>
+<div style="border-left: 1px solid var(--border); padding-left: 8px;">
+<span class="panel-label" style="font-size: 0.68rem;">Alien Hint</span>
+<div style="font-size: 1.02rem; font-weight: 800; color: var(--alien); margin-top: 2px;" id="gameover-hint">Thumb</div>
+</div>
+</div>
+<div class="hint-reason-box" id="gameover-hint-reason">
+💡 <strong>Why this hint:</strong> You poke a hole in the hollow crisp sphere using your thumb.
+</div>
+</div>
+<div class="panel" style="flex: 1; overflow-y: auto;">
+<div class="panel-header">
+<span class="panel-label">Match Results & Points</span>
+<button type="button" class="pill-action" id="btn-gameover-leaderboard">🏆 Leaderboard</button>
+</div>
+<div id="gameover-roster" class="clean-list"></div>
+</div>
+<div style="display: grid; grid-template-columns: 1fr 1.35fr; gap: 10px;">
+<button type="button" id="btn-back-setup" class="btn-ghost" style="height: 52px;">
+<span>Edit Setup</span>
+</button>
+<button type="button" id="btn-play-again" class="btn-main" style="height: 52px; margin-top: 0;">
+<span>🔄 Play Again</span>
+</button>
+</div>
+<div id="ad-slot-gameover" class="google-ad-slot" aria-label="Advertisement"></div>
+</section>
+</div>
+<div id="modal-repeek" class="modal-backdrop">
+<div class="modal-sheet">
+<div class="panel-header" style="margin-bottom: 0;">
+<span class="panel-label">Secret Role Check</span>
+<button type="button" class="pill-action" id="btn-close-repeek">Close</button>
+</div>
+<p class="subtle-note" style="max-width: none;">Tap your name privately to check your role:</p>
+<div id="repeek-player-list" class="suspect-grid"></div>
+<div id="repeek-secret-display" style="display: none; text-align: center; padding: 16px; border-radius: 18px;"></div>
+</div>
+</div>
+<div id="modal-leaderboard" class="modal-backdrop">
+<div class="modal-sheet">
+<div class="panel-header" style="margin-bottom: 0;">
+<span class="panel-label" style="color: var(--gold);">🏆 Crew Leaderboard</span>
+<div style="display: flex; gap: 6px;">
+<button type="button" class="pill-action" id="btn-reset-leaderboard">Reset</button>
+<button type="button" class="pill-action" id="btn-close-leaderboard">Close</button>
+</div>
+</div>
+<p class="subtle-note" style="max-width: none;">
+Humans win: <strong>+10 pts</strong> (+5 if survived) • Aliens win: <strong>+15 pts</strong> (+5 if survived)
+</p>
+<div id="leaderboard-list" class="clean-list" style="max-height: 52dvh; overflow-y: auto;"></div>
+</div>
+</div>
+<div id="modal-easter-egg" class="modal-backdrop">
+<div class="modal-sheet">
+<div class="panel-header" style="margin-bottom: 0;">
+<span class="panel-label" style="color: var(--cyan);">🛸 Secret Lab • Word Matrix</span>
+<button type="button" class="pill-action" id="btn-close-easter-egg">Close</button>
+</div>
+<div class="panel" style="padding: 12px 14px; display: flex; align-items: center; justify-content: space-between; gap: 10px;">
+<div>
+<div style="font-size: 0.82rem; font-weight: 700;" id="device-memory-status">Used on device: 0 / 500</div>
+<div style="font-size: 0.7rem; color: var(--text-secondary);">Server vault keeps 500 words private</div>
+</div>
+<button type="button" class="pill-action" id="btn-reset-used-words">Reset History</button>
+</div>
+<div style="display: flex; gap: 6px; flex-wrap: wrap;">
+<button type="button" class="pill-action" id="btn-load-sample-json">📋 Fill Sample JSON</button>
+<button type="button" class="pill-action" id="btn-download-sample-json">⬇️ Download Sample .json</button>
+<label class="pill-action" style="cursor: pointer;">
+📂 Upload .json
+<input type="file" id="input-json-file" accept=".json,application/json" style="display: none;" />
+</label>
+</div>
+<textarea
+id="textarea-json-import"
+class="code-textarea"
+placeholder='Paste JSON array here, e.g.:
+[
+{ "word": "Jalebi", "hint": "Spiral", "reason": "Piped in concentric spirals.", "category": "food" }
+]'
+></textarea>
+<div id="json-import-status" class="toast-error" style="color: var(--human);"></div>
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+<button type="button" class="btn-ghost" id="btn-import-replace" style="height: 44px; font-size: 0.82rem;">
+Replace Pool
+</button>
+<button type="button" class="btn-main" id="btn-import-merge" style="height: 44px; font-size: 0.82rem; margin-top: 0;">
+Merge (+ Add)
+</button>
+</div>
+</div>
+</div>
+<div id="modal-ad-interstitial" class="modal-backdrop">
+<div class="modal-sheet" style="text-align: center; align-items: center;">
+<div style="width: 100%; display: flex; justify-content: space-between; align-items: center;">
+<span class="ad-badge-label">Google AdSense • Interstitial Break</span>
+<button type="button" class="pill-action" id="btn-skip-interstitial">Skip Ad →</button>
+</div>
+<div id="interstitial-ad-body" style="width: 100%; min-height: 180px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; background: rgba(8,10,20,0.85); border: 1px solid var(--border); border-radius: 16px; padding: 20px;">
+<div style="font-size: 2.2rem;">🛸</div>
+<div style="font-weight: 800; font-size: 1.05rem;">Sponsored Interstitial Slot</div>
+<p class="subtle-note">Next round is loading... Replace with your Google AdSense Publisher ID in the Secret Lab to serve live interstitial ads.</p>
+</div>
+</div>
+</div>
+<script src="./app.min.js"></script>
+</body>
+</html>

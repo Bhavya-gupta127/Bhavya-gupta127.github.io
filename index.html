@@ -4,31 +4,37 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PartyNights.online — Instant Party Games for Friends</title>
-  <meta name="description" content="Play instant browser party games with friends at PartyNights.online — Undercover Spy, Who's Most Likely To, Charades, and Spicy Hot Takes." />
+  <meta name="description" content="Play Mr. Alien and instant browser party games with friends at PartyNights.online. Zero downloads — pass one phone and start playing." />
   <link rel="canonical" href="https://partynights.online/" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/mr-alien/icon-192.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="PartyNights.online — Instant Party Games" />
+  <meta property="og:description" content="Play Mr. Alien (500+ Desi Words) & party night games directly in your browser." />
+  <meta property="og:image" content="https://partynights.online/mr-alien/og-banner.png" />
   <style>
     :root {
-      --bg: #0b0914;
-      --card: #161224;
-      --card-hover: #1f1934;
-      --accent: #ff3b7f;
+      --bg: #070812;
+      --card: #121426;
+      --card-hover: #191c35;
+      --accent: #ff2e63;
       --accent-2: #7c3aed;
+      --cyan: #10d796;
       --text: #f8fafc;
       --muted: #94a3b8;
       --border: rgba(255, 255, 255, 0.09);
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: radial-gradient(circle at 50% 0%, #231442 0%, var(--bg) 60%);
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: radial-gradient(circle at 50% 0%, #1d153b 0%, var(--bg) 65%);
       color: var(--text);
       min-height: 100vh;
       display: flex;
       flex-direction: column;
     }
     header {
-      padding: 1.5rem 1.25rem;
-      max-width: 960px;
+      padding: 1.35rem 1.25rem;
+      max-width: 980px;
       width: 100%;
       margin: 0 auto;
       display: flex;
@@ -37,35 +43,35 @@
       border-bottom: 1px solid var(--border);
     }
     .logo {
-      font-size: 1.4rem;
+      font-size: 1.35rem;
       font-weight: 800;
       letter-spacing: -0.02em;
-      background: linear-gradient(90deg, #ff3b7f, #a855f7, #38bdf8);
+      background: linear-gradient(90deg, #ff2e63, #a855f7, #10d796);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      cursor: pointer;
+      text-decoration: none;
     }
     .room-pill {
-      font-size: 0.82rem;
-      background: rgba(255, 255, 255, 0.07);
+      font-size: 0.8rem;
+      background: rgba(255, 255, 255, 0.06);
       border: 1px solid var(--border);
-      padding: 0.4rem 0.85rem;
+      padding: 0.38rem 0.85rem;
       border-radius: 999px;
       color: var(--muted);
     }
     main {
-      max-width: 960px;
+      max-width: 980px;
       width: 100%;
       margin: 0 auto;
-      padding: 2rem 1.25rem 4rem;
+      padding: 2.5rem 1.25rem 4rem;
       flex: 1;
     }
     .hero {
       text-align: center;
-      margin-bottom: 2.25rem;
+      margin-bottom: 2.5rem;
     }
     .hero h1 {
-      font-size: clamp(1.9rem, 4.5vw, 3rem);
+      font-size: clamp(2rem, 4.8vw, 3.1rem);
       font-weight: 800;
       line-height: 1.15;
       margin-bottom: 0.75rem;
@@ -78,118 +84,103 @@
     }
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 1.25rem;
+      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+      gap: 1.35rem;
+      max-width: 740px;
+      margin: 0 auto;
     }
     .game-card {
       background: var(--card);
       border: 1px solid var(--border);
-      border-radius: 1.1rem;
-      padding: 1.4rem;
+      border-radius: 1.25rem;
+      padding: 1.6rem;
       cursor: pointer;
-      transition: transform 0.16s ease, background 0.16s ease, border-color 0.16s ease;
+      transition: transform 0.18s ease, background 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      text-decoration: none;
+      color: inherit;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
     }
     .game-card:hover {
       transform: translateY(-4px);
       background: var(--card-hover);
-      border-color: rgba(255, 59, 127, 0.45);
+      border-color: rgba(16, 215, 150, 0.45);
+      box-shadow: 0 16px 40px rgba(16, 215, 150, 0.12);
     }
     .card-top {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 0.85rem;
+      margin-bottom: 1rem;
+    }
+    .game-icon-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .game-icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 14px;
+      object-fit: cover;
+      border: 1px solid rgba(255, 255, 255, 0.12);
     }
     .emoji {
-      font-size: 2.2rem;
+      font-size: 2.3rem;
     }
     .badge {
       font-size: 0.72rem;
       text-transform: uppercase;
       letter-spacing: 0.06em;
       font-weight: 700;
-      padding: 0.25rem 0.6rem;
+      padding: 0.3rem 0.7rem;
       border-radius: 999px;
-      background: rgba(255, 59, 127, 0.16);
-      color: #ff7aa8;
+      background: rgba(16, 215, 150, 0.14);
+      color: var(--cyan);
+      border: 1px solid rgba(16, 215, 150, 0.3);
     }
     .game-card h2 {
-      font-size: 1.25rem;
-      margin-bottom: 0.45rem;
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+      font-weight: 800;
     }
     .game-card p {
       color: var(--muted);
-      font-size: 0.92rem;
-      line-height: 1.45;
-      margin-bottom: 1.2rem;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      margin-bottom: 1.4rem;
     }
     .meta {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 0.8rem;
+      font-size: 0.85rem;
       color: var(--muted);
       border-top: 1px solid var(--border);
-      padding-top: 0.8rem;
+      padding-top: 1rem;
     }
     .play-btn {
       color: #fff;
       font-weight: 700;
       background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      padding: 0.55rem 1.1rem;
-      border-radius: 0.65rem;
+      padding: 0.6rem 1.25rem;
+      border-radius: 0.75rem;
       border: none;
       cursor: pointer;
-      font-size: 0.9rem;
-    }
-    /* Active Game Modal / Stage */
-    #stage {
-      display: none;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 1.25rem;
-      padding: 2rem 1.5rem;
-      text-align: center;
-      max-width: 620px;
-      margin: 0 auto;
-    }
-    .back-btn {
-      background: transparent;
-      border: 1px solid var(--border);
-      color: var(--muted);
-      padding: 0.45rem 0.9rem;
-      border-radius: 0.5rem;
-      cursor: pointer;
-      margin-bottom: 1.5rem;
-      font-size: 0.85rem;
-    }
-    .prompt-box {
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid var(--border);
-      border-radius: 1rem;
-      padding: 2.2rem 1.5rem;
-      margin: 1.25rem 0;
-      font-size: 1.45rem;
-      font-weight: 700;
-      line-height: 1.35;
-      min-height: 160px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      font-size: 0.92rem;
     }
     .ad-slot {
-      margin: 2.5rem auto 0;
+      margin: 3rem auto 0;
       max-width: 728px;
       min-height: 90px;
-      border: 1px dashed rgba(255,255,255,0.12);
+      border: 1px dashed rgba(255,255,255,0.1);
       border-radius: 0.75rem;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: rgba(255,255,255,0.3);
+      color: rgba(255,255,255,0.28);
       font-size: 0.8rem;
     }
     footer {
@@ -203,26 +194,17 @@
 </head>
 <body>
   <header>
-    <div class="logo" onclick="showLobby()">🎉 PartyNight</div>
-    <div class="room-pill">Instant Browser Party Hub</div>
+    <a href="/" class="logo">🎉 PartyNights.online</a>
+    <div class="room-pill">House Party Games</div>
   </header>
 
   <main>
-    <div id="lobby">
-      <section class="hero">
-        <h1>Pick a Game & Start Playing</h1>
-        <p>Zero downloads. Pass the phone or cast to your TV for instant house party chaos.</p>
-      </section>
-      <div class="grid" id="games-grid"></div>
-    </div>
+    <section class="hero">
+      <h1>Party Night Games</h1>
+      <p>Pick a game below, pass the phone, and start playing immediately.</p>
+    </section>
 
-    <div id="stage">
-      <button class="back-btn" onclick="showLobby()">← Back to All Games</button>
-      <h2 id="stage-title"></h2>
-      <p id="stage-desc" style="color: var(--muted); margin-top: 0.4rem;"></p>
-      <div class="prompt-box" id="stage-box"></div>
-      <div id="stage-controls"></div>
-    </div>
+    <div class="grid" id="games-grid"></div>
 
     <!-- Google AdSense / Sponsor Container Ready -->
     <div class="ad-slot" id="ad-container">
@@ -231,148 +213,70 @@
   </main>
 
   <footer>
-    <strong>PartyNights.online</strong> • Instant Party Games • <a href="/privacy" style="color:var(--muted);">Privacy & Terms</a> • Add games anytime in <code>games.js</code>
+    <strong>PartyNights.online</strong> • <a href="/privacy" style="color:var(--muted);">Privacy & Terms</a>
   </footer>
 
   <script src="/games.js"></script>
   <script>
     const grid = document.getElementById('games-grid');
-    const lobby = document.getElementById('lobby');
-    const stage = document.getElementById('stage');
-    const stageTitle = document.getElementById('stage-title');
-    const stageDesc = document.getElementById('stage-desc');
-    const stageBox = document.getElementById('stage-box');
-    const stageControls = document.getElementById('stage-controls');
+    const gamesList = [...(window.PARTY_GAMES || [])];
 
-    let timerInterval = null;
-
-    function renderLobby() {
-      grid.innerHTML = window.PARTY_GAMES.map(g => `
-        <article class="game-card" onclick="launchGame('${g.id}')">
+    function renderGames() {
+      grid.innerHTML = gamesList.map(g => `
+        <a class="game-card" href="${g.url}">
           <div>
             <div class="card-top">
-              <span class="emoji">${g.emoji}</span>
-              <span class="badge">${g.badge}</span>
+              <div class="game-icon-wrap">
+                ${g.icon ? `<img class="game-icon" src="${g.icon}" alt="${g.title}" />` : `<span class="emoji">${g.emoji || '🎮'}</span>`}
+              </div>
+              <span class="badge">${g.badge || 'Party Game'}</span>
             </div>
             <h2>${g.title}</h2>
-            <p>${g.description}</p>
+            <p>${g.description || 'Tap to launch and play with friends.'}</p>
           </div>
           <div class="meta">
-            <span>👥 ${g.players}</span>
-            <button class="play-btn">Play →</button>
+            <span>👥 ${g.players || 'Multiplayer'}</span>
+            <span class="play-btn">Play Now →</span>
           </div>
-        </article>
+        </a>
       `).join('');
     }
 
-    function showLobby() {
-      if (timerInterval) clearInterval(timerInterval);
-      stage.style.display = 'none';
-      lobby.style.display = 'block';
+    // Automatically discover any new GitHub repos tagged with topic 'party-game' or 'partynights'
+    async function discoverGitHubGameRepos() {
+      if (!window.GITHUB_OWNER) return;
+      try {
+        const res = await fetch(`https://api.github.com/users/${window.GITHUB_OWNER}/repos?sort=updated&per_page=100`);
+        if (!res.ok) return;
+        const repos = await res.json();
+        const knownIds = new Set(gamesList.map(g => g.id.toLowerCase()));
+        let added = false;
+
+        for (const r of repos) {
+          const topics = Array.isArray(r.topics) ? r.topics.map(t => t.toLowerCase()) : [];
+          const isPartyGame = topics.includes('party-game') || topics.includes('partynights');
+          if (!isPartyGame) continue;
+          if (knownIds.has(r.name.toLowerCase())) continue;
+
+          gamesList.push({
+            id: r.name,
+            repo: r.full_name,
+            title: r.name.replace(/[-_]/g, ' ').replace(/\b\w/g, c => c.toUpperCase()),
+            emoji: '🎮',
+            players: 'Party Game',
+            badge: 'New Game',
+            description: r.description || 'Launch game and play with friends.',
+            url: r.homepage && r.homepage.startsWith('http') ? r.homepage : `/${r.name}/`
+          });
+          knownIds.add(r.name.toLowerCase());
+          added = true;
+        }
+        if (added) renderGames();
+      } catch (_) {}
     }
 
-    function launchGame(id) {
-      const game = window.PARTY_GAMES.find(g => g.id === id);
-      if (!game) return;
-      if (game.url) {
-        window.location.href = game.url;
-        return;
-      }
-      lobby.style.display = 'none';
-      stage.style.display = 'block';
-      stageTitle.textContent = `${game.emoji} ${game.title}`;
-      stageDesc.textContent = game.description;
-
-      if (game.type === 'deck') {
-        let idx = 0;
-        const shuffled = [...game.prompts].sort(() => Math.random() - 0.5);
-        stageBox.textContent = shuffled[idx];
-        stageControls.innerHTML = `<button class="play-btn" id="next-btn">Next Card 🎲</button>`;
-        document.getElementById('next-btn').onclick = () => {
-          idx = (idx + 1) % shuffled.length;
-          stageBox.textContent = shuffled[idx];
-        };
-      } else if (game.type === 'charades') {
-        let score = 0;
-        let timeLeft = 60;
-        const words = [...game.words].sort(() => Math.random() - 0.5);
-        let idx = 0;
-        stageBox.textContent = `Ready? 60 seconds on the clock!`;
-        stageControls.innerHTML = `<button class="play-btn" id="start-timer">Start Round ⏱️</button>`;
-        document.getElementById('start-timer').onclick = () => {
-          stageBox.textContent = words[idx];
-          stageControls.innerHTML = `
-            <p style="margin-bottom:0.8rem;font-weight:700;color:#38bdf8;" id="timer-label">⏱️ 60s | Score: 0</p>
-            <button class="play-btn" id="got-it" style="margin-right:0.5rem;">Got It! (+1) ✅</button>
-            <button class="back-btn" id="skip-it" style="margin-bottom:0;">Skip ⏭️</button>
-          `;
-          timerInterval = setInterval(() => {
-            timeLeft--;
-            const lbl = document.getElementById('timer-label');
-            if (lbl) lbl.textContent = `⏱️ ${timeLeft}s | Score: ${score}`;
-            if (timeLeft <= 0) {
-              clearInterval(timerInterval);
-              stageBox.textContent = `🎉 Time's Up! Final Score: ${score}`;
-              stageControls.innerHTML = `<button class="play-btn" onclick="launchGame('${game.id}')">Play Again 🔄</button>`;
-            }
-          }, 1000);
-          document.getElementById('got-it').onclick = () => {
-            score++;
-            idx = (idx + 1) % words.length;
-            stageBox.textContent = words[idx];
-          };
-          document.getElementById('skip-it').onclick = () => {
-            idx = (idx + 1) % words.length;
-            stageBox.textContent = words[idx];
-          };
-        };
-      } else if (game.type === 'undercover') {
-        let playerCount = 4;
-        stageBox.textContent = `Pass the phone around so each player privately sees their secret word!`;
-        stageControls.innerHTML = `
-          <div style="margin-bottom:1rem;">
-            <label>Players: </label>
-            <input type="number" id="pcount" value="4" min="3" max="12" style="width:60px;padding:0.35rem;border-radius:0.4rem;border:1px solid #444;background:#0b0914;color:#fff;text-align:center;" />
-          </div>
-          <button class="play-btn" id="deal-roles">Deal Secret Words 🕵️</button>
-        `;
-        document.getElementById('deal-roles').onclick = () => {
-          playerCount = Math.max(3, Math.min(12, parseInt(document.getElementById('pcount').value || '4', 10)));
-          const pair = game.wordPairs[Math.floor(Math.random() * game.wordPairs.length)];
-          const spyIndex = Math.floor(Math.random() * playerCount);
-          let current = 0;
-          let revealed = false;
-
-          function updateStep() {
-            if (current >= playerCount) {
-              stageBox.textContent = `🔥 All roles dealt! Describe your word in 1 clue each & vote out the Impostor!`;
-              stageControls.innerHTML = `<button class="play-btn" onclick="launchGame('${game.id}')">New Round 🔄</button>`;
-              return;
-            }
-            if (!revealed) {
-              stageBox.textContent = `Pass phone to Player ${current + 1}`;
-              stageControls.innerHTML = `<button class="play-btn" id="step-btn">Tap to Reveal Word 👁️</button>`;
-            } else {
-              const word = current === spyIndex ? pair[1] : pair[0];
-              stageBox.textContent = `Player ${current + 1}'s Word: "${word}"`;
-              stageControls.innerHTML = `<button class="play-btn" id="step-btn">Hide & Pass to Next Player ➡️</button>`;
-            }
-            document.getElementById('step-btn').onclick = () => {
-              if (!revealed) {
-                revealed = true;
-              } else {
-                revealed = false;
-                current++;
-              }
-              updateStep();
-            };
-          }
-          updateStep();
-        };
-      }
-    }
-
-    renderLobby();
+    renderGames();
+    discoverGitHubGameRepos();
   </script>
 </body>
 </html>

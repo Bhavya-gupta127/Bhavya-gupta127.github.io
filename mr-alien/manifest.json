@@ -1,0 +1,29 @@
+{
+  "name": "Mr. Alien — Desi Undercover Party Game",
+  "short_name": "Mr. Alien",
+  "description": "Pass one phone, decode the clues, and expose Mr. Alien! 500+ Indian words.",
+  "start_url": "/mr-alien/",
+  "scope": "/mr-alien/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#05060d",
+  "theme_color": "#05060d",
+  "categories": [
+    "games",
+    "entertainment"
+  ],
+  "icons": [
+    {
+      "src": "/mr-alien/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/mr-alien/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
