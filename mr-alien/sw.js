@@ -1,10 +1,10 @@
-// Mr. Alien — PWA Service Worker v6.0
-const CACHE_NAME = "mr-alien-pwa-v6";
+// Mr. Alien — PWA Service Worker v7.0
+const CACHE_NAME = "mr-alien-pwa-v7";
 const ASSETS = [
   "/mr-alien/",
   "/mr-alien/index.html",
-  "/mr-alien/styles.min.css?v=6",
-  "/mr-alien/app.min.js?v=6",
+  "/mr-alien/styles.min.css?v=7",
+  "/mr-alien/app.min.js?v=7",
   "/mr-alien/manifest.json",
   "/mr-alien/icon-192.png",
   "/mr-alien/icon-512.png",

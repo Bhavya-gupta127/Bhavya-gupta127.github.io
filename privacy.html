@@ -2,26 +2,51 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Privacy Policy & Terms — PartyNights.online</title>
   <link rel="canonical" href="https://partynights.online/privacy" />
   <style>
     body {
-      font-family: system-ui, -apple-system, sans-serif;
-      background: #0b0914;
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      background: #070812;
       color: #f8fafc;
       line-height: 1.65;
-      padding: 2.5rem 1.25rem;
+      padding: max(2rem, calc(env(safe-area-inset-top, 0px) + 1rem)) 1.25rem calc(2.5rem + env(safe-area-inset-bottom, 0px));
       max-width: 760px;
       margin: 0 auto;
     }
     h1, h2 { margin: 1.5rem 0 0.6rem; color: #fff; }
     p, li { color: #cbd5e1; margin-bottom: 0.75rem; }
-    a { color: #ff3b7f; text-decoration: none; }
+    a { color: #ff2e63; text-decoration: none; }
+    .ios-back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      height: 38px;
+      padding: 0 14px 0 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      background: rgba(18, 20, 38, 0.85);
+      color: #f8fafc;
+      font-size: 0.82rem;
+      font-weight: 800;
+      text-decoration: none;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+    }
+    .ios-back-btn svg {
+      width: 17px;
+      height: 17px;
+      stroke: #10d796;
+    }
   </style>
 </head>
 <body>
-  <p><a href="/">← Back to PartyNights.online</a></p>
+  <p>
+    <a href="/" class="ios-back-btn" id="btn-privacy-back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+      <span>Back to PartyNights Arcade</span>
+    </a>
+  </p>
   <h1>Privacy Policy & Terms of Use</h1>
   <p>Effective Date: October 2026 • Domain: <strong>partynights.online</strong></p>
 

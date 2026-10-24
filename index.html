@@ -924,7 +924,7 @@
     }
 
     @media (max-width: 560px) {
-      .hud-inner { padding: 0.65rem 0.95rem; }
+      .hud-inner { padding: max(0.65rem, calc(env(safe-area-inset-top, 0px) + 0.4rem)) 0.95rem 0.65rem; }
       .logo-main { font-size: 1.18rem; }
       .hud-btn span.btn-label { display: none; }
       .arcade-stage { padding: 1rem 0.95rem 3rem; }
@@ -933,6 +933,196 @@
       .cartridge-footer { flex-direction: column; align-items: stretch; }
       .btn-launch-game { width: 100%; }
     }
+
+    /* ==========================================
+       iOS / iPHONE BACK BUTTON, ACTIVE SESSION RESUME BAR & LEAVE WARNING MODAL
+       ========================================== */
+    .hud-left-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      min-width: 0;
+    }
+
+    .ios-back-btn {
+      height: 36px;
+      padding: 0 12px 0 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text);
+      font-family: inherit;
+      font-size: 0.78rem;
+      font-weight: 800;
+      display: none;
+      align-items: center;
+      gap: 4px;
+      cursor: pointer;
+      flex-shrink: 0;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.32);
+      transition: transform 0.18s var(--ease-spring), background 0.18s ease, border-color 0.18s ease;
+    }
+    .ios-back-btn.visible {
+      display: inline-flex;
+    }
+    .ios-back-btn:hover {
+      background: rgba(255, 255, 255, 0.14);
+      border-color: var(--cyan);
+    }
+    .ios-back-btn:active {
+      transform: scale(0.92);
+    }
+    .ios-chevron {
+      width: 16px;
+      height: 16px;
+      stroke: var(--cyan);
+      flex-shrink: 0;
+    }
+
+    .active-session-banner {
+      display: none;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      padding: 0.95rem 1.2rem;
+      margin-bottom: 1.35rem;
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(255, 46, 99, 0.16) 0%, rgba(18, 20, 38, 0.94) 55%, rgba(16, 215, 150, 0.14) 100%);
+      border: 1px solid rgba(16, 215, 150, 0.45);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55), 0 0 28px rgba(16, 215, 150, 0.15);
+      backdrop-filter: blur(14px);
+    }
+    .active-session-banner.visible {
+      display: flex;
+    }
+    .session-banner-info {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .session-pulse-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: rgba(16, 215, 150, 0.16);
+      border: 1px solid rgba(16, 215, 150, 0.45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.35rem;
+      flex-shrink: 0;
+    }
+    .session-banner-title {
+      font-weight: 800;
+      font-size: 0.94rem;
+      color: #ffffff;
+    }
+    .session-banner-sub {
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+    }
+    .session-banner-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+    }
+    .btn-resume-session {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      height: 38px;
+      padding: 0 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(16, 215, 150, 0.55);
+      background: linear-gradient(135deg, #10d796, #34d399);
+      color: #04130e;
+      font-family: inherit;
+      font-size: 0.8rem;
+      font-weight: 800;
+      text-decoration: none;
+      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(16, 215, 150, 0.3);
+    }
+    .btn-end-session {
+      height: 38px;
+      padding: 0 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 46, 99, 0.45);
+      background: rgba(255, 46, 99, 0.12);
+      color: #fda4af;
+      font-family: inherit;
+      font-size: 0.78rem;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .leave-warning-card {
+      background: linear-gradient(180deg, #161a36 0%, #0d1022 100%);
+      border: 1px solid rgba(255, 46, 99, 0.45);
+      border-radius: 24px;
+      padding: 1.65rem 1.4rem 1.4rem;
+      max-width: 385px;
+      width: 100%;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+      box-shadow: 0 28px 70px rgba(0, 0, 0, 0.85), 0 0 45px rgba(255, 46, 99, 0.18);
+    }
+    .leave-warn-emblem {
+      width: 62px;
+      height: 62px;
+      border-radius: 20px;
+      background: radial-gradient(circle at 30% 30%, rgba(255, 46, 99, 0.28), rgba(124, 58, 237, 0.18));
+      border: 1.5px solid rgba(255, 46, 99, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.9rem;
+      box-shadow: 0 0 28px rgba(255, 46, 99, 0.32);
+    }
+    .leave-warn-badge {
+      display: inline-flex;
+      padding: 4px 12px;
+      border-radius: 999px;
+      background: rgba(255, 46, 99, 0.14);
+      border: 1px solid rgba(255, 46, 99, 0.35);
+      color: #fda4af;
+      font-size: 0.66rem;
+      font-weight: 800;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+    }
+    .btn-leave-stay {
+      width: 100%;
+      height: 48px;
+      border-radius: 14px;
+      border: 1px solid rgba(16, 215, 150, 0.55);
+      background: linear-gradient(135deg, #10d796 0%, #34d399 100%);
+      color: #04130e;
+      font-family: inherit;
+      font-size: 0.92rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .btn-leave-confirm {
+      width: 100%;
+      height: 44px;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 46, 99, 0.45);
+      background: rgba(255, 46, 99, 0.12);
+      color: #fda4af;
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 800;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
@@ -940,44 +1130,50 @@
   <canvas id="bg-3d-canvas" aria-hidden="true"></canvas>
   <div class="vignette-overlay" aria-hidden="true"></div>
 
-  <!-- Game Console HUD Bar with Custom SVG Gaming Crest Logo -->
+  <!-- Game Console HUD Bar with iPhone Back Button & Custom SVG Gaming Crest Logo -->
   <header class="hud-header">
     <div class="hud-inner">
-      <a href="/" class="arcade-logo" aria-label="PartyNights.online Arcade Home">
-        <div class="logo-crest">
-          <div class="logo-crest-inner">
-            <!-- Custom Neon Gamepad + Crown SVG Vector Logo -->
-            <svg class="logo-svg" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <linearGradient id="pnGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stop-color="#ff2e63" />
-                  <stop offset="55%" stop-color="#a855f7" />
-                  <stop offset="100%" stop-color="#10d796" />
-                </linearGradient>
-              </defs>
-              <!-- Crown Sparks -->
-              <path d="M11 8L14.5 12L18 6.5L21.5 12L25 8L23.5 13.5H12.5L11 8Z" fill="url(#pnGrad)" />
-              <!-- Futuristic Gamepad Body -->
-              <path d="M7.5 17.5C8.3 14.8 10.7 13 13.5 13H22.5C25.3 13 27.7 14.8 28.5 17.5L30.2 23.4C31 26.2 28.9 29 26 29C24.3 29 22.8 28 22 26.5L20.8 24.5H15.2L14 26.5C13.2 28 11.7 29 10 29C7.1 29 5 26.2 5.8 23.4L7.5 17.5Z" stroke="url(#pnGrad)" stroke-width="2.4" fill="rgba(16,215,150,0.08)" />
-              <!-- D-Pad -->
-              <path d="M12.5 17.8V21.8M10.5 19.8H14.5" stroke="#10d796" stroke-width="2" stroke-linecap="round" />
-              <!-- Action Buttons -->
-              <circle cx="24" cy="18.5" r="1.35" fill="#ff2e63" />
-              <circle cx="21.5" cy="21" r="1.35" fill="#a855f7" />
-            </svg>
+      <div class="hud-left-wrap">
+        <button type="button" class="ios-back-btn" id="hub-ios-back-btn" aria-label="Go Back" title="Go Back">
+          <svg class="ios-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+          <span id="hub-ios-back-label">Back</span>
+        </button>
+        <a href="/" class="arcade-logo" aria-label="PartyNights.online Arcade Home">
+          <div class="logo-crest">
+            <div class="logo-crest-inner">
+              <!-- Custom Neon Gamepad + Crown SVG Vector Logo -->
+              <svg class="logo-svg" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="pnGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#ff2e63" />
+                    <stop offset="55%" stop-color="#a855f7" />
+                    <stop offset="100%" stop-color="#10d796" />
+                  </linearGradient>
+                </defs>
+                <!-- Crown Sparks -->
+                <path d="M11 8L14.5 12L18 6.5L21.5 12L25 8L23.5 13.5H12.5L11 8Z" fill="url(#pnGrad)" />
+                <!-- Futuristic Gamepad Body -->
+                <path d="M7.5 17.5C8.3 14.8 10.7 13 13.5 13H22.5C25.3 13 27.7 14.8 28.5 17.5L30.2 23.4C31 26.2 28.9 29 26 29C24.3 29 22.8 28 22 26.5L20.8 24.5H15.2L14 26.5C13.2 28 11.7 29 10 29C7.1 29 5 26.2 5.8 23.4L7.5 17.5Z" stroke="url(#pnGrad)" stroke-width="2.4" fill="rgba(16,215,150,0.08)" />
+                <!-- D-Pad -->
+                <path d="M12.5 17.8V21.8M10.5 19.8H14.5" stroke="#10d796" stroke-width="2" stroke-linecap="round" />
+                <!-- Action Buttons -->
+                <circle cx="24" cy="18.5" r="1.35" fill="#ff2e63" />
+                <circle cx="21.5" cy="21" r="1.35" fill="#a855f7" />
+              </svg>
+            </div>
           </div>
-        </div>
-        <div class="logo-wordmark">
-          <div class="logo-main">
-            <span class="logo-party">PARTY</span>
-            <span class="logo-nights">NIGHTS</span>
+          <div class="logo-wordmark">
+            <div class="logo-main">
+              <span class="logo-party">PARTY</span>
+              <span class="logo-nights">NIGHTS</span>
+            </div>
+            <div class="logo-sub">
+              <span class="logo-sub-dot"></span>
+              <span>ONLINE ARCADE</span>
+            </div>
           </div>
-          <div class="logo-sub">
-            <span class="logo-sub-dot"></span>
-            <span>ONLINE ARCADE</span>
-          </div>
-        </div>
-      </a>
+        </a>
+      </div>
 
       <div class="hud-controls">
         <button type="button" class="hud-btn icon-only" id="sfx-toggle-btn" title="Toggle Arcade UI Sound">
@@ -993,6 +1189,24 @@
 
   <!-- MAIN ARCADE STAGE: GAME CARDS ARE THE VERY FIRST THING -->
   <main class="arcade-stage">
+    <!-- Active In-Progress Game Resume Banner (Protects accidental exit on iPhones) -->
+    <div class="active-session-banner" id="active-session-banner" role="region" aria-label="Active Match in Progress">
+      <div class="session-banner-info">
+        <div class="session-pulse-icon" id="active-session-icon">👽</div>
+        <div>
+          <div class="session-banner-title" id="active-session-title">Match in Progress: Mr. Alien</div>
+          <div class="session-banner-sub" id="active-session-sub">Your squad's round is saved and waiting for you!</div>
+        </div>
+      </div>
+      <div class="session-banner-actions">
+        <a href="/mr-alien/" class="btn-resume-session" id="btn-resume-active-game">
+          <span>‹</span>
+          <span id="btn-resume-active-label">Back to Game</span>
+        </a>
+        <button type="button" class="btn-end-session" id="btn-end-active-game">End Match</button>
+      </div>
+    </div>
+
     <div class="arcade-deck-bar">
       <div class="deck-heading">
         <span class="live-beacon">
@@ -1093,6 +1307,26 @@
     </div>
   </div>
 
+  <!-- Leave / Abandon Active Game Warning Modal -->
+  <div class="modal-backdrop" id="hub-leave-modal" role="dialog" aria-modal="true" aria-labelledby="hub-leave-title">
+    <div class="leave-warning-card">
+      <div class="leave-warn-emblem" id="hub-leave-icon">⚠️</div>
+      <span class="leave-warn-badge" id="hub-leave-badge">ACTIVE GAME IN PROGRESS</span>
+      <h3 id="hub-leave-title" style="font-family: 'Outfit', sans-serif; font-size: 1.35rem; font-weight: 900;">End Active Match?</h3>
+      <p id="hub-leave-desc" style="color: var(--text-secondary); font-size: 0.85rem; line-height: 1.5;">
+        Your squad still has an active game round in progress! Ending it will clear the saved round and roles.
+      </p>
+      <div style="width: 100%; display: flex; flex-direction: column; gap: 0.55rem; margin-top: 0.35rem;">
+        <button type="button" class="btn-leave-stay" id="btn-hub-stay">
+          <span>🛡️ Resume Active Game</span>
+        </button>
+        <button type="button" class="btn-leave-confirm" id="btn-hub-confirm-end">
+          <span id="btn-hub-confirm-label">🚪 End Match</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
   <footer>
     <div><strong>PartyNights.online</strong> — Instant House Party Games Arcade</div>
     <div class="footer-links">
@@ -1137,6 +1371,10 @@
       click() {
         this.play(520, 'triangle', 0.06, 0.06);
         setTimeout(() => this.play(780, 'sine', 0.08, 0.06), 45);
+      },
+      warn() {
+        this.play(320, 'triangle', 0.11, 0.07);
+        setTimeout(() => this.play(240, 'triangle', 0.16, 0.07), 90);
       }
     };
 
@@ -1144,6 +1382,153 @@
       ArcadeSFX.enabled = !ArcadeSFX.enabled;
       document.getElementById('sfx-icon').textContent = ArcadeSFX.enabled ? '🔊' : '🔇';
       if (ArcadeSFX.enabled) ArcadeSFX.click();
+    });
+
+    // ==========================================
+    // 1B. iPHONE BACK BUTTON & ACTIVE SESSION GUARD
+    // ==========================================
+    const hubBackBtn = document.getElementById('hub-ios-back-btn');
+    const hubBackLabel = document.getElementById('hub-ios-back-label');
+    const sessionBanner = document.getElementById('active-session-banner');
+    const hubLeaveModal = document.getElementById('hub-leave-modal');
+    let detectedSession = null; // { gameId, title, emoji, url, round, clearFn }
+    let pendingHubConfirmFn = null;
+
+    function detectSavedActiveSession() {
+      detectedSession = null;
+      try {
+        const mrAlienRaw = localStorage.getItem('mr_alien_live_session_v1');
+        if (mrAlienRaw) {
+          const s = JSON.parse(mrAlienRaw);
+          if (s && ['pass', 'discussion', 'voting', 'elimination'].includes(s.activeScreen)) {
+            detectedSession = {
+              gameId: 'mr-alien',
+              title: 'Mr. Alien',
+              emoji: '👽',
+              url: '/mr-alien/',
+              round: s.round || 1,
+              clearFn: () => {
+                s.activeScreen = 'setup';
+                localStorage.setItem('mr_alien_live_session_v1', JSON.stringify(s));
+              }
+            };
+          }
+        }
+      } catch (_) {}
+
+      if (!detectedSession) {
+        try {
+          const wlRaw = localStorage.getItem('partynights_wavelength_state_v1');
+          if (wlRaw) {
+            const w = JSON.parse(wlRaw);
+            if (w && w.screen === 'game') {
+              detectedSession = {
+                gameId: 'wavelength',
+                title: 'Wavelength (Mind Sync)',
+                emoji: '🧠',
+                url: '/wavelength/',
+                round: w.round || 1,
+                clearFn: () => {
+                  w.screen = 'setup';
+                  localStorage.setItem('partynights_wavelength_state_v1', JSON.stringify(w));
+                }
+              };
+            }
+          }
+        } catch (_) {}
+      }
+
+      if (detectedSession) {
+        document.getElementById('active-session-icon').textContent = detectedSession.emoji;
+        document.getElementById('active-session-title').textContent = `Active Match: ${detectedSession.title} (Round ${detectedSession.round})`;
+        document.getElementById('active-session-sub').textContent = `Did you leave by accident? Tap to jump right back into Round ${detectedSession.round}!`;
+        document.getElementById('btn-resume-active-game').href = detectedSession.url;
+        document.getElementById('btn-resume-active-label').textContent = `Back to ${detectedSession.title}`;
+        sessionBanner.classList.add('visible');
+      } else {
+        sessionBanner.classList.remove('visible');
+      }
+      updateHubBackButtonState();
+    }
+
+    function updateHubBackButtonState() {
+      if (detectedSession) {
+        hubBackBtn.classList.add('visible');
+        hubBackLabel.textContent = detectedSession.title;
+      } else if (typeof activeFilter !== 'undefined' && activeFilter !== 'all') {
+        hubBackBtn.classList.add('visible');
+        hubBackLabel.textContent = 'All Games';
+      } else {
+        hubBackBtn.classList.remove('visible');
+      }
+    }
+
+    function openHubLeaveModal({ icon, badge, title, desc, confirmLabel, onConfirm, onStay }) {
+      ArcadeSFX.warn();
+      document.getElementById('hub-leave-icon').textContent = icon || '⚠️';
+      document.getElementById('hub-leave-badge').textContent = badge || 'ACTIVE GAME IN PROGRESS';
+      document.getElementById('hub-leave-title').textContent = title || 'End Active Match?';
+      document.getElementById('hub-leave-desc').textContent = desc || 'Your squad still has an active game round in progress!';
+      document.getElementById('btn-hub-confirm-label').textContent = confirmLabel || '🚪 End Match';
+      pendingHubConfirmFn = { onConfirm, onStay };
+      hubLeaveModal.classList.add('open');
+    }
+
+    document.getElementById('btn-hub-stay').addEventListener('click', () => {
+      ArcadeSFX.click();
+      const stayCb = pendingHubConfirmFn && pendingHubConfirmFn.onStay;
+      hubLeaveModal.classList.remove('open');
+      pendingHubConfirmFn = null;
+      if (typeof stayCb === 'function') {
+        stayCb();
+      } else if (detectedSession) {
+        window.location.href = detectedSession.url;
+      }
+    });
+
+    document.getElementById('btn-hub-confirm-end').addEventListener('click', () => {
+      ArcadeSFX.click();
+      const confirmCb = pendingHubConfirmFn && pendingHubConfirmFn.onConfirm;
+      hubLeaveModal.classList.remove('open');
+      pendingHubConfirmFn = null;
+      if (typeof confirmCb === 'function') confirmCb();
+    });
+
+    hubLeaveModal.addEventListener('click', e => {
+      if (e.target === hubLeaveModal) {
+        hubLeaveModal.classList.remove('open');
+        pendingHubConfirmFn = null;
+      }
+    });
+
+    document.getElementById('btn-end-active-game').addEventListener('click', () => {
+      if (!detectedSession) return;
+      openHubLeaveModal({
+        icon: detectedSession.emoji,
+        badge: `ROUND ${detectedSession.round} • ${detectedSession.title.toUpperCase()}`,
+        title: `End ${detectedSession.title} Match?`,
+        desc: `Are you sure you want to end your in-progress ${detectedSession.title} match? Your current round state will be reset.`,
+        confirmLabel: `🚪 End ${detectedSession.title} Match`,
+        onConfirm: () => {
+          detectedSession.clearFn();
+          detectSavedActiveSession();
+        },
+        onStay: () => {}
+      });
+    });
+
+    hubBackBtn.addEventListener('click', () => {
+      ArcadeSFX.click();
+      if (detectedSession) {
+        window.location.href = detectedSession.url;
+        return;
+      }
+      if (activeFilter !== 'all') {
+        activeFilter = 'all';
+        filterButtons.forEach(b => b.classList.toggle('active', b.getAttribute('data-filter') === 'all'));
+        renderGames();
+        updateHubBackButtonState();
+      }
     });
 
     // ==========================================
@@ -1157,7 +1542,26 @@
     function attach3DTiltEvents() {
       document.querySelectorAll('.cartridge-card').forEach(card => {
         card.addEventListener('mouseenter', () => ArcadeSFX.hover());
-        card.addEventListener('click', () => ArcadeSFX.click());
+        card.addEventListener('click', e => {
+          ArcadeSFX.click();
+          const targetUrl = card.getAttribute('href');
+          if (detectedSession && targetUrl && !targetUrl.includes(detectedSession.gameId)) {
+            e.preventDefault();
+            openHubLeaveModal({
+              icon: '⚠️',
+              badge: `${detectedSession.title.toUpperCase()} ROUND ${detectedSession.round} ACTIVE`,
+              title: 'Switch Away From Active Game?',
+              desc: `You still have an active ${detectedSession.title} round in progress! Do you want to return to ${detectedSession.title} or switch games?`,
+              confirmLabel: '🎮 Switch to New Game',
+              onConfirm: () => {
+                window.location.href = targetUrl;
+              },
+              onStay: () => {
+                window.location.href = detectedSession.url;
+              }
+            });
+          }
+        });
         card.addEventListener('pointermove', e => {
           if (window.innerWidth < 768) return;
           const rect = card.getBoundingClientRect();
@@ -1252,6 +1656,10 @@
         btn.classList.add('active');
         activeFilter = btn.getAttribute('data-filter') || 'all';
         renderGames();
+        updateHubBackButtonState();
+        if (activeFilter !== 'all' && window.history && window.history.pushState) {
+          try { window.history.pushState({ pnFilter: activeFilter }, ''); } catch (_) {}
+        }
       });
     });
 
@@ -1292,19 +1700,42 @@
     }
 
     renderGames();
+    detectSavedActiveSession();
+    window.addEventListener('pageshow', detectSavedActiveSession);
     discoverGitHubGameRepos();
 
-    // Share / QR Modal
+    // Share / QR Modal + iPhone Swipe-Back (popstate) support
     const shareModal = document.getElementById('share-modal');
     document.getElementById('open-share-btn').addEventListener('click', () => {
       ArcadeSFX.click();
       shareModal.classList.add('open');
+      if (window.history && window.history.pushState) {
+        try { window.history.pushState({ pnModal: 'share' }, ''); } catch (_) {}
+      }
     });
     document.getElementById('close-share-btn').addEventListener('click', () => {
       shareModal.classList.remove('open');
     });
     shareModal.addEventListener('click', e => {
       if (e.target === shareModal) shareModal.classList.remove('open');
+    });
+
+    window.addEventListener('popstate', () => {
+      if (shareModal.classList.contains('open')) {
+        shareModal.classList.remove('open');
+        return;
+      }
+      if (hubLeaveModal.classList.contains('open')) {
+        hubLeaveModal.classList.remove('open');
+        pendingHubConfirmFn = null;
+        return;
+      }
+      if (activeFilter !== 'all') {
+        activeFilter = 'all';
+        filterButtons.forEach(b => b.classList.toggle('active', b.getAttribute('data-filter') === 'all'));
+        renderGames();
+        updateHubBackButtonState();
+      }
     });
     document.getElementById('copy-link-btn').addEventListener('click', async function() {
       ArcadeSFX.click();

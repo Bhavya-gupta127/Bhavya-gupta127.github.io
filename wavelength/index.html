@@ -40,8 +40,10 @@
 <div class="app-shell">
 <header class="top-bar" id="app-top-bar">
 <div class="brand-group">
-<a href="https://partynights.online/" class="hub-logo-link" title="PartyNights.online Hub">🎉 PartyNights.online</a>
-<span class="nav-divider">/</span>
+<button type="button" class="ios-back-btn" id="btn-ios-back" aria-label="Go Back" title="Go Back">
+<svg class="ios-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+<span id="ios-back-label">Arcade</span>
+</button>
 <div class="brand" id="brand-home-btn" title="Mind Sync Home (Tap 5x for Secret Lab)">
 <div class="brand-icon" id="easter-egg-brand">🧠</div>
 <div class="brand-text-wrap">
@@ -51,13 +53,17 @@
 </div>
 </div>
 <div class="top-actions">
+<a href="https://partynights.online/" class="nav-pill-btn" id="btn-top-hub" title="PartyNights.online Hub">
+<span>🎉</span>
+<span>Hub</span>
+</a>
 <button class="nav-pill-btn" id="btn-top-restart" type="button" title="New Match" style="display: none;">
 <span>🔄</span>
 <span>Reset</span>
 </button>
 <button class="nav-pill-btn" id="btn-top-menu" type="button" title="Setup Menu">
 <span>🏠</span>
-<span>Setup</span>
+<span id="btn-top-menu-label">Setup</span>
 </button>
 <button class="circle-btn" id="btn-open-rules" type="button" title="How to Play">📖</button>
 <button class="circle-btn" id="btn-open-leaderboard" type="button" title="Hall of Fame">🏆</button>
@@ -579,6 +585,24 @@ Import custom JSON Spectrum Packs (array of <code>{ left, right, category, spark
 <input type="file" id="input-json-pack" accept=".json" style="margin-bottom: 12px; width: 100%;" />
 <div id="secret-lab-status" style="font-size: 0.82rem; color: #10f5a0; margin-bottom: 10px;"></div>
 <button type="button" id="btn-clear-imported" class="btn-danger-outline" style="width: 100%;">Clear Imported JSON Packs</button>
+</div>
+</div>
+</div>
+<div class="modal-backdrop" id="modal-leave-warning" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="leave-modal-title">
+<div class="modal-sheet leave-warning-sheet">
+<div class="leave-warn-emblem" id="leave-modal-icon">⚠️</div>
+<span class="leave-warn-badge" id="leave-modal-badge">MIND SYNC IN PROGRESS</span>
+<h3 class="leave-warn-title" id="leave-modal-title">Leave Active Match?</h3>
+<p class="leave-warn-desc" id="leave-modal-desc">
+Your squad is in the middle of a Wavelength match! Leaving now will end the current round and reset your dial progress.
+</p>
+<div class="leave-warn-actions">
+<button type="button" class="btn-leave-stay" id="btn-leave-stay">
+<span>🛡️ Stay &amp; Keep Playing</span>
+</button>
+<button type="button" class="btn-leave-confirm" id="btn-leave-confirm">
+<span id="btn-leave-confirm-label">🚪 Leave Match</span>
+</button>
 </div>
 </div>
 </div>

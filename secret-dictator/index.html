@@ -31,13 +31,18 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@600;700;800&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="./styles.min.css" />
+<link rel="stylesheet" href="./styles.min.css?v=2" />
 <script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js" defer></script>
 </head>
 <body>
 <div class="ambient-bg" aria-hidden="true"></div>
 <div class="app-shell">
 <header class="top-bar" id="app-top-bar">
+<div class="top-left-nav">
+<button type="button" class="ios-back-btn" id="btn-ios-back" aria-label="Go Back" title="Go Back">
+<svg class="ios-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+<span id="ios-back-label">Arcade</span>
+</button>
 <div class="brand-group" id="btn-brand-home" title="Main Menu">
 <div class="brand-emblem">👑</div>
 <div>
@@ -45,8 +50,9 @@
 <div class="brand-sub" id="top-room-indicator">PartyNights.online</div>
 </div>
 </div>
+</div>
 <div class="top-actions">
-<a href="https://partynights.online/" class="hub-link-pill" title="PartyNights.online Hub">🎉 PartyNights</a>
+<a href="https://partynights.online/" class="hub-link-pill" id="btn-top-hub" title="PartyNights.online Hub">🎉 Hub</a>
 <button type="button" class="icon-btn" id="btn-open-rules" title="Rules & Powers">📜</button>
 <button type="button" class="icon-btn" id="btn-sound-toggle" title="Toggle Sound">🔊</button>
 <button type="button" class="icon-btn" id="btn-leave-room" title="Leave / Menu" style="display:none;">🚪</button>
@@ -316,6 +322,24 @@ After 3 Red Bills: Electing the Secret Dictator as Chancellor wins immediately!
 </div>
 </div>
 </div>
-<script src="./app.min.js"></script>
+<div class="modal-backdrop" id="modal-leave-warning" style="display:none;" role="dialog" aria-modal="true" aria-labelledby="leave-modal-title">
+<div class="modal-sheet leave-warning-sheet">
+<div class="leave-warn-emblem" id="leave-modal-icon">⚠️</div>
+<span class="leave-warn-badge" id="leave-modal-badge">SESSION IN PROGRESS</span>
+<h3 class="leave-warn-title" id="leave-modal-title">Leave Parliamentary Session?</h3>
+<p class="leave-warn-desc" id="leave-modal-desc">
+A Secret Dictator session is active! Leaving now will disconnect you from the room and end the current parliamentary session.
+</p>
+<div class="leave-warn-actions">
+<button type="button" class="btn-leave-stay" id="btn-leave-stay">
+<span>🛡️ Stay in Parliament</span>
+</button>
+<button type="button" class="btn-leave-confirm" id="btn-leave-confirm">
+<span id="btn-leave-confirm-label">🚪 Leave Session</span>
+</button>
+</div>
+</div>
+</div>
+<script src="./app.min.js?v=2"></script>
 </body>
 </html>
