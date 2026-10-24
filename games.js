@@ -30,5 +30,26 @@ window.PARTY_GAMES = [
     featured: true,
     description: "Someone in the room is not Human! Pass one phone around the group, give clever 1-word clues across Desi Food, Bollywood, Cricket & Festivals, and vote out Mr. Alien before they blend in.",
     url: "/mr-alien/"
+  },
+  {
+    id: "secret-dictator",
+    repo: "Bhavya-gupta127/secret-dictator",
+    title: "Secret Dictator",
+    subtitle: "The Shadow Regime Board Game for Phones",
+    emoji: "👑",
+    icon: "/secret-dictator/icon-192.png",
+    banner: "/secret-dictator/og-banner.png",
+    players: "5–10 Players",
+    minPlayers: 5,
+    maxPlayers: 10,
+    duration: "15–30 Mins",
+    deviceMode: "Room Code or Pass 1 Phone",
+    category: "Social Deduction",
+    tags: ["Multi-Phone Room Code", "Pass 1 Phone", "Executive Powers", "Smart AI Bots"],
+    badge: "👑 Board Classic",
+    featured: true,
+    description: "Inspired by the legendary 5–10 player hidden-identity board game! Join on your own phones via Room Code (or Pass 1 Phone), elect a President & Chancellor, enact Freedom Bills, and expose the Secret Dictator before the Syndicate seizes power.",
+    url: "/secret-dictator/"
   }
 ];
+

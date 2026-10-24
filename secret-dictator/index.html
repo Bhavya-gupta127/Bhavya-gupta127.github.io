@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+<meta name="theme-color" content="#070812" />
+<title>Secret Dictator — Free Instant Party Game | PartyNights.online</title>
+<meta name="description" content="Play Secret Dictator with friends directly in your browser. Zero downloads, pass one phone or join room code. Free party game online for house party games with friends." />
+<link rel="canonical" href="https://partynights.online/secret-dictator/" />
+<link rel="manifest" href="./manifest.json" />
+<link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="Secret Dictator" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="PartyNights.online" />
+<meta property="og:title" content="Secret Dictator — PartyNights.online" />
+<meta property="og:description" content="Play Secret Dictator instantly with friends. No app install needed." />
+<meta property="og:image" content="https://partynights.online/secret-dictator/og-banner.png" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Secret Dictator — PartyNights.online" />
+<meta name="twitter:description" content="Play Secret Dictator instantly with friends. No app install needed." />
+<meta name="twitter:image" content="https://partynights.online/secret-dictator/og-banner.png" />
+<meta name="google-adsense-account" content="ca-pub-5935694635631350" id="meta-adsense-account" />
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5935694635631350" crossorigin="anonymous"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="./styles.min.css" />
+<script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js" defer></script>
+</head>
+<body>
+<div class="ambient-bg" aria-hidden="true"></div>
+<div class="app-shell">
+<header class="top-bar" id="app-top-bar">
+<div class="brand-group" id="btn-brand-home" title="Main Menu">
+<div class="brand-emblem">👑</div>
+<div>
+<div class="brand-title">SECRET DICTATOR</div>
+<div class="brand-sub" id="top-room-indicator">PartyNights.online</div>
+</div>
+</div>
+<div class="top-actions">
+<a href="https://partynights.online/" class="hub-link-pill" title="PartyNights.online Hub">🎉 PartyNights</a>
+<button type="button" class="icon-btn" id="btn-open-rules" title="Rules & Powers">📜</button>
+<button type="button" class="icon-btn" id="btn-sound-toggle" title="Toggle Sound">🔊</button>
+<button type="button" class="icon-btn" id="btn-leave-room" title="Leave / Menu" style="display:none;">🚪</button>
+</div>
+</header>
+<section id="screen-landing" class="screen active">
+<div class="hero-card">
+<div class="status-ribbon">
+<span class="pulse-dot"></span>
+<span>FREE PARTY GAME ONLINE • NO DOWNLOAD • 5–10 PLAYERS</span>
+</div>
+<div class="emblem-stage">
+<div class="emblem-ring ring-blue"></div>
+<div class="emblem-ring ring-red"></div>
+<div class="emblem-core">👑</div>
+</div>
+<h1 class="landing-title">SECRET DICTATOR</h1>
+<p class="landing-subtitle">
+The ultimate social deduction house party game with friends. Join on your own phones via <strong>Room Code</strong> or <strong>Pass 1 Phone</strong>—enact <strong>5 Freedom Bills</strong> to save the Republic or crown the <strong>Secret Dictator</strong>!
+</p>
+<div class="mode-badges">
+<span class="mode-chip blue">🛡️ Republic vs 🐍 Syndicate</span>
+<span class="mode-chip red">📲 Multi-Phone Room Code</span>
+<span class="mode-chip cyan">📱 Pass 1 Phone</span>
+</div>
+<div class="entry-box">
+<label class="field-label" for="input-user-name">Your Agent Name</label>
+<input
+type="text"
+id="input-user-name"
+class="text-input"
+placeholder="Enter your name (e.g. Kabir)..."
+maxlength="18"
+autocomplete="off"
+/>
+<div class="landing-actions">
+<button type="button" id="btn-create-room" class="btn-primary">
+<span>📲 Host Multi-Phone Room</span>
+<span class="btn-arrow">→</span>
+</button>
+<div class="join-row">
+<input
+type="text"
+id="input-room-code"
+class="code-input"
+placeholder="ROOM CODE"
+maxlength="6"
+autocomplete="off"
+/>
+<button type="button" id="btn-join-room" class="btn-secondary">
+Join Room
+</button>
+</div>
+<div class="divider-line"><span>OR PASS 1 PHONE / PLAY VS AI</span></div>
+<button type="button" id="btn-pass-play-mode" class="btn-ghost">
+<span>📱 Pass 1 Phone Mode (or Solo vs AI Bots)</span>
+</button>
+</div>
+<div id="landing-error" class="error-banner" style="display:none;"></div>
+</div>
+</div>
+<div class="ad-banner-slot" id="ad-slot-setup" aria-label="Sponsored">
+<span>PartyNights.online • Free Instant Party Games</span>
+</div>
+</section>
+<section id="screen-lobby" class="screen">
+<div class="lobby-code-card" id="lobby-code-panel">
+<div class="lobby-code-top">
+<span class="lobby-mode-tag" id="lobby-connection-status">🟢 LIVE MULTI-PHONE ROOM</span>
+<button type="button" class="small-pill-btn" id="btn-copy-code">📋 Copy Code</button>
+</div>
+<div class="room-code-display" id="lobby-room-code">----</div>
+<p class="room-code-hint" id="lobby-join-hint">
+Friends open <strong>partynights.online/secret-dictator</strong> on their phones and enter this code.
+</p>
+<div class="share-btn-row">
+<button type="button" class="btn-share-invite" id="btn-share-invite">
+<span>📲 Share Direct Join Link (WhatsApp / Copy)</span>
+</button>
+</div>
+</div>
+<div class="panel-card">
+<div class="panel-head">
+<div>
+<h3 class="panel-title" id="lobby-player-count">Seated Players (1 / 10)</h3>
+<p class="panel-sub" id="lobby-role-breakdown">Need at least 5 players (add friends or AI Bots)</p>
+</div>
+<div class="panel-head-actions" id="host-bot-controls">
+<button type="button" class="small-pill-btn accent" id="btn-add-bot">+ 🤖 AI Bot</button>
+<button type="button" class="small-pill-btn" id="btn-fill-bots" title="Fill up to 5 players with bots">Auto-5P</button>
+</div>
+</div>
+<form id="form-add-local-player" class="add-player-bar" style="display:none;" autocomplete="off">
+<input
+type="text"
+id="input-local-player"
+class="text-input compact"
+placeholder="Add player name to this phone..."
+maxlength="18"
+/>
+<button type="submit" class="btn-secondary compact">Add</button>
+</form>
+<div id="lobby-seat-list" class="seat-list"></div>
+</div>
+<div class="panel-card" id="lobby-settings-card">
+<div class="setting-row">
+<div>
+<div class="setting-title">Role Terminology</div>
+<div class="setting-desc">Ad-Safe (Republic / Syndicate / Dictator) or Classic Board Terms</div>
+</div>
+<select id="select-theme-terms" class="select-pill">
+<option value="dictator">Ad-Safe: Secret Dictator</option>
+<option value="classic">Classic: Liberal / Fascist</option>
+</select>
+</div>
+</div>
+<div id="lobby-error" class="error-banner" style="display:none;"></div>
+<div class="lobby-footer-actions">
+<button type="button" id="btn-start-match" class="btn-primary">
+<span>🚀 Launch Parliamentary Session</span>
+</button>
+<p id="lobby-waiting-msg" class="waiting-note" style="display:none;">
+⏳ Waiting for the Room Host to launch the session...
+</p>
+</div>
+</section>
+<section id="screen-game" class="screen">
+<div class="session-meta-strip">
+<div class="meta-pill">
+<span>🗂️ Deck: <strong id="stat-deck-count">17</strong></span>
+</div>
+<div class="meta-pill">
+<span>🗑️ Discard: <strong id="stat-discard-count">0</strong></span>
+</div>
+<div class="meta-pill danger-pill" id="danger-zone-indicator" style="display:none;">
+<span>⚠️ DANGER ZONE ACTIVE</span>
+</div>
+</div>
+<div class="boards-container">
+<div class="policy-board blue-board">
+<div class="board-header">
+<span class="board-title" id="label-blue-board">🛡️ REPUBLIC TRACK (BLUE)</span>
+<span class="board-score" id="score-blue-text">0 / 5</span>
+</div>
+<div class="track-slots" id="track-blue-slots"></div>
+<div class="election-tracker-row">
+<span class="tracker-label">Election Tracker (Chaos at 3):</span>
+<div class="tracker-dots" id="election-tracker-dots"></div>
+</div>
+</div>
+<div class="policy-board red-board">
+<div class="board-header">
+<span class="board-title" id="label-red-board">🐍 SYNDICATE TRACK (RED)</span>
+<span class="board-score" id="score-red-text">0 / 6</span>
+</div>
+<div class="track-slots" id="track-red-slots"></div>
+<div class="board-rule-caption" id="red-board-caption">
+After 3 Red Bills: Electing the Secret Dictator as Chancellor wins immediately!
+</div>
+</div>
+</div>
+<div class="action-stage-card" id="action-stage">
+<div class="stage-phase-tag" id="stage-phase-badge">PHASE</div>
+<h2 class="stage-headline" id="stage-title">Loading Session...</h2>
+<p class="stage-subtext" id="stage-desc"></p>
+<div id="stage-interactive-body" class="stage-body"></div>
+</div>
+<div class="claim-bar-card" id="claim-broadcast-bar" style="display:none;"></div>
+<div class="panel-card">
+<div class="panel-head">
+<h3 class="panel-title">Parliament Seats</h3>
+<span class="panel-sub" id="term-limit-hint">Tap eligible seat when nominating</span>
+</div>
+<div class="parliament-grid" id="parliament-seats-grid"></div>
+</div>
+<div class="panel-card">
+<div class="panel-head">
+<h3 class="panel-title">📡 Parliament Intelligence Log</h3>
+<span class="panel-sub">Public votes, enactments &amp; claims</span>
+</div>
+<div class="intel-log-list" id="intel-log-list"></div>
+</div>
+<div class="dossier-dock">
+<button type="button" class="btn-dossier-peek" id="btn-hold-dossier">
+<span>🕵️ Tap to Inspect Secret Dossier</span>
+<span id="dossier-seat-label" class="dossier-seat-pill">My Role</span>
+</button>
+</div>
+</section>
+<section id="screen-gameover" class="screen">
+<div class="gameover-card" id="gameover-banner">
+<div class="gameover-icon" id="gameover-emoji">🏆</div>
+<div class="gameover-tag" id="gameover-team-tag">SESSION CONCLUDED</div>
+<h1 class="gameover-title" id="gameover-headline">Victory!</h1>
+<p class="gameover-reason" id="gameover-reason-text"></p>
+<div class="panel-card declassified-box">
+<h3 class="panel-title" style="margin-bottom:10px;">🔓 Declassified Player Identities</h3>
+<div id="gameover-roles-list" class="seat-list"></div>
+</div>
+<div class="gameover-actions">
+<button type="button" id="btn-share-result" class="btn-share-viral">
+<span>📲 Share Result on WhatsApp / IG</span>
+</button>
+<button type="button" id="btn-play-again" class="btn-primary">
+<span>🔄 Play New Session (Same Room)</span>
+</button>
+<button type="button" id="btn-gameover-lobby" class="btn-ghost">
+<span>⚙️ Back to Room Lobby</span>
+</button>
+</div>
+</div>
+<div class="ad-banner-slot" id="ad-slot-gameover" aria-label="Sponsored">
+<span>PartyNights.online • Discover More Free Party Games</span>
+</div>
+</section>
+</div>
+<div class="modal-backdrop" id="modal-dossier" style="display:none;">
+<div class="modal-sheet dossier-sheet">
+<div class="dossier-classified-stamp">TOP SECRET DOSSIER</div>
+<div class="dossier-player-name" id="dossier-modal-player">Agent</div>
+<div class="dossier-role-card" id="dossier-role-box">
+<div class="dossier-role-emoji" id="dossier-role-icon">🛡️</div>
+<div class="dossier-role-title" id="dossier-role-name">REPUBLIC LOYALIST</div>
+<div class="dossier-party-pill" id="dossier-party-badge">PARTY MEMBERSHIP: BLUE</div>
+<p class="dossier-mission-desc" id="dossier-role-mission"></p>
+</div>
+<div class="dossier-intel-section">
+<h4>🔍 Known Covert Intel</h4>
+<div id="dossier-known-intel" class="dossier-intel-list"></div>
+</div>
+<button type="button" class="btn-primary" id="btn-close-dossier">
+🔒 Hide Secret Dossier
+</button>
+</div>
+</div>
+<div class="modal-backdrop" id="modal-rules" style="display:none;">
+<div class="modal-sheet rules-sheet">
+<div class="modal-header">
+<h3>📜 Official Rules &amp; Executive Powers</h3>
+<button type="button" class="icon-btn" id="btn-close-rules">✕</button>
+</div>
+<div class="rules-content">
+<div class="rule-block blue">
+<h4>🛡️ Republic Victory (Blue Team)</h4>
+<p>Enact <strong>5 Blue Policies</strong> OR <strong>Execute the Secret Dictator</strong> using a late-game Executive Power.</p>
+</div>
+<div class="rule-block red">
+<h4>🐍 Syndicate Victory (Red Team)</h4>
+<p>Enact <strong>6 Red Policies</strong> OR <strong>Elect the Secret Dictator as Chancellor</strong> any time after <strong>3 Red Policies</strong> have been enacted!</p>
+</div>
+<div class="rule-block">
+<h4>🏛️ Each Round: 3 Steps</h4>
+<ol>
+<li><strong>Nominate &amp; Vote:</strong> The Presidential Candidate nominates an eligible Chancellor. Everyone votes <strong>AYE</strong> or <strong>NAY</strong> simultaneously. If rejected 3 times in a row, <strong>Chaos</strong> auto-enacts the top card of the deck!</li>
+<li><strong>Legislative Session:</strong> The President secretly draws <strong>3 Policies</strong>, discards 1 face-down, and passes 2 to the Chancellor. The Chancellor secretly enacts 1 and discards 1. (Both can lie about what they drew!)</li>
+<li><strong>Executive Action:</strong> If a <strong>Red Policy</strong> is enacted onto a power slot, the President must immediately use that slot's power:
+<ul>
+<li>👁️ <strong>Policy Peek (5–6P):</strong> Secretly view the top 3 cards of the draw deck.</li>
+<li>🔍 <strong>Investigate Loyalty (7–10P):</strong> Secretly inspect one player's Party Membership (Blue or Red).</li>
+<li>⚡ <strong>Special Election (7–10P):</strong> Pick any player to be the next President.</li>
+<li>💀 <strong>Execution (All Boards, Red 4 &amp; 5):</strong> Permanently eliminate a player. If they are the Secret Dictator, Blue wins immediately!</li>
+<li>🚫 <strong>Veto Power (Unlocked at 5 Red):</strong> Chancellor and President may mutually agree to discard both drawn policies.</li>
+</ul>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<script src="./app.min.js"></script>
+</body>
+</html>

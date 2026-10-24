@@ -4,8 +4,9 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
 <meta name="theme-color" content="#05060d" />
-<title>Mr. Alien 👽 — Desi Social Deduction Party Game | PartyNights.online</title>
-<meta name="description" content="Pass one phone, decode the clues, and expose Mr. Alien! 500+ Desi words across Food, Bollywood, Cricket, Shaadi & Nostalgia." />
+<title>Mr. Alien — Free Instant Party Game | PartyNights.online</title>
+<meta name="description" content="Play Mr. Alien with friends directly in your browser. Zero downloads, pass one phone or join room code. Free party game online for house party games with friends." />
+<meta name="keywords" content="Free party game online, Pass 1 phone, No download, House party games with friends, Mr. Alien, Undercover game India, PartyNights.online" />
 <link rel="canonical" href="https://partynights.online/mr-alien/" />
 <link rel="manifest" href="./manifest.json" />
 <link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png" />
@@ -15,16 +16,17 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 <meta name="apple-mobile-web-app-title" content="Mr. Alien" />
 <meta property="og:type" content="website" />
-<meta property="og:site_name" content="Mr. Alien" />
-<meta property="og:title" content="Mr. Alien 👽 — The Indian Undercover Party Game" />
-<meta property="og:description" content="Someone in the room is not Human! Pass one phone, give 1-word clues, and vote out Mr. Alien. 500+ Desi words!" />
+<meta property="og:site_name" content="PartyNights.online" />
+<meta property="og:url" content="https://partynights.online/mr-alien/" />
+<meta property="og:title" content="Mr. Alien — PartyNights.online" />
+<meta property="og:description" content="Play Mr. Alien instantly with friends. No app install needed." />
 <meta property="og:image" content="https://partynights.online/mr-alien/og-banner.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Mr. Alien 👽 — The Indian Undercover Party Game" />
-<meta name="twitter:description" content="Pass one phone, give 1-word clues, and expose Mr. Alien! 500+ Desi words." />
+<meta name="twitter:title" content="Mr. Alien — PartyNights.online" />
+<meta name="twitter:description" content="Play Mr. Alien instantly with friends. No app install needed." />
 <meta name="twitter:image" content="https://partynights.online/mr-alien/og-banner.png" />
 <meta name="google-adsense-account" content="ca-pub-5935694635631350" id="meta-adsense-account" />
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5935694635631350" crossorigin="anonymous"></script>
@@ -42,6 +44,10 @@
 <span class="brand-name">Mr. Alien</span>
 </div>
 <div class="top-actions">
+<a href="https://partynights.online/" class="nav-pill-btn" title="All PartyNights.online Games" style="text-decoration: none;">
+<span>🎲</span>
+<span>Hub</span>
+</a>
 <button class="nav-pill-btn" id="btn-top-restart" type="button" title="Restart Match with New Word" style="display: none;">
 <span>🔄</span>
 <span>Restart</span>
@@ -56,9 +62,15 @@
 </header>
 <section id="screen-landing" class="screen active">
 <div class="landing-wrap">
-<div class="signal-pill">
+<div style="display: flex; align-items: center; justify-content: space-between; width: 100%; gap: 8px;">
+<a href="https://partynights.online/" class="nav-pill-btn" style="text-decoration: none; font-size: 0.75rem;">
+<span>←</span>
+<span>PartyNights.online</span>
+</a>
+<div class="signal-pill" style="margin: 0;">
 <span class="signal-dot"></span>
-<span>Signal Detected • Sector IN-500</span>
+<span>Pass 1 Phone • No Download</span>
+</div>
 </div>
 <div class="holo-stage" id="easter-egg-holo" title="Mr. Alien Core">
 <div class="holo-ring r1"></div>
@@ -70,12 +82,12 @@
 <div class="hero-text-block">
 <h1 class="hero-title">MR. ALIEN</h1>
 <p class="hero-subtitle">
-Someone in the room is not Human. Pass the phone, decode the clues, and expose the imposter.
+Free instant house party game with friends. Pass one phone, decode 1-word clues, and expose the imposter!
 </p>
 <div class="feature-chips">
-<span class="feature-chip">📱 Pass & Play</span>
+<span class="feature-chip">📱 Pass 1 Phone</span>
 <span class="feature-chip">🇮🇳 500 Desi Words</span>
-<span class="feature-chip">🏆 Leaderboard</span>
+<span class="feature-chip">⚡ Zero Download</span>
 </div>
 </div>
 <div style="width: 100%; display: flex; flex-direction: column; gap: 10px; align-items: center;">
@@ -92,7 +104,7 @@ Someone in the room is not Human. Pass the phone, decode the clues, and expose t
 </button>
 </div>
 <div class="landing-footer-meta" id="easter-egg-footer">
-SYS v4.0 • SERVER VAULT PROTECTED
+PARTYNIGHTS.ONLINE • SERVER VAULT PROTECTED
 </div>
 </div>
 </div>
@@ -321,6 +333,9 @@ Vote out loud together, then tap the player with the most votes.
 </div>
 <div id="gameover-roster" class="clean-list"></div>
 </div>
+<button type="button" id="btn-share-result" class="btn-ghost" style="height: 46px; border-color: rgba(16, 215, 150, 0.35); background: rgba(16, 215, 150, 0.08); color: #10d796; font-weight: 700;">
+<span id="btn-share-result-label">📲 Share Result to WhatsApp / IG</span>
+</button>
 <div style="display: grid; grid-template-columns: 1fr 1.35fr; gap: 10px;">
 <button type="button" id="btn-back-setup" class="btn-ghost" style="height: 52px;">
 <span>Edit Setup</span>
@@ -395,19 +410,6 @@ Replace Pool
 <button type="button" class="btn-main" id="btn-import-merge" style="height: 44px; font-size: 0.82rem; margin-top: 0;">
 Merge (+ Add)
 </button>
-</div>
-</div>
-</div>
-<div id="modal-ad-interstitial" class="modal-backdrop">
-<div class="modal-sheet" style="text-align: center; align-items: center;">
-<div style="width: 100%; display: flex; justify-content: space-between; align-items: center;">
-<span class="ad-badge-label">Google AdSense • Interstitial Break</span>
-<button type="button" class="pill-action" id="btn-skip-interstitial">Skip Ad →</button>
-</div>
-<div id="interstitial-ad-body" style="width: 100%; min-height: 180px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; background: rgba(8,10,20,0.85); border: 1px solid var(--border); border-radius: 16px; padding: 20px;">
-<div style="font-size: 2.2rem;">🛸</div>
-<div style="font-weight: 800; font-size: 1.05rem;">Sponsored Interstitial Slot</div>
-<p class="subtle-note">Next round is loading... Replace with your Google AdSense Publisher ID in the Secret Lab to serve live interstitial ads.</p>
 </div>
 </div>
 </div>

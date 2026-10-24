@@ -1,0 +1,29 @@
+{
+  "name": "Secret Dictator — PartyNights.online",
+  "short_name": "Secret Dictator",
+  "description": "Play Secret Dictator with friends on your phones via Room Code or Pass 1 Phone!",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#070812",
+  "theme_color": "#070812",
+  "categories": [
+    "games",
+    "entertainment"
+  ],
+  "icons": [
+    {
+      "src": "./icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
