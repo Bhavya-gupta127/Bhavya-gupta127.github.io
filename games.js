@@ -50,6 +50,27 @@ window.PARTY_GAMES = [
     featured: true,
     description: "Inspired by the legendary 5–10 player hidden-identity board game! Join on your own phones via Room Code (or Pass 1 Phone), elect a President & Chancellor, enact Freedom Bills, and expose the Secret Dictator before the Syndicate seizes power.",
     url: "/secret-dictator/"
+  },
+  {
+    id: "wavelength",
+    repo: "Bhavya-gupta127/wavelength",
+    title: "Wavelength (Mind Sync)",
+    subtitle: "The Telepathic Spectrum Dial Party Game",
+    emoji: "🧠",
+    icon: "/wavelength/icon-192.png",
+    banner: "/wavelength/og-banner.png",
+    players: "2–20 Players",
+    minPlayers: 2,
+    maxPlayers: 20,
+    duration: "5–15 Mins",
+    deviceMode: "Pass 1 Phone",
+    category: "Mind Sync & Debate",
+    tags: ["180° Touch Dial", "235+ Desi & Global Cards", "Co-op & Team Showdown", "Custom Spectrums"],
+    badge: "🧠 Viral Party Hit",
+    featured: true,
+    description: "One player sees a hidden bullseye on a 180° slider between two extremes (e.g., Overrated ↔ Underrated or Tapri Chai ↔ Starbucks) and gives a 1-word clue. Debate where to drag the dial & tap to reveal your Mind Sync score!",
+    url: "/wavelength/"
   }
 ];
+
 

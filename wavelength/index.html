@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+<meta name="theme-color" content="#070812" />
+<title>Wavelength (Mind Sync) — Free Instant Party Game | PartyNights.online</title>
+<meta name="description" content="Play Wavelength (Mind Sync) with friends directly in your browser. Zero downloads, pass 1 phone — the ultimate free party game online for house party games with friends." />
+<link rel="canonical" href="https://partynights.online/wavelength/" />
+<link rel="manifest" href="./manifest.json" />
+<link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="Wavelength" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="PartyNights.online" />
+<meta property="og:title" content="Wavelength (Mind Sync) — PartyNights.online" />
+<meta property="og:description" content="Play Wavelength (Mind Sync) instantly with friends. No app install needed." />
+<meta property="og:url" content="https://partynights.online/wavelength/" />
+<meta property="og:image" content="https://partynights.online/wavelength/og-banner.png" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Wavelength (Mind Sync) — PartyNights.online" />
+<meta name="twitter:description" content="Play Wavelength (Mind Sync) instantly with friends. No app install needed." />
+<meta name="twitter:image" content="https://partynights.online/wavelength/og-banner.png" />
+<meta name="google-adsense-account" content="ca-pub-5935694635631350" id="meta-adsense-account" />
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5935694635631350" crossorigin="anonymous"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./styles.min.css" />
+</head>
+<body>
+<div class="ambient-glow glow-left" aria-hidden="true"></div>
+<div class="ambient-glow glow-right" aria-hidden="true"></div>
+<div class="app-shell">
+<header class="top-bar" id="app-top-bar">
+<div class="brand-group">
+<a href="https://partynights.online/" class="hub-logo-link" title="PartyNights.online Hub">🎉 PartyNights.online</a>
+<span class="nav-divider">/</span>
+<div class="brand" id="brand-home-btn" title="Mind Sync Home (Tap 5x for Secret Lab)">
+<div class="brand-icon" id="easter-egg-brand">🧠</div>
+<div class="brand-text-wrap">
+<span class="brand-name">Wavelength</span>
+<span class="brand-sub">MIND SYNC</span>
+</div>
+</div>
+</div>
+<div class="top-actions">
+<button class="nav-pill-btn" id="btn-top-restart" type="button" title="New Match" style="display: none;">
+<span>🔄</span>
+<span>Reset</span>
+</button>
+<button class="nav-pill-btn" id="btn-top-menu" type="button" title="Setup Menu">
+<span>🏠</span>
+<span>Setup</span>
+</button>
+<button class="circle-btn" id="btn-open-rules" type="button" title="How to Play">📖</button>
+<button class="circle-btn" id="btn-open-leaderboard" type="button" title="Hall of Fame">🏆</button>
+<button class="circle-btn" id="btn-sound-toggle" type="button" title="Toggle Sound">🔊</button>
+</div>
+</header>
+<section id="screen-landing" class="screen active">
+<div class="landing-wrap">
+<div class="top-hub-bar">
+<a href="https://partynights.online/" class="hub-back-pill">← All PartyNights.online Games</a>
+<span class="signal-pill">
+<span class="signal-dot"></span>
+<span>235+ Spectrums Ready</span>
+</span>
+</div>
+<div class="hero-dial-stage" id="easter-egg-holo" title="Tap 5x for Secret Lab">
+<svg viewBox="0 0 260 150" class="hero-dial-svg" aria-hidden="true">
+<defs>
+<linearGradient id="heroArcGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+<stop offset="0%" stop-color="#10d796" />
+<stop offset="50%" stop-color="#7c3aed" />
+<stop offset="100%" stop-color="#ff2e63" />
+</linearGradient>
+</defs>
+<path d="M 24 132 A 106 106 0 0 1 236 132" fill="none" stroke="url(#heroArcGrad)" stroke-width="14" stroke-linecap="round" opacity="0.25" />
+<path d="M 130 132 L 92 34 A 105 105 0 0 1 168 34 Z" fill="rgba(250, 204, 21, 0.22)" />
+<path d="M 130 132 L 110 29 A 105 105 0 0 1 150 29 Z" fill="rgba(249, 115, 22, 0.35)" />
+<path d="M 130 132 L 122 27 A 105 105 0 0 1 138 27 Z" fill="#10d796" />
+<path d="M 24 132 A 106 106 0 0 1 236 132" fill="none" stroke="url(#heroArcGrad)" stroke-width="5" stroke-linecap="round" />
+<g class="hero-needle-anim">
+<line x1="130" y1="132" x2="130" y2="32" stroke="#ffffff" stroke-width="4" stroke-linecap="round" />
+<circle cx="130" cy="32" r="7" fill="#ff2e63" stroke="#ffffff" stroke-width="2.5" />
+</g>
+<circle cx="130" cy="132" r="16" fill="#121426" stroke="#10d796" stroke-width="3" />
+</svg>
+<div class="hero-core-emoji">🧠</div>
+</div>
+<div class="hero-text-block">
+<div class="eyebrow-badge">FREE PARTY GAME ONLINE • PASS 1 PHONE</div>
+<h1 class="hero-title">WAVELENGTH</h1>
+<p class="hero-subtitle">
+One player sees a hidden bullseye between two extremes (e.g. <strong>Overrated ↔ Underrated</strong>) and gives a one-word clue. Debate where to drag the dial &amp; tap to reveal your score! No download required — built for house party games with friends.
+</p>
+<div class="feature-chips">
+<span class="feature-chip">📱 Pass 1 Phone</span>
+<span class="feature-chip">⚡ No Download</span>
+<span class="feature-chip">🇮🇳 235+ Desi &amp; Global Cards</span>
+</div>
+</div>
+<div class="landing-cta-stack">
+<button type="button" id="btn-enter-game" class="btn-launch">
+<span>Tune In &amp; Start Playing</span>
+<span>⚡</span>
+</button>
+<div class="landing-secondary-row">
+<button type="button" id="btn-landing-rules" class="btn-ghost">
+<span>📖 How to Play</span>
+</button>
+<button type="button" id="btn-landing-leaderboard" class="btn-ghost">
+<span>🏆 Hall of Fame</span>
+</button>
+<button type="button" id="btn-share-game" class="btn-ghost">
+<span>📲 Share</span>
+</button>
+</div>
+<div class="landing-footer-meta" id="easter-egg-footer">
+SINGLE-SCREEN PARTY GAME • ZERO DOWNLOADS
+</div>
+</div>
+</div>
+</section>
+<section id="screen-setup" class="screen">
+<div class="setup-container">
+<div class="section-header">
+<h2 class="section-title">Configure Your Wavelength</h2>
+<p class="section-subtitle">Pick your mode, customize your crew, and select spectrum packs.</p>
+</div>
+<div class="setup-card">
+<div class="card-label-row">
+<span class="card-label">1. Select Game Mode</span>
+<span class="card-hint" id="mode-summary-pill">Group High Score</span>
+</div>
+<div class="mode-grid" role="radiogroup" aria-label="Game Mode">
+<button type="button" class="mode-option active" data-mode="coop" id="mode-btn-coop">
+<span class="mode-icon">🤝</span>
+<span class="mode-title">Co-op Sync</span>
+<span class="mode-desc">Everyone vs. the Dial. Rotate Psychics &amp; chase a Mind Sync rank!</span>
+</button>
+<button type="button" class="mode-option" data-mode="teams" id="mode-btn-teams">
+<span class="mode-icon">⚔️</span>
+<span class="mode-title">Team vs. Team</span>
+<span class="mode-desc">2 Teams battle to 10+ pts with Left/Right bonus steal bets!</span>
+</button>
+<button type="button" class="mode-option" data-mode="party" id="mode-btn-party">
+<span class="mode-icon">🏆</span>
+<span class="mode-title">Party Ranks</span>
+<span class="mode-desc">Pass &amp; Play! Track individual Psychic + Group Sync points.</span>
+</button>
+</div>
+</div>
+<div class="setup-card" id="setup-players-card">
+<div class="card-label-row">
+<span class="card-label">2. Psychic Rotation Roster</span>
+<div class="stepper-inline">
+<button type="button" class="step-btn" id="btn-player-minus" aria-label="Remove player">−</button>
+<span id="player-count-display" class="step-val">4 Players</span>
+<button type="button" class="step-btn" id="btn-player-plus" aria-label="Add player">+</button>
+</div>
+</div>
+<p class="card-subtext">We'll rotate the Psychic automatically each round. Tap any name to customize:</p>
+<div id="player-names-grid" class="player-names-grid"></div>
+<div class="round-count-row" id="coop-rounds-row">
+<span class="sub-label">Total Rounds:</span>
+<div class="pill-Radio-group" id="round-count-group">
+<button type="button" class="pill-choice" data-rounds="5">5 Rounds</button>
+<button type="button" class="pill-choice active" data-rounds="7">7 Rounds</button>
+<button type="button" class="pill-choice" data-rounds="10">10 Rounds</button>
+<button type="button" class="pill-choice" data-rounds="99">Endless ♾️</button>
+</div>
+</div>
+</div>
+<div class="setup-card" id="setup-teams-card" style="display: none;">
+<div class="card-label-row">
+<span class="card-label">2. Team Showdown Setup</span>
+<span class="card-hint">2+ Players per Team</span>
+</div>
+<div class="teams-input-grid">
+<div class="team-input-box team-cyan">
+<label for="input-team-a">⚡ Team 1 (Cyan)</label>
+<input type="text" id="input-team-a" value="Team Telepath" maxlength="22" placeholder="Team 1 Name" />
+</div>
+<div class="team-input-box team-rose">
+<label for="input-team-b">🔥 Team 2 (Rose)</label>
+<input type="text" id="input-team-b" value="Team Rebel" maxlength="22" placeholder="Team 2 Name" />
+</div>
+</div>
+<div class="round-count-row" style="margin-top: 12px;">
+<span class="sub-label">Winning Score:</span>
+<div class="pill-Radio-group" id="team-target-group">
+<button type="button" class="pill-choice" data-target="7">7 Pts (Quick)</button>
+<button type="button" class="pill-choice active" data-target="10">10 Pts (Classic)</button>
+<button type="button" class="pill-choice" data-target="15">15 Pts (Epic)</button>
+</div>
+</div>
+<label class="toggle-row" style="margin-top: 12px;">
+<div>
+<div class="toggle-title">⬅️ Opposing Team Left/Right Steal (+1 Pt) ➡️</div>
+<div class="toggle-sub">Other team bets whether the true target is Left or Right of the needle!</div>
+</div>
+<input type="checkbox" id="chk-team-steal" checked />
+</label>
+</div>
+<div class="setup-card">
+<div class="card-label-row">
+<span class="card-label">3. Spectrum Decks</span>
+<button type="button" class="text-link-btn" id="btn-toggle-all-cats">Select All</button>
+</div>
+<div class="category-grid" id="category-grid">
+<button type="button" class="cat-chip active" data-cat="Desi Chaos">
+<span>🇮🇳 Desi Chaos</span>
+<small>Chai, Shaadi &amp; Jugaad</small>
+</button>
+<button type="button" class="cat-chip active" data-cat="Bollywood & Pop">
+<span>🎬 Bollywood &amp; Pop</span>
+<small>Movies, IPL &amp; Memes</small>
+</button>
+<button type="button" class="cat-chip active" data-cat="Spicy & Opinions">
+<span>🌶️ Spicy &amp; Red Flags</span>
+<small>Hot Takes &amp; Dating</small>
+</button>
+<button type="button" class="cat-chip active" data-cat="Food & Nightlife">
+<span>🍕 Food &amp; Cravings</span>
+<small>3 AM Snacks &amp; Parties</small>
+</button>
+<button type="button" class="cat-chip active" data-cat="Classic Spectrums">
+<span>🎯 Everyday Classics</span>
+<small>Iconic Contrasts</small>
+</button>
+<button type="button" class="cat-chip active" data-cat="Weird & Deep">
+<span>🧠 Weird &amp; Existential</span>
+<small>Sci-Fi &amp; Shower Thoughts</small>
+</button>
+</div>
+<div class="custom-creator-box">
+<div class="custom-creator-header">
+<span>✨ Add Your Own Custom Spectrums (<span id="custom-count-badge">0</span> saved)</span>
+<button type="button" class="text-link-btn" id="btn-toggle-custom-drawer">+ Create Card</button>
+</div>
+<div id="custom-drawer-body" class="custom-drawer-body" style="display: none;">
+<div class="custom-inputs-row">
+<input type="text" id="custom-left-input" placeholder="Left Extreme (e.g. Overrated)" maxlength="40" />
+<span class="custom-arrow">↔</span>
+<input type="text" id="custom-right-input" placeholder="Right Extreme (e.g. Underrated)" maxlength="40" />
+<button type="button" id="btn-add-custom-card" class="btn-small-accent">Add</button>
+</div>
+<div id="custom-cards-list" class="custom-cards-list"></div>
+</div>
+</div>
+</div>
+<div class="setup-card">
+<div class="card-label-row">
+<span class="card-label">4. Debate Timer (Optional)</span>
+<span class="card-hint">Keeps rounds fast</span>
+</div>
+<div class="pill-Radio-group" id="timer-choice-group">
+<button type="button" class="pill-choice active" data-timer="0">No Timer ∞</button>
+<button type="button" class="pill-choice" data-timer="30">30s Blitz ⚡</button>
+<button type="button" class="pill-choice" data-timer="45">45s Party 🔥</button>
+<button type="button" class="pill-choice" data-timer="60">60s Debate ⏱️</button>
+</div>
+</div>
+<button type="button" id="btn-start-match" class="btn-launch">
+<span>Launch Mind Sync</span>
+<span>🧠⚡</span>
+</button>
+</div>
+</section>
+<section id="screen-game" class="screen">
+<div class="game-stage-wrap">
+<div class="scoreboard-strip" id="scoreboard-strip">
+</div>
+<div class="spectrum-banner" id="spectrum-banner">
+<div class="extreme-card extreme-left">
+<div class="extreme-dir">⬅️ 0% EXTREME</div>
+<div class="extreme-text" id="label-extreme-left">Overrated</div>
+</div>
+<div class="spectrum-center-meta">
+<span class="cat-badge" id="label-spectrum-category">🌶️ Spicy &amp; Opinions</span>
+<div class="versus-arrows">⟷</div>
+<button type="button" class="btn-skip-spectrum" id="btn-skip-card" title="Draw a different spectrum card">
+🔀 Skip Card
+</button>
+</div>
+<div class="extreme-card extreme-right">
+<div class="extreme-dir">100% EXTREME ➡️</div>
+<div class="extreme-text" id="label-extreme-right">Underrated</div>
+</div>
+</div>
+<div class="clue-showcase" id="clue-showcase" style="display: none;">
+<div class="clue-showcase-left">
+<span class="clue-tag" id="clue-psychic-label">🧠 Psychic's Clue:</span>
+<span class="clue-word-display" id="clue-word-display">"Spoken Aloud"</span>
+</div>
+<div class="clue-timer-pill" id="active-timer-pill" style="display: none;">⏱️ 45s</div>
+</div>
+<div class="dial-cabinet" id="dial-cabinet">
+<div class="dial-status-ribbon" id="dial-status-ribbon">
+<span id="dial-status-text">🔒 Shutter Closed — Pass Phone to Psychic</span>
+</div>
+<div class="dial-svg-container" id="dial-touch-area">
+<svg id="wavelength-svg" viewBox="0 0 500 285" class="wavelength-svg" aria-label="Wavelength 180 degree dial">
+<defs>
+<linearGradient id="cabinetRimGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+<stop offset="0%" stop-color="#00f2fe" />
+<stop offset="50%" stop-color="#8b5cf6" />
+<stop offset="100%" stop-color="#ff2e93" />
+</linearGradient>
+<radialGradient id="shutterSurfaceGrad" cx="50%" cy="90%" r="85%">
+<stop offset="0%" stop-color="#1e2246" />
+<stop offset="65%" stop-color="#11142b" />
+<stop offset="100%" stop-color="#090b18" />
+</radialGradient>
+<filter id="neonGlow" x="-20%" y="-20%" width="140%" height="140%">
+<feGaussianBlur stdDeviation="3.5" result="blur" />
+<feMerge>
+<feMergeNode in="blur" />
+<feMergeNode in="SourceGraphic" />
+</feMerge>
+</filter>
+</defs>
+<path d="M 45 245 A 205 205 0 0 1 455 245 Z" fill="#090b19" stroke="rgba(255,255,255,0.08)" stroke-width="2" />
+<g id="svg-target-group" style="opacity: 0; transition: opacity 0.28s ease;">
+<path id="wedge-left-2" fill="#f97316" stroke="#090b19" stroke-width="1.5" />
+<path id="wedge-left-3" fill="#facc15" stroke="#090b19" stroke-width="1.5" />
+<path id="wedge-center-4" fill="#10f5a0" stroke="#090b19" stroke-width="1.5" filter="url(#neonGlow)" />
+<path id="wedge-right-3" fill="#facc15" stroke="#090b19" stroke-width="1.5" />
+<path id="wedge-right-2" fill="#f97316" stroke="#090b19" stroke-width="1.5" />
+<text id="label-wedge-l2" class="wedge-score-txt" text-anchor="middle" dominant-baseline="middle">2</text>
+<text id="label-wedge-l3" class="wedge-score-txt" text-anchor="middle" dominant-baseline="middle">3</text>
+<text id="label-wedge-c4" class="wedge-score-txt bullseye-txt" text-anchor="middle" dominant-baseline="middle">4</text>
+<text id="label-wedge-r3" class="wedge-score-txt" text-anchor="middle" dominant-baseline="middle">3</text>
+<text id="label-wedge-r2" class="wedge-score-txt" text-anchor="middle" dominant-baseline="middle">2</text>
+</g>
+<g id="svg-shutter-group">
+<path d="M 47 245 A 203 203 0 0 1 453 245 Z" fill="url(#shutterSurfaceGrad)" stroke="rgba(255,255,255,0.12)" stroke-width="2" />
+<path d="M 95 245 A 155 155 0 0 1 405 245" fill="none" stroke="rgba(0, 242, 254, 0.12)" stroke-width="1.5" stroke-dasharray="6 6" />
+<path d="M 145 245 A 105 105 0 0 1 355 245" fill="none" stroke="rgba(168, 85, 247, 0.16)" stroke-width="1.5" stroke-dasharray="4 6" />
+<path d="M 195 245 A 55 55 0 0 1 305 245" fill="none" stroke="rgba(255, 46, 147, 0.18)" stroke-width="1.5" />
+<text x="250" y="138" text-anchor="middle" fill="rgba(255,255,255,0.22)" font-size="12" font-weight="800" letter-spacing="2.5">SHUTTER CLOSED</text>
+</g>
+<g id="svg-ticks-group"></g>
+<path d="M 42 245 A 208 208 0 0 1 458 245" fill="none" stroke="url(#cabinetRimGrad)" stroke-width="6" stroke-linecap="round" />
+<line x1="36" y1="245" x2="464" y2="245" stroke="rgba(255,255,255,0.2)" stroke-width="3" stroke-linecap="round" />
+<g id="svg-bonus-bet-group" style="display: none;">
+<rect id="svg-bonus-pill" x="195" y="14" width="110" height="24" rx="12" fill="#1e1b4b" stroke="#facc15" stroke-width="1.5" />
+<text id="svg-bonus-text" x="250" y="27" text-anchor="middle" dominant-baseline="middle" fill="#facc15" font-size="10.5" font-weight="800"></text>
+</g>
+<g id="svg-needle-group">
+<line id="needle-glow-line" x1="250" y1="245" x2="250" y2="52" stroke="#ff2e93" stroke-width="9" stroke-linecap="round" opacity="0.3" />
+<line id="needle-main-line" x1="250" y1="245" x2="250" y2="52" stroke="#ffffff" stroke-width="4.5" stroke-linecap="round" />
+<circle id="needle-knob-outer" cx="250" cy="64" r="18" fill="#ff2e93" stroke="#ffffff" stroke-width="3" filter="url(#neonGlow)" />
+<circle id="needle-knob-inner" cx="250" cy="64" r="6" fill="#ffffff" />
+</g>
+<circle cx="250" cy="245" r="30" fill="#141733" stroke="url(#cabinetRimGrad)" stroke-width="4" />
+<circle cx="250" cy="245" r="11" fill="#00f2fe" />
+<text id="svg-dial-readout" x="250" y="272" text-anchor="middle" fill="#cbd5e1" font-size="12" font-weight="800" letter-spacing="0.8">50% CENTER</text>
+</svg>
+</div>
+<div class="dial-precision-controls" id="dial-precision-controls">
+<button type="button" class="fine-btn" id="btn-dial-left5" title="Move 5% Left">⏪ -5%</button>
+<button type="button" class="fine-btn" id="btn-dial-left1" title="Move 1% Left">◀ -1%</button>
+<input type="range" id="dial-range-slider" min="0" max="100" step="1" value="50" class="dial-range-slider" aria-label="Dial percentage slider" />
+<button type="button" class="fine-btn" id="btn-dial-right1" title="Move 1% Right">+1% ▶</button>
+<button type="button" class="fine-btn" id="btn-dial-right5" title="Move 5% Right">+5% ⏩</button>
+</div>
+</div>
+<div class="phase-card" id="phase-psychic-card">
+<div class="phase-header">
+<span class="phase-step-badge">STEP 1 OF 3 • PSYCHIC ONLY</span>
+<h3 class="phase-title" id="psychic-turn-heading">Pass Phone to Psychic 🧠</h3>
+<p class="phase-desc" id="psychic-turn-sub">
+Everyone else look away! Peek at the hidden target, then give a <strong>one-word (or short concept) clue</strong> that hints where the bullseye sits between the two extremes.
+</p>
+</div>
+<div class="psychic-peek-actions">
+<button type="button" id="btn-toggle-peek" class="btn-peek">
+<span>👁️ Tap to Open Shutter &amp; Peek Target</span>
+</button>
+<div id="psychic-secret-box" class="psychic-secret-box" style="display: none;">
+<div class="target-readout-banner" id="target-readout-banner">
+🎯 Bullseye is at <strong>72%</strong> (Toward Right Extreme)
+</div>
+<div class="sparks-wrap">
+<button type="button" id="btn-show-sparks" class="btn-spark-toggle">
+💡 Stuck? Show 3 Clue Idea Sparks
+</button>
+<div id="sparks-content" class="sparks-content" style="display: none;"></div>
+</div>
+</div>
+</div>
+<div class="clue-input-wrap">
+<label for="input-psychic-clue" class="clue-input-label">
+Type Your Clue (or say it aloud &amp; leave blank):
+</label>
+<input
+type="text"
+id="input-psychic-clue"
+class="clue-text-input"
+placeholder="e.g. Avocado Toast, Power Nap, DDLJ..."
+maxlength="42"
+autocomplete="off"
+/>
+<div class="rule-micro-note">
+🚫 Rule Check: No numbers (1–10), no percentages, and don't use words printed on the spectrum card!
+</div>
+</div>
+<button type="button" id="btn-lock-clue" class="btn-launch">
+<span>🔒 Hide Target &amp; Hand to Group</span>
+<span>→</span>
+</button>
+</div>
+<div class="phase-card" id="phase-guess-card" style="display: none;">
+<div class="phase-header">
+<span class="phase-step-badge">STEP 2 OF 3 • GROUP DEBATE</span>
+<h3 class="phase-title" id="guess-turn-heading">Where Does the Clue Land? 🎯</h3>
+<p class="phase-desc" id="guess-turn-sub">
+Debate out loud! Drag the glowing needle on the dial (or use the fine-tune buttons) to where you think the Psychic's target is hidden.
+</p>
+</div>
+<button type="button" id="btn-submit-guess" class="btn-launch">
+<span id="btn-submit-guess-label">⚡ Lock Dial &amp; Reveal Score!</span>
+</button>
+</div>
+<div class="phase-card" id="phase-bonus-card" style="display: none;">
+<div class="phase-header">
+<span class="phase-step-badge bonus-badge">⚔️ OPPOSING TEAM BONUS STEAL (+1 PT)</span>
+<h3 class="phase-title" id="bonus-turn-heading">Team Rebel: Left or Right?</h3>
+<p class="phase-desc" id="bonus-turn-sub">
+The needle is locked! Do you think the true <strong>4-Point Bullseye</strong> is to the <strong>LEFT</strong> or <strong>RIGHT</strong> of their dial? Guess right to steal +1 Bonus Point!
+</p>
+</div>
+<div class="bonus-bet-grid">
+<button type="button" id="btn-bet-left" class="btn-bet btn-bet-left">
+<span class="bet-arrow">⬅️</span>
+<span class="bet-main">Target is LEFT</span>
+<span class="bet-sub">Closer to 0% Extreme</span>
+</button>
+<button type="button" id="btn-bet-right" class="btn-bet btn-bet-right">
+<span class="bet-arrow">➡️</span>
+<span class="bet-main">Target is RIGHT</span>
+<span class="bet-sub">Closer to 100% Extreme</span>
+</button>
+</div>
+</div>
+<div class="phase-card" id="phase-reveal-card" style="display: none;">
+<div class="reveal-score-banner" id="reveal-score-banner">
+<div class="reveal-pts-pill" id="reveal-pts-pill">+4 POINTS</div>
+<h3 class="reveal-headline" id="reveal-headline">🧠⚡ PERFECT MIND SYNC!</h3>
+<p class="reveal-detail" id="reveal-detail">
+Your Dial: 71% • True Bullseye: 72% (Off by 1%!)
+</p>
+<div class="reveal-bonus-note" id="reveal-bonus-note" style="display: none;"></div>
+</div>
+<div class="reveal-cta-row">
+<button type="button" id="btn-next-round" class="btn-launch">
+<span id="btn-next-round-label">Next Round ⚡</span>
+<span>→</span>
+</button>
+<button type="button" id="btn-share-round" class="btn-ghost" title="Share Round Result on WhatsApp / IG">
+<span>📲 Share Round Result</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<section id="screen-summary" class="screen">
+<div class="summary-container">
+<div class="summary-hero-card">
+<div class="summary-badge" id="summary-mode-badge">MATCH COMPLETE</div>
+<div class="summary-big-icon" id="summary-trophy-icon">🧠👑</div>
+<h2 class="summary-title" id="summary-title">Psychic Hive Mind!</h2>
+<p class="summary-subtitle" id="summary-subtitle">
+Your group scored 22 points across 7 rounds!
+</p>
+<div class="summary-stats-grid" id="summary-stats-grid"></div>
+</div>
+<div class="setup-card">
+<div class="card-label-row">
+<span class="card-label">📜 Round-by-Round Wavelength Log</span>
+</div>
+<div id="summary-history-list" class="summary-history-list"></div>
+</div>
+<div class="summary-actions-stack">
+<button type="button" id="btn-share-results" class="btn-launch btn-share-viral">
+<span>📲 Share Result on WhatsApp / IG</span>
+</button>
+<div class="landing-secondary-row">
+<button type="button" id="btn-play-again" class="btn-ghost">
+<span>🔄 Play Again</span>
+</button>
+<button type="button" id="btn-summary-setup" class="btn-ghost">
+<span>🏠 Change Setup</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<div class="ad-banner-slot" id="ad-banner-container" style="display: none;">
+<div class="ad-label">SPONSORED • PARTYNIGHTS.ONLINE</div>
+<ins class="adsbygoogle"
+style="display:block"
+data-ad-client="ca-pub-5935694635631350"
+data-ad-format="auto"
+data-full-width-responsive="true"></ins>
+</div>
+</div>
+<div class="modal-backdrop" id="modal-rules" style="display: none;" role="dialog" aria-modal="true">
+<div class="modal-sheet">
+<div class="modal-header">
+<h3>📖 How to Play Wavelength</h3>
+<button type="button" class="circle-btn" id="btn-close-rules">✕</button>
+</div>
+<div class="modal-body rules-steps">
+<div class="rule-item">
+<span class="rule-num">1</span>
+<div>
+<strong>The Psychic Peeks 👁️</strong>
+<p>One player is the <strong>Psychic</strong>. They open the shutter to see where the secret bullseye sits between two extremes (e.g., <em>Cold ↔ Hot</em> or <em>Overrated ↔ Underrated</em>).</p>
+</div>
+</div>
+<div class="rule-item">
+<span class="rule-num">2</span>
+<div>
+<strong>Give One Clue 🗣️</strong>
+<p>The Psychic closes the shutter and gives a <strong>single concept clue</strong> (e.g. <em>"Surface of the Sun"</em> or <em>"Iced Chai"</em>). No numbers, percentages, or words on the card!</p>
+</div>
+</div>
+<div class="rule-item">
+<span class="rule-num">3</span>
+<div>
+<strong>Debate &amp; Turn the Dial 🎯</strong>
+<p>Everyone else debates where that clue belongs on the 180° spectrum and drags the glowing needle to lock in their guess.</p>
+</div>
+</div>
+<div class="rule-item">
+<span class="rule-num">4</span>
+<div>
+<strong>Tap to Reveal &amp; Score ⚡</strong>
+<p>Open the shutter! Score <strong>4 pts</strong> for the green Bullseye, <strong>3 pts</strong> for the gold inner zone, or <strong>2 pts</strong> for the orange outer zone. In Team mode, the opposing team can also steal <strong>+1 pt</strong> by guessing Left or Right!</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="modal-backdrop" id="modal-leaderboard" style="display: none;" role="dialog" aria-modal="true">
+<div class="modal-sheet">
+<div class="modal-header">
+<h3>🏆 Mind Sync Hall of Fame</h3>
+<button type="button" class="circle-btn" id="btn-close-leaderboard">✕</button>
+</div>
+<div class="modal-body">
+<div id="leaderboard-list" class="leaderboard-list"></div>
+<div class="modal-footer-row">
+<button type="button" id="btn-reset-leaderboard" class="btn-danger-outline">Reset Scores</button>
+</div>
+</div>
+</div>
+</div>
+<div class="modal-backdrop" id="modal-secret-lab" style="display: none;" role="dialog" aria-modal="true">
+<div class="modal-sheet">
+<div class="modal-header">
+<h3>🧪 Telepathic Secret Lab</h3>
+<button type="button" class="circle-btn" id="btn-close-secret-lab">✕</button>
+</div>
+<div class="modal-body">
+<p style="font-size: 0.85rem; color: #94a3b8; margin-bottom: 12px;">
+Import custom JSON Spectrum Packs (array of <code>{ left, right, category, sparks }</code>) or configure AdSense.
+</p>
+<input type="file" id="input-json-pack" accept=".json" style="margin-bottom: 12px; width: 100%;" />
+<div id="secret-lab-status" style="font-size: 0.82rem; color: #10f5a0; margin-bottom: 10px;"></div>
+<button type="button" id="btn-clear-imported" class="btn-danger-outline" style="width: 100%;">Clear Imported JSON Packs</button>
+</div>
+</div>
+</div>
+<div id="toast-container" class="toast-container" aria-live="polite"></div>
+<script src="./app.min.js"></script>
+</body>
+</html>
