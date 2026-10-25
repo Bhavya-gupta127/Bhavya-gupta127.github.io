@@ -513,15 +513,19 @@
        ========================================== */
     .games-deck-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1.15rem;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.05rem;
       perspective: 1200px;
     }
 
     .cartridge-card {
+      --theme-color: #10d796;
+      --theme-glow: rgba(16, 215, 150, 0.28);
+      --theme-art-bg: radial-gradient(circle at 50% 40%, #1c123c 0%, #090b18 100%);
+      --theme-btn-bg: linear-gradient(135deg, #ff2e63 0%, #7c3aed 100%);
       position: relative;
       background: var(--card);
-      border: 1.5px solid rgba(255, 255, 255, 0.11);
+      border: 1.5px solid rgba(255, 255, 255, 0.12);
       border-radius: 20px;
       text-decoration: none;
       color: inherit;
@@ -531,11 +535,42 @@
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       box-shadow:
-        0 16px 40px rgba(0, 0, 0, 0.6),
+        0 14px 36px rgba(0, 0, 0, 0.62),
+        0 0 22px var(--theme-glow),
         inset 0 1px 0 rgba(255, 255, 255, 0.14);
       transform-style: preserve-3d;
       transition: transform 0.25s var(--ease-spring), border-color 0.25s ease, box-shadow 0.25s ease;
       will-change: transform;
+    }
+
+    /* Per-Game Distinct Neon Vibe Tokens (UI-002) */
+    .cartridge-card[data-game-id="mr-alien"] {
+      --theme-color: #00ff88;
+      --theme-glow: rgba(0, 255, 136, 0.22);
+      --theme-art-bg: radial-gradient(circle at 50% 35%, #063829 0%, #050b14 100%);
+      --theme-btn-bg: linear-gradient(135deg, #00e676 0%, #10b981 55%, #059669 100%);
+      border-color: rgba(0, 255, 136, 0.34);
+    }
+    .cartridge-card[data-game-id="secret-dictator"] {
+      --theme-color: #f59e0b;
+      --theme-glow: rgba(225, 29, 72, 0.25);
+      --theme-art-bg: radial-gradient(circle at 50% 35%, #3f0d1c 0%, #0c080a 100%);
+      --theme-btn-bg: linear-gradient(135deg, #e11d48 0%, #be123c 55%, #f59e0b 100%);
+      border-color: rgba(225, 29, 72, 0.38);
+    }
+    .cartridge-card[data-game-id="wavelength"] {
+      --theme-color: #00f0ff;
+      --theme-glow: rgba(0, 240, 255, 0.24);
+      --theme-art-bg: radial-gradient(circle at 50% 35%, #1d1145 0%, #090616 100%);
+      --theme-btn-bg: linear-gradient(135deg, #00c6ff 0%, #7c3aed 52%, #ff2a85 100%);
+      border-color: rgba(0, 240, 255, 0.36);
+    }
+    .cartridge-card[data-game-id="paranoia"] {
+      --theme-color: #ff2e93;
+      --theme-glow: rgba(255, 46, 147, 0.25);
+      --theme-art-bg: radial-gradient(circle at 50% 35%, #3b0d36 0%, #0a0812 100%);
+      --theme-btn-bg: linear-gradient(135deg, #ff2e93 0%, #a855f7 52%, #f59e0b 100%);
+      border-color: rgba(255, 46, 147, 0.38);
     }
 
     /* Featured Hero Cartridge Layout */
@@ -543,19 +578,14 @@
       grid-column: 1 / -1;
       display: grid;
       grid-template-columns: 1.05fr 1.25fr;
-      min-height: 280px;
-      border-color: rgba(16, 215, 150, 0.38);
-      box-shadow:
-        0 24px 64px rgba(0, 0, 0, 0.72),
-        0 0 38px rgba(16, 215, 150, 0.12),
-        inset 0 1px 0 rgba(255, 255, 255, 0.18);
+      min-height: 260px;
     }
 
     .cartridge-card:hover {
-      border-color: var(--cyan);
+      border-color: var(--theme-color);
       box-shadow:
         0 24px 56px rgba(0, 0, 0, 0.78),
-        0 0 36px rgba(16, 215, 150, 0.26),
+        0 0 38px var(--theme-glow),
         inset 0 1px 0 rgba(255, 255, 255, 0.25);
     }
 
@@ -576,8 +606,8 @@
     /* Visual Artwork Stage inside Game Card */
     .cartridge-art {
       position: relative;
-      height: 155px;
-      background: radial-gradient(circle at 50% 40%, #1c123c 0%, #090b18 100%);
+      height: 145px;
+      background: var(--theme-art-bg);
       overflow: hidden;
       display: flex;
       align-items: center;
@@ -586,13 +616,13 @@
     }
     .cartridge-card.featured-single .cartridge-art {
       height: auto;
-      min-height: 240px;
+      min-height: 220px;
     }
     .cartridge-banner-img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      opacity: 0.88;
+      opacity: 0.9;
       transition: transform 0.45s var(--ease-spring), opacity 0.3s ease;
     }
     .cartridge-card:hover .cartridge-banner-img {
@@ -612,9 +642,9 @@
     /* Floating Status Badge on Artwork */
     .art-top-badges {
       position: absolute;
-      top: 0.65rem;
-      left: 0.65rem;
-      right: 0.65rem;
+      top: 0.6rem;
+      left: 0.6rem;
+      right: 0.6rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -623,105 +653,91 @@
     }
     .arcade-badge {
       font-family: 'Outfit', sans-serif;
-      font-size: 0.66rem;
+      font-size: 0.64rem;
       font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 0.06em;
-      padding: 0.25rem 0.6rem;
+      letter-spacing: 0.05em;
+      padding: 0.22rem 0.55rem;
       border-radius: 999px;
-      background: rgba(7, 8, 18, 0.84);
-      color: var(--cyan);
-      border: 1px solid rgba(16, 215, 150, 0.45);
+      background: rgba(7, 8, 18, 0.86);
+      color: var(--theme-color);
+      border: 1px solid var(--theme-color);
       backdrop-filter: blur(8px);
       box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
       white-space: nowrap;
     }
     .player-count-tag {
-      font-size: 0.68rem;
+      font-size: 0.66rem;
       font-weight: 800;
-      padding: 0.24rem 0.58rem;
+      padding: 0.22rem 0.55rem;
       border-radius: 999px;
-      background: rgba(7, 8, 18, 0.84);
+      background: rgba(7, 8, 18, 0.86);
       color: #fff;
-      border: 1px solid rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.18);
       backdrop-filter: blur(8px);
       white-space: nowrap;
     }
 
     /* Game Details & Launch Button Panel */
     .cartridge-body {
-      padding: 1.1rem;
+      padding: 0.95rem 1rem 1rem;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       flex: 1;
       z-index: 2;
+      gap: 0.55rem;
     }
 
     .game-header-row {
       display: flex;
       align-items: center;
-      gap: 0.7rem;
-      margin-bottom: 0.55rem;
+      gap: 0.65rem;
     }
     .game-app-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 13px;
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
       object-fit: cover;
-      border: 2px solid rgba(16, 215, 150, 0.45);
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+      border: 1.5px solid var(--theme-color);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
       flex-shrink: 0;
     }
     .game-title-wrap {
       min-width: 0;
+      flex: 1;
     }
     .game-title-wrap h2 {
       font-family: 'Outfit', sans-serif;
-      font-size: clamp(1.18rem, 2vw, 1.45rem);
+      font-size: clamp(1.12rem, 1.8vw, 1.35rem);
       font-weight: 900;
       letter-spacing: -0.01em;
       text-transform: uppercase;
       line-height: 1.1;
       color: #fff;
     }
-    .game-subtitle {
-      font-size: 0.72rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--cyan);
+    .game-hook {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--theme-color);
       margin-top: 0.18rem;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      line-height: 1.25;
     }
 
-    .game-synopsis {
-      color: var(--text-secondary);
-      font-size: 0.84rem;
-      line-height: 1.45;
-      margin-bottom: 0.75rem;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
-
-    .arcade-chips {
+    .game-meta-pills {
       display: flex;
       flex-wrap: wrap;
+      align-items: center;
       gap: 0.35rem;
-      margin-bottom: 0.85rem;
     }
-    .arcade-chip {
-      font-size: 0.67rem;
+    .meta-pill {
+      font-size: 0.68rem;
       font-weight: 700;
       color: #e2e8f0;
       background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      padding: 0.22rem 0.52rem;
-      border-radius: 7px;
+      border: 1px solid rgba(255, 255, 255, 0.11);
+      padding: 0.22rem 0.55rem;
+      border-radius: 8px;
       white-space: nowrap;
     }
 
@@ -729,194 +745,194 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 0.65rem;
-      padding-top: 0.75rem;
+      gap: 0.6rem;
+      padding-top: 0.65rem;
       border-top: 1px solid rgba(255, 255, 255, 0.08);
     }
-    .mode-specs {
-      display: flex;
-      flex-direction: column;
-      gap: 0.12rem;
-      font-size: 0.7rem;
-      font-weight: 700;
-      color: var(--text-secondary);
-      min-width: 0;
-    }
-    .mode-specs strong {
-      color: #fff;
-      font-size: 0.75rem;
-    }
 
-    /* Pulsing Arcade START Button */
+    /* Pulsing Arcade PLAY Button */
     .btn-launch-game {
       position: relative;
+      width: 100%;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 0.45rem;
       font-family: 'Outfit', sans-serif;
-      font-size: 0.88rem;
+      font-size: 0.9rem;
       font-weight: 900;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
       color: #fff;
-      background: linear-gradient(135deg, #ff2e63 0%, #7c3aed 100%);
-      padding: 0.68rem 1.15rem;
+      background: var(--theme-btn-bg);
+      padding: 0.64rem 1.1rem;
       border-radius: 12px;
-      border: 1px solid rgba(255, 255, 255, 0.25);
+      border: 1px solid rgba(255, 255, 255, 0.28);
       box-shadow:
-        0 6px 20px rgba(255, 46, 99, 0.45),
+        0 6px 20px var(--theme-glow),
         inset 0 1px 0 rgba(255, 255, 255, 0.35);
       transition: all 0.22s var(--ease-spring);
       white-space: nowrap;
-      flex-shrink: 0;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+    }
+    .cartridge-card[data-game-id="mr-alien"] .btn-launch-game {
+      color: #03190e;
+      text-shadow: none;
     }
     .cartridge-card:hover .btn-launch-game {
-      transform: translateY(-2px) scale(1.03);
-      background: linear-gradient(135deg, #ff3b70 0%, #8b5cf6 50%, #10d796 100%);
+      transform: translateY(-2px) scale(1.02);
       box-shadow:
-        0 12px 32px rgba(255, 46, 99, 0.6),
-        0 0 20px rgba(16, 215, 150, 0.4);
+        0 10px 28px var(--theme-glow),
+        0 0 18px var(--theme-color);
     }
 
     /* Coming Soon / Next Slot Placeholder Card */
     .coming-soon-slot {
-      margin-top: 0.9rem;
+      margin-top: 0.75rem;
       background: rgba(14, 16, 32, 0.55);
       border: 1px dashed rgba(255, 255, 255, 0.12);
       border-radius: 14px;
-      padding: 0.7rem 1rem;
+      padding: 0.6rem 0.95rem;
       display: flex;
       flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
       gap: 0.5rem;
       color: var(--text-secondary);
-      font-size: 0.78rem;
+      font-size: 0.76rem;
     }
     .slot-pill {
-      font-size: 0.65rem;
+      font-size: 0.64rem;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.08em;
       color: #a855f7;
       background: rgba(168, 85, 247, 0.12);
       border: 1px solid rgba(168, 85, 247, 0.3);
-      padding: 0.22rem 0.55rem;
+      padding: 0.2rem 0.52rem;
       border-radius: 999px;
     }
 
     /* ==========================================
-       BELOW-THE-FOLD: HOW TO PLAY, SEO FAQ & ADS
+       BELOW-THE-FOLD: 1-ROW HOW IT WORKS, COMPACT FAQ & ADS
        ========================================== */
     .secondary-zones {
-      margin-top: 3.5rem;
-      padding-top: 2.5rem;
+      margin-top: 2.2rem;
+      padding-top: 1.65rem;
       border-top: 1px solid rgba(255, 255, 255, 0.07);
     }
 
     .zone-title {
       font-family: 'Outfit', sans-serif;
-      font-size: 1.25rem;
+      font-size: 1.05rem;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.04em;
-      margin-bottom: 1.1rem;
+      margin-bottom: 0.85rem;
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.45rem;
       color: #e2e8f0;
     }
 
-    .hud-steps-grid {
+    .hud-steps-strip {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1rem;
-      margin-bottom: 2.75rem;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.65rem;
+      margin-bottom: 1.8rem;
     }
-    .hud-step {
-      background: rgba(16, 18, 35, 0.68);
+    .hud-step-pill {
+      background: rgba(16, 18, 35, 0.72);
       border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 1.2rem;
+      border-radius: 14px;
+      padding: 0.75rem 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
       backdrop-filter: blur(10px);
     }
-    .hud-step-badge {
-      display: inline-block;
-      font-family: 'Outfit', sans-serif;
-      font-size: 0.72rem;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
+    .step-num-orb {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: rgba(16, 215, 150, 0.14);
+      border: 1px solid rgba(16, 215, 150, 0.35);
       color: var(--cyan);
-      background: rgba(16, 215, 150, 0.12);
-      padding: 0.22rem 0.6rem;
-      border-radius: 6px;
-      margin-bottom: 0.55rem;
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
     }
-    .hud-step h3 {
-      font-size: 1rem;
-      font-weight: 800;
-      margin-bottom: 0.3rem;
+    .step-pill-text {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #f1f5f9;
+      line-height: 1.25;
     }
-    .hud-step p {
-      font-size: 0.85rem;
+    .step-pill-text small {
+      display: block;
+      font-size: 0.68rem;
+      font-weight: 600;
       color: var(--text-secondary);
-      line-height: 1.5;
+      margin-top: 1px;
     }
 
     /* Compact SEO FAQ Accordion */
     .faq-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 0.85rem;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 0.65rem;
     }
     details.faq-box {
       background: rgba(16, 18, 35, 0.68);
       border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 0.95rem 1.15rem;
+      border-radius: 12px;
+      padding: 0.78rem 1rem;
       backdrop-filter: blur(10px);
     }
     details.faq-box summary {
       font-weight: 700;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       cursor: pointer;
       list-style: none;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 0.75rem;
+      gap: 0.65rem;
     }
     details.faq-box summary::-webkit-details-marker { display: none; }
     details.faq-box summary::after {
       content: "+";
       color: var(--cyan);
       font-weight: 900;
-      font-size: 1.1rem;
+      font-size: 1.05rem;
     }
     details.faq-box[open] summary::after { content: "−"; }
     details.faq-box p {
-      margin-top: 0.6rem;
-      font-size: 0.84rem;
+      margin-top: 0.5rem;
+      font-size: 0.8rem;
       color: var(--text-secondary);
-      line-height: 1.55;
+      line-height: 1.5;
     }
 
-    /* Lobby Ad Slot (Strictly below gameplay cards per AdSense policy) */
+    /* Lobby Ad Slot (Strictly below gameplay cards per AdSense policy, collapsed when empty) */
     .ad-slot {
-      margin: 2.75rem auto 0;
+      margin: 1.5rem auto 0;
       max-width: 728px;
-      min-height: 90px;
-      border: 1px dashed rgba(255, 255, 255, 0.09);
-      border-radius: 14px;
+      max-height: 44px;
+      border: 1px dashed rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: rgba(255, 255, 255, 0.25);
-      font-size: 0.76rem;
-      padding: 0.75rem;
+      color: rgba(255, 255, 255, 0.22);
+      font-size: 0.7rem;
+      padding: 0.45rem 0.75rem;
       text-align: center;
+      overflow: hidden;
     }
 
     /* Invite / QR Code Modal */
@@ -984,9 +1000,9 @@
       position: relative;
       z-index: 1;
       text-align: center;
-      padding: 1.65rem 1.25rem;
+      padding: 1.35rem 1.25rem;
       color: var(--text-secondary);
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       border-top: 1px solid rgba(255, 255, 255, 0.07);
       background: rgba(7, 8, 18, 0.75);
     }
@@ -994,8 +1010,8 @@
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 1.2rem;
-      margin-top: 0.45rem;
+      gap: 1rem;
+      margin-top: 0.4rem;
     }
     .footer-links a {
       color: var(--text-secondary);
@@ -1006,7 +1022,7 @@
     @media (max-width: 960px) {
       .games-deck-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 0.9rem;
+        gap: 0.85rem;
       }
       .cartridge-card.featured-single {
         grid-template-columns: 1fr;
@@ -1016,60 +1032,62 @@
         background: linear-gradient(180deg, rgba(7, 8, 18, 0.15) 0%, transparent 45%, rgba(18, 20, 38, 0.96) 100%);
       }
       .cartridge-card.featured-single .cartridge-art {
-        height: 145px;
-        min-height: 145px;
+        height: 135px;
+        min-height: 135px;
       }
     }
 
     @media (max-width: 640px) {
       .hud-inner {
-        padding: max(0.45rem, calc(env(safe-area-inset-top, 0px) + 0.3rem)) 0.75rem 0.45rem;
+        padding: max(0.42rem, calc(env(safe-area-inset-top, 0px) + 0.28rem)) 0.7rem 0.42rem;
       }
       .logo-crest {
-        width: 36px;
-        height: 36px;
-        border-radius: 11px;
+        width: 34px;
+        height: 34px;
+        border-radius: 10px;
       }
       .logo-crest-inner {
-        width: 32px;
-        height: 32px;
-        border-radius: 9px;
+        width: 30px;
+        height: 30px;
+        border-radius: 8px;
       }
       .logo-svg {
-        width: 22px;
-        height: 22px;
+        width: 20px;
+        height: 20px;
       }
-      .logo-main { font-size: 1.05rem; }
-      .logo-sub { font-size: 0.54rem; letter-spacing: 0.16em; margin-top: 1px; }
+      .logo-main { font-size: 1.02rem; }
+      .logo-sub { font-size: 0.52rem; letter-spacing: 0.15em; margin-top: 1px; }
       .hud-btn span.btn-label { display: none; }
-      .hud-btn { padding: 0.4rem 0.6rem; border-radius: 10px; }
-      main.arcade-stage { padding: 0.6rem 0.65rem 2.5rem; }
+      .hud-btn { padding: 0.38rem 0.58rem; border-radius: 10px; }
+      main.arcade-stage { padding: 0.5rem 0.6rem 2rem; }
       .arcade-deck-bar {
-        gap: 0.4rem;
-        margin-bottom: 0.55rem;
+        gap: 0.35rem;
+        margin-bottom: 0.5rem;
       }
       .live-beacon {
-        font-size: 0.6rem;
-        padding: 0.18rem 0.5rem;
+        font-size: 0.58rem;
+        padding: 0.16rem 0.48rem;
       }
       .deck-title {
-        font-size: 0.95rem;
+        font-size: 0.92rem;
       }
+      /* Fix UI-002: All 4 Category Tabs Fit 100% Inside 390px Without Clipping */
       .deck-tabs {
         width: 100%;
         justify-content: space-between;
+        gap: 0.2rem;
         padding: 0.2rem;
         border-radius: 10px;
-        overflow-x: auto;
       }
       .deck-tab {
-        font-size: 0.66rem;
-        padding: 0.3rem 0.5rem;
+        font-size: 0.63rem;
+        padding: 0.28rem 0.36rem;
         flex: 1;
         text-align: center;
         white-space: nowrap;
+        letter-spacing: 0.01em;
       }
-      /* 2-Column Compact Arcade Grid on Mobile so ALL games are visible without scrolling */
+      /* 2-Column Compact Arcade Grid on Mobile: Zero Clipped Badges or Truncated Ellipses (UI-001) */
       .games-deck-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 0.55rem;
@@ -1082,90 +1100,71 @@
       }
       .cartridge-art,
       .cartridge-card.featured-single .cartridge-art {
-        height: 82px;
-        min-height: 82px;
+        height: 84px;
+        min-height: 84px;
       }
       .art-top-badges {
         top: 0.35rem;
         left: 0.35rem;
         right: 0.35rem;
+        justify-content: flex-end;
       }
       .arcade-badge {
-        font-size: 0.54rem;
-        padding: 0.15rem 0.42rem;
-        letter-spacing: 0.03em;
-      }
-      .player-count-tag {
-        font-size: 0.54rem;
-        padding: 0.15rem 0.4rem;
-      }
-      .cartridge-body {
-        padding: 0.6rem;
-      }
-      .game-header-row {
-        gap: 0.42rem;
-        margin-bottom: 0.3rem;
-      }
-      .game-app-icon {
-        width: 32px;
-        height: 32px;
-        border-radius: 8px;
-        border-width: 1.5px;
-      }
-      .game-title-wrap h2 {
-        font-size: 0.86rem;
-        line-height: 1.1;
-      }
-      .game-subtitle {
-        font-size: 0.56rem;
-        margin-top: 0.1rem;
-      }
-      .game-synopsis {
-        font-size: 0.68rem;
-        line-height: 1.3;
-        margin-bottom: 0.4rem;
-        -webkit-line-clamp: 2;
-      }
-      .arcade-chips {
-        gap: 0.22rem;
-        margin-bottom: 0.45rem;
-        max-height: 22px;
-        overflow: hidden;
-      }
-      .arcade-chip {
-        font-size: 0.55rem;
-        padding: 0.14rem 0.38rem;
-        border-radius: 5px;
-      }
-      .cartridge-footer {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 0.35rem;
-        padding-top: 0.42rem;
-      }
-      .mode-specs {
-        flex-direction: row;
-        justify-content: space-between;
-        font-size: 0.56rem;
-      }
-      .mode-specs span:last-child {
         display: none;
       }
-      .mode-specs strong {
+      .player-count-tag {
         font-size: 0.58rem;
+        padding: 0.15rem 0.45rem;
+      }
+      .cartridge-body {
+        padding: 0.55rem 0.6rem 0.6rem;
+        gap: 0.38rem;
+      }
+      .game-app-icon {
+        display: none;
+      }
+      .game-title-wrap h2 {
+        font-size: 0.88rem;
+        line-height: 1.12;
+      }
+      .game-hook {
+        font-size: 0.66rem;
+        margin-top: 0.12rem;
+        line-height: 1.22;
+      }
+      .game-meta-pills {
+        gap: 0.25rem;
+      }
+      .meta-pill {
+        font-size: 0.58rem;
+        padding: 0.15rem 0.42rem;
+        border-radius: 6px;
+      }
+      .meta-pill.desktop-only {
+        display: none;
+      }
+      .cartridge-footer {
+        padding-top: 0.35rem;
       }
       .btn-launch-game {
         width: 100%;
         font-size: 0.74rem;
-        padding: 0.46rem 0.6rem;
+        padding: 0.44rem 0.55rem;
         border-radius: 9px;
-        gap: 0.3rem;
+        gap: 0.28rem;
       }
       .coming-soon-slot {
-        margin-top: 0.55rem;
-        padding: 0.45rem 0.65rem;
-        font-size: 0.66rem;
-        border-radius: 11px;
+        margin-top: 0.5rem;
+        padding: 0.42rem 0.6rem;
+        font-size: 0.64rem;
+        border-radius: 10px;
+      }
+      .hud-steps-strip {
+        grid-template-columns: 1fr;
+        gap: 0.45rem;
+      }
+      .hud-step-pill {
+        padding: 0.55rem 0.75rem;
       }
     }
 
@@ -1452,7 +1451,7 @@
       </div>
 
       <div class="deck-tabs" id="category-filters" role="tablist">
-        <button type="button" class="deck-tab filter-tab active" data-filter="all" role="tab" aria-selected="true">All Games</button>
+        <button type="button" class="deck-tab filter-tab active" data-filter="all" role="tab" aria-selected="true">All</button>
         <button type="button" class="deck-tab filter-tab" data-filter="Social Deduction" role="tab" aria-selected="false">🕵️ Deduction</button>
         <button type="button" class="deck-tab filter-tab" data-filter="Mind Sync & Debate" role="tab" aria-selected="false">🧠 Mind Sync</button>
         <button type="button" class="deck-tab filter-tab" data-filter="Pass 1 Phone" role="tab" aria-selected="false">📱 1-Phone</button>
@@ -1464,33 +1463,30 @@
       <div class="games-deck-grid" id="games-grid"></div>
 
       <div class="coming-soon-slot">
-        <div style="display: flex; align-items: center; gap: 0.65rem;">
+        <div style="display: flex; align-items: center; gap: 0.55rem;">
           <span class="slot-pill">Next Drops</span>
-          <span>New party cartridges unlock automatically as new game repos go live.</span>
+          <span>New party cartridges unlock automatically.</span>
         </div>
-        <span style="font-size: 0.78rem; color: var(--cyan); font-weight: 700;">⚡ Zero App Install • Pass 1 Phone</span>
+        <span style="font-size: 0.74rem; color: var(--cyan); font-weight: 700;">⚡ Zero App Install • Pass 1 Phone</span>
       </div>
     </section>
 
-    <!-- SECONDARY ZONES BELOW THE GAMES (HOW TO PLAY + SEO FAQ + AD SLOT) -->
+    <!-- SECONDARY ZONES BELOW THE GAMES (1-ROW HOW IT WORKS + COLLAPSED FAQ + AD SLOT) -->
     <div class="secondary-zones">
       <section id="how-it-works">
         <h2 class="zone-title"><span>🕹️</span> <span>How The Arcade Works</span></h2>
-        <div class="hud-steps-grid">
-          <div class="hud-step">
-            <span class="hud-step-badge">Step 01</span>
-            <h3>Tap Any Cartridge</h3>
-            <p>Launch instant multiplayer party games like <strong>Mr. Alien</strong>, <strong>Secret Dictator</strong>, or <strong>Wavelength (Mind Sync)</strong> right inside your mobile browser—no app downloads.</p>
+        <div class="hud-steps-strip">
+          <div class="hud-step-pill">
+            <span class="step-num-orb">1</span>
+            <div class="step-pill-text">Pick a Game Cartridge<small>Mr. Alien, Secret Dictator, Wavelength &amp; Paranoia</small></div>
           </div>
-          <div class="hud-step">
-            <span class="hud-step-badge">Step 02</span>
-            <h3>Pass 1 Phone or Join Room Code</h3>
-            <p>Play together on a single phone with Pass &amp; Play, or let everyone join on their own phones via a 4-letter Room Code.</p>
+          <div class="hud-step-pill">
+            <span class="step-num-orb">2</span>
+            <div class="step-pill-text">Pass 1 Phone or Join Code<small>Zero downloads or sign-ups required</small></div>
           </div>
-          <div class="hud-step">
-            <span class="hud-step-badge">Step 03</span>
-            <h3>Bluff, Sync &amp; Vote</h3>
-            <p>Drop clever 1-word clues, enact covert bills, dial in your squad's telepathic wavelength, and share the victory card straight to WhatsApp!</p>
+          <div class="hud-step-pill">
+            <span class="step-num-orb">3</span>
+            <div class="step-pill-text">Bluff, Sync &amp; Share<small>One-tap victory cards for WhatsApp &amp; IG</small></div>
           </div>
         </div>
       </section>
@@ -1498,30 +1494,21 @@
       <section id="faq">
         <h2 class="zone-title"><span>⚡</span> <span>House Party FAQ</span></h2>
         <div class="faq-grid">
-          <details class="faq-box" open>
+          <details class="faq-box">
             <summary>Do friends need to install an app?</summary>
-            <p>No! Every game on <strong>PartyNights.online</strong> is a free party game online that runs directly in your browser with zero downloads.</p>
-          </details>
-          <details class="faq-box" open>
-            <summary>Can 3 to 20 friends play on a single phone?</summary>
-            <p>Yes! Our Pass 1 Phone mode lets an entire house party or road trip group play together using just one device.</p>
+            <p>No! Every game on <strong>PartyNights.online</strong> runs directly in your browser with zero downloads.</p>
           </details>
           <details class="faq-box">
-            <summary>What games are available to play?</summary>
-            <p>PartyNights.online currently features 4 instant party games:
-              <br>• <strong>Mr. Alien (👽)</strong>: 500+ Indian words deduction game.
-              <br>• <strong>Secret Dictator (👑)</strong>: 5–10 player social deduction and policy game with AI bots.
-              <br>• <strong>Wavelength (🧠)</strong>: 235+ telepathic spectrum dial debate party game.
-              <br>• <strong>Paranoia: Exposed (🪙)</strong>: 220+ spicy whisper + 3D Coin of Fate &amp; Most Likely To room poll game.
-            </p>
+            <summary>Can 2 to 20 friends play on a single phone?</summary>
+            <p>Yes! Pass 1 Phone mode lets an entire house party play on one device, or use Multi-Phone Room Codes.</p>
           </details>
           <details class="faq-box">
-            <summary>What is included in Mr. Alien?</summary>
-            <p><strong>Mr. Alien</strong> packs 500+ curated Indian &amp; Desi words across Food &amp; Chai, Bollywood, Cricket, Desi Life, Festivals, and Places with smart lateral hints.</p>
+            <summary>What games are live in the Arcade?</summary>
+            <p>Play <strong>Mr. Alien (👽)</strong>, <strong>Secret Dictator (👑)</strong>, <strong>Wavelength (🧠)</strong>, and <strong>Paranoia: Exposed (🪙)</strong>.</p>
           </details>
           <details class="faq-box">
             <summary>Does it work offline once loaded?</summary>
-            <p>Yes—games cache their assets automatically via a PWA Service Worker so your round never drops even on weak Wi-Fi.</p>
+            <p>Yes—games cache their assets via a PWA Service Worker so your round never drops on weak Wi-Fi.</p>
           </details>
         </div>
       </section>
@@ -1863,8 +1850,16 @@
 
       const isSingleFeatured = filtered.length === 1;
 
-      grid.innerHTML = filtered.map(g => `
-        <a class="cartridge-card ${isSingleFeatured ? 'featured-single' : ''}" href="${g.url}">
+      grid.innerHTML = filtered.map(g => {
+        const compactPlayers = (g.minPlayers && g.maxPlayers)
+          ? `${g.minPlayers}–${g.maxPlayers}`
+          : (g.players || '3–20').replace(/\s*Players/i, '');
+        const hasRoom = (g.deviceMode || '').toLowerCase().includes('room');
+        const modePill = hasRoom ? '📱 1-Phone / Room' : '📱 1-Phone';
+        const shortTitle = g.title.replace(/\s*\(Mind Sync\)/i, '');
+
+        return `
+        <a class="cartridge-card ${isSingleFeatured ? 'featured-single' : ''}" data-game-id="${g.id}" href="${g.url}">
           <div class="card-glare"></div>
 
           <div class="cartridge-art">
@@ -1875,7 +1870,7 @@
             <div class="art-overlay-gradient"></div>
             <div class="art-top-badges">
               <span class="arcade-badge">${g.badge || '⚡ Arcade Hit'}</span>
-              <span class="player-count-tag">👥 ${g.players || '3–20 Players'}</span>
+              <span class="player-count-tag">👥 ${compactPlayers}</span>
             </div>
           </div>
 
@@ -1883,37 +1878,31 @@
             <div>
               <div class="game-header-row">
                 ${g.icon
-                  ? `<img class="game-app-icon" src="${g.icon}" alt="${g.title}" width="60" height="60" />`
+                  ? `<img class="game-app-icon" src="${g.icon}" alt="${g.title}" width="44" height="44" />`
                   : ''
                 }
                 <div class="game-title-wrap">
-                  <h2>${g.title} ${g.emoji || ''}</h2>
-                  <div class="game-subtitle">${g.subtitle || g.category || 'Multiplayer Party Game'}</div>
+                  <h2>${shortTitle} ${g.emoji || ''}</h2>
+                  <div class="game-hook">${g.hook || g.subtitle || 'Instant Party Game'}</div>
                 </div>
               </div>
 
-              <p class="game-synopsis">${g.description || 'Tap Press Start to launch this game in your browser.'}</p>
-
-              ${Array.isArray(g.tags) && g.tags.length > 0 ? `
-                <div class="arcade-chips">
-                  ${g.tags.map(t => `<span class="arcade-chip">${t}</span>`).join('')}
-                </div>
-              ` : ''}
+              <div class="game-meta-pills" style="margin-top: 0.45rem;">
+                <span class="meta-pill">${modePill}</span>
+                <span class="meta-pill desktop-only">⏱️ ${g.duration || '5–15m'}</span>
+              </div>
             </div>
 
             <div class="cartridge-footer">
-              <div class="mode-specs">
-                <span>MODE: <strong>${g.deviceMode || 'Pass 1 Phone'}</strong></span>
-                <span>ROUND TIME: <strong>${g.duration || '5–15 Mins'}</strong></span>
-              </div>
               <span class="btn-launch-game">
                 <span>▶</span>
-                <span>Press Start</span>
+                <span>PLAY</span>
               </span>
             </div>
           </div>
         </a>
-      `).join('');
+      `;
+      }).join('');
 
       attach3DTiltEvents();
     }
