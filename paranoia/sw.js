@@ -1,10 +1,10 @@
-// Paranoia & Most Likely To: Exposed — PWA Service Worker v3.0
-const CACHE_NAME = "paranoia-pwa-v3";
+// Paranoia & Most Likely To: Exposed — PWA Service Worker v4.0
+const CACHE_NAME = "paranoia-pwa-v4";
 const ASSETS = [
   "/paranoia/",
   "/paranoia/index.html",
-  "/paranoia/styles.min.css?v=3",
-  "/paranoia/app.min.js?v=3",
+  "/paranoia/styles.min.css?v=4",
+  "/paranoia/app.min.js?v=4",
   "/paranoia/manifest.json",
   "/paranoia/icon-192.png",
   "/paranoia/icon-512.png",
