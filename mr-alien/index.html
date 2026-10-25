@@ -33,7 +33,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="./styles.min.css?v=9" />
+<link rel="stylesheet" href="./styles.min.css?v=10" />
 <script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js" defer></script>
 </head>
 <body>
@@ -54,6 +54,10 @@
 </div>
 </div>
 <div class="top-actions">
+<button class="nav-pill-btn" id="btn-tv-board" type="button" title="Toggle Common TV / Laptop Radar Board Mode" style="display: none;">
+<span>📺</span>
+<span class="nav-pill-text" id="btn-tv-board-label">TV Board</span>
+</button>
 <a href="https://partynights.online/" class="nav-pill-btn" id="btn-top-hub" title="All PartyNights.online Games" style="text-decoration: none;">
 <span>🎲</span>
 <span class="nav-pill-text">Hub</span>
@@ -66,10 +70,24 @@
 <span>🏠</span>
 <span class="nav-pill-text" id="btn-top-menu-label">Setup</span>
 </button>
+<button class="circle-btn" id="btn-open-how-to-play" type="button" title="How to Play (10-Sec Guide)">❓</button>
 <button class="circle-btn" id="btn-open-leaderboard" type="button" title="Leaderboard">🏆</button>
 <button class="circle-btn" id="btn-sound-toggle" type="button" title="Toggle Sound">🔊</button>
 </div>
 </header>
+<div id="tv-command-banner" class="tv-command-banner" style="display: none;">
+<div class="tv-banner-left">
+<span class="tv-radar-dot"></span>
+<div>
+<div class="tv-banner-eyebrow">📡 AREA-51 COMMON RADAR BOARD (SECRET-SAFE)</div>
+<div class="tv-banner-code">📡 ROOM CODE: <strong id="tv-banner-room-code">-----</strong> • <span id="tv-banner-join-prompt">Join on your phone</span></div>
+</div>
+</div>
+<div class="tv-banner-right">
+<div class="tv-join-pill" id="tv-banner-edition-badge">🌍 International • ✨ All Mix</div>
+<div class="tv-join-url">📱 Phone Controller: <strong>partynights.online/mr-alien</strong></div>
+</div>
+</div>
 <section id="screen-landing" class="screen active">
 <div class="landing-wrap">
 <div class="signal-pill">
@@ -88,10 +106,29 @@
 <p class="hero-subtitle">
 1 Secret Word • 1 Hidden Alien • Expose the Impostor!
 </p>
-<div class="feature-chips">
+<div id="landing-example-card" style="margin: 12px auto 10px; max-width: 390px; background: rgba(16, 19, 36, 0.85); border: 1px solid rgba(0, 240, 255, 0.28); border-radius: 14px; padding: 10px 12px; text-align: left; cursor: pointer; box-shadow: 0 8px 24px rgba(0,0,0,0.35);" title="Tap for full 10-second guide">
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+<span style="font-size: 0.68rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: #00f0ff;">💡 10-SECOND REAL EXAMPLE</span>
+<span style="font-size: 0.68rem; color: #a855f7; font-weight: 700;">Tap for Rules ❓</span>
+</div>
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 6px;">
+<div style="background: rgba(16, 215, 150, 0.1); border: 1px solid rgba(16, 215, 150, 0.3); border-radius: 9px; padding: 6px 8px;">
+<div style="font-size: 0.64rem; color: #10d796; font-weight: 800;">🧑 CIVILIANS SEE</div>
+<div style="font-size: 0.82rem; font-weight: 800; color: #fff;">🍕 Word: &ldquo;Pizza&rdquo;</div>
+</div>
+<div style="background: rgba(255, 46, 85, 0.12); border: 1px solid rgba(255, 46, 85, 0.35); border-radius: 9px; padding: 6px 8px;">
+<div style="font-size: 0.64rem; color: #ff2e55; font-weight: 800;">👽 ALIEN ONLY SEES</div>
+<div style="font-size: 0.82rem; font-weight: 800; color: #fff;">🧀 Hint: &ldquo;Melted&rdquo;</div>
+</div>
+</div>
+<div style="font-size: 0.73rem; color: var(--text-secondary); line-height: 1.35;">
+💬 Everyone says a 1-word clue (<strong style="color:#fff;">&ldquo;Crust&rdquo;</strong>, <strong style="color:#fff;">&ldquo;Delivery&rdquo;</strong>, <strong style="color:#fff;">&ldquo;Hot&rdquo;</strong>). Catch who is faking it!
+</div>
+</div>
+<div class="feature-chips" style="margin: 8px auto 12px;">
 <span class="feature-chip">📱 Pass 1 Phone</span>
 <span class="feature-chip">🌐 Online Room Code</span>
-<span class="feature-chip">🇮🇳 500 Desi Words</span>
+<span class="feature-chip">📺 TV / Laptop Board</span>
 </div>
 </div>
 <div style="width: 100%; display: flex; flex-direction: column; gap: 9px; align-items: center;">
@@ -100,14 +137,17 @@
 <span>→</span>
 </button>
 <button type="button" id="btn-enter-online" class="btn-ghost" style="width: 100%; height: 50px; border-color: rgba(16, 215, 150, 0.45); background: rgba(16, 215, 150, 0.1); color: #10d796; font-weight: 800; font-size: 0.95rem;">
-<span>🌐 Play Online (Multi-Phone Room)</span>
+<span>🌐 Play Online (Multi-Phone / TV Board)</span>
 </button>
-<div style="width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
-<button type="button" id="btn-landing-leaderboard" class="btn-ghost" style="height: 44px; font-size: 0.82rem;">
-<span>🏆 Leaderboard</span>
+<div style="width: 100%; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px;">
+<button type="button" id="btn-landing-how-to-play" class="btn-ghost" style="height: 44px; font-size: 0.78rem;">
+<span>❓ How to Play</span>
 </button>
-<button type="button" id="btn-share-game" class="btn-ghost" style="height: 44px; font-size: 0.82rem;">
-<span>📲 Share Game</span>
+<button type="button" id="btn-landing-leaderboard" class="btn-ghost" style="height: 44px; font-size: 0.78rem;">
+<span>🏆 Ranks</span>
+</button>
+<button type="button" id="btn-share-game" class="btn-ghost" style="height: 44px; font-size: 0.78rem;">
+<span>📲 Share</span>
 </button>
 </div>
 <div class="landing-footer-meta" id="easter-egg-footer">
@@ -159,6 +199,9 @@ maxlength="18"
 <button type="button" id="btn-create-online-room" class="btn-main" style="height: 48px; margin-top: 2px;">
 <span>🚀 Create Online Room (Host)</span>
 </button>
+<button type="button" id="btn-create-tv-board" class="btn-ghost" style="height: 46px; border-color: rgba(0, 240, 255, 0.45); background: rgba(0, 240, 255, 0.08); color: var(--cyan); font-weight: 800; font-size: 0.86rem;">
+<span>📺 Host on TV / Laptop (Common Radar Board)</span>
+</button>
 <div style="text-align: center; font-size: 0.7rem; color: var(--text-secondary); letter-spacing: 0.08em; font-weight: 700; margin: 2px 0;">
 — OR JOIN FRIEND'S ROOM CODE —
 </div>
@@ -180,6 +223,7 @@ style="text-transform: uppercase; font-weight: 800; letter-spacing: 0.1em;"
 <div style="font-size: 1.45rem; font-weight: 900; letter-spacing: 0.14em; color: #10d796;" id="online-room-code-badge">-----</div>
 </div>
 <div style="display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end;">
+<button type="button" class="pill-action" id="btn-online-toggle-tv" style="border-color: rgba(0, 240, 255, 0.45); color: var(--cyan);">📺 TV Board</button>
 <button type="button" class="pill-action" id="btn-online-whatsapp-invite" style="border-color: rgba(16, 215, 150, 0.4); color: #10d796;">📲 WhatsApp</button>
 <button type="button" class="pill-action" id="btn-online-copy-link">📋 Copy Link</button>
 <button type="button" class="pill-action" id="btn-online-leave-room" style="color: #ff8da5;">🚪 Leave</button>
@@ -251,6 +295,7 @@ style="text-transform: uppercase; font-weight: 800; letter-spacing: 0.1em;"
 <span class="eyebrow" id="pass-seat-label">Pass Phone To</span>
 <h2 class="big-title" id="pass-current-player">Aarav</h2>
 <p class="subtle-note" id="pass-cover-subnote" style="font-weight: 700; color: var(--cyan);">🔒 Private Role Scan</p>
+<div id="tv-pass-radar-grid" class="tv-pass-radar-grid" style="display: none;"></div>
 </div>
 <div id="pass-reveal-view" class="card-content-anim" style="display: none;">
 <span class="eyebrow" id="role-eyebrow">Secret Identity</span>
@@ -541,6 +586,45 @@ Your crew is in the middle of a mission! Leaving now will end the current round 
 </div>
 </div>
 </div>
-<script src="./app.min.js?v=9"></script>
+<div id="modal-how-to-play" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="how-to-play-title">
+<div class="modal-sheet">
+<div class="modal-header">
+<span class="modal-title" id="how-to-play-title">❓ How to Play Mr. Alien</span>
+<button class="circle-btn" id="btn-close-how-to-play" type="button" style="width: 32px; height: 32px;">✕</button>
+</div>
+<div style="background: rgba(0, 240, 255, 0.06); border: 1px solid rgba(0, 240, 255, 0.32); border-radius: 14px; padding: 12px; display: flex; flex-direction: column; gap: 8px;">
+<div style="font-size: 0.72rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: #00f0ff;">
+💡 10-SECOND REAL EXAMPLE
+</div>
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+<div style="background: rgba(16, 215, 150, 0.12); border: 1px solid rgba(16, 215, 150, 0.35); border-radius: 10px; padding: 8px 10px;">
+<div style="font-size: 0.66rem; color: #10d796; font-weight: 800;">🧑 3 CIVILIANS SEE</div>
+<div style="font-size: 0.92rem; font-weight: 800; color: #fff; margin-top: 2px;">🍕 Word: &ldquo;Pizza&rdquo;</div>
+</div>
+<div style="background: rgba(255, 46, 85, 0.14); border: 1px solid rgba(255, 46, 85, 0.4); border-radius: 10px; padding: 8px 10px;">
+<div style="font-size: 0.66rem; color: #ff2e55; font-weight: 800;">👽 1 ALIEN ONLY SEES</div>
+<div style="font-size: 0.92rem; font-weight: 800; color: #fff; margin-top: 2px;">🧀 Hint: &ldquo;Melted&rdquo;</div>
+</div>
+</div>
+<div style="font-size: 0.78rem; color: var(--text-primary); line-height: 1.45; background: rgba(255,255,255,0.04); border-radius: 9px; padding: 8px 10px;">
+💬 <strong>The Clue Round:</strong> Going in order, each player says <strong>1 word</strong> out loud:<br/>
+• Player 1: <em>&ldquo;Crust&rdquo;</em> • Player 2: <em>&ldquo;Delivery&rdquo;</em> • Alien (bluffing from &ldquo;Melted&rdquo;): <em>&ldquo;Hot&rdquo;</em><br/>
+🎯 <strong>Goal:</strong> Give a clue subtle enough that the Alien can&rsquo;t guess <strong>Pizza</strong>, but clear enough that Civilians know you&rsquo;re human!
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px; font-size: 0.8rem; color: var(--text-secondary); line-height: 1.45;">
+<div><strong style="color: #fff;">1. Scan Roles:</strong> Pass 1 phone around OR join an Online Room on your own phones to see your secret card.</div>
+<div><strong style="color: #fff;">2. Give 1-Word Clues:</strong> No sentences or translations. Debate who sounded suspicious!</div>
+<div><strong style="color: #fff;">3. Vote &amp; Eliminate:</strong> Vote out the suspect. Eliminate all Aliens to win — or if an Alien survives to the Final 2, Aliens win!</div>
+<div style="background: rgba(168, 85, 247, 0.12); border: 1px solid rgba(168, 85, 247, 0.35); border-radius: 10px; padding: 8px 10px; color: #e9d5ff; font-size: 0.75rem;">
+📺 <strong>TV / Laptop Radar Board Mode:</strong> Hosting on a TV or Laptop? Tap <strong>📺 Host as Common TV / Laptop Board</strong> in Online Room mode — the TV shows the live Area-51 Radar &amp; Timer with zero spoilers while everyone uses their phone as a private controller!
+</div>
+</div>
+<button type="button" class="btn-main" id="btn-got-it-how-to-play" style="height: 46px; margin-top: 2px;">
+<span>🚀 Got It — Let&rsquo;s Play!</span>
+</button>
+</div>
+</div>
+<script src="./app.min.js?v=10"></script>
 </body>
 </html>
