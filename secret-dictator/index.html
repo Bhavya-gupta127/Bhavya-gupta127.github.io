@@ -31,7 +31,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@600;700;800&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="./styles.min.css?v=5" />
+<link rel="stylesheet" href="./styles.min.css?v=6" />
 <script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js" defer></script>
 </head>
 <body>
@@ -238,7 +238,7 @@ maxlength="18"
 <div class="tv-board-banner" id="tv-board-top-banner" style="display:none;">
 <div class="tv-banner-left">
 <span class="tv-live-pill">📺 COMMON TABLE BOARD</span>
-<span class="tv-room-pill" id="tv-banner-room-wrap">ROOM: <strong id="tv-banner-room-code">----</strong></span>
+<button type="button" class="tv-room-pill" id="tv-banner-room-wrap" title="Tap to copy Room Code & Join Link" style="cursor:pointer;">📡 ROOM: <strong id="tv-banner-room-code">----</strong> 📋</button>
 <span class="tv-join-url">📱 Join on your phone at <strong>partynights.online/secret-dictator</strong></span>
 </div>
 <div class="tv-banner-right">
@@ -248,6 +248,7 @@ maxlength="18"
 </div>
 <div class="controller-focus-bar" id="controller-mode-bar" style="display:none;">
 <div class="controller-bar-left">
+<button type="button" class="controller-room-pill" id="btn-controller-room-pill" title="Tap to copy Room Code">📡 ROOM: <strong id="controller-room-code">----</strong> 📋</button>
 <span class="controller-agent-pill" id="controller-agent-label">📱 Agent</span>
 <span class="controller-mini-hud" id="controller-mini-hud">🛡️ 0/5 • 🐍 0/6 • ⚖️ 0/3</span>
 </div>
@@ -259,6 +260,9 @@ maxlength="18"
 </div>
 </div>
 <div class="session-meta-strip">
+<button type="button" class="meta-pill room-code-meta-pill" id="btn-meta-room-pill" title="Tap to copy Room Code & Join Link" style="display:none; cursor:pointer;">
+<span>📡 ROOM: <strong id="stat-room-code">----</strong> 📋</span>
+</button>
 <div class="meta-pill deck-pill">
 <span class="card-stack-icon">🗂️</span>
 <span>Draw Deck: <strong id="stat-deck-count">17</strong></span>
@@ -453,6 +457,7 @@ A Secret Dictator session is active! Leaving now will disconnect you from the ro
 </div>
 </div>
 </div>
-<script src="./app.min.js?v=5"></script>
+<div id="sd-toast" class="sd-toast" style="display:none;" role="status" aria-live="polite"></div>
+<script src="./app.min.js?v=6"></script>
 </body>
 </html>
