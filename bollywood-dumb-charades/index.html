@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#070812" />
+  <title>Bollywood Dumb Charades Movie Generator (Easy to Hard) | PartyNights.online</title>
+  <meta name="description" content="Generate 300+ Bollywood movie names for Dumb Charades at your house party! Filter by Easy, 90s/2000s Classics, and Super Hard movies with a built-in 60s timer." />
+  <meta name="keywords" content="bollywood dumb charades words generator, hindi movies for dumb charades, difficult dumb charades movies bollywood, easy dumb charades hindi movies, house party games india, partynights.online" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+  <link rel="canonical" href="https://partynights.online/bollywood-dumb-charades/" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/mr-alien/icon-192.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/mr-alien/apple-touch-icon.png" />
+
+  <!-- OpenGraph / Social Meta -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="PartyNights.online" />
+  <meta property="og:url" content="https://partynights.online/bollywood-dumb-charades/" />
+  <meta property="og:title" content="Bollywood Dumb Charades Movie Generator (Easy to Hard)" />
+  <meta property="og:description" content="Instant random Bollywood movie generator for party games. Easy, 2000s Hits, and Impossible movies with 60-second acting timer!" />
+  <meta property="og:image" content="https://partynights.online/mr-alien/og-banner.png" />
+
+  <!-- Google AdSense -->
+  <meta name="google-adsense-account" content="ca-pub-5935694635631350" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5935694635631350" crossorigin="anonymous"></script>
+
+  <!-- Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Schema Markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "@id": "https://partynights.online/bollywood-dumb-charades/#app",
+        "name": "Bollywood Dumb Charades Movie Generator",
+        "url": "https://partynights.online/bollywood-dumb-charades/",
+        "applicationCategory": "GameApplication",
+        "operatingSystem": "All",
+        "description": "A random movie generator for Hindi Dumb Charades with difficulty levels and built-in timer.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "INR"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://partynights.online/bollywood-dumb-charades/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What are the hardest Bollywood movies for Dumb Charades?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Some of the most difficult Hindi movies to act out include 'Albert Pinto Ko Gussa Kyoon Aata Hai', 'Do Ladke Dono Kadke', 'Matru Ki Bijlee Ka Mandola', 'Luv Shuv Tey Chicken Khurana', and 'Salim Langde Pe Mat Ro'."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How to play Dumb Charades at a house party?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Divide into two teams. One player picks a random movie name and has 60 seconds to act it out using silent gestures without speaking or lip-syncing. If their team guesses correctly before time expires, they score a point."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg: #070812;
+      --card: rgba(18, 20, 38, 0.85);
+      --card-hover: rgba(25, 28, 53, 0.95);
+      --accent: #ff2e63;
+      --accent-purple: #7c3aed;
+      --cyan: #10d796;
+      --gold: #f59e0b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --border: rgba(255, 255, 255, 0.1);
+      --radius: 16px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: radial-gradient(circle at 50% 0%, #2b1236 0%, #070812 60%);
+      color: var(--text);
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      min-height: 100vh;
+      line-height: 1.6;
+      padding-bottom: 60px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px 16px;
+    }
+
+    /* Top Nav */
+    .top-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 20px;
+      background: rgba(7, 8, 18, 0.8);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .brand-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--text);
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      font-size: 1.25rem;
+    }
+    .brand-icon {
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, var(--gold), var(--accent));
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      font-size: 18px;
+    }
+    .btn-arcade {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 8px 14px;
+      border-radius: 99px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-arcade:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+
+    /* Hero */
+    .hero {
+      text-align: center;
+      padding: 30px 10px 20px;
+    }
+    .badge {
+      display: inline-block;
+      background: rgba(245, 158, 11, 0.15);
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      color: var(--gold);
+      padding: 4px 14px;
+      border-radius: 99px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .hero h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 12px;
+      background: linear-gradient(135deg, #fff 40%, var(--gold) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero p {
+      font-size: 1rem;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto 20px;
+    }
+
+    /* Generator Box */
+    .generator-card {
+      background: var(--card);
+      border: 2px solid rgba(245, 158, 11, 0.3);
+      border-radius: var(--radius);
+      padding: 28px 20px;
+      text-align: center;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(245, 158, 11, 0.1);
+      margin-bottom: 30px;
+      position: relative;
+    }
+
+    /* Category Filter Tabs */
+    .filter-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+    .filter-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 6px 14px;
+      border-radius: 99px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .filter-btn.active {
+      background: var(--gold);
+      color: #070812;
+      border-color: var(--gold);
+    }
+
+    /* Word Display */
+    .movie-display {
+      min-height: 110px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .movie-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(1.8rem, 5vw, 2.6rem);
+      font-weight: 900;
+      color: #fff;
+      text-shadow: 0 0 20px rgba(245, 158, 11, 0.4);
+      margin-bottom: 6px;
+      transition: transform 0.15s;
+    }
+    .movie-meta {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+    .movie-hint {
+      display: inline-block;
+      margin-top: 8px;
+      font-size: 0.82rem;
+      color: var(--cyan);
+      background: rgba(16, 215, 150, 0.12);
+      border: 1px solid rgba(16, 215, 150, 0.3);
+      padding: 3px 10px;
+      border-radius: 99px;
+    }
+
+    /* Generator Controls */
+    .action-btn-row {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+    .btn-generate {
+      background: linear-gradient(135deg, var(--gold), #ea580c);
+      color: #070812;
+      border: none;
+      padding: 14px 32px;
+      border-radius: 99px;
+      font-size: 1.1rem;
+      font-weight: 900;
+      font-family: 'Outfit', sans-serif;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(245, 158, 11, 0.4);
+      transition: transform 0.1s, opacity 0.2s;
+    }
+    .btn-generate:active { transform: scale(0.97); }
+
+    /* Timer Widget */
+    .timer-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .timer-display {
+      font-family: 'Outfit', monospace;
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: var(--cyan);
+      min-width: 50px;
+    }
+    .timer-display.danger { color: var(--accent); }
+    .btn-timer {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--border);
+      color: #fff;
+      padding: 6px 14px;
+      border-radius: 99px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    /* Conversion Box: Mr Alien Bridge */
+    .alien-bridge-card {
+      background: linear-gradient(135deg, rgba(255, 46, 99, 0.15), rgba(124, 58, 237, 0.25));
+      border: 2px solid rgba(255, 46, 99, 0.4);
+      border-radius: var(--radius);
+      padding: 24px;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .alien-bridge-card h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.5rem;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .alien-bridge-card p {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      max-width: 550px;
+      margin: 0 auto 16px;
+    }
+    .btn-alien {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      padding: 12px 28px;
+      border-radius: 99px;
+      font-weight: 800;
+      font-size: 1rem;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(255, 46, 99, 0.4);
+      transition: opacity 0.2s;
+    }
+    .btn-alien:hover { opacity: 0.92; }
+
+    /* Rules & Tips */
+    .content-section {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin-bottom: 30px;
+    }
+    .content-section h3 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.3rem;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+    .content-section ol, .content-section ul {
+      margin-left: 20px;
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      margin-bottom: 16px;
+    }
+    .content-section li { margin-bottom: 6px; }
+
+    /* Bottom Nav */
+    .footer-bar {
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 30px;
+    }
+    .footer-bar a { color: var(--cyan); text-decoration: none; margin: 0 8px; }
+  </style>
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <header class="top-nav">
+    <a href="/" class="brand-link">
+      <div class="brand-icon">🎬</div>
+      <span>PartyNights.online</span>
+    </a>
+    <a href="/mr-alien/" class="btn-arcade">Play Mr. Alien (Desi) →</a>
+  </header>
+
+  <main class="container">
+    <!-- Hero -->
+    <section class="hero">
+      <span class="badge">🎲 300+ Bollywood Movies Generator</span>
+      <h1>Bollywood Dumb Charades Word Generator</h1>
+      <p>Hit Generate to pick a random Bollywood movie for your house party game. Filter by popular hits, 90s/2000s classics, or impossible movies!</p>
+    </section>
+
+    <!-- Interactive Generator -->
+    <section class="generator-card">
+      <!-- Tabs -->
+      <div class="filter-tabs">
+        <button class="filter-btn active" onclick="setFilter('all')">🔥 All Movies (300+)</button>
+        <button class="filter-btn" onclick="setFilter('popular')">⭐ Blockbuster Hits</button>
+        <button class="filter-btn" onclick="setFilter('classic')">📼 90s &amp; 2000s Hits</button>
+        <button class="filter-btn" onclick="setFilter('hard')">💀 Impossible &amp; Rare</button>
+      </div>
+
+      <!-- Display -->
+      <div class="movie-display">
+        <div class="movie-title" id="disp-title">3 Idiots</div>
+        <div class="movie-meta" id="disp-meta">Level: ⭐ Popular • 2 Words</div>
+        <div class="movie-hint" id="disp-hint">💡 Clue: Engineering, Rancho &amp; Chatur</div>
+      </div>
+
+      <!-- Button -->
+      <div class="action-btn-row">
+        <button class="btn-generate" onclick="generateMovie()">🎲 Generate New Movie</button>
+      </div>
+
+      <!-- 60s Acting Timer -->
+      <div class="timer-bar">
+        <span>⏱️ Acting Timer:</span>
+        <span class="timer-display" id="timer-val">60s</span>
+        <button class="btn-timer" id="timer-btn" onclick="toggleTimer()">▶ Start Timer</button>
+        <button class="btn-timer" onclick="resetTimer()">↺ Reset</button>
+      </div>
+    </section>
+
+    <!-- Convert into Mr Alien -->
+    <section class="alien-bridge-card">
+      <h2>Tired of Acting? Play Mr. Alien Instead! 👽</h2>
+      <p>
+        Pass ONE phone around the circle. Everyone gets the secret Bollywood movie except one hidden Alien. 
+        Give 1-word clues, blend in, and expose the impostor! Zero downloads, 100% free.
+      </p>
+      <a href="/mr-alien/" class="btn-alien">Launch Mr. Alien (Pass 1 Phone) →</a>
+    </section>
+
+    <!-- Tips & Rules -->
+    <section class="content-section">
+      <h3>🎭 Dumb Charades Standard Gestures &amp; Rules</h3>
+      <ol>
+        <li><strong>No Speaking or Lip-Syncing</strong>: The actor can only communicate through body gestures and props.</li>
+        <li><strong>Number of Words</strong>: Hold up fingers to indicate total words in the movie title.</li>
+        <li><strong>Word You Are Acting</strong>: Tap fingers to indicate which word number you are currently acting out.</li>
+        <li><strong>Rhyming Sign</strong>: Tug your earlobe to show the word rhymes with another common object.</li>
+        <li><strong>Opposite Sign</strong>: Cross forearms into an "X" to show the opposite meaning.</li>
+      </ol>
+      <h3 style="margin-top: 20px;">💀 Top 10 Hardest Bollywood Movies for Dumb Charades</h3>
+      <ul>
+        <li><strong>Albert Pinto Ko Gussa Kyoon Aata Hai</strong> (1980)</li>
+        <li><strong>Do Ladke Dono Kadke</strong> (1979)</li>
+        <li><strong>Matru Ki Bijlee Ka Mandola</strong> (2013)</li>
+        <li><strong>Salim Langde Pe Mat Ro</strong> (1989)</li>
+        <li><strong>Luv Shuv Tey Chicken Khurana</strong> (2012)</li>
+        <li><strong>Ghar Ho To Aisa</strong> (1990)</li>
+        <li><strong>Arvind Desai Ki Ajeeb Dastaan</strong> (1978)</li>
+        <li><strong>Bhediya</strong> (2022)</li>
+        <li><strong>Kantara</strong> (2022)</li>
+        <li><strong>Tumbbad</strong> (2018)</li>
+      </ul>
+    </section>
+
+    <div class="footer-bar">
+      <a href="/">PartyNights Arcade</a> • 
+      <a href="/free-jackbox-alternatives/">Jackbox Alternatives</a> • 
+      <a href="/pass-the-phone-games/">Pass The Phone Games</a> • 
+      <a href="/mr-alien/">Mr. Alien</a>
+    </div>
+  </main>
+
+  <script>
+    const MOVIES = {
+      popular: [
+        { title: "3 Idiots", meta: "⭐ Popular • 2 Words", hint: "Engineering college & Rancho" },
+        { title: "Sholay", meta: "⭐ Popular • 1 Word", hint: "Gabbar, Veeru & Jai" },
+        { title: "Dangal", meta: "⭐ Popular • 1 Word", hint: "Wrestling & Geeta Babita" },
+        { title: "Bajrangi Bhaijaan", meta: "⭐ Popular • 2 Words", hint: "Border tunnel & Munni" },
+        { title: "PK", meta: "⭐ Popular • 1 Word (2 Letters)", hint: "Lost glowing spaceship remote" },
+        { title: "Stree", meta: "⭐ Popular • 1 Word", hint: "O Stree Kal Aana on the wall" },
+        { title: "Drishyam", meta: "⭐ Popular • 1 Word", hint: "2nd October family trip to Panaji" },
+        { title: "Pushpa", meta: "⭐ Popular • 1 Word", hint: "Thaggedhe Le hand under chin" },
+        { title: "RRR", meta: "⭐ Popular • 1 Word", hint: "Bridge rescue with horse & bike" },
+        { title: "KGF", meta: "⭐ Popular • 1 Word", hint: "Gold mine & Rocky Bhai" },
+        { title: "Kabir Singh", meta: "⭐ Popular • 2 Words", hint: "Angry doctor on a motorcycle" },
+        { title: "Gully Boy", meta: "⭐ Popular • 2 Words", hint: "Apna Time Aayega rap battle" },
+        { title: "Andhadhun", meta: "⭐ Popular • 1 Word", hint: "Blind pianist & cabbage rabbit" },
+        { title: "Bhool Bhulaiyaa", meta: "⭐ Popular • 2 Words", hint: "Ankle bells (Ghungroo) in corridor" },
+        { title: "Queen", meta: "⭐ Popular • 1 Word", hint: "Solo Paris honeymoon & Eiffel Tower" },
+        { title: "Chak De! India", meta: "⭐ Popular • 3 Words", hint: "70 Minutes hockey locker room speech" }
+      ],
+      classic: [
+        { title: "Hera Pheri", meta: "📼 2000s Classic • 2 Words", hint: "Star Fisheries wrong phone number" },
+        { title: "Andaz Apna Apna", meta: "📼 90s Classic • 3 Words", hint: "Crime Master Gogo & Amar Prem" },
+        { title: "Dil Chahta Hai", meta: "📼 2000s Classic • 3 Words", hint: "Goa Chapora fort wall" },
+        { title: "Kabhi Khushi Kabhie Gham", meta: "📼 2000s Classic • 4 Words", hint: "Rahul steps out of private helicopter" },
+        { title: "Kuch Kuch Hota Hai", meta: "📼 90s Classic • 4 Words", hint: "8 Birthday letters for Anjali" },
+        { title: "Jab We Met", meta: "📼 2000s Classic • 3 Words", hint: "Geet keeps missing her train for water" },
+        { title: "Yeh Jawaani Hai Deewani", meta: "📼 2000s Classic • 4 Words", hint: "Freezing snow trek in Manali" },
+        { title: "Zindagi Na Milegi Dobara", meta: "📼 2000s Classic • 4 Words", hint: "Skydiving, scuba diving & La Tomatina" },
+        { title: "Rang De Basanti", meta: "📼 2000s Classic • 4 Words", hint: "Mustard-yellow color of sacrifice" },
+        { title: "Munna Bhai MBBS", meta: "📼 2000s Classic • 3 Words", hint: "Warm Jadoo Ki Jhappi hug" },
+        { title: "Welcome", meta: "📼 2000s Classic • 1 Word", hint: "Majnu Bhai's horse & donkey painting" },
+        { title: "Golmaal", meta: "📼 2000s Classic • 1 Word", hint: "4 troublemakers in a blind couple's home" },
+        { title: "Dhamaal", meta: "📼 2000s Classic • 1 Word", hint: "Suitcase buried under a giant Big W" },
+        { title: "Gadar", meta: "📼 2000s Classic • 1 Word", hint: "Tara Singh pulls out the handpump" },
+        { title: "Lagaan", meta: "📼 2000s Classic • 1 Word", hint: "Cricket match to cancel 3x farm tax" },
+        { title: "Border", meta: "📼 90s Classic • 1 Word", hint: "Soldiers receiving emotional letters" }
+      ],
+      hard: [
+        { title: "Albert Pinto Ko Gussa Kyoon Aata Hai", meta: "💀 Super Hard • 7 Words", hint: "1980 classic Naseeruddin Shah drama" },
+        { title: "Do Ladke Dono Kadke", meta: "💀 Super Hard • 4 Words", hint: "1979 comedy about two broke kidnappers" },
+        { title: "Matru Ki Bijlee Ka Mandola", meta: "💀 Super Hard • 5 Words", hint: "Pink buffalo hallucinations & country wine" },
+        { title: "Luv Shuv Tey Chicken Khurana", meta: "💀 Super Hard • 5 Words", hint: "Secret family chicken gravy recipe" },
+        { title: "Salim Langde Pe Mat Ro", meta: "💀 Super Hard • 5 Words", hint: "1989 Saeed Mirza drama" },
+        { title: "Ghar Ho To Aisa", meta: "💀 Super Hard • 4 Words", hint: "Anil Kapoor & Meenakshi Sheshadri" },
+        { title: "Arvind Desai Ki Ajeeb Dastaan", meta: "💀 Super Hard • 5 Words", hint: "1978 art film directed by Saeed Mirza" },
+        { title: "Tumbbad", meta: "💀 Super Hard • 1 Word", hint: "Hastar monster & flour dough doll" },
+        { title: "Kantara", meta: "💀 Super Hard • 1 Word", hint: "Varaha Roopam holy forest roar" },
+        { title: "Bhediya", meta: "💀 Super Hard • 1 Word", hint: "Arunachal werewolf bite transformation" },
+        { title: "Peepli Live", meta: "💀 Super Hard • 2 Words", hint: "Natha's televised suicide saga" },
+        { title: "Manto", meta: "💀 Super Hard • 1 Word", hint: "Nawazuddin Siddiqui as fearless writer" }
+      ]
+    };
+
+    let currentFilter = 'all';
+    let timerSec = 60;
+    let timerInterval = null;
+
+    function setFilter(cat) {
+      currentFilter = cat;
+      document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+      generateMovie();
+    }
+
+    function getAllFiltered() {
+      if (currentFilter === 'all') {
+        return [...MOVIES.popular, ...MOVIES.classic, ...MOVIES.hard];
+      }
+      return MOVIES[currentFilter] || MOVIES.popular;
+    }
+
+    function generateMovie() {
+      const list = getAllFiltered();
+      const pick = list[Math.floor(Math.random() * list.length)];
+      
+      const titleEl = document.getElementById('disp-title');
+      const metaEl = document.getElementById('disp-meta');
+      const hintEl = document.getElementById('disp-hint');
+
+      titleEl.style.transform = 'scale(0.92)';
+      setTimeout(() => {
+        titleEl.innerText = pick.title;
+        metaEl.innerText = pick.meta;
+        hintEl.innerText = '💡 ' + pick.hint;
+        titleEl.style.transform = 'scale(1)';
+      }, 100);
+
+      resetTimer();
+    }
+
+    function toggleTimer() {
+      const btn = document.getElementById('timer-btn');
+      if (timerInterval) {
+        clearInterval(timerInterval);
+        timerInterval = null;
+        btn.innerText = '▶ Resume Timer';
+      } else {
+        btn.innerText = '⏸ Pause Timer';
+        timerInterval = setInterval(() => {
+          if (timerSec > 0) {
+            timerSec--;
+            updateTimerDisplay();
+          } else {
+            clearInterval(timerInterval);
+            timerInterval = null;
+            btn.innerText = '⌛ Time Up!';
+          }
+        }, 1000);
+      }
+    }
+
+    function resetTimer() {
+      if (timerInterval) {
+        clearInterval(timerInterval);
+        timerInterval = null;
+      }
+      timerSec = 60;
+      document.getElementById('timer-btn').innerText = '▶ Start Timer';
+      updateTimerDisplay();
+    }
+
+    function updateTimerDisplay() {
+      const disp = document.getElementById('timer-val');
+      disp.innerText = timerSec + 's';
+      if (timerSec <= 10) {
+        disp.classList.add('danger');
+      } else {
+        disp.classList.remove('danger');
+      }
+    }
+  </script>
+</body>
+</html>
