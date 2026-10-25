@@ -418,13 +418,28 @@ The secret question is hidden from the TV screen! Waiting for the whisper...
 </div>
 <div id="poll-step-vote" class="game-stage-card">
 <div id="poll-phone-voter-wrap" class="poll-phone-voter-wrap">
+<div id="poll-active-voter-box" class="poll-active-voter-box">
 <div class="voter-turn-banner">
-<span class="voter-turn-badge" id="poll-voter-badge">📱 PASS PHONE TO VOTER #1</span>
+<span class="voter-turn-badge" id="poll-voter-badge">📱 VOTER 1 OF 4</span>
 <h3 class="voter-turn-title" id="poll-voter-title">
 <span class="highlight-cyan" id="poll-current-voter">Aarav</span>, tap your secret vote:
 </h3>
 </div>
 <div class="target-select-grid" id="poll-vote-grid"></div>
+<div id="poll-confirm-bar" class="poll-confirm-bar" style="display: none;">
+<button type="button" class="primary-glow-btn poll-confirm-btn" id="btn-confirm-poll-vote">
+<span id="poll-confirm-btn-text">✅ Confirm Vote &amp; Pass to Priya →</span>
+</button>
+</div>
+</div>
+<div id="poll-pass-gate-box" class="privacy-gate-box poll-pass-gate-box" style="display: none;">
+<span class="gate-badge" id="poll-pass-saved-badge">🔒 VOTE LOCKED IN SECRET</span>
+<h2 class="gate-title">📱 Pass Phone to <span class="highlight-cyan" id="poll-pass-next-name">Priya</span></h2>
+<span class="compact-step-pill" id="poll-pass-step-pill">Voter 2 of 4 • Hand phone to Priya</span>
+<button type="button" class="primary-glow-btn" id="btn-unlock-next-voter">
+<span>🔓 I am <span id="btn-unlock-voter-name">Priya</span> — Cast My Secret Vote →</span>
+</button>
+</div>
 </div>
 <div id="poll-tv-tracker-box" class="poll-tv-tracker-box" style="display: none;">
 <span class="voter-turn-badge">📺 LIVE BIG-SCREEN VOTE TRACKER</span>
