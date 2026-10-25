@@ -33,7 +33,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="./styles.min.css?v=4" />
+<link rel="stylesheet" href="./styles.min.css?v=6" />
 </head>
 <body>
 <div class="ambient-glow glow-left" aria-hidden="true"></div>
@@ -74,6 +74,7 @@
 <span>🏠</span>
 <span id="btn-top-menu-label" class="nav-pill-label">Setup</span>
 </button>
+<button class="circle-btn" id="btn-open-settings" type="button" title="Game Settings &amp; Family Mode">⚙️</button>
 <button class="circle-btn" id="btn-open-rules" type="button" title="How to Play">📖</button>
 <button class="circle-btn" id="btn-open-leaderboard" type="button" title="Hall of Fame">🏆</button>
 <button class="circle-btn" id="btn-sound-toggle" type="button" title="Toggle Sound">🔊</button>
@@ -170,20 +171,24 @@ FREE PARTY GAME ONLINE • HOUSE PARTY GAMES WITH FRIENDS
 <h2 class="section-title">Game Setup</h2>
 <p class="section-subtitle">Pick a mode &amp; start in seconds.</p>
 </div>
-<div class="setup-card tv-room-card" id="tv-room-card">
+<div class="setup-settings-summary-bar" id="setup-settings-summary-bar" role="button" tabindex="0" title="Tap to customize Decks, Rounds, Timer, TV/Room &amp; Family Mode">
+<div class="summary-bar-text" id="summary-bar-text">
+<span class="summary-pill-item" id="summary-device-pill">📱 1 Phone</span>
+<span class="summary-pill-divider">•</span>
+<span class="summary-pill-item" id="summary-rounds-pill">7 Rounds</span>
+<span class="summary-pill-divider">•</span>
+<span class="summary-pill-item" id="summary-family-pill">👨‍👩‍👧‍👦 All Decks</span>
+</div>
+<button type="button" class="btn-summary-settings" id="btn-summary-settings" aria-label="Open Settings">
+<span>⚙️ Settings</span>
+</button>
+</div>
+<div class="setup-card tv-room-card" id="tv-room-card" style="display: none;">
 <div class="card-label-row">
-<span class="card-label">📺 Screen &amp; Devices</span>
-<span class="card-hint" id="tv-room-badge">📱 Pass 1 Phone</span>
+<span class="card-label">📡 TV Board &amp; Phone Room</span>
+<span class="card-hint" id="tv-room-badge">📡 TV Board Active</span>
 </div>
-<div class="room-action-row">
-<button type="button" class="btn-room-toggle active" id="btn-mode-local">
-<span>📱 Pass 1 Phone</span>
-</button>
-<button type="button" class="btn-room-toggle" id="btn-mode-room">
-<span>📡 TV Board + Phones</span>
-</button>
-</div>
-<div id="room-controls-panel" class="room-controls-panel" style="display: none;">
+<div id="room-controls-panel" class="room-controls-panel">
 <div class="room-code-display-box">
 <div class="room-code-meta">
 <span class="room-code-label">ROOM CODE</span>
@@ -250,26 +255,6 @@ FREE PARTY GAME ONLINE • HOUSE PARTY GAMES WITH FRIENDS
 </div>
 </div>
 <div id="player-names-grid" class="player-names-grid"></div>
-<div class="settings-inline-grid" id="coop-settings-grid">
-<div class="setting-inline-col" id="coop-rounds-row">
-<span class="sub-label">Rounds:</span>
-<div class="pill-Radio-group" id="round-count-group">
-<button type="button" class="pill-choice" data-rounds="5">5</button>
-<button type="button" class="pill-choice active" data-rounds="7">7</button>
-<button type="button" class="pill-choice" data-rounds="10">10</button>
-<button type="button" class="pill-choice" data-rounds="99">♾️</button>
-</div>
-</div>
-<div class="setting-inline-col" id="coop-timer-row">
-<span class="sub-label">Timer:</span>
-<div class="pill-Radio-group" id="timer-choice-group">
-<button type="button" class="pill-choice active" data-timer="0">Off ∞</button>
-<button type="button" class="pill-choice" data-timer="30">30s ⚡</button>
-<button type="button" class="pill-choice" data-timer="45">45s 🔥</button>
-<button type="button" class="pill-choice" data-timer="60">60s ⏱️</button>
-</div>
-</div>
-</div>
 </div>
 <div class="setup-card" id="setup-teams-card" style="display: none;">
 <div class="card-label-row">
@@ -302,54 +287,10 @@ FREE PARTY GAME ONLINE • HOUSE PARTY GAMES WITH FRIENDS
 <input type="checkbox" id="chk-team-steal" checked />
 </label>
 </div>
-<div class="setup-card">
-<div class="card-label-row">
-<span class="card-label">3. Card Decks</span>
-<button type="button" class="text-link-btn" id="btn-toggle-all-cats">Keep 1 Only</button>
-</div>
-<div class="category-grid" id="category-grid">
-<button type="button" class="cat-chip active" data-cat="Desi Chaos">
-<span>🇮🇳 Desi Chaos</span>
-<small>Chai, Shaadi &amp; Jugaad</small>
-</button>
-<button type="button" class="cat-chip active" data-cat="Bollywood & Pop">
-<span>🎬 Bollywood &amp; Pop</span>
-<small>Movies, IPL &amp; Memes</small>
-</button>
-<button type="button" class="cat-chip active" data-cat="Spicy & Opinions">
-<span>🌶️ Spicy &amp; Red Flags</span>
-<small>Hot Takes &amp; Dating</small>
-</button>
-<button type="button" class="cat-chip active" data-cat="Food & Nightlife">
-<span>🍕 Food &amp; Cravings</span>
-<small>3 AM Snacks &amp; Parties</small>
-</button>
-<button type="button" class="cat-chip active" data-cat="Classic Spectrums">
-<span>🎯 Everyday Classics</span>
-<small>Iconic Contrasts</small>
-</button>
-<button type="button" class="cat-chip active" data-cat="Weird & Deep">
-<span>🧠 Weird &amp; Existential</span>
-<small>Sci-Fi &amp; Shower Thoughts</small>
-</button>
-</div>
-<div class="custom-creator-box">
-<div class="custom-creator-header">
-<span>✨ Custom Cards (<span id="custom-count-badge">0</span>)</span>
-<button type="button" class="text-link-btn" id="btn-toggle-custom-drawer">+ Create Card</button>
-</div>
-<div id="custom-drawer-body" class="custom-drawer-body" style="display: none;">
-<div class="custom-inputs-row">
-<input type="text" id="custom-left-input" placeholder="Left (e.g. Overrated)" maxlength="40" />
-<span class="custom-arrow">↔</span>
-<input type="text" id="custom-right-input" placeholder="Right (e.g. Underrated)" maxlength="40" />
-<button type="button" id="btn-add-custom-card" class="btn-small-accent">Add</button>
-</div>
-<div id="custom-cards-list" class="custom-cards-list"></div>
-</div>
-</div>
-</div>
 <button type="button" id="btn-start-match" class="btn-launch">
+<span>Start Game</span>
+<span>🧠⚡</span>
+</button>
 <span>Start Game</span>
 <span>🧠⚡</span>
 </button>
@@ -728,11 +669,122 @@ Your squad is in the middle of a Wavelength match! Leaving now will end the curr
 </div>
 </div>
 </div>
+<div class="modal-backdrop" id="modal-settings" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="settings-modal-title">
+<div class="modal-sheet settings-modal-sheet">
+<div class="modal-header">
+<h3 id="settings-modal-title">⚙️ Game Settings</h3>
+<button type="button" class="circle-btn" id="btn-close-settings" title="Close Settings">✕</button>
+</div>
+<div class="modal-body settings-modal-body">
+<div class="settings-family-mode-card">
+<label class="toggle-row family-mode-toggle-row" for="toggle-family-mode">
+<div class="toggle-info">
+<div class="toggle-title">👨‍👩‍👧‍👦 Family Mode</div>
+<div class="toggle-sub">100% kid- &amp; parent-safe spectrums. Disables spicy cards, dating &amp; 18+ content.</div>
+</div>
+<input type="checkbox" id="toggle-family-mode" />
+</label>
+</div>
+<div class="setup-card modal-setup-card" id="modal-screen-mode-card">
+<div class="card-label-row">
+<span class="card-label">📺 Screen &amp; Devices</span>
+<span class="card-hint" id="modal-tv-room-badge">📱 Pass 1 Phone</span>
+</div>
+<div class="room-action-row">
+<button type="button" class="btn-room-toggle active" id="btn-mode-local">
+<span>📱 Pass 1 Phone</span>
+</button>
+<button type="button" class="btn-room-toggle" id="btn-mode-room">
+<span>📡 TV Board + Phones</span>
+</button>
+</div>
+</div>
+<div class="setup-card modal-setup-card" id="modal-rounds-timer-card">
+<div class="card-label-row">
+<span class="card-label">⏱️ Rounds &amp; Timer</span>
+</div>
+<div class="settings-inline-grid" id="coop-settings-grid">
+<div class="setting-inline-col" id="coop-rounds-row">
+<span class="sub-label">Rounds:</span>
+<div class="pill-Radio-group" id="round-count-group">
+<button type="button" class="pill-choice" data-rounds="5">5</button>
+<button type="button" class="pill-choice active" data-rounds="7">7</button>
+<button type="button" class="pill-choice" data-rounds="10">10</button>
+<button type="button" class="pill-choice" data-rounds="99">♾️</button>
+</div>
+</div>
+<div class="setting-inline-col" id="coop-timer-row">
+<span class="sub-label">Timer:</span>
+<div class="pill-Radio-group" id="timer-choice-group">
+<button type="button" class="pill-choice active" data-timer="0">Off ∞</button>
+<button type="button" class="pill-choice" data-timer="30">30s ⚡</button>
+<button type="button" class="pill-choice" data-timer="45">45s 🔥</button>
+<button type="button" class="pill-choice" data-timer="60">60s ⏱️</button>
+</div>
+</div>
+</div>
+</div>
+<div class="setup-card modal-setup-card">
+<div class="card-label-row">
+<span class="card-label">🎴 Card Decks</span>
+<button type="button" class="text-link-btn" id="btn-toggle-all-cats">Keep 1 Only</button>
+</div>
+<div class="category-grid" id="category-grid">
+<button type="button" class="cat-chip active" data-cat="Desi Chaos">
+<span>🇮🇳 Desi Chaos</span>
+<small>Chai, Shaadi &amp; Jugaad</small>
+</button>
+<button type="button" class="cat-chip active" data-cat="Bollywood & Pop">
+<span>🎬 Bollywood &amp; Pop</span>
+<small>Movies, IPL &amp; Memes</small>
+</button>
+<button type="button" class="cat-chip active" data-cat="Spicy & Opinions" id="cat-chip-spicy">
+<span>🌶️ Spicy &amp; Red Flags</span>
+<small>Hot Takes &amp; Dating</small>
+</button>
+<button type="button" class="cat-chip active" data-cat="Food & Nightlife">
+<span>🍕 Food &amp; Cravings</span>
+<small>3 AM Snacks &amp; Parties</small>
+</button>
+<button type="button" class="cat-chip active" data-cat="Classic Spectrums">
+<span>🎯 Everyday Classics</span>
+<small>Iconic Contrasts</small>
+</button>
+<button type="button" class="cat-chip active" data-cat="Weird & Deep">
+<span>🧠 Weird &amp; Existential</span>
+<small>Sci-Fi &amp; Shower Thoughts</small>
+</button>
+</div>
+<div class="custom-creator-box">
+<div class="custom-creator-header">
+<span>✨ Custom Cards (<span id="custom-count-badge">0</span>)</span>
+<button type="button" class="text-link-btn" id="btn-toggle-custom-drawer">+ Create Card</button>
+</div>
+<div id="custom-drawer-body" class="custom-drawer-body" style="display: none;">
+<div class="custom-inputs-row">
+<input type="text" id="custom-left-input" placeholder="Left (e.g. Overrated)" maxlength="40" />
+<span class="custom-arrow">↔</span>
+<input type="text" id="custom-right-input" placeholder="Right (e.g. Underrated)" maxlength="40" />
+<button type="button" id="btn-add-custom-card" class="btn-small-accent">Add</button>
+</div>
+<div id="custom-cards-list" class="custom-cards-list"></div>
+</div>
+</div>
+</div>
+<div class="modal-footer-row" style="margin-top: 14px;">
+<button type="button" class="btn-launch" id="btn-done-settings" style="width: 100%;">
+<span>Save &amp; Close Settings</span>
+<span>✓</span>
+</button>
+</div>
+</div>
+</div>
+</div>
 <div id="toast-container" class="toast-container" aria-live="polite"></div>
 <label id="ios-haptic-label" for="ios-haptic-switch" aria-hidden="true" style="position:fixed;left:-9999px;top:-9999px;opacity:0;pointer-events:none;">
 <input type="checkbox" switch id="ios-haptic-switch" />
 </label>
-<script src="./app.min.js?v=4"></script>
+<script src="./app.min.js?v=6"></script>
 <script src="/ads-engine.js" defer></script>
 </body>
 </html>

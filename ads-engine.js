@@ -31,27 +31,28 @@
   // 1. GOOGLE H5 GAMES AD PLACEMENT API SHIM (`adConfig` & `adBreak`)
   // =========================================================================
   window.adsbygoogle = window.adsbygoogle || [];
-  if (typeof window.adBreak !== "function") {
+  var hasNativeH5AdBreak = typeof window.adBreak === "function";
+  if (!hasNativeH5AdBreak) {
     window.adBreak = function (o) {
-      try {
-        window.adsbygoogle.push(o);
-      } catch (_) {}
+      if (o && typeof o.adBreakDone === "function") {
+        try {
+          o.adBreakDone({ breakStatus: "notReady" });
+        } catch (_) {}
+      }
     };
   }
   if (typeof window.adConfig !== "function") {
-    window.adConfig = function (o) {
-      try {
-        window.adsbygoogle.push(o);
-      } catch (_) {}
-    };
+    window.adConfig = function () {};
   }
 
-  try {
-    window.adConfig({
-      preloadAdBreaks: "on",
-      sound: "on"
-    });
-  } catch (_) {}
+  if (hasNativeH5AdBreak) {
+    try {
+      window.adConfig({
+        preloadAdBreaks: "on",
+        sound: "on"
+      });
+    } catch (_) {}
+  }
 
   // =========================================================================
   // 2. +100 VIP AFTER-HOURS & CHAOS EXPANSION VAULT (ALL 4 GAMES)
@@ -131,7 +132,16 @@
     { id: "vip16", category: "party", tag: "🔥 VIP After-Hours", q: "Who here is most likely to convince the whole squad to stay out until 5 AM on a work night?" }
   ];
 
+  function isFamilyModeActive() {
+    try {
+      return localStorage.getItem("pn_family_mode_v1") === "1";
+    } catch (_) {
+      return false;
+    }
+  }
+
   function isVipUnlocked() {
+    if (isFamilyModeActive()) return false;
     try {
       var until = parseInt(localStorage.getItem(VIP_STORAGE_KEY) || "0", 10);
       return until > Date.now();
@@ -141,6 +151,7 @@
   }
 
   function applyVipPacksToActiveGame() {
+    if (isFamilyModeActive()) return;
     if (!isVipUnlocked()) return;
     window.PN_VIP_UNLOCKED = true;
 
@@ -545,6 +556,7 @@
   }
 
   function triggerRewardedUnlock() {
+    if (isFamilyModeActive()) return;
     if (isVipUnlocked()) {
       applyVipPacksToActiveGame();
       showVipToast("✨ VIP After-Hours Pack (+100 Cards) is already unlocked & active!");
@@ -666,23 +678,23 @@
     if (isActiveGameplayScreen()) return false;
     if (document.body.classList.contains("tv-board-mode")) return false;
 
-    // 1. Game Over Screen across any game
+    // Never show fixed bottom sticky bar on Game Over screen because Play Again / Edit Setup buttons sit at the bottom of Game Over
     var gameOver = document.getElementById("screen-gameover");
-    if (gameOver && gameOver.classList.contains("active")) return true;
+    if (gameOver && gameOver.classList.contains("active")) return false;
 
-    // 2. Secret Dictator Waiting Lobby
+    // 1. Secret Dictator Waiting Lobby
     var sdLobby = document.getElementById("screen-lobby");
     if (sdLobby && sdLobby.classList.contains("active")) return true;
 
-    // 3. Mr. Alien Online Waiting Lobby
-    var maLobby = document.getElementById("online-lobby-panel");
+    // 2. Mr. Alien Online Waiting Lobby
+    var maLobby = document.getElementById("online-lobby-box") || document.getElementById("online-lobby-panel");
     if (maLobby && maLobby.offsetParent !== null) return true;
 
-    // 4. Paranoia Multi-Phone Room Lobby
+    // 3. Paranoia Multi-Phone Room Lobby
     var paLobby = document.getElementById("multi-room-lobby");
     if (paLobby && paLobby.offsetParent !== null) return true;
 
-    // 5. Wavelength TV/Room Setup Card open
+    // 4. Wavelength TV/Room Setup Card open
     var wvLobby = document.getElementById("tv-room-card");
     if (wvLobby && wvLobby.offsetParent !== null) return true;
 
@@ -692,14 +704,16 @@
   function syncAdVisibilityByScreen() {
     var bar = ensureStickyAnchorBanner();
     var inGameplay = isActiveGameplayScreen();
+    var gameOverEl = document.getElementById("screen-gameover");
+    var inGameOver = !!(gameOverEl && gameOverEl.classList.contains("active"));
 
-    // Desktop floating VIP pill: show on Landing/Setup/Lobby/GameOver, hide during active gameplay
+    // Desktop floating VIP pill: show on Landing/Setup/Lobby, hide during active gameplay & on Game Over so it never overlaps Play Again
     var fab = document.getElementById("pn-desktop-vip-fab");
     if (fab) {
-      fab.style.display = inGameplay ? "none" : "";
+      fab.style.display = isFamilyModeActive() || inGameplay || inGameOver ? "none" : "";
     }
 
-    if (stickyDismissed || inGameplay) {
+    if (stickyDismissed || inGameplay || inGameOver) {
       bar.classList.remove("pn-screen-allowed");
       return;
     }
@@ -740,6 +754,7 @@
   }
 
   function wireRematchInterstitialHook() {
+    if (!hasNativeH5AdBreak) return;
     var rematchBtnIds = [
       "btn-play-again",
       "btn-gameover-again",
@@ -763,7 +778,7 @@
             }
           } catch (_) {}
         },
-        true
+        false
       );
     });
   }
@@ -804,6 +819,13 @@
   }
 
   function mountVipTriggers() {
+    if (isFamilyModeActive()) {
+      var existingFab = document.getElementById("pn-desktop-vip-fab");
+      if (existingFab) existingFab.style.display = "none";
+      var btns = document.querySelectorAll(".pn-vip-unlock-btn");
+      btns.forEach(function (b) { b.style.display = "none"; });
+      return;
+    }
     // A. On Arcade Hub (`partynights.online/`): turn `.coming-soon-slot` into a 1-line clickable VIP Unlocker (0px height/word bloat)
     var hubSlot = document.querySelector(".coming-soon-slot");
     if (hubSlot && !hubSlot.dataset.pnVipMounted) {
