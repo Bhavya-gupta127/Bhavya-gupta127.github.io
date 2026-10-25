@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dictator">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
@@ -31,52 +31,86 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@600;700;800&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="./styles.min.css?v=2" />
+<link rel="stylesheet" href="./styles.min.css?v=3" />
 <script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js" defer></script>
 </head>
 <body>
 <div class="ambient-bg" aria-hidden="true"></div>
+<div class="cyber-grid-overlay" aria-hidden="true"></div>
 <div class="app-shell">
 <header class="top-bar" id="app-top-bar">
-<div class="top-left-nav">
-<button type="button" class="ios-back-btn" id="btn-ios-back" aria-label="Go Back" title="Go Back">
-<svg class="ios-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
-<span id="ios-back-label">Arcade</span>
+<div class="brand-left">
+<button type="button" class="ios-back-btn" id="btn-ios-back" title="Back">
+<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+<span id="ios-back-label">Hub</span>
 </button>
 <div class="brand-group" id="btn-brand-home" title="Main Menu">
-<div class="brand-emblem">👑</div>
+<div class="brand-emblem" id="top-brand-emblem">👑</div>
 <div>
-<div class="brand-title">SECRET DICTATOR</div>
-<div class="brand-sub" id="top-room-indicator">PartyNights.online</div>
+<div class="brand-title" id="top-brand-title">SECRET DICTATOR</div>
+<div class="brand-sub" id="top-room-indicator">Shadow Regime Edition</div>
 </div>
 </div>
 </div>
 <div class="top-actions">
-<a href="https://partynights.online/" class="hub-link-pill" id="btn-top-hub" title="PartyNights.online Hub">🎉 Hub</a>
+<button type="button" class="theme-pill-btn" id="btn-open-themes" title="Switch World Theme">
+<span id="top-theme-icon">🎨</span>
+<span id="top-theme-name">Theme</span>
+</button>
 <button type="button" class="icon-btn" id="btn-open-rules" title="Rules & Powers">📜</button>
 <button type="button" class="icon-btn" id="btn-sound-toggle" title="Toggle Sound">🔊</button>
-<button type="button" class="icon-btn" id="btn-leave-room" title="Leave / Menu" style="display:none;">🚪</button>
+<button type="button" class="icon-btn" id="btn-leave-room" title="Leave Room" style="display:none;">🚪</button>
 </div>
 </header>
 <section id="screen-landing" class="screen active">
 <div class="hero-card">
 <div class="status-ribbon">
 <span class="pulse-dot"></span>
-<span>FREE PARTY GAME ONLINE • NO DOWNLOAD • 5–10 PLAYERS</span>
+<span id="landing-ribbon-text">FREE PARTY GAME ONLINE • NO DOWNLOAD • 5–10 PLAYERS</span>
 </div>
-<div class="emblem-stage">
+<div class="emblem-stage" id="hero-emblem-stage">
 <div class="emblem-ring ring-blue"></div>
 <div class="emblem-ring ring-red"></div>
-<div class="emblem-core">👑</div>
+<div class="floating-mini-card card-left" id="hero-card-blue">🛡️</div>
+<div class="floating-mini-card card-right" id="hero-card-red">🐍</div>
+<div class="emblem-core" id="hero-emblem-core">👑</div>
 </div>
-<h1 class="landing-title">SECRET DICTATOR</h1>
-<p class="landing-subtitle">
+<h1 class="landing-title" id="landing-main-title">SECRET DICTATOR</h1>
+<p class="landing-subtitle" id="landing-main-subtitle">
 The ultimate social deduction house party game with friends. Join on your own phones via <strong>Room Code</strong> or <strong>Pass 1 Phone</strong>—enact <strong>5 Freedom Bills</strong> to save the Republic or crown the <strong>Secret Dictator</strong>!
 </p>
-<div class="mode-badges">
-<span class="mode-chip blue">🛡️ Republic vs 🐍 Syndicate</span>
-<span class="mode-chip red">📲 Multi-Phone Room Code</span>
-<span class="mode-chip cyan">📱 Pass 1 Phone</span>
+<div class="theme-selector-box">
+<div class="theme-selector-header">
+<span class="theme-selector-label">🎨 CHOOSE WORLD THEME</span>
+<span class="theme-active-badge" id="landing-theme-badge">Shadow Regime</span>
+</div>
+<div class="theme-strip" id="landing-theme-strip">
+<button type="button" class="theme-chip active" data-theme-id="dictator">
+<span class="t-emoji">👑</span>
+<span class="t-name">Shadow Regime</span>
+<span class="t-sub">Cyber-Noir</span>
+</button>
+<button type="button" class="theme-chip" data-theme-id="classic">
+<span class="t-emoji">📜</span>
+<span class="t-name">1930s Classic</span>
+<span class="t-sub">Vintage Board</span>
+</button>
+<button type="button" class="theme-chip" data-theme-id="galactic">
+<span class="t-emoji">🌌</span>
+<span class="t-name">Galactic Senate</span>
+<span class="t-sub">Jedi vs Sith</span>
+</button>
+<button type="button" class="theme-chip" data-theme-id="desi">
+<span class="t-emoji">🇮🇳</span>
+<span class="t-name">Sansad Masala</span>
+<span class="t-sub">Desi Politics</span>
+</button>
+<button type="button" class="theme-chip" data-theme-id="cyberpunk">
+<span class="t-emoji">🤖</span>
+<span class="t-name">Cyberpunk 2099</span>
+<span class="t-sub">AI Overmind</span>
+</button>
+</div>
 </div>
 <div class="entry-box">
 <label class="field-label" for="input-user-name">Your Agent Name</label>
@@ -106,9 +140,9 @@ autocomplete="off"
 Join Room
 </button>
 </div>
-<div class="divider-line"><span>OR PASS 1 PHONE / PLAY VS AI</span></div>
+<div class="divider-line"><span>OR PASS 1 PHONE / SOLO VS AI</span></div>
 <button type="button" id="btn-pass-play-mode" class="btn-ghost">
-<span>📱 Pass 1 Phone Mode (or Solo vs AI Bots)</span>
+<span>📱 Pass 1 Phone Mode (or Solo vs Smart AI Bots)</span>
 </button>
 </div>
 <div id="landing-error" class="error-banner" style="display:none;"></div>
@@ -142,7 +176,7 @@ Friends open <strong>partynights.online/secret-dictator</strong> on their phones
 </div>
 <div class="panel-head-actions" id="host-bot-controls">
 <button type="button" class="small-pill-btn accent" id="btn-add-bot">+ 🤖 AI Bot</button>
-<button type="button" class="small-pill-btn" id="btn-fill-bots" title="Fill up to 5 players with bots">Auto-5P</button>
+<button type="button" class="small-pill-btn" id="btn-fill-bots" title="Fill up to 5 players with bots">⚡ Auto-5P</button>
 </div>
 </div>
 <form id="form-add-local-player" class="add-player-bar" style="display:none;" autocomplete="off">
@@ -153,19 +187,22 @@ class="text-input compact"
 placeholder="Add player name to this phone..."
 maxlength="18"
 />
-<button type="submit" class="btn-secondary compact">Add</button>
+<button type="submit" class="btn-secondary compact">+ Add</button>
 </form>
 <div id="lobby-seat-list" class="seat-list"></div>
 </div>
 <div class="panel-card" id="lobby-settings-card">
 <div class="setting-row">
 <div>
-<div class="setting-title">Role Terminology</div>
-<div class="setting-desc">Ad-Safe (Republic / Syndicate / Dictator) or Classic Board Terms</div>
+<div class="setting-title">🎨 Active World Theme</div>
+<div class="setting-desc">Syncs board art, colors &amp; faction roles for everyone</div>
 </div>
 <select id="select-theme-terms" class="select-pill">
-<option value="dictator">Ad-Safe: Secret Dictator</option>
-<option value="classic">Classic: Liberal / Fascist</option>
+<option value="dictator">👑 Shadow Regime (Cyber-Noir)</option>
+<option value="classic">📜 1930s Classic (Liberal / Fascist)</option>
+<option value="galactic">🌌 Galactic Senate (Jedi / Sith)</option>
+<option value="desi">🇮🇳 Sansad Masala (Janata / Netaji)</option>
+<option value="cyberpunk">🤖 Cyberpunk 2099 (NetRunner / AI)</option>
 </select>
 </div>
 </div>
@@ -181,31 +218,39 @@ maxlength="18"
 </section>
 <section id="screen-game" class="screen">
 <div class="session-meta-strip">
-<div class="meta-pill">
-<span>🗂️ Deck: <strong id="stat-deck-count">17</strong></span>
+<div class="meta-pill deck-pill">
+<span class="card-stack-icon">🗂️</span>
+<span>Draw Deck: <strong id="stat-deck-count">17</strong></span>
 </div>
-<div class="meta-pill">
-<span>🗑️ Discard: <strong id="stat-discard-count">0</strong></span>
+<div class="meta-pill discard-pill">
+<span class="card-stack-icon">🗑️</span>
+<span>Discard: <strong id="stat-discard-count">0</strong></span>
 </div>
 <div class="meta-pill danger-pill" id="danger-zone-indicator" style="display:none;">
-<span>⚠️ DANGER ZONE ACTIVE</span>
+<span>⚠️ DANGER ZONE</span>
 </div>
 </div>
 <div class="boards-container">
 <div class="policy-board blue-board">
 <div class="board-header">
-<span class="board-title" id="label-blue-board">🛡️ REPUBLIC TRACK (BLUE)</span>
+<div class="board-title-group">
+<span class="board-title" id="label-blue-board">🛡️ REPUBLIC TRACK</span>
+<span class="board-sub-hint">Enact 5 to Win</span>
+</div>
 <span class="board-score" id="score-blue-text">0 / 5</span>
 </div>
 <div class="track-slots" id="track-blue-slots"></div>
 <div class="election-tracker-row">
-<span class="tracker-label">Election Tracker (Chaos at 3):</span>
+<span class="tracker-label">⚖️ Election Tracker (3 Rejections = Chaos):</span>
 <div class="tracker-dots" id="election-tracker-dots"></div>
 </div>
 </div>
 <div class="policy-board red-board">
 <div class="board-header">
-<span class="board-title" id="label-red-board">🐍 SYNDICATE TRACK (RED)</span>
+<div class="board-title-group">
+<span class="board-title" id="label-red-board">🐍 SYNDICATE TRACK</span>
+<span class="board-sub-hint">Tap any slot for power info</span>
+</div>
 <span class="board-score" id="score-red-text">0 / 6</span>
 </div>
 <div class="track-slots" id="track-red-slots"></div>
@@ -223,21 +268,26 @@ After 3 Red Bills: Electing the Secret Dictator as Chancellor wins immediately!
 <div class="claim-bar-card" id="claim-broadcast-bar" style="display:none;"></div>
 <div class="panel-card">
 <div class="panel-head">
-<h3 class="panel-title">Parliament Seats</h3>
-<span class="panel-sub" id="term-limit-hint">Tap eligible seat when nominating</span>
+<div>
+<h3 class="panel-title">🏛️ Parliament Council Seats</h3>
+<p class="panel-sub" id="term-limit-hint">Live roles, term limits &amp; last revealed ballots</p>
+</div>
 </div>
 <div class="parliament-grid" id="parliament-seats-grid"></div>
 </div>
 <div class="panel-card">
 <div class="panel-head">
 <h3 class="panel-title">📡 Parliament Intelligence Log</h3>
-<span class="panel-sub">Public votes, enactments &amp; claims</span>
+<span class="panel-sub">Votes, enactments &amp; claims</span>
 </div>
 <div class="intel-log-list" id="intel-log-list"></div>
 </div>
 <div class="dossier-dock">
 <button type="button" class="btn-dossier-peek" id="btn-hold-dossier">
-<span>🕵️ Tap to Inspect Secret Dossier</span>
+<div class="dossier-btn-left">
+<span class="dossier-scanner-icon">🕵️</span>
+<span>Inspect Classified Role Dossier</span>
+</div>
 <span id="dossier-seat-label" class="dossier-seat-pill">My Role</span>
 </button>
 </div>
@@ -271,7 +321,7 @@ After 3 Red Bills: Electing the Secret Dictator as Chancellor wins immediately!
 </div>
 <div class="modal-backdrop" id="modal-dossier" style="display:none;">
 <div class="modal-sheet dossier-sheet">
-<div class="dossier-classified-stamp">TOP SECRET DOSSIER</div>
+<div class="dossier-classified-stamp">EYES ONLY • TOP SECRET DOSSIER</div>
 <div class="dossier-player-name" id="dossier-modal-player">Agent</div>
 <div class="dossier-role-card" id="dossier-role-box">
 <div class="dossier-role-emoji" id="dossier-role-icon">🛡️</div>
@@ -280,12 +330,24 @@ After 3 Red Bills: Electing the Secret Dictator as Chancellor wins immediately!
 <p class="dossier-mission-desc" id="dossier-role-mission"></p>
 </div>
 <div class="dossier-intel-section">
-<h4>🔍 Known Covert Intel</h4>
+<h4>🔍 Known Covert Allies &amp; Intel</h4>
 <div id="dossier-known-intel" class="dossier-intel-list"></div>
 </div>
 <button type="button" class="btn-primary" id="btn-close-dossier">
-🔒 Hide Secret Dossier
+🔒 Close &amp; Conceal Dossier
 </button>
+</div>
+</div>
+<div class="modal-backdrop" id="modal-themes" style="display:none;">
+<div class="modal-sheet">
+<div class="modal-header">
+<h3>🎨 Choose Game World Theme</h3>
+<button type="button" class="icon-btn" id="btn-close-themes">✕</button>
+</div>
+<p style="font-size:0.8rem; color:var(--muted); margin-bottom:0.85rem;">
+Instantly transforms board colors, role titles, policy cards, and atmosphere!
+</p>
+<div class="theme-modal-list" id="modal-theme-list"></div>
 </div>
 </div>
 <div class="modal-backdrop" id="modal-rules" style="display:none;">
@@ -296,24 +358,24 @@ After 3 Red Bills: Electing the Secret Dictator as Chancellor wins immediately!
 </div>
 <div class="rules-content">
 <div class="rule-block blue">
-<h4>🛡️ Republic Victory (Blue Team)</h4>
-<p>Enact <strong>5 Blue Policies</strong> OR <strong>Execute the Secret Dictator</strong> using a late-game Executive Power.</p>
+<h4>🛡️ Blue Team Victory</h4>
+<p>Enact <strong>5 Blue Policies</strong> OR <strong>Execute the Secret Leader</strong> using a late-game Executive Power.</p>
 </div>
 <div class="rule-block red">
-<h4>🐍 Syndicate Victory (Red Team)</h4>
-<p>Enact <strong>6 Red Policies</strong> OR <strong>Elect the Secret Dictator as Chancellor</strong> any time after <strong>3 Red Policies</strong> have been enacted!</p>
+<h4>🐍 Red Team Victory</h4>
+<p>Enact <strong>6 Red Policies</strong> OR <strong>Elect the Secret Leader as Chancellor</strong> any time after <strong>3 Red Policies</strong> are on the board!</p>
 </div>
 <div class="rule-block">
 <h4>🏛️ Each Round: 3 Steps</h4>
 <ol>
-<li><strong>Nominate &amp; Vote:</strong> The Presidential Candidate nominates an eligible Chancellor. Everyone votes <strong>AYE</strong> or <strong>NAY</strong> simultaneously. If rejected 3 times in a row, <strong>Chaos</strong> auto-enacts the top card of the deck!</li>
+<li><strong>Nominate &amp; Vote:</strong> The Presidential Candidate nominates an eligible Chancellor. Everyone votes <strong>AYE (JA!)</strong> or <strong>NAY (NEIN!)</strong> simultaneously. If rejected 3 times in a row, <strong>Chaos</strong> auto-enacts the top card of the deck!</li>
 <li><strong>Legislative Session:</strong> The President secretly draws <strong>3 Policies</strong>, discards 1 face-down, and passes 2 to the Chancellor. The Chancellor secretly enacts 1 and discards 1. (Both can lie about what they drew!)</li>
 <li><strong>Executive Action:</strong> If a <strong>Red Policy</strong> is enacted onto a power slot, the President must immediately use that slot's power:
 <ul>
 <li>👁️ <strong>Policy Peek (5–6P):</strong> Secretly view the top 3 cards of the draw deck.</li>
 <li>🔍 <strong>Investigate Loyalty (7–10P):</strong> Secretly inspect one player's Party Membership (Blue or Red).</li>
 <li>⚡ <strong>Special Election (7–10P):</strong> Pick any player to be the next President.</li>
-<li>💀 <strong>Execution (All Boards, Red 4 &amp; 5):</strong> Permanently eliminate a player. If they are the Secret Dictator, Blue wins immediately!</li>
+<li>💀 <strong>Execution (All Boards, Red 4 &amp; 5):</strong> Permanently eliminate a player. If they are the Secret Leader, Blue wins immediately!</li>
 <li>🚫 <strong>Veto Power (Unlocked at 5 Red):</strong> Chancellor and President may mutually agree to discard both drawn policies.</li>
 </ul>
 </li>
@@ -323,23 +385,23 @@ After 3 Red Bills: Electing the Secret Dictator as Chancellor wins immediately!
 </div>
 </div>
 <div class="modal-backdrop" id="modal-leave-warning" style="display:none;" role="dialog" aria-modal="true" aria-labelledby="leave-modal-title">
-<div class="modal-sheet leave-warning-sheet">
-<div class="leave-warn-emblem" id="leave-modal-icon">⚠️</div>
-<span class="leave-warn-badge" id="leave-modal-badge">SESSION IN PROGRESS</span>
-<h3 class="leave-warn-title" id="leave-modal-title">Leave Parliamentary Session?</h3>
-<p class="leave-warn-desc" id="leave-modal-desc">
-A Secret Dictator session is active! Leaving now will disconnect you from the room and end the current parliamentary session.
+<div class="modal-sheet leave-warning-sheet" style="text-align:center;">
+<div style="font-size:2.4rem; margin-bottom:0.35rem;" id="leave-modal-icon">⚠️</div>
+<span class="dossier-classified-stamp" id="leave-modal-badge">SESSION IN PROGRESS</span>
+<h3 style="font-size:1.2rem; font-weight:800; margin:0.35rem 0;" id="leave-modal-title">Leave Parliamentary Session?</h3>
+<p style="font-size:0.82rem; color:var(--muted); margin-bottom:1rem; line-height:1.45;" id="leave-modal-desc">
+A Secret Dictator session is active! Leaving now will disconnect you from the room.
 </p>
-<div class="leave-warn-actions">
-<button type="button" class="btn-leave-stay" id="btn-leave-stay">
+<div style="display:flex; flex-direction:column; gap:0.55rem;">
+<button type="button" class="btn-primary" id="btn-leave-stay">
 <span>🛡️ Stay in Parliament</span>
 </button>
-<button type="button" class="btn-leave-confirm" id="btn-leave-confirm">
+<button type="button" class="btn-ghost" id="btn-leave-confirm">
 <span id="btn-leave-confirm-label">🚪 Leave Session</span>
 </button>
 </div>
 </div>
 </div>
-<script src="./app.min.js?v=2"></script>
+<script src="./app.min.js?v=3"></script>
 </body>
 </html>

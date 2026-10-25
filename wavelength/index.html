@@ -32,7 +32,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="./styles.min.css" />
+<link rel="stylesheet" href="./styles.min.css?v=2" />
 </head>
 <body>
 <div class="ambient-glow glow-left" aria-hidden="true"></div>
@@ -102,35 +102,46 @@
 <div class="hero-core-emoji">🧠</div>
 </div>
 <div class="hero-text-block">
-<div class="eyebrow-badge">FREE PARTY GAME ONLINE • PASS 1 PHONE</div>
+<div class="eyebrow-badge">PASS 1 PHONE • NO DOWNLOAD</div>
 <h1 class="hero-title">WAVELENGTH</h1>
 <p class="hero-subtitle">
-One player sees a hidden bullseye between two extremes (e.g. <strong>Overrated ↔ Underrated</strong>) and gives a one-word clue. Debate where to drag the dial &amp; tap to reveal your score! No download required — built for house party games with friends.
+Are you on the same wavelength as your friends?
 </p>
-<div class="feature-chips">
-<span class="feature-chip">📱 Pass 1 Phone</span>
-<span class="feature-chip">⚡ No Download</span>
-<span class="feature-chip">🇮🇳 235+ Desi &amp; Global Cards</span>
+<div class="quick-steps-strip">
+<div class="q-step">
+<span class="q-num">1</span>
+<div class="q-txt"><strong>Psychic Peeks 👁️</strong><span>Sees secret target between 2 opposites</span></div>
+</div>
+<div class="q-step">
+<span class="q-num">2</span>
+<div class="q-txt"><strong>Gives 1 Clue 🗣️</strong><span>Says one word aloud (no numbers!)</span></div>
+</div>
+<div class="q-step">
+<span class="q-num">3</span>
+<div class="q-txt"><strong>Drag &amp; Reveal 👆</strong><span>Friends turn the dial to score 4 pts!</span></div>
+</div>
 </div>
 </div>
 <div class="landing-cta-stack">
-<button type="button" id="btn-enter-game" class="btn-launch">
-<span>Tune In &amp; Start Playing</span>
-<span>⚡</span>
+<button type="button" id="btn-quick-play" class="btn-launch">
+<span>⚡ Quick Play Now</span>
+</button>
+<button type="button" id="btn-enter-game" class="btn-ghost btn-customize-mode">
+<span>⚙️ Customize Mode, Teams &amp; Decks</span>
 </button>
 <div class="landing-secondary-row">
 <button type="button" id="btn-landing-rules" class="btn-ghost">
-<span>📖 How to Play</span>
+<span>📖 Rules</span>
 </button>
 <button type="button" id="btn-landing-leaderboard" class="btn-ghost">
-<span>🏆 Hall of Fame</span>
+<span>🏆 Ranks</span>
 </button>
 <button type="button" id="btn-share-game" class="btn-ghost">
 <span>📲 Share</span>
 </button>
 </div>
 <div class="landing-footer-meta" id="easter-egg-footer">
-SINGLE-SCREEN PARTY GAME • ZERO DOWNLOADS
+FREE PARTY GAME ONLINE • HOUSE PARTY GAMES WITH FRIENDS
 </div>
 </div>
 </div>
@@ -138,88 +149,87 @@ SINGLE-SCREEN PARTY GAME • ZERO DOWNLOADS
 <section id="screen-setup" class="screen">
 <div class="setup-container">
 <div class="section-header">
-<h2 class="section-title">Configure Your Wavelength</h2>
-<p class="section-subtitle">Pick your mode, customize your crew, and select spectrum packs.</p>
+<h2 class="section-title">Game Setup</h2>
+<p class="section-subtitle">Pick a mode &amp; start playing in seconds.</p>
 </div>
 <div class="setup-card">
 <div class="card-label-row">
-<span class="card-label">1. Select Game Mode</span>
+<span class="card-label">1. Game Mode</span>
 <span class="card-hint" id="mode-summary-pill">Group High Score</span>
 </div>
 <div class="mode-grid" role="radiogroup" aria-label="Game Mode">
 <button type="button" class="mode-option active" data-mode="coop" id="mode-btn-coop">
 <span class="mode-icon">🤝</span>
 <span class="mode-title">Co-op Sync</span>
-<span class="mode-desc">Everyone vs. the Dial. Rotate Psychics &amp; chase a Mind Sync rank!</span>
+<span class="mode-desc">Team up &amp; beat the high score</span>
 </button>
 <button type="button" class="mode-option" data-mode="teams" id="mode-btn-teams">
 <span class="mode-icon">⚔️</span>
-<span class="mode-title">Team vs. Team</span>
-<span class="mode-desc">2 Teams battle to 10+ pts with Left/Right bonus steal bets!</span>
+<span class="mode-title">2 Teams</span>
+<span class="mode-desc">Team battle + Left/Right steal</span>
 </button>
 <button type="button" class="mode-option" data-mode="party" id="mode-btn-party">
 <span class="mode-icon">🏆</span>
 <span class="mode-title">Party Ranks</span>
-<span class="mode-desc">Pass &amp; Play! Track individual Psychic + Group Sync points.</span>
+<span class="mode-desc">Individual player leaderboard</span>
 </button>
 </div>
 </div>
 <div class="setup-card" id="setup-players-card">
 <div class="card-label-row">
-<span class="card-label">2. Psychic Rotation Roster</span>
+<span class="card-label">2. Players</span>
 <div class="stepper-inline">
 <button type="button" class="step-btn" id="btn-player-minus" aria-label="Remove player">−</button>
 <span id="player-count-display" class="step-val">4 Players</span>
 <button type="button" class="step-btn" id="btn-player-plus" aria-label="Add player">+</button>
 </div>
 </div>
-<p class="card-subtext">We'll rotate the Psychic automatically each round. Tap any name to customize:</p>
 <div id="player-names-grid" class="player-names-grid"></div>
 <div class="round-count-row" id="coop-rounds-row">
-<span class="sub-label">Total Rounds:</span>
+<span class="sub-label">Rounds:</span>
 <div class="pill-Radio-group" id="round-count-group">
-<button type="button" class="pill-choice" data-rounds="5">5 Rounds</button>
-<button type="button" class="pill-choice active" data-rounds="7">7 Rounds</button>
-<button type="button" class="pill-choice" data-rounds="10">10 Rounds</button>
-<button type="button" class="pill-choice" data-rounds="99">Endless ♾️</button>
+<button type="button" class="pill-choice" data-rounds="5">5</button>
+<button type="button" class="pill-choice active" data-rounds="7">7</button>
+<button type="button" class="pill-choice" data-rounds="10">10</button>
+<button type="button" class="pill-choice" data-rounds="99">♾️</button>
 </div>
 </div>
 </div>
 <div class="setup-card" id="setup-teams-card" style="display: none;">
 <div class="card-label-row">
-<span class="card-label">2. Team Showdown Setup</span>
+<span class="card-label">2. Team Names</span>
 <span class="card-hint">2+ Players per Team</span>
 </div>
 <div class="teams-input-grid">
 <div class="team-input-box team-cyan">
-<label for="input-team-a">⚡ Team 1 (Cyan)</label>
+<label for="input-team-a">⚡ Team 1</label>
 <input type="text" id="input-team-a" value="Team Telepath" maxlength="22" placeholder="Team 1 Name" />
 </div>
 <div class="team-input-box team-rose">
-<label for="input-team-b">🔥 Team 2 (Rose)</label>
+<label for="input-team-b">🔥 Team 2</label>
 <input type="text" id="input-team-b" value="Team Rebel" maxlength="22" placeholder="Team 2 Name" />
 </div>
 </div>
-<div class="round-count-row" style="margin-top: 12px;">
-<span class="sub-label">Winning Score:</span>
+<div class="round-count-row" style="margin-top: 10px;">
+<span class="sub-label">First To:</span>
 <div class="pill-Radio-group" id="team-target-group">
-<button type="button" class="pill-choice" data-target="7">7 Pts (Quick)</button>
-<button type="button" class="pill-choice active" data-target="10">10 Pts (Classic)</button>
-<button type="button" class="pill-choice" data-target="15">15 Pts (Epic)</button>
+<button type="button" class="pill-choice" data-target="7">7 Pts</button>
+<button type="button" class="pill-choice active" data-target="10">10 Pts</button>
+<button type="button" class="pill-choice" data-target="15">15 Pts</button>
 </div>
 </div>
-<label class="toggle-row" style="margin-top: 12px;">
+<label class="toggle-row" style="margin-top: 10px;">
 <div>
-<div class="toggle-title">⬅️ Opposing Team Left/Right Steal (+1 Pt) ➡️</div>
-<div class="toggle-sub">Other team bets whether the true target is Left or Right of the needle!</div>
+<div class="toggle-title">⬅️ Left/Right Steal Bet (+1 Pt) ➡️</div>
+<div class="toggle-sub">Other team bets if target is Left or Right of needle</div>
 </div>
 <input type="checkbox" id="chk-team-steal" checked />
 </label>
 </div>
 <div class="setup-card">
 <div class="card-label-row">
-<span class="card-label">3. Spectrum Decks</span>
-<button type="button" class="text-link-btn" id="btn-toggle-all-cats">Select All</button>
+<span class="card-label">3. Card Decks</span>
+<button type="button" class="text-link-btn" id="btn-toggle-all-cats">Keep 1 Only</button>
 </div>
 <div class="category-grid" id="category-grid">
 <button type="button" class="cat-chip active" data-cat="Desi Chaos">
@@ -249,14 +259,14 @@ SINGLE-SCREEN PARTY GAME • ZERO DOWNLOADS
 </div>
 <div class="custom-creator-box">
 <div class="custom-creator-header">
-<span>✨ Add Your Own Custom Spectrums (<span id="custom-count-badge">0</span> saved)</span>
+<span>✨ Custom Cards (<span id="custom-count-badge">0</span>)</span>
 <button type="button" class="text-link-btn" id="btn-toggle-custom-drawer">+ Create Card</button>
 </div>
 <div id="custom-drawer-body" class="custom-drawer-body" style="display: none;">
 <div class="custom-inputs-row">
-<input type="text" id="custom-left-input" placeholder="Left Extreme (e.g. Overrated)" maxlength="40" />
+<input type="text" id="custom-left-input" placeholder="Left (e.g. Overrated)" maxlength="40" />
 <span class="custom-arrow">↔</span>
-<input type="text" id="custom-right-input" placeholder="Right Extreme (e.g. Underrated)" maxlength="40" />
+<input type="text" id="custom-right-input" placeholder="Right (e.g. Underrated)" maxlength="40" />
 <button type="button" id="btn-add-custom-card" class="btn-small-accent">Add</button>
 </div>
 <div id="custom-cards-list" class="custom-cards-list"></div>
@@ -265,61 +275,64 @@ SINGLE-SCREEN PARTY GAME • ZERO DOWNLOADS
 </div>
 <div class="setup-card">
 <div class="card-label-row">
-<span class="card-label">4. Debate Timer (Optional)</span>
-<span class="card-hint">Keeps rounds fast</span>
+<span class="card-label">4. Round Timer</span>
+<span class="card-hint">Optional</span>
 </div>
 <div class="pill-Radio-group" id="timer-choice-group">
-<button type="button" class="pill-choice active" data-timer="0">No Timer ∞</button>
-<button type="button" class="pill-choice" data-timer="30">30s Blitz ⚡</button>
-<button type="button" class="pill-choice" data-timer="45">45s Party 🔥</button>
-<button type="button" class="pill-choice" data-timer="60">60s Debate ⏱️</button>
+<button type="button" class="pill-choice active" data-timer="0">Off ∞</button>
+<button type="button" class="pill-choice" data-timer="30">30s ⚡</button>
+<button type="button" class="pill-choice" data-timer="45">45s 🔥</button>
+<button type="button" class="pill-choice" data-timer="60">60s ⏱️</button>
 </div>
 </div>
 <button type="button" id="btn-start-match" class="btn-launch">
-<span>Launch Mind Sync</span>
+<span>Start Game</span>
 <span>🧠⚡</span>
 </button>
 </div>
 </section>
 <section id="screen-game" class="screen">
 <div class="game-stage-wrap">
-<div class="scoreboard-strip" id="scoreboard-strip">
+<div class="scoreboard-strip" id="scoreboard-strip"></div>
+<div class="step-tracker" id="step-tracker">
+<div class="step-pill active" id="tracker-step-1">1. Psychic Peeks 👁️</div>
+<div class="step-pill" id="tracker-step-2">2. Drag Dial 👆</div>
+<div class="step-pill" id="tracker-step-3">3. Score ⚡</div>
 </div>
 <div class="spectrum-banner" id="spectrum-banner">
 <div class="extreme-card extreme-left">
-<div class="extreme-dir">⬅️ 0% EXTREME</div>
+<div class="extreme-dir">⬅️ 0% LEFT</div>
 <div class="extreme-text" id="label-extreme-left">Overrated</div>
 </div>
 <div class="spectrum-center-meta">
-<span class="cat-badge" id="label-spectrum-category">🌶️ Spicy &amp; Opinions</span>
-<div class="versus-arrows">⟷</div>
-<button type="button" class="btn-skip-spectrum" id="btn-skip-card" title="Draw a different spectrum card">
-🔀 Skip Card
+<span class="cat-badge" id="label-spectrum-category">🌶️ Spicy</span>
+<button type="button" class="btn-skip-spectrum" id="btn-skip-card" title="New Card">
+🔀 New Card
 </button>
 </div>
 <div class="extreme-card extreme-right">
-<div class="extreme-dir">100% EXTREME ➡️</div>
+<div class="extreme-dir">100% RIGHT ➡️</div>
 <div class="extreme-text" id="label-extreme-right">Underrated</div>
 </div>
 </div>
 <div class="clue-showcase" id="clue-showcase" style="display: none;">
 <div class="clue-showcase-left">
-<span class="clue-tag" id="clue-psychic-label">🧠 Psychic's Clue:</span>
+<span class="clue-tag" id="clue-psychic-label">🧠 Clue:</span>
 <span class="clue-word-display" id="clue-word-display">"Spoken Aloud"</span>
 </div>
 <div class="clue-timer-pill" id="active-timer-pill" style="display: none;">⏱️ 45s</div>
 </div>
 <div class="dial-cabinet" id="dial-cabinet">
 <div class="dial-status-ribbon" id="dial-status-ribbon">
-<span id="dial-status-text">🔒 Shutter Closed — Pass Phone to Psychic</span>
+<span id="dial-status-text">👁️ Step 1: Psychic, tap Peek Target below!</span>
 </div>
 <div class="dial-svg-container" id="dial-touch-area">
-<svg id="wavelength-svg" viewBox="0 0 500 285" class="wavelength-svg" aria-label="Wavelength 180 degree dial">
+<svg id="wavelength-svg" viewBox="0 0 500 300" class="wavelength-svg" aria-label="Wavelength 180 degree dial">
 <defs>
 <linearGradient id="cabinetRimGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-<stop offset="0%" stop-color="#00f2fe" />
-<stop offset="50%" stop-color="#8b5cf6" />
-<stop offset="100%" stop-color="#ff2e93" />
+<stop offset="0%" stop-color="#10d796" />
+<stop offset="50%" stop-color="#7c3aed" />
+<stop offset="100%" stop-color="#ff2e63" />
 </linearGradient>
 <radialGradient id="shutterSurfaceGrad" cx="50%" cy="90%" r="85%">
 <stop offset="0%" stop-color="#1e2246" />
@@ -335,10 +348,10 @@ SINGLE-SCREEN PARTY GAME • ZERO DOWNLOADS
 </filter>
 </defs>
 <path d="M 45 245 A 205 205 0 0 1 455 245 Z" fill="#090b19" stroke="rgba(255,255,255,0.08)" stroke-width="2" />
-<g id="svg-target-group" style="opacity: 0; transition: opacity 0.28s ease;">
+<g id="svg-target-group" style="opacity: 0; transition: opacity 0.25s ease;">
 <path id="wedge-left-2" fill="#f97316" stroke="#090b19" stroke-width="1.5" />
 <path id="wedge-left-3" fill="#facc15" stroke="#090b19" stroke-width="1.5" />
-<path id="wedge-center-4" fill="#10f5a0" stroke="#090b19" stroke-width="1.5" filter="url(#neonGlow)" />
+<path id="wedge-center-4" fill="#10d796" stroke="#090b19" stroke-width="1.5" filter="url(#neonGlow)" />
 <path id="wedge-right-3" fill="#facc15" stroke="#090b19" stroke-width="1.5" />
 <path id="wedge-right-2" fill="#f97316" stroke="#090b19" stroke-width="1.5" />
 <text id="label-wedge-l2" class="wedge-score-txt" text-anchor="middle" dominant-baseline="middle">2</text>
@@ -349,88 +362,83 @@ SINGLE-SCREEN PARTY GAME • ZERO DOWNLOADS
 </g>
 <g id="svg-shutter-group">
 <path d="M 47 245 A 203 203 0 0 1 453 245 Z" fill="url(#shutterSurfaceGrad)" stroke="rgba(255,255,255,0.12)" stroke-width="2" />
-<path d="M 95 245 A 155 155 0 0 1 405 245" fill="none" stroke="rgba(0, 242, 254, 0.12)" stroke-width="1.5" stroke-dasharray="6 6" />
-<path d="M 145 245 A 105 105 0 0 1 355 245" fill="none" stroke="rgba(168, 85, 247, 0.16)" stroke-width="1.5" stroke-dasharray="4 6" />
-<path d="M 195 245 A 55 55 0 0 1 305 245" fill="none" stroke="rgba(255, 46, 147, 0.18)" stroke-width="1.5" />
-<text x="250" y="138" text-anchor="middle" fill="rgba(255,255,255,0.22)" font-size="12" font-weight="800" letter-spacing="2.5">SHUTTER CLOSED</text>
+<path d="M 95 245 A 155 155 0 0 1 405 245" fill="none" stroke="rgba(16, 215, 150, 0.14)" stroke-width="1.5" stroke-dasharray="6 6" />
+<path d="M 145 245 A 105 105 0 0 1 355 245" fill="none" stroke="rgba(124, 58, 237, 0.18)" stroke-width="1.5" stroke-dasharray="4 6" />
+<text id="svg-shutter-hint" x="250" y="142" text-anchor="middle" fill="rgba(255,255,255,0.42)" font-size="13" font-weight="800" letter-spacing="1.5">👆 DRAG DIAL LEFT OR RIGHT</text>
 </g>
 <g id="svg-ticks-group"></g>
 <path d="M 42 245 A 208 208 0 0 1 458 245" fill="none" stroke="url(#cabinetRimGrad)" stroke-width="6" stroke-linecap="round" />
 <line x1="36" y1="245" x2="464" y2="245" stroke="rgba(255,255,255,0.2)" stroke-width="3" stroke-linecap="round" />
 <g id="svg-bonus-bet-group" style="display: none;">
-<rect id="svg-bonus-pill" x="195" y="14" width="110" height="24" rx="12" fill="#1e1b4b" stroke="#facc15" stroke-width="1.5" />
-<text id="svg-bonus-text" x="250" y="27" text-anchor="middle" dominant-baseline="middle" fill="#facc15" font-size="10.5" font-weight="800"></text>
+<rect id="svg-bonus-pill" x="195" y="10" width="110" height="24" rx="12" fill="#1e1b4b" stroke="#facc15" stroke-width="1.5" />
+<text id="svg-bonus-text" x="250" y="23" text-anchor="middle" dominant-baseline="middle" fill="#facc15" font-size="10.5" font-weight="800"></text>
 </g>
 <g id="svg-needle-group">
-<line id="needle-glow-line" x1="250" y1="245" x2="250" y2="52" stroke="#ff2e93" stroke-width="9" stroke-linecap="round" opacity="0.3" />
-<line id="needle-main-line" x1="250" y1="245" x2="250" y2="52" stroke="#ffffff" stroke-width="4.5" stroke-linecap="round" />
-<circle id="needle-knob-outer" cx="250" cy="64" r="18" fill="#ff2e93" stroke="#ffffff" stroke-width="3" filter="url(#neonGlow)" />
-<circle id="needle-knob-inner" cx="250" cy="64" r="6" fill="#ffffff" />
+<line id="needle-glow-line" x1="250" y1="245" x2="250" y2="52" stroke="#ff2e63" stroke-width="11" stroke-linecap="round" opacity="0.32" />
+<line id="needle-main-line" x1="250" y1="245" x2="250" y2="52" stroke="#ffffff" stroke-width="5" stroke-linecap="round" />
+<circle id="needle-knob-pulse" cx="250" cy="64" r="28" fill="rgba(255, 46, 99, 0.22)" />
+<circle id="needle-knob-outer" cx="250" cy="64" r="21" fill="#ff2e63" stroke="#ffffff" stroke-width="3.5" filter="url(#neonGlow)" />
+<text id="needle-knob-arrows" x="250" y="65" text-anchor="middle" dominant-baseline="middle" fill="#ffffff" font-size="12" font-weight="900" pointer-events="none">↔</text>
 </g>
-<circle cx="250" cy="245" r="30" fill="#141733" stroke="url(#cabinetRimGrad)" stroke-width="4" />
-<circle cx="250" cy="245" r="11" fill="#00f2fe" />
-<text id="svg-dial-readout" x="250" y="272" text-anchor="middle" fill="#cbd5e1" font-size="12" font-weight="800" letter-spacing="0.8">50% CENTER</text>
+<circle cx="250" cy="245" r="24" fill="#121426" stroke="url(#cabinetRimGrad)" stroke-width="4" />
+<circle cx="250" cy="245" r="9" fill="#10d796" />
+<text id="svg-dial-readout" x="250" y="291" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="800" letter-spacing="0.6">50% (CENTER)</text>
 </svg>
 </div>
 <div class="dial-precision-controls" id="dial-precision-controls">
-<button type="button" class="fine-btn" id="btn-dial-left5" title="Move 5% Left">⏪ -5%</button>
-<button type="button" class="fine-btn" id="btn-dial-left1" title="Move 1% Left">◀ -1%</button>
+<button type="button" class="fine-btn" id="btn-dial-left5" title="Move 5% Left">−5%</button>
+<button type="button" class="fine-btn" id="btn-dial-left1" title="Move 1% Left">−1%</button>
 <input type="range" id="dial-range-slider" min="0" max="100" step="1" value="50" class="dial-range-slider" aria-label="Dial percentage slider" />
-<button type="button" class="fine-btn" id="btn-dial-right1" title="Move 1% Right">+1% ▶</button>
-<button type="button" class="fine-btn" id="btn-dial-right5" title="Move 5% Right">+5% ⏩</button>
+<button type="button" class="fine-btn" id="btn-dial-right1" title="Move 1% Right">+1%</button>
+<button type="button" class="fine-btn" id="btn-dial-right5" title="Move 5% Right">+5%</button>
 </div>
 </div>
 <div class="phase-card" id="phase-psychic-card">
 <div class="phase-header">
-<span class="phase-step-badge">STEP 1 OF 3 • PSYCHIC ONLY</span>
 <h3 class="phase-title" id="psychic-turn-heading">Pass Phone to Psychic 🧠</h3>
 <p class="phase-desc" id="psychic-turn-sub">
-Everyone else look away! Peek at the hidden target, then give a <strong>one-word (or short concept) clue</strong> that hints where the bullseye sits between the two extremes.
+<strong>1.</strong> Tap <strong>Peek Target</strong> to see the bullseye. <strong>2.</strong> Say a 1-word clue aloud &amp; hand phone to friends!
 </p>
 </div>
 <div class="psychic-peek-actions">
 <button type="button" id="btn-toggle-peek" class="btn-peek">
-<span>👁️ Tap to Open Shutter &amp; Peek Target</span>
+<span>👁️ Tap to Peek Target</span>
 </button>
 <div id="psychic-secret-box" class="psychic-secret-box" style="display: none;">
 <div class="target-readout-banner" id="target-readout-banner">
-🎯 Bullseye is at <strong>72%</strong> (Toward Right Extreme)
+🎯 Bullseye is at <strong>72%</strong>
 </div>
 <div class="sparks-wrap">
 <button type="button" id="btn-show-sparks" class="btn-spark-toggle">
-💡 Stuck? Show 3 Clue Idea Sparks
+💡 Need a Clue Idea? Tap Here
 </button>
 <div id="sparks-content" class="sparks-content" style="display: none;"></div>
 </div>
 </div>
 </div>
 <div class="clue-input-wrap">
-<label for="input-psychic-clue" class="clue-input-label">
-Type Your Clue (or say it aloud &amp; leave blank):
-</label>
 <input
 type="text"
 id="input-psychic-clue"
 class="clue-text-input"
-placeholder="e.g. Avocado Toast, Power Nap, DDLJ..."
+placeholder="Optional: Type clue here (or just say it aloud)"
 maxlength="42"
 autocomplete="off"
 />
 <div class="rule-micro-note">
-🚫 Rule Check: No numbers (1–10), no percentages, and don't use words printed on the spectrum card!
+🚫 No numbers, no %, and don't use the words on the card!
 </div>
 </div>
 <button type="button" id="btn-lock-clue" class="btn-launch">
-<span>🔒 Hide Target &amp; Hand to Group</span>
+<span>🔒 Hide Target &amp; Hand to Friends</span>
 <span>→</span>
 </button>
 </div>
 <div class="phase-card" id="phase-guess-card" style="display: none;">
 <div class="phase-header">
-<span class="phase-step-badge">STEP 2 OF 3 • GROUP DEBATE</span>
-<h3 class="phase-title" id="guess-turn-heading">Where Does the Clue Land? 🎯</h3>
+<h3 class="phase-title" id="guess-turn-heading">👆 Drag the Dial &amp; Lock It In!</h3>
 <p class="phase-desc" id="guess-turn-sub">
-Debate out loud! Drag the glowing needle on the dial (or use the fine-tune buttons) to where you think the Psychic's target is hidden.
+Turn the main dial with your finger to where the clue fits between Left (0%) and Right (100%).
 </p>
 </div>
 <button type="button" id="btn-submit-guess" class="btn-launch">
@@ -439,22 +447,22 @@ Debate out loud! Drag the glowing needle on the dial (or use the fine-tune butto
 </div>
 <div class="phase-card" id="phase-bonus-card" style="display: none;">
 <div class="phase-header">
-<span class="phase-step-badge bonus-badge">⚔️ OPPOSING TEAM BONUS STEAL (+1 PT)</span>
-<h3 class="phase-title" id="bonus-turn-heading">Team Rebel: Left or Right?</h3>
+<span class="phase-step-badge bonus-badge">⚔️ +1 PT STEAL BET</span>
+<h3 class="phase-title" id="bonus-turn-heading">Other Team: Left or Right?</h3>
 <p class="phase-desc" id="bonus-turn-sub">
-The needle is locked! Do you think the true <strong>4-Point Bullseye</strong> is to the <strong>LEFT</strong> or <strong>RIGHT</strong> of their dial? Guess right to steal +1 Bonus Point!
+Is the real <strong>4-Pt Bullseye</strong> to the <strong>LEFT</strong> or <strong>RIGHT</strong> of their needle?
 </p>
 </div>
 <div class="bonus-bet-grid">
 <button type="button" id="btn-bet-left" class="btn-bet btn-bet-left">
 <span class="bet-arrow">⬅️</span>
 <span class="bet-main">Target is LEFT</span>
-<span class="bet-sub">Closer to 0% Extreme</span>
+<span class="bet-sub">Closer to 0%</span>
 </button>
 <button type="button" id="btn-bet-right" class="btn-bet btn-bet-right">
 <span class="bet-arrow">➡️</span>
 <span class="bet-main">Target is RIGHT</span>
-<span class="bet-sub">Closer to 100% Extreme</span>
+<span class="bet-sub">Closer to 100%</span>
 </button>
 </div>
 </div>
@@ -489,6 +497,12 @@ Your Dial: 71% • True Bullseye: 72% (Off by 1%!)
 Your group scored 22 points across 7 rounds!
 </p>
 <div class="summary-stats-grid" id="summary-stats-grid"></div>
+</div>
+<div class="setup-card" id="summary-party-card" style="display: none;">
+<div class="card-label-row">
+<span class="card-label">🏆 Party Ranks Standings</span>
+</div>
+<div id="summary-party-list" class="leaderboard-list"></div>
 </div>
 <div class="setup-card">
 <div class="card-label-row">
@@ -607,6 +621,9 @@ Your squad is in the middle of a Wavelength match! Leaving now will end the curr
 </div>
 </div>
 <div id="toast-container" class="toast-container" aria-live="polite"></div>
-<script src="./app.min.js"></script>
+<label id="ios-haptic-label" for="ios-haptic-switch" aria-hidden="true" style="position:fixed;left:-9999px;top:-9999px;opacity:0;pointer-events:none;">
+<input type="checkbox" switch id="ios-haptic-switch" />
+</label>
+<script src="./app.min.js?v=2"></script>
 </body>
 </html>

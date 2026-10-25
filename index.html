@@ -5,24 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="theme-color" content="#070812" />
   <title>PartyNights.online — Free Instant Party Games Arcade</title>
-  <meta name="description" content="Launch free instant multiplayer party games in your browser at PartyNights.online! Featuring Mr. Alien (500+ Desi Words). Pass 1 phone, no app download required." />
-  <meta name="keywords" content="free party game online, pass 1 phone, no download, house party games with friends, Mr Alien game, desi undercover game, partynights.online" />
+  <meta name="description" content="Launch free instant multiplayer party games in your browser at PartyNights.online! Featuring Mr. Alien (500+ Desi Words), Secret Dictator (Social Deduction), and Wavelength (Mind Sync & Spectrum Debate). Pass 1 phone or join room codes, zero app downloads required." />
+  <meta name="keywords" content="free party game online, pass 1 phone, no download, house party games with friends, Mr Alien game, Secret Dictator game, Wavelength game, desi undercover game, partynights.online" />
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
   <link rel="canonical" href="https://partynights.online/" />
   <link rel="icon" type="image/png" sizes="192x192" href="/mr-alien/icon-192.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="/mr-alien/apple-touch-icon.png" />
 
-  <!-- Instant Prefetch for 0ms Game Launch -->
+  <!-- Instant Prefetch for 0ms Game Launch Across Arcade -->
   <link rel="prefetch" href="/mr-alien/" />
-  <link rel="prefetch" href="/mr-alien/styles.min.css" />
-  <link rel="prefetch" href="/mr-alien/app.min.js" />
+  <link rel="prefetch" href="/secret-dictator/" />
+  <link rel="prefetch" href="/wavelength/" />
 
   <!-- OpenGraph / WhatsApp / IG Share Preview -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="PartyNights.online" />
   <meta property="og:url" content="https://partynights.online/" />
   <meta property="og:title" content="PartyNights.online — Instant House Party Arcade" />
-  <meta property="og:description" content="Play Mr. Alien (500+ Desi Words) & instant multiplayer party games right in your browser. Pass 1 phone, zero downloads." />
+  <meta property="og:description" content="Play Mr. Alien, Secret Dictator & Wavelength right in your browser. Pass 1 phone or room code, zero app downloads." />
   <meta property="og:image" content="https://partynights.online/mr-alien/og-banner.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
@@ -30,7 +30,7 @@
   <!-- Twitter / X Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="PartyNights.online — Instant House Party Arcade" />
-  <meta name="twitter:description" content="Zero downloads. Pass 1 phone and play Mr. Alien & party games with friends!" />
+  <meta name="twitter:description" content="Zero downloads. Pass 1 phone and play Mr. Alien, Secret Dictator & Wavelength with friends!" />
   <meta name="twitter:image" content="https://partynights.online/mr-alien/og-banner.png" />
 
   <!-- Google AdSense Verification & Auto Ads -->
@@ -80,6 +80,52 @@
         "numberOfPlayers": {
           "@type": "QuantitativeValue",
           "minValue": 3,
+          "maxValue": 20
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "INR",
+          "availability": "https://schema.org/InStock"
+        }
+      },
+      {
+        "@type": "VideoGame",
+        "@id": "https://partynights.online/secret-dictator/#game",
+        "name": "Secret Dictator — Shadow Regime Board Game for Phones",
+        "url": "https://partynights.online/secret-dictator/",
+        "image": "https://partynights.online/secret-dictator/og-banner.png",
+        "description": "5–10 player hidden-identity board game with multi-phone room codes, pass 1 phone, smart AI bots, and executive power mechanics.",
+        "genre": ["Social Deduction", "Party Game", "Strategy Board Game"],
+        "playMode": "MultiPlayer",
+        "applicationCategory": "GameApplication",
+        "operatingSystem": "Web Browser, Android, iOS",
+        "numberOfPlayers": {
+          "@type": "QuantitativeValue",
+          "minValue": 5,
+          "maxValue": 10
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "INR",
+          "availability": "https://schema.org/InStock"
+        }
+      },
+      {
+        "@type": "VideoGame",
+        "@id": "https://partynights.online/wavelength/#game",
+        "name": "Wavelength — Telepathic Spectrum Dial Party Game",
+        "url": "https://partynights.online/wavelength/",
+        "image": "https://partynights.online/wavelength/og-banner.png",
+        "description": "235+ telepathic spectrum cards across 6 decks. Turn the semicircular dial, tune in to your psychic's clue, and score bullseyes.",
+        "genre": ["Mind Sync", "Party Game", "Debate Game"],
+        "playMode": "MultiPlayer",
+        "applicationCategory": "GameApplication",
+        "operatingSystem": "Web Browser, Android, iOS",
+        "numberOfPlayers": {
+          "@type": "QuantitativeValue",
+          "minValue": 2,
           "maxValue": 20
         },
         "offers": {
@@ -1381,10 +1427,11 @@
         <h1 class="deck-title">Select Game Cartridge</h1>
       </div>
 
-      <div class="deck-tabs" id="category-filters">
-        <button type="button" class="deck-tab active" data-filter="all">All Games</button>
-        <button type="button" class="deck-tab" data-filter="Social Deduction">🕵️ Deduction</button>
-        <button type="button" class="deck-tab" data-filter="Pass 1 Phone">📱 1-Phone</button>
+      <div class="deck-tabs" id="category-filters" role="tablist">
+        <button type="button" class="deck-tab filter-tab active" data-filter="all" role="tab" aria-selected="true">All Games</button>
+        <button type="button" class="deck-tab filter-tab" data-filter="Social Deduction" role="tab" aria-selected="false">🕵️ Deduction</button>
+        <button type="button" class="deck-tab filter-tab" data-filter="Mind Sync & Debate" role="tab" aria-selected="false">🧠 Mind Sync</button>
+        <button type="button" class="deck-tab filter-tab" data-filter="Pass 1 Phone" role="tab" aria-selected="false">📱 1-Phone</button>
       </div>
     </div>
 
@@ -1409,17 +1456,17 @@
           <div class="hud-step">
             <span class="hud-step-badge">Step 01</span>
             <h3>Tap Any Cartridge</h3>
-            <p>Launch instant multiplayer party games like <strong>Mr. Alien</strong> right inside your mobile browser—no app downloads.</p>
+            <p>Launch instant multiplayer party games like <strong>Mr. Alien</strong>, <strong>Secret Dictator</strong>, or <strong>Wavelength (Mind Sync)</strong> right inside your mobile browser—no app downloads.</p>
           </div>
           <div class="hud-step">
             <span class="hud-step-badge">Step 02</span>
-            <h3>Pass 1 Phone Around</h3>
-            <p>Enter your squad's names once. Each player privately scans their secret role or word before passing the phone.</p>
+            <h3>Pass 1 Phone or Join Room Code</h3>
+            <p>Play together on a single phone with Pass &amp; Play, or let everyone join on their own phones via a 4-letter Room Code.</p>
           </div>
           <div class="hud-step">
             <span class="hud-step-badge">Step 03</span>
-            <h3>Bluff, Debate &amp; Vote</h3>
-            <p>Drop clever 1-word clues face-to-face, expose the impostor, and share the victory card straight to WhatsApp!</p>
+            <h3>Bluff, Sync &amp; Vote</h3>
+            <p>Drop clever 1-word clues, enact covert bills, dial in your squad's telepathic wavelength, and share the victory card straight to WhatsApp!</p>
           </div>
         </div>
       </section>
@@ -1434,6 +1481,14 @@
           <details class="faq-box" open>
             <summary>Can 3 to 20 friends play on a single phone?</summary>
             <p>Yes! Our Pass 1 Phone mode lets an entire house party or road trip group play together using just one device.</p>
+          </details>
+          <details class="faq-box">
+            <summary>What games are available to play?</summary>
+            <p>PartyNights.online currently features 3 instant party games:
+              <br>• <strong>Mr. Alien (👽)</strong>: 500+ Indian words deduction game.
+              <br>• <strong>Secret Dictator (👑)</strong>: 5–10 player social deduction and policy game with AI bots.
+              <br>• <strong>Wavelength (🧠)</strong>: 235+ telepathic spectrum dial debate party game.
+            </p>
           </details>
           <details class="faq-box">
             <summary>What is included in Mr. Alien?</summary>
@@ -1496,7 +1551,9 @@
     <div><strong>PartyNights.online</strong> — Instant House Party Games Arcade</div>
     <div class="footer-links">
       <a href="/">Arcade Lobby</a>
-      <a href="/mr-alien/">Play Mr. Alien 👽</a>
+      <a href="/mr-alien/">Mr. Alien 👽</a>
+      <a href="/secret-dictator/">Secret Dictator 👑</a>
+      <a href="/wavelength/">Wavelength 🧠</a>
       <a href="/privacy">Privacy &amp; Terms</a>
       <a href="/sitemap.xml">Sitemap</a>
       <a href="mailto:partynights.online.info@gmail.com">✉️ partynights.online.info@gmail.com</a>
