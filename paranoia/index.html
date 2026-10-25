@@ -33,7 +33,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="./styles.min.css?v=1" />
+<link rel="stylesheet" href="./styles.min.css?v=2" />
 </head>
 <body>
 <div class="ambient-glow glow-left" aria-hidden="true"></div>
@@ -70,7 +70,6 @@
 <section id="screen-landing" class="screen active">
 <div class="landing-wrap">
 <div class="top-hub-bar">
-<a href="https://partynights.online/" class="hub-back-pill">← All PartyNights.online Games</a>
 <span class="signal-pill">
 <span class="signal-dot"></span>
 <span id="landing-vault-count">220+ Spicy Cards Ready</span>
@@ -93,7 +92,7 @@
 <div class="badge-pill">🔥 #1 VIRAL GEN-Z &amp; DESI HOUSE PARTY GAME</div>
 <h1 class="hero-title">PARANOIA <span class="gradient-text">EXPOSED</span></h1>
 <p class="hero-subtitle">
-Whisper a spicy <em>"Who in this room..."</em> question, say your answer <strong>OUT LOUD</strong>, and flip the <strong>3D Coin of Fate</strong>—or play <strong>Most Likely To: Exposed</strong> with live room polls!
+Whisper a secret question, name a friend out loud &amp; flip the 50/50 Coin!
 </p>
 <div class="landing-mode-cards">
 <div class="landing-mode-card mode-card-paranoia" id="card-launch-paranoia">
@@ -102,7 +101,7 @@ Whisper a spicy <em>"Who in this room..."</em> question, say your answer <strong
 <span class="lmc-icon">🪙</span>
 <div>
 <h3>Classic Paranoia</h3>
-<p>Secret whisper → Out-loud name drop → 50/50 Coin Flip (Heads = Exposed, Tails = Vaulted!)</p>
+<p>Whisper → Name Out Loud → 50/50 Coin</p>
 </div>
 </div>
 <button type="button" class="primary-glow-btn" id="btn-start-paranoia">
@@ -116,7 +115,7 @@ Whisper a spicy <em>"Who in this room..."</em> question, say your answer <strong
 <span class="lmc-icon">🎯</span>
 <div>
 <h3>Most Likely To: Exposed</h3>
-<p>Everyone secretly votes who fits the prompt → Reveal the #1 Exposed Receipt Card &amp; % breakdown!</p>
+<p>Secret Squad Vote → Exposed Receipt</p>
 </div>
 </div>
 <button type="button" class="secondary-glow-btn" id="btn-start-poll">
@@ -131,29 +130,6 @@ Whisper a spicy <em>"Who in this room..."</em> question, say your answer <strong
 <input type="text" id="input-join-code" class="room-code-input" placeholder="ROOM CODE (e.g. PR42)" maxlength="6" autocomplete="off" />
 <input type="text" id="input-join-name" class="room-name-input" placeholder="Your Name" maxlength="16" autocomplete="off" />
 <button type="button" class="small-neon-btn" id="btn-join-room">Join →</button>
-</div>
-</div>
-<div class="steps-grid">
-<div class="step-card">
-<div class="step-num">1</div>
-<div class="step-info">
-<strong>Read Secret Question</strong>
-<span>Whisper it to the player next to you so nobody else hears.</span>
-</div>
-</div>
-<div class="step-card">
-<div class="step-num">2</div>
-<div class="step-info">
-<strong>Name Someone Out Loud</strong>
-<span>They must pick someone in this room without explaining why!</span>
-</div>
-</div>
-<div class="step-card">
-<div class="step-num">3</div>
-<div class="step-info">
-<strong>Flip the 3D Coin of Fate</strong>
-<span><strong>HEADS</strong> exposes the question to the room. <strong>TAILS</strong> locks it forever!</span>
-</div>
 </div>
 </div>
 </div>
@@ -193,7 +169,7 @@ Whisper a spicy <em>"Who in this room..."</em> question, say your answer <strong
 </div>
 <button type="button" class="small-neon-btn" id="btn-copy-room-link">📲 Share Invite</button>
 </div>
-<p class="rhb-hint">Friends can open <strong>partynights.online/paranoia</strong> and enter this code, or you can still play together on this phone!</p>
+<p class="rhb-hint">Share code with friends on <strong>partynights.online/paranoia</strong></p>
 </div>
 </div>
 <div class="sub-section">
@@ -230,9 +206,8 @@ Whisper a spicy <em>"Who in this room..."</em> question, say your answer <strong
 <div class="players-chip-grid" id="setup-players-list"></div>
 </div>
 <details class="custom-q-drawer">
-<summary>✍️ Add Your Own Secret Squad Questions (<span id="custom-q-count">0</span>)</summary>
+<summary>✍️ Add Custom Squad Questions (<span id="custom-q-count">0</span>)</summary>
 <div class="custom-q-body">
-<p class="custom-q-hint">Slip an inside joke into the deck! Nobody will know you wrote it until the coin lands on HEADS.</p>
 <div class="add-player-bar">
 <input type="text" id="input-custom-question" class="text-input" placeholder="Who in this room is most likely to..." maxlength="140" />
 <button type="button" class="add-btn" id="btn-add-custom-q">+ Save</button>
@@ -277,9 +252,8 @@ data-full-width-responsive="true"></ins>
 <div class="avatar-bubble"><span id="gate-answerer-name">Priya</span><small>Answerer</small></div>
 </div>
 <h2 class="gate-title">Hand Phone to <span class="highlight-rose" id="gate-asker-title">Aarav</span></h2>
-<p class="gate-desc">
-<strong id="gate-asker-inline">Aarav</strong> will unlock the secret question and whisper it to <strong id="gate-answerer-inline">Priya</strong> so nobody else in the room hears it!
-</p>
+<span class="compact-step-pill">🤫 Whisper to <strong id="gate-answerer-inline">Priya</strong>, then pass phone</span>
+<span id="gate-asker-inline" style="display:none;">Aarav</span>
 <button type="button" class="primary-glow-btn" id="btn-unlock-whisper">
 <span>🔓 I am <span id="btn-unlock-asker-name">Aarav</span> — Reveal Question</span>
 </button>
@@ -296,13 +270,11 @@ data-full-width-responsive="true"></ins>
 </p>
 </div>
 <div class="inline-custom-whisper">
-<input type="text" id="input-live-whisper" class="text-input" placeholder="Or type your own secret question right now..." maxlength="140" />
+<input type="text" id="input-live-whisper" class="text-input" placeholder="Or type your own secret question..." maxlength="140" />
 <button type="button" class="small-neon-btn" id="btn-use-live-whisper">Use</button>
 </div>
-<div class="whisper-instruction-banner">
-<span>1️⃣ Whisper this question into <strong id="whisper-inst-answerer">Priya</strong>'s ear.</span>
-<span>2️⃣ Tap below to lock the question &amp; pass the phone to <strong id="whisper-inst-answerer-2">Priya</strong>!</span>
-</div>
+<span id="whisper-inst-answerer" style="display:none;">Priya</span>
+<span id="whisper-inst-answerer-2" style="display:none;">Priya</span>
 <button type="button" class="primary-glow-btn" id="btn-lock-and-pass">
 <span>🔒 Hide Question &amp; Pass to <span id="btn-pass-answerer-name">Priya</span> →</span>
 </button>
@@ -311,18 +283,15 @@ data-full-width-responsive="true"></ins>
 <div id="paranoia-step-answer" class="game-stage-card" style="display: none;">
 <div class="stage-top-row">
 <span class="gate-badge">STEP 2 • SAY YOUR ANSWER OUT LOUD!</span>
-<button type="button" class="tiny-pill-btn" id="btn-answerer-peek" title="Forgot what they whispered? Tap to peek privately">👁️ Peek Secret Question</button>
+<button type="button" class="tiny-pill-btn" id="btn-answerer-peek" title="Tap to peek privately">👁️ Peek Question</button>
 </div>
 <div id="answerer-peek-box" class="answerer-peek-box" style="display: none;">
-<small>🤫 Secret Question (Hide from others!):</small>
+<small>🤫 Secret Question (Private):</small>
 <p id="answerer-peek-text"></p>
 </div>
 <h2 class="stage-headline">
-<span class="highlight-cyan" id="answerer-headline-name">Priya</span>, say a name OUT LOUD &amp; tap them below:
+<span class="highlight-cyan" id="answerer-headline-name">Priya</span>, say a name OUT LOUD &amp; tap them:
 </h2>
-<p class="stage-subtext">
-Everyone in the room will hear who you picked—but nobody knows the question unless the coin lands on <strong>HEADS</strong>!
-</p>
 <div class="target-select-grid" id="paranoia-target-grid"></div>
 </div>
 <div id="paranoia-step-coin" class="game-stage-card" style="display: none;">
@@ -330,12 +299,11 @@ Everyone in the room will hear who you picked—but nobody knows the question un
 <h2 class="stage-headline">
 <span class="highlight-cyan" id="coin-answerer-name">Priya</span> named <span class="highlight-rose" id="coin-target-name">Kabir</span> OUT LOUD! 😱
 </h2>
-<p class="stage-subtext">
-Why did <strong id="coin-sub-answerer">Priya</strong> pick <strong id="coin-sub-target">Kabir</strong>?! Flip the 3D Coin of Fate:
-</p>
+<span id="coin-sub-answerer" style="display:none;">Priya</span>
+<span id="coin-sub-target" style="display:none;">Kabir</span>
 <div class="coin-odds-pills">
-<span class="odds-pill odds-heads">🔥 HEADS (50%) = EXPOSE QUESTION</span>
-<span class="odds-pill odds-tails">🔒 TAILS (50%) = VAULT FOREVER</span>
+<span class="odds-pill odds-heads">🔥 HEADS = EXPOSE</span>
+<span class="odds-pill odds-tails">🔒 TAILS = VAULT</span>
 </div>
 <div class="coin-arena">
 <div class="coin-3d-wrapper" id="active-coin-3d">
@@ -371,7 +339,6 @@ Why did <strong id="coin-sub-answerer">Priya</strong> pick <strong id="coin-sub-
 </p>
 </div>
 <div id="vault-override-box" class="vault-override-box" style="display: none;">
-<p>Want to force the vault open?! Your squad has <strong>1 Override Token</strong> left this match!</p>
 <button type="button" class="override-glow-btn" id="btn-burn-override">
 💎 Burn Squad Override Token to EXPOSE Question!
 </button>
@@ -405,7 +372,7 @@ Why did <strong id="coin-sub-answerer">Priya</strong> pick <strong id="coin-sub-
 <strong id="poll-votes-counter">0 / 4</strong>
 </div>
 </div>
-<div class="poll-prompt-card">
+<div class="poll-prompt-card" id="poll-prompt-card">
 <div class="secret-card-top">
 <span class="secret-cat-badge" id="poll-q-tag">🎉 House Party</span>
 <button type="button" class="tiny-pill-btn" id="btn-swap-poll-q">🔄 Swap Prompt</button>
@@ -419,9 +386,8 @@ Why did <strong id="coin-sub-answerer">Priya</strong> pick <strong id="coin-sub-
 <div class="voter-turn-banner">
 <span class="voter-turn-badge" id="poll-voter-badge">📱 PASS PHONE TO VOTER #1</span>
 <h3 class="voter-turn-title">
-<span class="highlight-cyan" id="poll-current-voter">Aarav</span>, cast your secret vote:
+<span class="highlight-cyan" id="poll-current-voter">Aarav</span>, tap your secret vote:
 </h3>
-<p class="voter-turn-sub" id="poll-voter-sub">Tap who fits this prompt best. Your vote is hidden until everyone locks in!</p>
 </div>
 <div class="target-select-grid" id="poll-vote-grid"></div>
 </div>
@@ -533,6 +499,6 @@ Your current round &amp; Paranoia Vault progress are still live. Are you sure yo
 </div>
 </div>
 <div id="toast-banner" class="toast-banner" aria-live="polite"></div>
-<script src="./app.min.js?v=1"></script>
+<script src="./app.min.js?v=2"></script>
 </body>
 </html>
