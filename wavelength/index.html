@@ -55,15 +55,15 @@
 <div class="top-actions">
 <a href="https://partynights.online/" class="nav-pill-btn" id="btn-top-hub" title="PartyNights.online Hub">
 <span>🎉</span>
-<span>Hub</span>
+<span class="nav-pill-label">Hub</span>
 </a>
 <button class="nav-pill-btn" id="btn-top-restart" type="button" title="New Match" style="display: none;">
 <span>🔄</span>
-<span>Reset</span>
+<span class="nav-pill-label">Reset</span>
 </button>
 <button class="nav-pill-btn" id="btn-top-menu" type="button" title="Setup Menu">
 <span>🏠</span>
-<span id="btn-top-menu-label">Setup</span>
+<span id="btn-top-menu-label" class="nav-pill-label">Setup</span>
 </button>
 <button class="circle-btn" id="btn-open-rules" type="button" title="How to Play">📖</button>
 <button class="circle-btn" id="btn-open-leaderboard" type="button" title="Hall of Fame">🏆</button>
@@ -72,8 +72,7 @@
 </header>
 <section id="screen-landing" class="screen active">
 <div class="landing-wrap">
-<div class="top-hub-bar">
-<a href="https://partynights.online/" class="hub-back-pill">← All PartyNights.online Games</a>
+<div class="top-hub-bar" style="justify-content: center;">
 <span class="signal-pill">
 <span class="signal-dot"></span>
 <span>235+ Spectrums Ready</span>
@@ -83,9 +82,9 @@
 <svg viewBox="0 0 260 150" class="hero-dial-svg" aria-hidden="true">
 <defs>
 <linearGradient id="heroArcGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-<stop offset="0%" stop-color="#10d796" />
+<stop offset="0%" stop-color="#00f0ff" />
 <stop offset="50%" stop-color="#7c3aed" />
-<stop offset="100%" stop-color="#ff2e63" />
+<stop offset="100%" stop-color="#ff2a85" />
 </linearGradient>
 </defs>
 <path d="M 24 132 A 106 106 0 0 1 236 132" fill="none" stroke="url(#heroArcGrad)" stroke-width="14" stroke-linecap="round" opacity="0.25" />
@@ -95,9 +94,9 @@
 <path d="M 24 132 A 106 106 0 0 1 236 132" fill="none" stroke="url(#heroArcGrad)" stroke-width="5" stroke-linecap="round" />
 <g class="hero-needle-anim">
 <line x1="130" y1="132" x2="130" y2="32" stroke="#ffffff" stroke-width="4" stroke-linecap="round" />
-<circle cx="130" cy="32" r="7" fill="#ff2e63" stroke="#ffffff" stroke-width="2.5" />
+<circle cx="130" cy="32" r="7" fill="#ff2a85" stroke="#ffffff" stroke-width="2.5" />
 </g>
-<circle cx="130" cy="132" r="16" fill="#121426" stroke="#10d796" stroke-width="3" />
+<circle cx="130" cy="132" r="16" fill="#121426" stroke="#00f0ff" stroke-width="3" />
 </svg>
 <div class="hero-core-emoji">🧠</div>
 </div>
@@ -150,7 +149,7 @@ FREE PARTY GAME ONLINE • HOUSE PARTY GAMES WITH FRIENDS
 <div class="setup-container">
 <div class="section-header">
 <h2 class="section-title">Game Setup</h2>
-<p class="section-subtitle">Pick a mode &amp; start playing in seconds.</p>
+<p class="section-subtitle">Pick a mode &amp; start in seconds.</p>
 </div>
 <div class="setup-card">
 <div class="card-label-row">
@@ -160,18 +159,18 @@ FREE PARTY GAME ONLINE • HOUSE PARTY GAMES WITH FRIENDS
 <div class="mode-grid" role="radiogroup" aria-label="Game Mode">
 <button type="button" class="mode-option active" data-mode="coop" id="mode-btn-coop">
 <span class="mode-icon">🤝</span>
-<span class="mode-title">Co-op Sync</span>
-<span class="mode-desc">Team up &amp; beat the high score</span>
+<span class="mode-title">Co-op</span>
+<span class="mode-desc">Beat High Score</span>
 </button>
 <button type="button" class="mode-option" data-mode="teams" id="mode-btn-teams">
 <span class="mode-icon">⚔️</span>
 <span class="mode-title">2 Teams</span>
-<span class="mode-desc">Team battle + Left/Right steal</span>
+<span class="mode-desc">Steal &amp; Battle</span>
 </button>
 <button type="button" class="mode-option" data-mode="party" id="mode-btn-party">
 <span class="mode-icon">🏆</span>
-<span class="mode-title">Party Ranks</span>
-<span class="mode-desc">Individual player leaderboard</span>
+<span class="mode-title">Ranks</span>
+<span class="mode-desc">Solo Points</span>
 </button>
 </div>
 </div>
@@ -185,13 +184,24 @@ FREE PARTY GAME ONLINE • HOUSE PARTY GAMES WITH FRIENDS
 </div>
 </div>
 <div id="player-names-grid" class="player-names-grid"></div>
-<div class="round-count-row" id="coop-rounds-row">
+<div class="settings-inline-grid" id="coop-settings-grid">
+<div class="setting-inline-col" id="coop-rounds-row">
 <span class="sub-label">Rounds:</span>
 <div class="pill-Radio-group" id="round-count-group">
 <button type="button" class="pill-choice" data-rounds="5">5</button>
 <button type="button" class="pill-choice active" data-rounds="7">7</button>
 <button type="button" class="pill-choice" data-rounds="10">10</button>
 <button type="button" class="pill-choice" data-rounds="99">♾️</button>
+</div>
+</div>
+<div class="setting-inline-col" id="coop-timer-row">
+<span class="sub-label">Timer:</span>
+<div class="pill-Radio-group" id="timer-choice-group">
+<button type="button" class="pill-choice active" data-timer="0">Off ∞</button>
+<button type="button" class="pill-choice" data-timer="30">30s ⚡</button>
+<button type="button" class="pill-choice" data-timer="45">45s 🔥</button>
+<button type="button" class="pill-choice" data-timer="60">60s ⏱️</button>
+</div>
 </div>
 </div>
 </div>
@@ -210,7 +220,7 @@ FREE PARTY GAME ONLINE • HOUSE PARTY GAMES WITH FRIENDS
 <input type="text" id="input-team-b" value="Team Rebel" maxlength="22" placeholder="Team 2 Name" />
 </div>
 </div>
-<div class="round-count-row" style="margin-top: 10px;">
+<div class="round-count-row" style="margin-top: 8px;">
 <span class="sub-label">First To:</span>
 <div class="pill-Radio-group" id="team-target-group">
 <button type="button" class="pill-choice" data-target="7">7 Pts</button>
@@ -218,10 +228,10 @@ FREE PARTY GAME ONLINE • HOUSE PARTY GAMES WITH FRIENDS
 <button type="button" class="pill-choice" data-target="15">15 Pts</button>
 </div>
 </div>
-<label class="toggle-row" style="margin-top: 10px;">
+<label class="toggle-row" style="margin-top: 8px;">
 <div>
 <div class="toggle-title">⬅️ Left/Right Steal Bet (+1 Pt) ➡️</div>
-<div class="toggle-sub">Other team bets if target is Left or Right of needle</div>
+<div class="toggle-sub">Other team bets Left or Right of needle</div>
 </div>
 <input type="checkbox" id="chk-team-steal" checked />
 </label>
@@ -273,18 +283,6 @@ FREE PARTY GAME ONLINE • HOUSE PARTY GAMES WITH FRIENDS
 </div>
 </div>
 </div>
-<div class="setup-card">
-<div class="card-label-row">
-<span class="card-label">4. Round Timer</span>
-<span class="card-hint">Optional</span>
-</div>
-<div class="pill-Radio-group" id="timer-choice-group">
-<button type="button" class="pill-choice active" data-timer="0">Off ∞</button>
-<button type="button" class="pill-choice" data-timer="30">30s ⚡</button>
-<button type="button" class="pill-choice" data-timer="45">45s 🔥</button>
-<button type="button" class="pill-choice" data-timer="60">60s ⏱️</button>
-</div>
-</div>
 <button type="button" id="btn-start-match" class="btn-launch">
 <span>Start Game</span>
 <span>🧠⚡</span>
@@ -294,11 +292,6 @@ FREE PARTY GAME ONLINE • HOUSE PARTY GAMES WITH FRIENDS
 <section id="screen-game" class="screen">
 <div class="game-stage-wrap">
 <div class="scoreboard-strip" id="scoreboard-strip"></div>
-<div class="step-tracker" id="step-tracker">
-<div class="step-pill active" id="tracker-step-1">1. Psychic Peeks 👁️</div>
-<div class="step-pill" id="tracker-step-2">2. Drag Dial 👆</div>
-<div class="step-pill" id="tracker-step-3">3. Score ⚡</div>
-</div>
 <div class="spectrum-banner" id="spectrum-banner">
 <div class="extreme-card extreme-left">
 <div class="extreme-dir">⬅️ 0% LEFT</div>
@@ -330,9 +323,9 @@ FREE PARTY GAME ONLINE • HOUSE PARTY GAMES WITH FRIENDS
 <svg id="wavelength-svg" viewBox="0 0 500 300" class="wavelength-svg" aria-label="Wavelength 180 degree dial">
 <defs>
 <linearGradient id="cabinetRimGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-<stop offset="0%" stop-color="#10d796" />
+<stop offset="0%" stop-color="#00f0ff" />
 <stop offset="50%" stop-color="#7c3aed" />
-<stop offset="100%" stop-color="#ff2e63" />
+<stop offset="100%" stop-color="#ff2a85" />
 </linearGradient>
 <radialGradient id="shutterSurfaceGrad" cx="50%" cy="90%" r="85%">
 <stop offset="0%" stop-color="#1e2246" />
@@ -362,8 +355,8 @@ FREE PARTY GAME ONLINE • HOUSE PARTY GAMES WITH FRIENDS
 </g>
 <g id="svg-shutter-group">
 <path d="M 47 245 A 203 203 0 0 1 453 245 Z" fill="url(#shutterSurfaceGrad)" stroke="rgba(255,255,255,0.12)" stroke-width="2" />
-<path d="M 95 245 A 155 155 0 0 1 405 245" fill="none" stroke="rgba(16, 215, 150, 0.14)" stroke-width="1.5" stroke-dasharray="6 6" />
-<path d="M 145 245 A 105 105 0 0 1 355 245" fill="none" stroke="rgba(124, 58, 237, 0.18)" stroke-width="1.5" stroke-dasharray="4 6" />
+<path d="M 95 245 A 155 155 0 0 1 405 245" fill="none" stroke="rgba(0, 240, 255, 0.14)" stroke-width="1.5" stroke-dasharray="6 6" />
+<path d="M 145 245 A 105 105 0 0 1 355 245" fill="none" stroke="rgba(255, 42, 133, 0.18)" stroke-width="1.5" stroke-dasharray="4 6" />
 <text id="svg-shutter-hint" x="250" y="142" text-anchor="middle" fill="rgba(255,255,255,0.42)" font-size="13" font-weight="800" letter-spacing="1.5">👆 DRAG DIAL LEFT OR RIGHT</text>
 </g>
 <g id="svg-ticks-group"></g>
@@ -374,18 +367,18 @@ FREE PARTY GAME ONLINE • HOUSE PARTY GAMES WITH FRIENDS
 <text id="svg-bonus-text" x="250" y="23" text-anchor="middle" dominant-baseline="middle" fill="#facc15" font-size="10.5" font-weight="800"></text>
 </g>
 <g id="svg-needle-group">
-<line id="needle-glow-line" x1="250" y1="245" x2="250" y2="52" stroke="#ff2e63" stroke-width="11" stroke-linecap="round" opacity="0.32" />
+<line id="needle-glow-line" x1="250" y1="245" x2="250" y2="52" stroke="#ff2a85" stroke-width="11" stroke-linecap="round" opacity="0.32" />
 <line id="needle-main-line" x1="250" y1="245" x2="250" y2="52" stroke="#ffffff" stroke-width="5" stroke-linecap="round" />
-<circle id="needle-knob-pulse" cx="250" cy="64" r="28" fill="rgba(255, 46, 99, 0.22)" />
-<circle id="needle-knob-outer" cx="250" cy="64" r="21" fill="#ff2e63" stroke="#ffffff" stroke-width="3.5" filter="url(#neonGlow)" />
+<circle id="needle-knob-pulse" cx="250" cy="64" r="28" fill="rgba(255, 42, 133, 0.22)" />
+<circle id="needle-knob-outer" cx="250" cy="64" r="21" fill="#ff2a85" stroke="#ffffff" stroke-width="3.5" filter="url(#neonGlow)" />
 <text id="needle-knob-arrows" x="250" y="65" text-anchor="middle" dominant-baseline="middle" fill="#ffffff" font-size="12" font-weight="900" pointer-events="none">↔</text>
 </g>
 <circle cx="250" cy="245" r="24" fill="#121426" stroke="url(#cabinetRimGrad)" stroke-width="4" />
-<circle cx="250" cy="245" r="9" fill="#10d796" />
+<circle cx="250" cy="245" r="9" fill="#00f0ff" />
 <text id="svg-dial-readout" x="250" y="291" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="800" letter-spacing="0.6">50% (CENTER)</text>
 </svg>
 </div>
-<div class="dial-precision-controls" id="dial-precision-controls">
+<div class="dial-precision-controls" id="dial-precision-controls" style="display: none;">
 <button type="button" class="fine-btn" id="btn-dial-left5" title="Move 5% Left">−5%</button>
 <button type="button" class="fine-btn" id="btn-dial-left1" title="Move 1% Left">−1%</button>
 <input type="range" id="dial-range-slider" min="0" max="100" step="1" value="50" class="dial-range-slider" aria-label="Dial percentage slider" />
@@ -395,14 +388,11 @@ FREE PARTY GAME ONLINE • HOUSE PARTY GAMES WITH FRIENDS
 </div>
 <div class="phase-card" id="phase-psychic-card">
 <div class="phase-header">
-<h3 class="phase-title" id="psychic-turn-heading">Pass Phone to Psychic 🧠</h3>
-<p class="phase-desc" id="psychic-turn-sub">
-<strong>1.</strong> Tap <strong>Peek Target</strong> to see the bullseye. <strong>2.</strong> Say a 1-word clue aloud &amp; hand phone to friends!
-</p>
+<h3 class="phase-title" id="psychic-turn-heading">👁️ Psychic: Player 1</h3>
 </div>
 <div class="psychic-peek-actions">
 <button type="button" id="btn-toggle-peek" class="btn-peek">
-<span>👁️ Tap to Peek Target</span>
+<span>👁️ Peek Target</span>
 </button>
 <div id="psychic-secret-box" class="psychic-secret-box" style="display: none;">
 <div class="target-readout-banner" id="target-readout-banner">
@@ -410,7 +400,7 @@ FREE PARTY GAME ONLINE • HOUSE PARTY GAMES WITH FRIENDS
 </div>
 <div class="sparks-wrap">
 <button type="button" id="btn-show-sparks" class="btn-spark-toggle">
-💡 Need a Clue Idea? Tap Here
+💡 Need a Clue Idea?
 </button>
 <div id="sparks-content" class="sparks-content" style="display: none;"></div>
 </div>
@@ -421,13 +411,10 @@ FREE PARTY GAME ONLINE • HOUSE PARTY GAMES WITH FRIENDS
 type="text"
 id="input-psychic-clue"
 class="clue-text-input"
-placeholder="Optional: Type clue here (or just say it aloud)"
+placeholder="Optional: 1-word clue (no numbers/%)"
 maxlength="42"
 autocomplete="off"
 />
-<div class="rule-micro-note">
-🚫 No numbers, no %, and don't use the words on the card!
-</div>
 </div>
 <button type="button" id="btn-lock-clue" class="btn-launch">
 <span>🔒 Hide Target &amp; Hand to Friends</span>
@@ -436,10 +423,7 @@ autocomplete="off"
 </div>
 <div class="phase-card" id="phase-guess-card" style="display: none;">
 <div class="phase-header">
-<h3 class="phase-title" id="guess-turn-heading">👆 Drag the Dial &amp; Lock It In!</h3>
-<p class="phase-desc" id="guess-turn-sub">
-Turn the main dial with your finger to where the clue fits between Left (0%) and Right (100%).
-</p>
+<h3 class="phase-title" id="guess-turn-heading">👆 Squad: Drag the Dial!</h3>
 </div>
 <button type="button" id="btn-submit-guess" class="btn-launch">
 <span id="btn-submit-guess-label">⚡ Lock Dial &amp; Reveal Score!</span>
@@ -449,9 +433,6 @@ Turn the main dial with your finger to where the clue fits between Left (0%) and
 <div class="phase-header">
 <span class="phase-step-badge bonus-badge">⚔️ +1 PT STEAL BET</span>
 <h3 class="phase-title" id="bonus-turn-heading">Other Team: Left or Right?</h3>
-<p class="phase-desc" id="bonus-turn-sub">
-Is the real <strong>4-Pt Bullseye</strong> to the <strong>LEFT</strong> or <strong>RIGHT</strong> of their needle?
-</p>
 </div>
 <div class="bonus-bet-grid">
 <button type="button" id="btn-bet-left" class="btn-bet btn-bet-left">
