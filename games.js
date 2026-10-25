@@ -24,12 +24,12 @@ window.PARTY_GAMES = [
     minPlayers: 3,
     maxPlayers: 20,
     duration: "5–15 Mins",
-    deviceMode: "Room Code or Pass 1 Phone",
+    deviceMode: "Pass 1 Phone, Multi-Phone or 📺 TV Board",
     category: "Social Deduction",
-    tags: ["Multi-Phone Room Code", "Pass 1 Phone", "500+ Desi Words", "Bollywood & Cricket"],
+    tags: ["TV / Laptop Board", "Multi-Phone Room Code", "Pass 1 Phone", "740+ Global & Desi Words"],
     badge: "🔥 Featured Hit",
     featured: true,
-    description: "Someone in the room is not Human! Join on your own phones via Online Room Code (or Pass 1 Phone), give clever 1-word clues across Desi Food, Bollywood, Cricket & Festivals, and vote out Mr. Alien.",
+    description: "Someone in the room is not Human! Join on your own phones via Online Room Code, Pass 1 Phone, or project the Area-51 Command Board on a TV/Laptop while everyone gives 1-word clues and votes.",
     url: "/mr-alien/"
   },
   {
@@ -45,12 +45,12 @@ window.PARTY_GAMES = [
     minPlayers: 5,
     maxPlayers: 10,
     duration: "15–30 Mins",
-    deviceMode: "Room Code or Pass 1 Phone",
+    deviceMode: "Pass 1 Phone, Multi-Phone or 📺 TV Board",
     category: "Social Deduction",
-    tags: ["Multi-Phone Room Code", "Pass 1 Phone", "Executive Powers", "Smart AI Bots"],
+    tags: ["TV / Laptop Board", "Multi-Phone Room Code", "Pass 1 Phone", "Executive Powers", "Smart AI Bots"],
     badge: "👑 Board Classic",
     featured: true,
-    description: "Inspired by the legendary 5–10 player hidden-identity board game! Join on your own phones via Room Code (or Pass 1 Phone), elect a President & Chancellor, enact Freedom Bills, and expose the Secret Dictator before the Syndicate seizes power.",
+    description: "Inspired by the legendary 5–10 player hidden-identity board game! Display the Shared Parliament Board on a Laptop/TV or play via Room Code & Pass 1 Phone to enact Freedom Bills and stop the Secret Dictator.",
     url: "/secret-dictator/"
   },
   {
@@ -66,12 +66,12 @@ window.PARTY_GAMES = [
     minPlayers: 2,
     maxPlayers: 20,
     duration: "5–15 Mins",
-    deviceMode: "Pass 1 Phone",
+    deviceMode: "Pass 1 Phone, Multi-Phone or 📺 TV Board",
     category: "Mind Sync & Debate",
-    tags: ["180° Touch Dial", "235+ Desi & Global Cards", "Co-op & Team Showdown", "Custom Spectrums"],
+    tags: ["TV / Laptop Board", "Multi-Phone Room Code", "Pass 1 Phone", "180° Touch Dial", "235+ Desi & Global Cards"],
     badge: "🧠 Viral Party Hit",
     featured: true,
-    description: "One player sees a hidden bullseye on a 180° slider between two extremes (e.g., Overrated ↔ Underrated or Tapri Chai ↔ Starbucks) and gives a 1-word clue. Debate where to drag the dial & tap to reveal your Mind Sync score!",
+    description: "One player sees a hidden bullseye on a 180° slider between two extremes and gives a 1-word clue. Pass 1 Phone, join via Room Code, or project the Giant Neon Dial onto a Laptop/TV!",
     url: "/wavelength/"
   },
   {
@@ -87,12 +87,12 @@ window.PARTY_GAMES = [
     minPlayers: 3,
     maxPlayers: 20,
     duration: "5–15 Mins",
-    deviceMode: "Room Code or Pass 1 Phone",
+    deviceMode: "Pass 1 Phone, Multi-Phone or 📺 TV Board",
     category: "Mind Sync & Debate",
-    tags: ["3D Coin of Fate", "Most Likely To Poll", "220+ Desi & Spicy Cards", "Pass 1 Phone"],
+    tags: ["TV / Laptop Board", "Multi-Phone Room Code", "Pass 1 Phone", "3D Coin of Fate", "Most Likely To Poll"],
     badge: "🪙 #1 Gen-Z Trend",
     featured: true,
-    description: "Whisper a spicy 'Who in this room...' question, name someone OUT LOUD, and flip the 3D Coin of Fate: HEADS exposes the secret question to the room, TAILS locks it in the Vault forever! Plus live Most Likely To room polls.",
+    description: "Whisper a spicy 'Who in this room...' question, name someone OUT LOUD, and flip the 3D Coin of Fate on a phone or Common TV/Laptop Stage: HEADS exposes the secret question, TAILS locks it forever!",
     url: "/paranoia/"
   }
 ];
