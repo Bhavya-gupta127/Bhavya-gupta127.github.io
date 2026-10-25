@@ -1,10 +1,10 @@
-// Secret Dictator — PWA Service Worker v4.0
-const CACHE_NAME = "secret-dictator-pwa-v4";
+// Secret Dictator — PWA Service Worker v5.0
+const CACHE_NAME = "secret-dictator-pwa-v5";
 const ASSETS = [
   "./",
   "./index.html",
-  "./styles.min.css?v=4",
-  "./app.min.js?v=4",
+  "./styles.min.css?v=5",
+  "./app.min.js?v=5",
   "./manifest.json",
   "./icon-192.png",
   "./icon-512.png",

@@ -31,7 +31,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@600;700;800&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="./styles.min.css?v=4" />
+<link rel="stylesheet" href="./styles.min.css?v=5" />
 <script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js" defer></script>
 </head>
 <body>
@@ -53,6 +53,10 @@
 </div>
 </div>
 <div class="top-actions">
+<button type="button" class="theme-pill-btn tv-pill-btn" id="btn-toggle-tv-mode" title="Toggle Common Screen / TV Board Mode">
+<span id="top-tv-icon">📺</span>
+<span id="top-tv-label">TV Board</span>
+</button>
 <button type="button" class="theme-pill-btn" id="btn-open-themes" title="Switch World Theme">
 <span id="top-theme-icon">🎨</span>
 <span id="top-theme-name">Theme</span>
@@ -127,6 +131,10 @@ autocomplete="off"
 <span>📲 Host Multi-Phone Room</span>
 <span class="btn-arrow">→</span>
 </button>
+<button type="button" id="btn-create-tv-room" class="btn-tv-board">
+<span>📺 Host on TV / Laptop Board (Phones Join)</span>
+<span class="btn-arrow">→</span>
+</button>
 <div class="join-row">
 <input
 type="text"
@@ -192,6 +200,16 @@ maxlength="18"
 <div id="lobby-seat-list" class="seat-list"></div>
 </div>
 <div class="panel-card" id="lobby-settings-card">
+<div class="setting-row tv-setting-row" id="row-tv-board-host" style="margin-bottom:0.75rem; padding-bottom:0.75rem; border-bottom:1px solid rgba(255,255,255,0.08);">
+<div>
+<div class="setting-title">📺 TV / Laptop Board Mode (Host is Display Only)</div>
+<div class="setting-desc">Laptop/TV shows the shared board; players join &amp; play privately on their phones</div>
+</div>
+<label class="tv-switch-label" for="toggle-tv-board-host">
+<input type="checkbox" id="toggle-tv-board-host" />
+<span class="tv-switch-pill" id="tv-switch-status-text">Off (Host Plays)</span>
+</label>
+</div>
 <div class="setting-row">
 <div>
 <div class="setting-title">🎨 Active World Theme</div>
@@ -217,6 +235,29 @@ maxlength="18"
 </div>
 </section>
 <section id="screen-game" class="screen">
+<div class="tv-board-banner" id="tv-board-top-banner" style="display:none;">
+<div class="tv-banner-left">
+<span class="tv-live-pill">📺 COMMON TABLE BOARD</span>
+<span class="tv-room-pill" id="tv-banner-room-wrap">ROOM: <strong id="tv-banner-room-code">----</strong></span>
+<span class="tv-join-url">📱 Join on your phone at <strong>partynights.online/secret-dictator</strong></span>
+</div>
+<div class="tv-banner-right">
+<span class="tv-privacy-shield">🔒 Secret Roles &amp; Hands Hidden on TV</span>
+<button type="button" class="small-pill-btn" id="btn-tv-exit-mode">📱 Player View</button>
+</div>
+</div>
+<div class="controller-focus-bar" id="controller-mode-bar" style="display:none;">
+<div class="controller-bar-left">
+<span class="controller-agent-pill" id="controller-agent-label">📱 Agent</span>
+<span class="controller-mini-hud" id="controller-mini-hud">🛡️ 0/5 • 🐍 0/6 • ⚖️ 0/3</span>
+</div>
+<div class="controller-bar-actions">
+<button type="button" class="controller-pill-btn" id="btn-controller-dossier">🕵️ Role</button>
+<button type="button" class="controller-pill-btn" id="btn-toggle-controller-focus" title="Toggle Compact Phone Controller Focus">
+<span id="controller-focus-label">📱 Compact Focus</span>
+</button>
+</div>
+</div>
 <div class="session-meta-strip">
 <div class="meta-pill deck-pill">
 <span class="card-stack-icon">🗂️</span>
@@ -353,33 +394,43 @@ Instantly transforms board colors, role titles, policy cards, and atmosphere!
 <div class="modal-backdrop" id="modal-rules" style="display:none;">
 <div class="modal-sheet rules-sheet">
 <div class="modal-header">
-<h3>📜 Official Rules &amp; Executive Powers</h3>
+<h3>💡 How to Play (Understand in 10 Seconds)</h3>
 <button type="button" class="icon-btn" id="btn-close-rules">✕</button>
 </div>
 <div class="rules-content">
+<div class="rule-block" style="border-color:rgba(16,215,150,0.45); background:rgba(16,215,150,0.08);">
+<h4>⚡ The Core Loop in 10 Seconds</h4>
+<p>
+<strong>👥 Majority Republic (Blue)</strong> vs. <strong>🐍 Secret Syndicate &amp; Dictator (Red)</strong>:<br/>
+Every round: <strong>1.</strong> President picks a Chancellor → <strong>2.</strong> Everyone votes <strong>JA! / NEIN!</strong> → <strong>3.</strong> President draws 3 bills, discards 1 in secret, and passes 2 to the Chancellor to enact <strong>1 Law</strong>!
+</p>
+</div>
+<div class="rule-block" style="border-color:rgba(251,191,36,0.45); background:rgba(251,191,36,0.08);">
+<h4>🎭 Concrete 1-Round Example (Why Bluffing Matters)</h4>
+<p>
+Suppose <strong>President Rahul</strong> passes 2 cards to <strong>Chancellor Priya</strong>, and Priya enacts a <strong>🐍 Red Law</strong>!<br/>
+• <strong>Priya claims:</strong> <em>"Rahul passed me 2 Red cards (🔴🔴)—I had no choice!"</em><br/>
+• <strong>Rahul shouts:</strong> <em>"She's lying! I passed her 1 Blue &amp; 1 Red (🔵🔴)!"</em><br/>
+Who is telling the truth, and who is secretly working for the <strong>👑 Secret Dictator</strong>?
+</p>
+</div>
 <div class="rule-block blue">
-<h4>🛡️ Blue Team Victory</h4>
-<p>Enact <strong>5 Blue Policies</strong> OR <strong>Execute the Secret Leader</strong> using a late-game Executive Power.</p>
+<h4>🛡️ Blue Team Victory (Republic)</h4>
+<p>Enact <strong>5 Blue Policies</strong> OR <strong>Execute the Secret Dictator</strong> using a late-game Executive Power.</p>
 </div>
 <div class="rule-block red">
-<h4>🐍 Red Team Victory</h4>
-<p>Enact <strong>6 Red Policies</strong> OR <strong>Elect the Secret Leader as Chancellor</strong> any time after <strong>3 Red Policies</strong> are on the board!</p>
+<h4>🐍 Red Team Victory (Syndicate &amp; Dictator)</h4>
+<p>Enact <strong>6 Red Policies</strong> OR <strong>Elect the Secret Dictator as Chancellor</strong> any time after <strong>3 Red Policies</strong> are on the board!</p>
 </div>
 <div class="rule-block">
-<h4>🏛️ Each Round: 3 Steps</h4>
-<ol>
-<li><strong>Nominate &amp; Vote:</strong> The Presidential Candidate nominates an eligible Chancellor. Everyone votes <strong>AYE (JA!)</strong> or <strong>NAY (NEIN!)</strong> simultaneously. If rejected 3 times in a row, <strong>Chaos</strong> auto-enacts the top card of the deck!</li>
-<li><strong>Legislative Session:</strong> The President secretly draws <strong>3 Policies</strong>, discards 1 face-down, and passes 2 to the Chancellor. The Chancellor secretly enacts 1 and discards 1. (Both can lie about what they drew!)</li>
-<li><strong>Executive Action:</strong> If a <strong>Red Policy</strong> is enacted onto a power slot, the President must immediately use that slot's power:
+<h4>🏛️ Executive Powers (Triggered by Red Bills)</h4>
 <ul>
-<li>👁️ <strong>Policy Peek (5–6P):</strong> Secretly view the top 3 cards of the draw deck.</li>
-<li>🔍 <strong>Investigate Loyalty (7–10P):</strong> Secretly inspect one player's Party Membership (Blue or Red).</li>
-<li>⚡ <strong>Special Election (7–10P):</strong> Pick any player to be the next President.</li>
-<li>💀 <strong>Execution (All Boards, Red 4 &amp; 5):</strong> Permanently eliminate a player. If they are the Secret Leader, Blue wins immediately!</li>
-<li>🚫 <strong>Veto Power (Unlocked at 5 Red):</strong> Chancellor and President may mutually agree to discard both drawn policies.</li>
+<li>👁️ <strong>Policy Peek (5–6P):</strong> President secretly views the top 3 cards of the draw deck.</li>
+<li>🔍 <strong>Investigate Loyalty (7–10P):</strong> President secretly inspects one player's Party Membership (Blue or Red).</li>
+<li>⚡ <strong>Special Election (7–10P):</strong> President picks any player to be the next President.</li>
+<li>💀 <strong>Execution (Red Slots 4 &amp; 5):</strong> Permanently eliminate a player. Executing the Dictator wins for Blue!</li>
+<li>🚫 <strong>Veto Power (Unlocked at 5 Red):</strong> Chancellor and President may mutually agree to discard both bills.</li>
 </ul>
-</li>
-</ol>
 </div>
 </div>
 </div>
@@ -402,6 +453,6 @@ A Secret Dictator session is active! Leaving now will disconnect you from the ro
 </div>
 </div>
 </div>
-<script src="./app.min.js?v=4"></script>
+<script src="./app.min.js?v=5"></script>
 </body>
 </html>
