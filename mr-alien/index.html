@@ -33,7 +33,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="./styles.min.css?v=8" />
+<link rel="stylesheet" href="./styles.min.css?v=9" />
 <script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js" defer></script>
 </head>
 <body>
@@ -86,7 +86,7 @@
 <div class="hero-text-block">
 <h1 class="hero-title">MR. ALIEN</h1>
 <p class="hero-subtitle">
-Free instant house party game with friends. Pass one phone or join an online room code to expose the imposter!
+1 Secret Word • 1 Hidden Alien • Expose the Impostor!
 </p>
 <div class="feature-chips">
 <span class="feature-chip">📱 Pass 1 Phone</span>
@@ -300,9 +300,9 @@ maxlength="28"
 <div class="panel">
 <div class="panel-header" style="align-items: center; gap: 8px;">
 <div>
-<span class="panel-label" style="color: var(--gold); display: block;">Speaking Order & 1-Word Clues</span>
-<div style="font-size: 0.98rem; font-weight: 800; color: #fff; margin-top: 2px;">
-🎙️ <span id="starter-player-name">Priya Starts</span> • <span style="font-size: 0.76rem; color: var(--text-secondary); font-weight: 600;">In Order</span>
+<span class="panel-label" style="color: var(--gold); display: block;">Speaking Order & Clues</span>
+<div style="font-size: 0.95rem; font-weight: 800; color: #fff; margin-top: 2px;">
+🎙️ <span id="starter-player-name">Priya Starts</span> • <span style="font-size: 0.75rem; color: var(--text-secondary); font-weight: 600;">1-Word Clues in Order</span>
 </div>
 </div>
 <button class="pill-action" id="btn-reroll-starter" type="button">🔀 Re-pick</button>
@@ -412,31 +412,31 @@ Vote out loud together, then tap the player with the most votes.
 <span>Next Round of Clues</span>
 </button>
 </section>
-<section id="screen-gameover" class="screen" style="overflow-y: auto; gap: 8px;">
-<div id="gameover-card" class="identity-card state-human" style="flex: 0 0 auto; min-height: auto; padding: 12px 14px;">
-<div class="card-content-anim" style="gap: 4px;">
+<section id="screen-gameover" class="screen" style="overflow-y: auto; gap: 7px;">
+<div id="gameover-card" class="identity-card state-human" style="flex: 0 0 auto; min-height: auto; padding: 11px 14px;">
+<div class="card-content-anim" style="gap: 3px;">
 <span class="eyebrow" id="gameover-pill">Game Over</span>
-<div style="font-size: 1.9rem; line-height: 1;" id="gameover-icon">🏆</div>
-<h2 class="big-title" id="gameover-title" style="font-size: 1.45rem;">HUMANS WIN</h2>
-<p class="subtle-note" id="gameover-reason" style="font-size: 0.78rem;">All Aliens were eliminated.</p>
+<div style="font-size: 1.7rem; line-height: 1;" id="gameover-icon">🏆</div>
+<h2 class="big-title" id="gameover-title" style="font-size: 1.38rem;">HUMANS WIN</h2>
+<p class="subtle-note" id="gameover-reason" style="font-size: 0.75rem;">All Aliens were eliminated.</p>
 </div>
 </div>
-<div class="panel" style="flex: 0 0 auto; padding: 10px 12px;">
+<div class="panel" style="flex: 0 0 auto; padding: 9px 12px;">
 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; text-align: center;">
 <div>
-<span class="panel-label" style="font-size: 0.65rem;">Secret Word</span>
-<div style="font-size: 0.98rem; font-weight: 800; color: var(--human); margin-top: 1px;" id="gameover-word">Pani Puri</div>
+<span class="panel-label" style="font-size: 0.64rem;">Secret Word</span>
+<div style="font-size: 0.96rem; font-weight: 800; color: var(--human); margin-top: 1px;" id="gameover-word">Pani Puri</div>
 </div>
 <div style="border-left: 1px solid var(--border); padding-left: 8px;">
-<span class="panel-label" style="font-size: 0.65rem;">Alien Hint</span>
-<div style="font-size: 0.98rem; font-weight: 800; color: var(--alien); margin-top: 1px;" id="gameover-hint">Thumb</div>
+<span class="panel-label" style="font-size: 0.64rem;">Alien Hint</span>
+<div style="font-size: 0.96rem; font-weight: 800; color: var(--alien); margin-top: 1px;" id="gameover-hint">Thumb</div>
 </div>
 </div>
-<div class="hint-reason-box" id="gameover-hint-reason" style="margin-top: 6px; padding: 6px 10px; font-size: 0.72rem; line-height: 1.3;">
+<div class="hint-reason-box" id="gameover-hint-reason" style="margin-top: 5px; padding: 4px 8px; font-size: 0.7rem; line-height: 1.25; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
 💡 <strong>Why this hint:</strong> You poke a hole in the hollow crisp sphere using your thumb.
 </div>
 </div>
-<div class="panel" style="flex: 0 0 auto; padding: 10px 12px;">
+<div class="panel" style="flex: 0 0 auto; padding: 9px 12px;">
 <div class="panel-header" style="margin-bottom: 6px;">
 <span class="panel-label">Match Results & Points</span>
 <button type="button" class="pill-action" id="btn-gameover-leaderboard">🏆 Leaderboard</button>
@@ -541,6 +541,6 @@ Your crew is in the middle of a mission! Leaving now will end the current round 
 </div>
 </div>
 </div>
-<script src="./app.min.js?v=8"></script>
+<script src="./app.min.js?v=9"></script>
 </body>
 </html>
