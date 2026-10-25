@@ -33,7 +33,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="./styles.min.css?v=2" />
+<link rel="stylesheet" href="./styles.min.css?v=3" />
 </head>
 <body>
 <div class="ambient-glow glow-left" aria-hidden="true"></div>
@@ -58,6 +58,10 @@
 <span>🎉</span>
 <span>Hub</span>
 </a>
+<button class="nav-pill-btn" id="btn-tv-stage" type="button" title="Toggle TV / Projector Stage Mode">
+<span>📺</span>
+<span id="btn-tv-stage-label">TV Stage</span>
+</button>
 <button class="nav-pill-btn" id="btn-top-menu" type="button" title="Game Setup">
 <span>🏠</span>
 <span id="btn-top-menu-label">Setup</span>
@@ -67,6 +71,14 @@
 <button class="circle-btn" id="btn-sound-toggle" type="button" title="Toggle Sound">🔊</button>
 </div>
 </header>
+<div id="tv-stage-banner" class="tv-stage-banner" style="display: none;">
+<div class="tv-stage-left">
+<span class="tv-live-badge">📺 TV / STAGE MODE</span>
+<span class="tv-room-pill">📡 ROOM: <strong id="tv-banner-room-code">----</strong></span>
+<span class="tv-join-hint">Join on your phone at <strong>partynights.online/paranoia</strong></span>
+</div>
+<button type="button" class="tiny-pill-btn" id="btn-exit-tv-stage">📱 Phone View</button>
+</div>
 <section id="screen-landing" class="screen active">
 <div class="landing-wrap">
 <div class="top-hub-bar">
@@ -159,7 +171,8 @@ Whisper a secret question, name a friend out loud &amp; flip the 50/50 Coin!
 <label class="field-label">HOW ARE YOU PLAYING?</label>
 <div class="segmented-row">
 <button type="button" class="seg-btn active" data-device="pass" id="btn-device-pass">📱 Pass 1 Phone</button>
-<button type="button" class="seg-btn" data-device="room" id="btn-device-room">🌐 Multi-Phone Room Code</button>
+<button type="button" class="seg-btn" data-device="room" id="btn-device-room">🌐 Multi-Phone Room</button>
+<button type="button" class="seg-btn" data-device="tv" id="btn-device-tv">📺 TV / Laptop Stage</button>
 </div>
 <div id="room-host-banner" class="room-host-banner" style="display: none;">
 <div class="rhb-top">
@@ -167,9 +180,12 @@ Whisper a secret question, name a friend out loud &amp; flip the 50/50 Coin!
 <span class="rhb-eyebrow">LIVE ROOM CODE</span>
 <div class="rhb-code" id="host-room-code-display">----</div>
 </div>
+<div class="rhb-actions">
+<button type="button" class="tiny-pill-btn" id="btn-toggle-tv-setup">📺 TV Stage: OFF</button>
 <button type="button" class="small-neon-btn" id="btn-copy-room-link">📲 Share Invite</button>
 </div>
-<p class="rhb-hint">Share code with friends on <strong>partynights.online/paranoia</strong></p>
+</div>
+<p class="rhb-hint">Players join with code on their phones at <strong>partynights.online/paranoia</strong></p>
 </div>
 </div>
 <div class="sub-section">
@@ -242,6 +258,24 @@ data-full-width-responsive="true"></ins>
 <span class="hud-label">OVERRIDE</span>
 <strong id="paranoia-tokens-label">💎 1</strong>
 </div>
+</div>
+<div id="paranoia-tv-spotlight" class="game-stage-card tv-spotlight-card" style="display: none;">
+<div class="gate-badge" id="tv-paranoia-step-badge">📺 LIVE STAGE • STEP 1: SECRET WHISPER</div>
+<div class="gate-avatar-pair tv-avatar-pair">
+<div class="avatar-bubble"><span id="tv-asker-name">Aarav</span><small>Whisperer</small></div>
+<div class="avatar-arrow" id="tv-avatar-arrow">🤫 →</div>
+<div class="avatar-bubble"><span id="tv-answerer-name">Priya</span><small>Answerer</small></div>
+</div>
+<h2 class="stage-headline tv-stage-headline" id="tv-paranoia-headline">
+🤫 <span class="highlight-rose">Aarav</span> is whispering a secret question to <span class="highlight-cyan">Priya</span> on their phones...
+</h2>
+<p class="tv-stage-sub" id="tv-paranoia-sub">
+The secret question is hidden from the TV screen! Waiting for the whisper...
+</p>
+<button type="button" class="secondary-glow-btn" id="btn-tv-advance-whisper">
+<span>⏭️ Whisper Done — Move to Target Pick →</span>
+</button>
+<div class="target-select-grid" id="paranoia-tv-target-grid" style="display: none;"></div>
 </div>
 <div id="paranoia-step-whisper" class="game-stage-card">
 <div id="whisper-locked-gate" class="privacy-gate-box">
@@ -383,13 +417,25 @@ data-full-width-responsive="true"></ins>
 </h2>
 </div>
 <div id="poll-step-vote" class="game-stage-card">
+<div id="poll-phone-voter-wrap" class="poll-phone-voter-wrap">
 <div class="voter-turn-banner">
 <span class="voter-turn-badge" id="poll-voter-badge">📱 PASS PHONE TO VOTER #1</span>
-<h3 class="voter-turn-title">
+<h3 class="voter-turn-title" id="poll-voter-title">
 <span class="highlight-cyan" id="poll-current-voter">Aarav</span>, tap your secret vote:
 </h3>
 </div>
 <div class="target-select-grid" id="poll-vote-grid"></div>
+</div>
+<div id="poll-tv-tracker-box" class="poll-tv-tracker-box" style="display: none;">
+<span class="voter-turn-badge">📺 LIVE BIG-SCREEN VOTE TRACKER</span>
+<h3 class="voter-turn-title" id="poll-tv-readiness-title">
+🗳️ 0 / 4 Squad Members Voted on Phones...
+</h3>
+<div class="tv-voter-badges-grid" id="poll-tv-voter-badges"></div>
+<button type="button" class="primary-glow-btn" id="btn-tv-reveal-poll">
+<span>🚨 Reveal Exposed Poll Receipt Now →</span>
+</button>
+</div>
 </div>
 <div id="poll-step-reveal" class="game-stage-card" style="display: none;">
 <div class="receipt-card receipt-exposed" id="poll-receipt-card">
@@ -471,17 +517,25 @@ Your current round &amp; Paranoia Vault progress are still live. Are you sure yo
 <button type="button" class="circle-btn" id="btn-close-rules">✕</button>
 </div>
 <div class="modal-body-scroll">
+<div class="rule-block" style="border: 1px solid rgba(16, 215, 150, 0.45); background: rgba(16, 215, 150, 0.1);">
+<h4>💡 10-Second Example Round</h4>
+<p><strong>Rahul</strong> privately reads <em>"Who here is most likely to text their ex tonight?"</em> and whispers it to <strong>Priya</strong>. Priya says <strong>"Kabir!"</strong> out loud to the room, then flips the <strong>3D Coin of Fate</strong> — if it lands <strong>🔥 HEADS (EXPOSE)</strong>, everyone finds out what the question was; if it lands <strong>🔒 TAILS (VAULT)</strong>, Kabir never finds out why he was named!</p>
+</div>
 <div class="rule-block">
 <h4>🪙 Mode 1: Classic Paranoia (Whisper + 3D Coin)</h4>
-<p>1. <strong>Secret Whisper:</strong> The Asker unlocks a secret <em>"Who in this room..."</em> question and whispers it to the player next to them (the Answerer).</p>
-<p>2. <strong>Out-Loud Name Drop:</strong> The Answerer must name a person in this room <strong>OUT LOUD</strong>. No context allowed!</p>
-<p>3. <strong>3D Coin of Fate:</strong> Flip the coin! <strong>🔥 HEADS</strong> exposes the secret question to the entire room. <strong>🔒 TAILS</strong> locks the question in the Vault forever!</p>
+<p>1. <strong>Secret Whisper:</strong> The Asker unlocks a secret <em>"Who in this room..."</em> question and whispers it to the Answerer.</p>
+<p>2. <strong>Out-Loud Name Drop:</strong> The Answerer names a person in the room <strong>OUT LOUD</strong>. No context allowed!</p>
+<p>3. <strong>3D Coin of Fate:</strong> Flip the coin! <strong>🔥 HEADS</strong> exposes the secret question to the room. <strong>🔒 TAILS</strong> locks the question in the Vault forever!</p>
 </div>
 <div class="rule-block">
 <h4>🎯 Mode 2: Most Likely To: Exposed (Room Poll)</h4>
 <p>1. Read the prompt out loud to the whole room.</p>
 <p>2. Every player secretly votes for who fits the prompt best (Pass 1 Phone or join via Multi-Phone Room Code).</p>
 <p>3. Reveal the <strong>Exposed Receipt Card</strong> showing the #1 voted friend and exact vote percentages!</p>
+</div>
+<div class="rule-block">
+<h4>📺 Common Screen / TV / Laptop Stage Mode</h4>
+<p>Put a Laptop, TV, or Projector in <strong>📺 TV / Laptop Stage Mode</strong> to show the live 3D Coin of Fate, Room Code, and Vote Tracker on the big screen while everyone whispers &amp; votes privately on their phones!</p>
 </div>
 </div>
 </div>
@@ -499,6 +553,6 @@ Your current round &amp; Paranoia Vault progress are still live. Are you sure yo
 </div>
 </div>
 <div id="toast-banner" class="toast-banner" aria-live="polite"></div>
-<script src="./app.min.js?v=2"></script>
+<script src="./app.min.js?v=3"></script>
 </body>
 </html>
