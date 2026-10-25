@@ -33,7 +33,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="./styles.min.css?v=7" />
+<link rel="stylesheet" href="./styles.min.css?v=8" />
 <script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js" defer></script>
 </head>
 <body>
@@ -56,15 +56,15 @@
 <div class="top-actions">
 <a href="https://partynights.online/" class="nav-pill-btn" id="btn-top-hub" title="All PartyNights.online Games" style="text-decoration: none;">
 <span>🎲</span>
-<span>Hub</span>
+<span class="nav-pill-text">Hub</span>
 </a>
 <button class="nav-pill-btn" id="btn-top-restart" type="button" title="Restart Match with New Word" style="display: none;">
 <span>🔄</span>
-<span>Restart</span>
+<span class="nav-pill-text">Restart</span>
 </button>
 <button class="nav-pill-btn" id="btn-top-menu" type="button" title="Main Menu / Setup" style="display: none;">
 <span>🏠</span>
-<span id="btn-top-menu-label">Setup</span>
+<span class="nav-pill-text" id="btn-top-menu-label">Setup</span>
 </button>
 <button class="circle-btn" id="btn-open-leaderboard" type="button" title="Leaderboard">🏆</button>
 <button class="circle-btn" id="btn-sound-toggle" type="button" title="Toggle Sound">🔊</button>
@@ -404,8 +404,8 @@ Vote out loud together, then tap the player with the most votes.
 <span>Next Round of Clues</span>
 </button>
 </section>
-<section id="screen-gameover" class="screen">
-<div id="gameover-card" class="identity-card state-human" style="flex: 0; padding: 22px 18px;">
+<section id="screen-gameover" class="screen" style="overflow-y: auto;">
+<div id="gameover-card" class="identity-card state-human" style="flex: 0 0 auto; min-height: auto; padding: 20px 18px;">
 <div class="card-content-anim" style="gap: 8px;">
 <span class="eyebrow" id="gameover-pill">Game Over</span>
 <div style="font-size: 2.6rem;" id="gameover-icon">🏆</div>
@@ -413,7 +413,7 @@ Vote out loud together, then tap the player with the most votes.
 <p class="subtle-note" id="gameover-reason">All Aliens were eliminated.</p>
 </div>
 </div>
-<div class="panel">
+<div class="panel" style="flex: 0 0 auto;">
 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; text-align: center;">
 <div>
 <span class="panel-label" style="font-size: 0.68rem;">Secret Word</span>
@@ -428,7 +428,7 @@ Vote out loud together, then tap the player with the most votes.
 💡 <strong>Why this hint:</strong> You poke a hole in the hollow crisp sphere using your thumb.
 </div>
 </div>
-<div class="panel" style="flex: 1; overflow-y: auto;">
+<div class="panel" style="flex: 0 0 auto;">
 <div class="panel-header">
 <span class="panel-label">Match Results & Points</span>
 <button type="button" class="pill-action" id="btn-gameover-leaderboard">🏆 Leaderboard</button>
@@ -533,6 +533,6 @@ Your crew is in the middle of a mission! Leaving now will end the current round 
 </div>
 </div>
 </div>
-<script src="./app.min.js?v=7"></script>
+<script src="./app.min.js?v=8"></script>
 </body>
 </html>

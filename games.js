@@ -23,12 +23,12 @@ window.PARTY_GAMES = [
     minPlayers: 3,
     maxPlayers: 20,
     duration: "5–15 Mins",
-    deviceMode: "Pass 1 Phone",
+    deviceMode: "Room Code or Pass 1 Phone",
     category: "Social Deduction",
-    tags: ["500+ Desi Words", "Bollywood & Cricket", "Food & Chai", "Offline PWA"],
+    tags: ["Multi-Phone Room Code", "Pass 1 Phone", "500+ Desi Words", "Bollywood & Cricket"],
     badge: "🔥 Featured Hit",
     featured: true,
-    description: "Someone in the room is not Human! Pass one phone around the group, give clever 1-word clues across Desi Food, Bollywood, Cricket & Festivals, and vote out Mr. Alien before they blend in.",
+    description: "Someone in the room is not Human! Join on your own phones via Online Room Code (or Pass 1 Phone), give clever 1-word clues across Desi Food, Bollywood, Cricket & Festivals, and vote out Mr. Alien.",
     url: "/mr-alien/"
   },
   {

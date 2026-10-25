@@ -1,7 +1,7 @@
 {
   "name": "Mr. Alien — Desi Undercover Party Game",
   "short_name": "Mr. Alien",
-  "description": "Pass one phone, decode the clues, and expose Mr. Alien! 500+ Indian words.",
+  "description": "Pass one phone or play online via Room Code, decode the clues, and expose Mr. Alien! 500+ Indian words.",
   "start_url": "/mr-alien/",
   "scope": "/mr-alien/",
   "display": "standalone",

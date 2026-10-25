@@ -1,10 +1,10 @@
-// Mr. Alien — PWA Service Worker v7.0
-const CACHE_NAME = "mr-alien-pwa-v7";
+// Mr. Alien — PWA Service Worker v8.0
+const CACHE_NAME = "mr-alien-pwa-v8";
 const ASSETS = [
   "/mr-alien/",
   "/mr-alien/index.html",
-  "/mr-alien/styles.min.css?v=7",
-  "/mr-alien/app.min.js?v=7",
+  "/mr-alien/styles.min.css?v=8",
+  "/mr-alien/app.min.js?v=8",
   "/mr-alien/manifest.json",
   "/mr-alien/icon-192.png",
   "/mr-alien/icon-512.png",
@@ -21,7 +21,11 @@ self.addEventListener("install", (event) => {
 self.addEventListener("activate", (event) => {
   event.waitUntil(
     caches.keys().then((keys) =>
-      Promise.all(keys.filter((k) => k !== CACHE_NAME).map((k) => caches.delete(k)))
+      Promise.all(
+        keys
+          .filter((k) => k.startsWith("mr-alien-pwa-") && k !== CACHE_NAME)
+          .map((k) => caches.delete(k))
+      )
     ).then(() => self.clients.claim())
   );
 });
