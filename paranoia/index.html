@@ -33,7 +33,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="./styles.min.css?v=4" />
+<link rel="stylesheet" href="./styles.min.css?v=5" />
 </head>
 <body>
 <div class="ambient-glow glow-left" aria-hidden="true"></div>
@@ -71,6 +71,7 @@
 <span>🏠</span>
 <span id="btn-top-menu-label">Setup</span>
 </button>
+<button class="circle-btn" id="btn-open-settings" type="button" title="Game Settings &amp; Family Mode">⚙️</button>
 <button class="circle-btn" id="btn-open-rules" type="button" title="How to Play">📖</button>
 <button class="circle-btn" id="btn-open-leaderboard" type="button" title="Squad Hall of Fame">🏆</button>
 <button class="circle-btn" id="btn-sound-toggle" type="button" title="Toggle Sound">🔊</button>
@@ -155,29 +156,19 @@ Whisper a secret question, name a friend out loud &amp; flip the 50/50 Coin!
 <div class="panel-card">
 <div class="panel-header-row">
 <div>
-<span class="section-eyebrow">STEP 1 • CHOOSE GAME MODE</span>
-<h2 class="panel-title">Configure Your Party</h2>
+<span class="section-eyebrow">READY TO PLAY</span>
+<h2 class="panel-title">Add Your Squad</h2>
 </div>
 <span class="pill-counter" id="setup-deck-counter">220 Cards</span>
 </div>
-<div class="mode-switch-grid" role="radiogroup" aria-label="Game Mode">
-<button type="button" class="mode-tile active" data-mode="paranoia" id="tile-mode-paranoia">
-<span class="mode-tile-icon">🪙</span>
-<span class="mode-tile-title">Paranoia (Coin Flip)</span>
-<span class="mode-tile-desc">Secret Whisper + 50/50 Expose</span>
-</button>
-<button type="button" class="mode-tile" data-mode="poll" id="tile-mode-poll">
-<span class="mode-tile-icon">🎯</span>
-<span class="mode-tile-title">Most Likely To: Exposed</span>
-<span class="mode-tile-desc">Secret Squad Vote + Receipt</span>
-</button>
+<div class="setup-summary-bar" id="setup-settings-summary-bar" role="button" tabindex="0" title="Tap to Customize Game Settings">
+<span class="setup-summary-text" id="setup-summary-text">🪙 Paranoia • 📱 Pass 1 Phone • 🔥 8 Rounds • ⚡ All Mix</span>
+<span class="setup-summary-gear">⚙️ Customize</span>
 </div>
-<div class="sub-section">
-<label class="field-label">HOW ARE YOU PLAYING?</label>
-<div class="segmented-row">
-<button type="button" class="seg-btn active" data-device="pass" id="btn-device-pass">📱 Pass 1 Phone</button>
-<button type="button" class="seg-btn" data-device="room" id="btn-device-room">🌐 Multi-Phone Room</button>
-<button type="button" class="seg-btn" data-device="tv" id="btn-device-tv">📺 TV / Laptop Stage</button>
+<div class="setup-quick-pills" id="setup-quick-toggles">
+<button type="button" class="tiny-pill-btn" id="btn-quick-family-mode">👨‍👩‍👧‍👦 Family Mode: OFF</button>
+<button type="button" class="tiny-pill-btn" id="btn-quick-room-toggle">🌐 Host Multi-Phone Room</button>
+<button type="button" class="tiny-pill-btn" id="btn-setup-open-settings">⚙️ Decks &amp; Rounds</button>
 </div>
 <div id="room-host-banner" class="room-host-banner" style="display: none;">
 <div class="rhb-top">
@@ -191,26 +182,6 @@ Whisper a secret question, name a friend out loud &amp; flip the 50/50 Coin!
 </div>
 </div>
 <p class="rhb-hint">Players join with code on their phones at <strong>partynights.online/paranoia</strong></p>
-</div>
-</div>
-<div class="sub-section">
-<label class="field-label">QUESTION DECK / VIBE</label>
-<div class="deck-chips" id="deck-category-chips">
-<button type="button" class="deck-chip active" data-cat="all">⚡ All Mix (220)</button>
-<button type="button" class="deck-chip" data-cat="desi">🇮🇳 Desi Chaos</button>
-<button type="button" class="deck-chip" data-cat="party">🎉 House Party</button>
-<button type="button" class="deck-chip" data-cat="spicy">🌶️ After Hours</button>
-<button type="button" class="deck-chip" data-cat="awkward">💀 Savage Roast</button>
-<button type="button" class="deck-chip" data-cat="wholesome">💖 Squad Legends</button>
-</div>
-</div>
-<div class="sub-section">
-<label class="field-label">NUMBER OF ROUNDS</label>
-<div class="segmented-row" id="round-count-chips">
-<button type="button" class="seg-btn" data-rounds="5">⚡ 5 Quick</button>
-<button type="button" class="seg-btn active" data-rounds="8">🔥 8 Classic</button>
-<button type="button" class="seg-btn" data-rounds="12">👑 12 Marathon</button>
-</div>
 </div>
 <div class="sub-section">
 <div class="roster-header-row">
@@ -226,16 +197,6 @@ Whisper a secret question, name a friend out loud &amp; flip the 50/50 Coin!
 </div>
 <div class="players-chip-grid" id="setup-players-list"></div>
 </div>
-<details class="custom-q-drawer">
-<summary>✍️ Add Custom Squad Questions (<span id="custom-q-count">0</span>)</summary>
-<div class="custom-q-body">
-<div class="add-player-bar">
-<input type="text" id="input-custom-question" class="text-input" placeholder="Who in this room is most likely to..." maxlength="140" />
-<button type="button" class="add-btn" id="btn-add-custom-q">+ Save</button>
-</div>
-<div id="custom-q-list" class="custom-q-list"></div>
-</div>
-</details>
 <button type="button" class="primary-glow-btn launch-big-btn" id="btn-launch-match">
 <span id="launch-btn-text">🪙 Start Paranoia Match (4 Players)</span>
 <span class="btn-arrow">→</span>
@@ -572,8 +533,94 @@ Your current round &amp; Paranoia Vault progress are still live. Are you sure yo
 </div>
 </div>
 </div>
+<div class="modal-backdrop" id="modal-settings" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="settings-modal-title">
+<div class="modal-box">
+<div class="modal-head">
+<h3 class="modal-title" id="settings-modal-title">⚙️ Game Settings &amp; Decks</h3>
+<button type="button" class="circle-btn" id="btn-close-settings">✕</button>
+</div>
+<div class="modal-body-scroll">
+<div class="family-mode-card" id="family-mode-card">
+<div class="fmc-copy">
+<strong>👨‍👩‍👧‍👦 Family-Safe Mode</strong>
+<span>100% clean, kid &amp; parent-friendly prompts. Hides 18+ Spicy &amp; After-Hours decks.</span>
+</div>
+<button type="button" class="family-toggle-btn" id="toggle-family-mode" aria-pressed="false">OFF</button>
+</div>
+<div class="sub-section">
+<label class="field-label">GAME MODE</label>
+<div class="mode-switch-grid">
+<button type="button" class="mode-tile active" id="tile-mode-paranoia" data-mode="paranoia">
+<div class="mode-tile-top">
+<span class="mode-tile-icon">🪙</span>
+<span class="mode-tile-badge">MODE 1</span>
+</div>
+<div class="mode-tile-name">Paranoia: Coin of Fate</div>
+<div class="mode-tile-desc">Whisper a secret question → Answer out loud → Flip the 3D Coin!</div>
+</button>
+<button type="button" class="mode-tile" id="tile-mode-poll" data-mode="poll">
+<div class="mode-tile-top">
+<span class="mode-tile-icon">🎯</span>
+<span class="mode-tile-badge">MODE 2</span>
+</div>
+<div class="mode-tile-name">Most Likely To: Exposed</div>
+<div class="mode-tile-desc">Read prompt aloud → Everyone votes secretly → Exposed Receipt Card!</div>
+</button>
+</div>
+</div>
+<div class="sub-section">
+<label class="field-label">HOW ARE YOU PLAYING?</label>
+<div class="segmented-row">
+<button type="button" class="seg-btn active" id="btn-device-pass" data-device="pass">
+📱 Pass 1 Phone (Couch)
+</button>
+<button type="button" class="seg-btn" id="btn-device-room" data-device="room">
+🌐 Multi-Phone Room
+</button>
+<button type="button" class="seg-btn" id="btn-device-tv" data-device="tv">
+📺 TV / Laptop Stage
+</button>
+</div>
+</div>
+<div class="sub-section">
+<label class="field-label">QUESTION DECK / VIBE</label>
+<div class="deck-chips" id="deck-category-chips">
+<button type="button" class="deck-chip active" data-cat="all">⚡ All Mix (220+)</button>
+<button type="button" class="deck-chip" data-cat="desi">🇮🇳 Desi Squad</button>
+<button type="button" class="deck-chip" data-cat="party">🎉 House Party</button>
+<button type="button" class="deck-chip" data-cat="spicy">🌶️ After Hours</button>
+<button type="button" class="deck-chip" data-cat="awkward">💀 Savage Roast</button>
+<button type="button" class="deck-chip" data-cat="wholesome">💖 Wholesome</button>
+</div>
+</div>
+<div class="sub-section">
+<label class="field-label">NUMBER OF ROUNDS</label>
+<div class="segmented-row" id="round-count-chips">
+<button type="button" class="seg-btn" data-rounds="5">⚡ 5 Quick</button>
+<button type="button" class="seg-btn active" data-rounds="8">🔥 8 Standard</button>
+<button type="button" class="seg-btn" data-rounds="12">👑 12 Marathon</button>
+</div>
+</div>
+<details class="custom-q-drawer">
+<summary class="custom-q-summary">
+<span>✍️ Add Custom Squad Questions (Optional)</span>
+<span class="custom-q-badge" id="custom-q-count">0 Added</span>
+</summary>
+<div class="custom-q-body">
+<p class="custom-q-help">Slip inside-joke prompts into the deck! They'll mix into your game automatically.</p>
+<div class="add-player-bar">
+<input type="text" id="input-custom-question" class="text-input" placeholder="Who is most likely to..." maxlength="110" autocomplete="off" />
+<button type="button" class="add-btn" id="btn-add-custom-q">+ Add</button>
+</div>
+<div id="custom-q-list" class="custom-q-list"></div>
+</div>
+</details>
+<button type="button" class="primary-glow-btn" id="btn-done-settings" style="width: 100%; margin-top: 6px;">✓ Save &amp; Close</button>
+</div>
+</div>
+</div>
 <div id="toast-banner" class="toast-banner" aria-live="polite"></div>
-<script src="./app.min.js?v=4"></script>
+<script src="./app.min.js?v=5"></script>
 <script src="/ads-engine.js" defer></script>
 </body>
 </html>

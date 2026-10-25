@@ -31,7 +31,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@600;700;800&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="./styles.min.css?v=6" />
+<link rel="stylesheet" href="./styles.min.css?v=7" />
 <script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js" defer></script>
 </head>
 <body>
@@ -52,7 +52,7 @@
 </div>
 </div>
 </div>
-<div class="top-actions">
+<div class="top-actions header-actions">
 <button type="button" class="theme-pill-btn tv-pill-btn" id="btn-toggle-tv-mode" title="Toggle Common Screen / TV Board Mode">
 <span id="top-tv-icon">📺</span>
 <span id="top-tv-label">TV Board</span>
@@ -61,6 +61,7 @@
 <span id="top-theme-icon">🎨</span>
 <span id="top-theme-name">Theme</span>
 </button>
+<button type="button" class="icon-btn" id="btn-open-settings" title="Game Settings & Family Mode">⚙️</button>
 <button type="button" class="icon-btn" id="btn-open-rules" title="Rules & Powers">📜</button>
 <button type="button" class="icon-btn" id="btn-sound-toggle" title="Toggle Sound">🔊</button>
 <button type="button" class="icon-btn" id="btn-leave-room" title="Leave Room" style="display:none;">🚪</button>
@@ -199,30 +200,9 @@ maxlength="18"
 </form>
 <div id="lobby-seat-list" class="seat-list"></div>
 </div>
-<div class="panel-card" id="lobby-settings-card">
-<div class="setting-row tv-setting-row" id="row-tv-board-host" style="margin-bottom:0.75rem; padding-bottom:0.75rem; border-bottom:1px solid rgba(255,255,255,0.08);">
-<div>
-<div class="setting-title">📺 TV / Laptop Board Mode (Host is Display Only)</div>
-<div class="setting-desc">Laptop/TV shows the shared board; players join &amp; play privately on their phones</div>
-</div>
-<label class="tv-switch-label" for="toggle-tv-board-host">
-<input type="checkbox" id="toggle-tv-board-host" />
-<span class="tv-switch-pill" id="tv-switch-status-text">Off (Host Plays)</span>
-</label>
-</div>
-<div class="setting-row">
-<div>
-<div class="setting-title">🎨 Active World Theme</div>
-<div class="setting-desc">Syncs board art, colors &amp; faction roles for everyone</div>
-</div>
-<select id="select-theme-terms" class="select-pill">
-<option value="dictator">👑 Shadow Regime (Cyber-Noir)</option>
-<option value="classic">📜 1930s Classic (Liberal / Fascist)</option>
-<option value="galactic">🌌 Galactic Senate (Jedi / Sith)</option>
-<option value="desi">🇮🇳 Sansad Masala (Janata / Netaji)</option>
-<option value="cyberpunk">🤖 Cyberpunk 2099 (NetRunner / AI)</option>
-</select>
-</div>
+<div class="lobby-settings-summary-bar" id="lobby-settings-summary-bar">
+<span class="lobby-summary-text" id="lobby-settings-summary-text">👑 Shadow Regime • 🕵️ Standard Mode</span>
+<button type="button" class="small-pill-btn" id="btn-lobby-open-settings">⚙️ Settings</button>
 </div>
 <div id="lobby-error" class="error-banner" style="display:none;"></div>
 <div class="lobby-footer-actions">
@@ -439,6 +419,53 @@ Who is telling the truth, and who is secretly working for the <strong>👑 Secre
 </div>
 </div>
 </div>
+<div class="modal-backdrop" id="modal-settings" style="display:none;" role="dialog" aria-modal="true" aria-labelledby="settings-modal-title">
+<div class="modal-sheet">
+<div class="modal-top">
+<span class="dossier-classified-stamp">⚙️ GAME SETTINGS</span>
+<button type="button" class="modal-close-btn" id="btn-close-settings">✕</button>
+</div>
+<h3 style="font-size:1.15rem; font-weight:800; margin-bottom:0.75rem;" id="settings-modal-title">Session &amp; Family Mode Settings</h3>
+<div class="panel-card" id="lobby-settings-card" style="margin-bottom:0.85rem;">
+<div class="setting-row" id="row-family-mode" style="margin-bottom:0.75rem; padding-bottom:0.75rem; border-bottom:1px solid rgba(255,255,255,0.08);">
+<div>
+<div class="setting-title">👨‍👩‍👧‍👦 Family &amp; Kids Safe Mode</div>
+<div class="setting-desc">Uses 100% kid- &amp; parent-friendly Parliament terms (e.g., "Expel / Suspend" instead of "Execute")</div>
+</div>
+<label class="tv-switch-label" for="toggle-family-mode">
+<input type="checkbox" id="toggle-family-mode" />
+<span class="tv-switch-pill" id="family-switch-status-text">Off (Standard)</span>
+</label>
+</div>
+<div class="setting-row" style="margin-bottom:0.75rem; padding-bottom:0.75rem; border-bottom:1px solid rgba(255,255,255,0.08);">
+<div>
+<div class="setting-title">🎨 Active World Theme</div>
+<div class="setting-desc">Syncs board art, colors &amp; faction roles for everyone</div>
+</div>
+<select id="select-theme-terms" class="select-pill">
+<option value="dictator">👑 Shadow Regime (Cyber-Noir)</option>
+<option value="classic">📜 1930s Classic (Liberal / Fascist)</option>
+<option value="galactic">🌌 Galactic Senate (Jedi / Sith)</option>
+<option value="desi">🇮🇳 Sansad Masala (Janata / Netaji)</option>
+<option value="cyberpunk">🤖 Cyberpunk 2099 (NetRunner / AI)</option>
+</select>
+</div>
+<div class="setting-row tv-setting-row" id="row-tv-board-host">
+<div>
+<div class="setting-title">📺 TV / Laptop Board Mode (Host is Display Only)</div>
+<div class="setting-desc">Laptop/TV shows the shared board; players join &amp; play privately on their phones</div>
+</div>
+<label class="tv-switch-label" for="toggle-tv-board-host">
+<input type="checkbox" id="toggle-tv-board-host" />
+<span class="tv-switch-pill" id="tv-switch-status-text">Off (Host Plays)</span>
+</label>
+</div>
+</div>
+<button type="button" class="btn-primary" id="btn-done-settings">
+<span>✅ Save &amp; Close Settings</span>
+</button>
+</div>
+</div>
 <div class="modal-backdrop" id="modal-leave-warning" style="display:none;" role="dialog" aria-modal="true" aria-labelledby="leave-modal-title">
 <div class="modal-sheet leave-warning-sheet" style="text-align:center;">
 <div style="font-size:2.4rem; margin-bottom:0.35rem;" id="leave-modal-icon">⚠️</div>
@@ -458,7 +485,7 @@ A Secret Dictator session is active! Leaving now will disconnect you from the ro
 </div>
 </div>
 <div id="sd-toast" class="sd-toast" style="display:none;" role="status" aria-live="polite"></div>
-<script src="./app.min.js?v=6"></script>
+<script src="./app.min.js?v=7"></script>
 <script src="/ads-engine.js" defer></script>
 </body>
 </html>

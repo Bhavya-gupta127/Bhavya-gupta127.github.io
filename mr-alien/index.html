@@ -33,7 +33,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="./styles.min.css?v=11" />
+<link rel="stylesheet" href="./styles.min.css?v=12" />
 <script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js" defer></script>
 </head>
 <body>
@@ -74,6 +74,7 @@
 <span>🏠</span>
 <span class="nav-pill-text" id="btn-top-menu-label">Setup</span>
 </button>
+<button class="circle-btn" id="btn-open-settings" type="button" title="Game Settings, Hints &amp; Family Mode">⚙️</button>
 <button class="circle-btn" id="btn-open-how-to-play" type="button" title="How to Play (10-Sec Guide)">❓</button>
 <button class="circle-btn" id="btn-open-leaderboard" type="button" title="Leaderboard">🏆</button>
 <button class="circle-btn" id="btn-sound-toggle" type="button" title="Toggle Sound">🔊</button>
@@ -154,9 +155,17 @@ PARTYNIGHTS.ONLINE • P2P & SERVER VAULT PROTECTED
 </div>
 </section>
 <section id="screen-setup" class="screen">
-<div class="segmented-control">
-<button type="button" class="seg-btn active" id="tab-mode-local">📱 Pass 1 Phone</button>
-<button type="button" class="seg-btn" id="tab-mode-online">🌐 Online Room</button>
+<div class="panel" id="setup-settings-summary-bar" style="padding: 9px 12px; display: flex; align-items: center; justify-content: space-between; gap: 8px; cursor: pointer; border-color: rgba(0, 240, 255, 0.28); background: rgba(16, 19, 36, 0.88);">
+<div style="min-width: 0; display: flex; flex-direction: column; gap: 2px;">
+<div style="font-size: 0.65rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--cyan);" id="setup-summary-mode-label">📱 Pass 1 Phone (Couch Mode)</div>
+<div style="font-size: 0.78rem; font-weight: 700; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" id="setup-summary-details-text">
+👽 1 Alien • 💡 Hard Hint • 🔥 Mixed
+</div>
+</div>
+<div style="display: flex; align-items: center; gap: 6px; flex-shrink: 0;">
+<button type="button" class="pill-action" id="btn-quick-family-pill" title="Toggle Family Mode" style="font-size: 0.72rem; padding: 5px 9px;">👨‍👩‍👧‍👦 Family: OFF</button>
+<button type="button" class="pill-action" id="btn-setup-open-settings" style="border-color: rgba(168, 85, 247, 0.45); color: #e9d5ff; font-weight: 800; font-size: 0.74rem; padding: 5px 10px;">⚙️ Settings</button>
+</div>
 </div>
 <div class="panel" id="local-players-panel">
 <div class="panel-header">
@@ -240,41 +249,6 @@ style="text-transform: uppercase; font-weight: 800; letter-spacing: 0.1em;"
 <div id="online-status-msg" class="toast-error"></div>
 </div>
 <div id="setup-error" class="toast-error"></div>
-<div class="panel settings-group" id="setup-rules-panel">
-<div class="setting-item">
-<div class="setting-text">
-<h4>Mr. Aliens</h4>
-<p id="alien-ratio-helper">3 Humans • 1 Alien</p>
-</div>
-<div class="stepper-pill">
-<button type="button" class="step-circle" id="btn-alien-minus">−</button>
-<span class="step-number" id="alien-count-val">1</span>
-<button type="button" class="step-circle" id="btn-alien-plus">+</button>
-</div>
-</div>
-<div class="setting-item">
-<div class="setting-text">
-<h4>Vague Hint for Aliens</h4>
-<p>Subtle 1-2 word cue that only clicks in hindsight</p>
-</div>
-<label class="ios-switch">
-<input type="checkbox" id="toggle-alien-hints" checked />
-<span class="ios-track"></span>
-</label>
-</div>
-</div>
-<div id="setup-category-section" style="display: flex; flex-direction: column; gap: 8px;">
-<div class="panel-header" style="margin-bottom: 0; padding: 0 4px;">
-<span class="panel-label" id="word-pack-label">Word Pack (740)</span>
-<span style="font-size: 0.7rem; color: var(--text-secondary);" id="word-region-subnote">Choose Audience Edition</span>
-</div>
-<div class="segmented-control" id="region-mode-tabs" style="margin-bottom: 2px;">
-<button type="button" class="seg-btn" id="tab-region-global" data-region="global">🌍 Global</button>
-<button type="button" class="seg-btn" id="tab-region-desi" data-region="desi">🇮🇳 Desi</button>
-<button type="button" class="seg-btn active" id="tab-region-all" data-region="all">🔥 Mixed</button>
-</div>
-<div id="category-strip" class="category-strip"></div>
-</div>
 <button type="button" id="btn-start-game" class="btn-main">
 <span id="btn-start-game-label">Start Game</span>
 </button>
@@ -622,7 +596,78 @@ Your crew is in the middle of a mission! Leaving now will end the current round 
 </button>
 </div>
 </div>
-<script src="./app.min.js?v=11"></script>
+<div id="modal-settings" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="settings-modal-title">
+<div class="modal-sheet" style="max-height: 86dvh; overflow-y: auto; gap: 12px;">
+<div class="modal-header" style="margin-bottom: 2px;">
+<span class="modal-title" id="settings-modal-title">⚙️ Game Settings</span>
+<button class="circle-btn" id="btn-close-settings" type="button" style="width: 32px; height: 32px;">✕</button>
+</div>
+<div class="panel settings-group" style="border-color: rgba(16, 215, 150, 0.35); background: rgba(16, 215, 150, 0.06);">
+<div class="setting-item">
+<div class="setting-text">
+<h4 style="color: #10d796;">👨‍👩‍👧‍👦 Family Mode (Kid &amp; Parent Safe)</h4>
+<p>100% clean, wholesome words — hides all 18+ &amp; after-hours words</p>
+</div>
+<label class="ios-switch">
+<input type="checkbox" id="toggle-family-mode" />
+<span class="ios-track"></span>
+</label>
+</div>
+</div>
+<div class="panel" style="display: flex; flex-direction: column; gap: 8px; padding: 12px;">
+<div style="display: flex; justify-content: space-between; align-items: center;">
+<span class="panel-label" style="color: var(--cyan);">💡 Alien Hint Difficulty</span>
+<span style="font-size: 0.68rem; color: var(--text-secondary); font-weight: 700;" id="hint-difficulty-badge">Hard (Current)</span>
+</div>
+<div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px;" id="hint-difficulty-tabs">
+<button type="button" class="seg-btn" id="btn-hint-easy" data-hint-diff="easy" style="font-size: 0.75rem; padding: 8px 4px;">🟢 Easy</button>
+<button type="button" class="seg-btn" id="btn-hint-medium" data-hint-diff="medium" style="font-size: 0.75rem; padding: 8px 4px;">🟡 Medium</button>
+<button type="button" class="seg-btn active" id="btn-hint-hard" data-hint-diff="hard" style="font-size: 0.75rem; padding: 8px 4px;">🔴 Hard</button>
+<button type="button" class="seg-btn" id="btn-hint-off" data-hint-diff="off" style="font-size: 0.75rem; padding: 8px 4px;">⚫ Off</button>
+</div>
+<div id="hint-difficulty-desc" style="font-size: 0.73rem; color: var(--text-secondary); line-height: 1.35; background: rgba(255,255,255,0.03); border-radius: 8px; padding: 6px 8px;">
+🔴 <strong>Hard:</strong> Subtle 1–2 word lateral cue that only clicks in hindsight (e.g. <em>&ldquo;Thumb&rdquo;</em> for Pani Puri).
+</div>
+<input type="checkbox" id="toggle-alien-hints" checked style="display: none;" />
+</div>
+<div class="panel settings-group" id="setup-rules-panel">
+<div class="setting-item">
+<div class="setting-text">
+<h4>👽 Number of Mr. Aliens</h4>
+<p id="alien-ratio-helper">3 Humans • 1 Alien</p>
+</div>
+<div class="stepper-pill">
+<button type="button" class="step-circle" id="btn-alien-minus">−</button>
+<span class="step-number" id="alien-count-val">1</span>
+<button type="button" class="step-circle" id="btn-alien-plus">+</button>
+</div>
+</div>
+</div>
+<div id="setup-category-section" class="panel" style="display: flex; flex-direction: column; gap: 8px; padding: 12px;">
+<div class="panel-header" style="margin-bottom: 0; padding: 0;">
+<span class="panel-label" id="word-pack-label">Word Pack (740)</span>
+<span style="font-size: 0.7rem; color: var(--text-secondary);" id="word-region-subnote">Audience Edition</span>
+</div>
+<div class="segmented-control" id="region-mode-tabs" style="margin-bottom: 2px;">
+<button type="button" class="seg-btn" id="tab-region-global" data-region="global">🌍 Global</button>
+<button type="button" class="seg-btn" id="tab-region-desi" data-region="desi">🇮🇳 Desi</button>
+<button type="button" class="seg-btn active" id="tab-region-all" data-region="all">🔥 Mixed</button>
+</div>
+<div id="category-strip" class="category-strip"></div>
+</div>
+<div class="panel" style="display: flex; flex-direction: column; gap: 6px; padding: 10px 12px;">
+<span class="panel-label" style="font-size: 0.68rem;">🔄 Switch Play Mode</span>
+<div class="segmented-control">
+<button type="button" class="seg-btn active" id="tab-mode-local">📱 Pass 1 Phone</button>
+<button type="button" class="seg-btn" id="tab-mode-online">🌐 Online Room</button>
+</div>
+</div>
+<button type="button" class="btn-main" id="btn-done-settings" style="height: 46px; margin-top: 2px;">
+<span>✓ Save &amp; Done</span>
+</button>
+</div>
+</div>
+<script src="./app.min.js?v=12"></script>
 <script src="/ads-engine.js" defer></script>
 </body>
 </html>

@@ -1450,6 +1450,10 @@
       </div>
 
       <div class="hud-controls">
+        <button type="button" class="hud-btn" id="hub-family-mode-btn" title="Toggle Family & Kids Safe Mode Across All 4 Games" aria-pressed="false" style="gap: 0.35rem; padding: 0.42rem 0.7rem;">
+          <span id="hub-family-icon">👨‍👩‍👧‍👦</span>
+          <span class="btn-label" id="hub-family-label">Family Mode: Off</span>
+        </button>
         <button type="button" class="hud-btn icon-only" id="sfx-toggle-btn" title="Toggle Arcade UI Sound">
           <span id="sfx-icon">🔊</span>
         </button>
@@ -2250,6 +2254,33 @@
       }
 
       requestAnimationFrame(animate);
+    })();
+
+    // Family Mode Sync Across All 4 Games (localStorage["pn_family_mode_v1"] === "1")
+    (function () {
+      const btn = document.getElementById('hub-family-mode-btn');
+      const label = document.getElementById('hub-family-label');
+      if (!btn || !label) return;
+
+      function syncHubFamilyBtn() {
+        const isFam = localStorage.getItem('pn_family_mode_v1') === '1';
+        btn.setAttribute('aria-pressed', isFam ? 'true' : 'false');
+        label.textContent = isFam ? 'Family Mode: ON' : 'Family Mode: Off';
+        btn.style.borderColor = isFam ? 'rgba(16, 215, 150, 0.65)' : '';
+        btn.style.background = isFam ? 'rgba(16, 215, 150, 0.16)' : '';
+        btn.style.color = isFam ? '#10d796' : '';
+      }
+
+      btn.addEventListener('click', () => {
+        const next = localStorage.getItem('pn_family_mode_v1') !== '1';
+        try {
+          localStorage.setItem('pn_family_mode_v1', next ? '1' : '0');
+        } catch (_e) {}
+        syncHubFamilyBtn();
+      });
+
+      window.addEventListener('storage', syncHubFamilyBtn);
+      syncHubFamilyBtn();
     })();
   </script>
 </body>
