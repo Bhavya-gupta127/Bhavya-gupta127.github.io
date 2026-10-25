@@ -29,10 +29,11 @@
 <meta name="twitter:image" content="https://partynights.online/wavelength/og-banner.png" />
 <meta name="google-adsense-account" content="ca-pub-5935694635631350" id="meta-adsense-account" />
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5935694635631350" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js" defer></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="./styles.min.css?v=3" />
+<link rel="stylesheet" href="./styles.min.css?v=4" />
 </head>
 <body>
 <div class="ambient-glow glow-left" aria-hidden="true"></div>
@@ -53,6 +54,10 @@
 </div>
 </div>
 <div class="top-actions">
+<button class="nav-pill-btn" id="btn-tv-mode" type="button" title="TV / Projector Board Mode">
+<span>📺</span>
+<span class="nav-pill-label" id="btn-tv-mode-label">TV Mode</span>
+</button>
 <a href="https://partynights.online/" class="nav-pill-btn" id="btn-top-hub" title="PartyNights.online Hub">
 <span>🎉</span>
 <span class="nav-pill-label">Hub</span>
@@ -106,18 +111,44 @@
 <p class="hero-subtitle">
 Are you on the same wavelength as your friends?
 </p>
-<div class="quick-steps-strip">
-<div class="q-step">
-<span class="q-num">1</span>
-<div class="q-txt"><strong>Psychic Peeks 👁️</strong><span>Sees secret target between 2 opposites</span></div>
+<div class="example-hero-card" id="example-hero-card">
+<div class="example-card-header">
+<span class="example-badge">💡 10-SECOND REAL EXAMPLE</span>
+<span class="example-tagline">How Wavelength Works</span>
 </div>
-<div class="q-step">
-<span class="q-num">2</span>
-<div class="q-txt"><strong>Gives 1 Clue 🗣️</strong><span>Says one word aloud (no numbers!)</span></div>
+<div class="spectrum-example-bar">
+<div class="spec-extreme spec-left">🥶 COLD <small>(0%)</small></div>
+<div class="spec-track">
+<div class="spec-track-fill" style="width: 80%;"></div>
+<div class="spec-target-marker" style="left: 80%;">
+<span class="marker-pin">🎯</span>
+<span class="marker-pill">80% BULLSEYE</span>
 </div>
-<div class="q-step">
-<span class="q-num">3</span>
-<div class="q-txt"><strong>Drag &amp; Reveal 👆</strong><span>Friends turn the dial to score 4 pts!</span></div>
+</div>
+<div class="spec-extreme spec-right">🔥 HOT <small>(100%)</small></div>
+</div>
+<div class="example-steps-grid">
+<div class="ex-step">
+<div class="ex-step-num">Step 1</div>
+<div class="ex-step-content">
+<strong>👀 1 Player Peeks Privately</strong>
+<p>You see the secret bullseye is at <strong>80%</strong> (near <strong>🔥 HOT</strong>).</p>
+</div>
+</div>
+<div class="ex-step highlight-step">
+<div class="ex-step-num">Step 2</div>
+<div class="ex-step-content">
+<strong>💬 Say 1 Clue that Fits 80%</strong>
+<p>Don't say <em>"Ice"</em> (0%) or <em>"Lava"</em> (100%). Say <strong>"☕ Fresh Chai"</strong> because it's ~80% Hot!</p>
+</div>
+</div>
+<div class="ex-step">
+<div class="ex-step-num">Step 3</div>
+<div class="ex-step-content">
+<strong>🎯 Squad Drags Needle &amp; Scores</strong>
+<p>Friends debate where <strong>"☕ Fresh Chai"</strong> sits, drag dial to 80%, &amp; tap Reveal for <strong>+4 Points</strong>!</p>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -129,8 +160,8 @@ Are you on the same wavelength as your friends?
 <span>⚙️ Customize Mode, Teams &amp; Decks</span>
 </button>
 <div class="landing-secondary-row">
-<button type="button" id="btn-landing-rules" class="btn-ghost">
-<span>📖 Rules</span>
+<button type="button" id="btn-landing-rules" class="btn-ghost btn-rules-pill">
+<span>❓ How to Play (With Example)</span>
 </button>
 <button type="button" id="btn-landing-leaderboard" class="btn-ghost">
 <span>🏆 Ranks</span>
@@ -150,6 +181,56 @@ FREE PARTY GAME ONLINE • HOUSE PARTY GAMES WITH FRIENDS
 <div class="section-header">
 <h2 class="section-title">Game Setup</h2>
 <p class="section-subtitle">Pick a mode &amp; start in seconds.</p>
+<button type="button" class="btn-setup-rules" id="btn-setup-rules">
+<span>❓ How to Play (With 10s Example)</span>
+</button>
+</div>
+<div class="setup-card tv-room-card" id="tv-room-card">
+<div class="card-label-row">
+<span class="card-label">📺 Screen &amp; Devices</span>
+<span class="card-hint" id="tv-room-badge">📱 Pass 1 Phone</span>
+</div>
+<div class="room-action-row">
+<button type="button" class="btn-room-toggle active" id="btn-mode-local">
+<span>📱 Pass 1 Phone</span>
+</button>
+<button type="button" class="btn-room-toggle" id="btn-mode-room">
+<span>📡 TV Board + Phones</span>
+</button>
+</div>
+<div id="room-controls-panel" class="room-controls-panel" style="display: none;">
+<div class="room-code-display-box">
+<div class="room-code-meta">
+<span class="room-code-label">ROOM CODE</span>
+<span class="room-code-val" id="tv-room-code-val">WAVE</span>
+</div>
+<div class="room-code-buttons">
+<button type="button" class="btn-copy-code" id="btn-copy-room-link" title="Copy Invite Link">🔗 Link</button>
+<button type="button" class="btn-copy-code" id="btn-share-room-whatsapp" title="Share via WhatsApp">📲 WhatsApp</button>
+</div>
+</div>
+<div class="room-join-banner">
+<span>Friends open <strong>partynights.online/wavelength/</strong> &amp; enter code <strong id="tv-room-code-pill">WAVE</strong></span>
+</div>
+<div class="connected-phones-box">
+<div class="connected-header">
+<span class="sub-label">Connected Phones (<span id="tv-connected-count">1</span>):</span>
+<span class="tv-board-indicator" id="tv-board-badge">📺 TV Board Active</span>
+</div>
+<div class="connected-phones-list" id="tv-connected-list">
+<span class="phone-chip host-chip">👑 Host / TV Screen</span>
+</div>
+</div>
+<div class="guest-join-row" id="guest-join-row">
+<span class="sub-label">Or Join an Existing Room:</span>
+<div class="guest-join-input-group">
+<input type="text" id="input-guest-name" placeholder="Your Name" maxlength="16" />
+<input type="text" id="input-guest-room-code" placeholder="CODE" maxlength="6" style="text-transform: uppercase;" />
+<button type="button" id="btn-join-room-submit" class="btn-small-accent">Join →</button>
+</div>
+<div id="guest-room-status" class="guest-room-status" style="display: none;"></div>
+</div>
+</div>
 </div>
 <div class="setup-card">
 <div class="card-label-row">
@@ -291,6 +372,12 @@ FREE PARTY GAME ONLINE • HOUSE PARTY GAMES WITH FRIENDS
 </section>
 <section id="screen-game" class="screen">
 <div class="game-stage-wrap">
+<div class="tv-room-live-pill" id="tv-room-live-pill" style="display: none;">
+<span class="tv-live-dot"></span>
+<span class="tv-live-label">📺 TV BOARD • ROOM: <strong id="tv-live-code-text">WAVE</strong></span>
+<span class="tv-live-hint">Join on phone: <strong>partynights.online/wavelength/?room=<span id="tv-live-code-link">WAVE</span></strong></span>
+<button type="button" class="btn-tv-copy-small" id="btn-tv-live-copy" title="Copy Link">📋</button>
+</div>
 <div class="scoreboard-strip" id="scoreboard-strip"></div>
 <div class="spectrum-banner" id="spectrum-banner">
 <div class="extreme-card extreme-left">
@@ -390,7 +477,19 @@ FREE PARTY GAME ONLINE • HOUSE PARTY GAMES WITH FRIENDS
 <div class="phase-header">
 <h3 class="phase-title" id="psychic-turn-heading">👁️ Psychic: Player 1</h3>
 </div>
-<div class="psychic-peek-actions">
+<div class="tv-psychic-spoiler-guard" id="tv-psychic-spoiler-guard" style="display: none;">
+<div class="tv-guard-emblem">🔮</div>
+<h3 class="tv-guard-title" id="tv-guard-title">Psychic is Peeking the Target!</h3>
+<p class="tv-guard-desc" id="tv-guard-desc">
+<strong id="tv-guard-psychic-name">Psychic</strong> has the secret target wedge on their phone screen.<br/>
+Look at your phone to enter your 1-word clue and beam it to this TV!
+</p>
+<div class="tv-guard-pulse-bar"><div class="tv-pulse-glow"></div></div>
+<button type="button" class="btn-override-tv-peek" id="btn-override-tv-peek">
+👁️ Pass-Laptop Override: Peek on this screen
+</button>
+</div>
+<div class="psychic-peek-actions" id="psychic-peek-actions">
 <button type="button" id="btn-toggle-peek" class="btn-peek">
 <span>👁️ Peek Target</span>
 </button>
@@ -406,7 +505,7 @@ FREE PARTY GAME ONLINE • HOUSE PARTY GAMES WITH FRIENDS
 </div>
 </div>
 </div>
-<div class="clue-input-wrap">
+<div class="clue-input-wrap" id="psychic-clue-input-wrap">
 <input
 type="text"
 id="input-psychic-clue"
@@ -424,6 +523,9 @@ autocomplete="off"
 <div class="phase-card" id="phase-guess-card" style="display: none;">
 <div class="phase-header">
 <h3 class="phase-title" id="guess-turn-heading">👆 Squad: Drag the Dial!</h3>
+</div>
+<div class="phone-guess-sync-note" id="phone-guess-sync-note" style="display: none;">
+<span>📱 Needle moves in real time as squad turns dial on phone!</span>
 </div>
 <button type="button" id="btn-submit-guess" class="btn-launch">
 <span id="btn-submit-guess-label">⚡ Lock Dial &amp; Reveal Score!</span>
@@ -522,31 +624,71 @@ data-full-width-responsive="true"></ins>
 <button type="button" class="circle-btn" id="btn-close-rules">✕</button>
 </div>
 <div class="modal-body rules-steps">
+<div class="example-hero-card" style="margin: 0 0 16px;">
+<div class="example-card-header">
+<span class="example-badge">💡 10-SECOND REAL EXAMPLE</span>
+<span class="example-tagline">How Wavelength Works</span>
+</div>
+<div class="spectrum-example-bar">
+<div class="spec-extreme spec-left">🥶 COLD <small>(0%)</small></div>
+<div class="spec-track">
+<div class="spec-track-fill" style="width: 80%;"></div>
+<div class="spec-target-marker" style="left: 80%;">
+<span class="marker-pin">🎯</span>
+<span class="marker-pill">80% BULLSEYE</span>
+</div>
+</div>
+<div class="spec-extreme spec-right">🔥 HOT <small>(100%)</small></div>
+</div>
+<div class="example-steps-grid">
+<div class="ex-step">
+<div class="ex-step-num">Step 1</div>
+<div class="ex-step-content">
+<strong>👀 1 Player Peeks</strong>
+<p>You see the secret bullseye is at <strong>80%</strong> (near <strong>🔥 HOT</strong>).</p>
+</div>
+</div>
+<div class="ex-step highlight-step">
+<div class="ex-step-num">Step 2</div>
+<div class="ex-step-content">
+<strong>💬 Say 1 Clue that Fits 80%</strong>
+<p>Say <strong>"☕ Fresh Chai"</strong> because it's ~80% Hot! (No numbers or card words).</p>
+</div>
+</div>
+<div class="ex-step">
+<div class="ex-step-num">Step 3</div>
+<div class="ex-step-content">
+<strong>🎯 Friends Turn Dial &amp; Reveal</strong>
+<p>Squad drags needle to 80% and taps Reveal for <strong>+4 Points</strong>!</p>
+</div>
+</div>
+</div>
+</div>
 <div class="rule-item">
 <span class="rule-num">1</span>
 <div>
-<strong>The Psychic Peeks 👁️</strong>
-<p>One player is the <strong>Psychic</strong>. They open the shutter to see where the secret bullseye sits between two extremes (e.g., <em>Cold ↔ Hot</em> or <em>Overrated ↔ Underrated</em>).</p>
+<strong>The Psychic Peeks Privately 👁️</strong>
+<p>One player is the <strong>Psychic</strong>. They open the shutter to see where the secret bullseye sits between two extremes (e.g. <em>Cold ↔ Hot</em> or <em>Overrated ↔ Underrated</em>).</p>
 </div>
 </div>
 <div class="rule-item">
 <span class="rule-num">2</span>
 <div>
-<strong>Give One Clue 🗣️</strong>
-<p>The Psychic closes the shutter and gives a <strong>single concept clue</strong> (e.g. <em>"Surface of the Sun"</em> or <em>"Iced Chai"</em>). No numbers, percentages, or words on the card!</p>
+<strong>Give One Concept Clue 🗣️</strong>
+<p>The Psychic closes the shutter and gives a <strong>single concept clue</strong> (e.g. <em>"Fresh Chai"</em> for 80% Hot). No numbers, percentages, or words on the card!</p>
 </div>
 </div>
 <div class="rule-item">
 <span class="rule-num">3</span>
 <div>
 <strong>Debate &amp; Turn the Dial 🎯</strong>
-<p>Everyone else debates where that clue belongs on the 180° spectrum and drags the glowing needle to lock in their guess.</p>
+<p>Everyone else debates where that clue belongs on the 180° spectrum and drags the needle to lock in their squad's guess.</p>
 </div>
 </div>
 <div class="rule-item">
 <span class="rule-num">4</span>
 <div>
-<strong>Tap to Reveal &amp; Score ⚡</strong>
+<strong>Tap Reveal &amp; Score Points ⚡</strong>
 <p>Open the shutter! Score <strong>4 pts</strong> for the green Bullseye, <strong>3 pts</strong> for the gold inner zone, or <strong>2 pts</strong> for the orange outer zone. In Team mode, the opposing team can also steal <strong>+1 pt</strong> by guessing Left or Right!</p>
 </div>
 </div>
@@ -605,6 +747,6 @@ Your squad is in the middle of a Wavelength match! Leaving now will end the curr
 <label id="ios-haptic-label" for="ios-haptic-switch" aria-hidden="true" style="position:fixed;left:-9999px;top:-9999px;opacity:0;pointer-events:none;">
 <input type="checkbox" switch id="ios-haptic-switch" />
 </label>
-<script src="./app.min.js?v=3"></script>
+<script src="./app.min.js?v=4"></script>
 </body>
 </html>

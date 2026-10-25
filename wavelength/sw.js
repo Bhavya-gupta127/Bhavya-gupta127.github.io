@@ -1,10 +1,10 @@
-// Wavelength (Mind Sync) — PWA Service Worker v3.0
-const CACHE_NAME = "wavelength-pwa-v3";
+// Wavelength (Mind Sync) — PWA Service Worker v4.0
+const CACHE_NAME = "wavelength-pwa-v4";
 const ASSETS = [
   "/wavelength/",
   "/wavelength/index.html",
-  "/wavelength/styles.min.css?v=3",
-  "/wavelength/app.min.js?v=3",
+  "/wavelength/styles.min.css?v=4",
+  "/wavelength/app.min.js?v=4",
   "/wavelength/manifest.json",
   "/wavelength/icon-192.png",
   "/wavelength/icon-512.png",
