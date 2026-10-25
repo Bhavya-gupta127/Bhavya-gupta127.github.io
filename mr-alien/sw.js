@@ -1,14 +1,14 @@
 // Mr. Alien — PWA Service Worker v10.0
 const CACHE_NAME = "mr-alien-pwa-v10";
 const ASSETS = [
-  "/mr-alien/",
-  "/mr-alien/index.html",
-  "/mr-alien/styles.min.css?v=10",
-  "/mr-alien/app.min.js?v=10",
-  "/mr-alien/manifest.json",
-  "/mr-alien/icon-192.png",
-  "/mr-alien/icon-512.png",
-  "/mr-alien/apple-touch-icon.png"
+  "/",
+  "/index.html",
+  "/styles.min.css?v=10",
+  "/app.min.js?v=10",
+  "/manifest.json",
+  "/icon-192.png",
+  "/icon-512.png",
+  "/apple-touch-icon.png"
 ];
 
 self.addEventListener("install", (event) => {
@@ -46,6 +46,6 @@ self.addEventListener("fetch", (event) => {
         }
         return res;
       })
-      .catch(() => caches.match(event.request).then((cached) => cached || caches.match("/mr-alien/index.html")))
+      .catch(() => caches.match(event.request).then((cached) => cached || caches.match("/index.html")))
   );
 });
