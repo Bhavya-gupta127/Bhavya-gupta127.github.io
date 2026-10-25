@@ -33,7 +33,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="./styles.min.css?v=10" />
+<link rel="stylesheet" href="./styles.min.css?v=11" />
 <script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js" defer></script>
 </head>
 <body>
@@ -49,9 +49,13 @@
 <div class="brand-icon" id="easter-egg-brand-icon">👽</div>
 <div>
 <span class="brand-name">Mr. Alien</span>
-<div id="top-online-room-pill" style="display: none; font-size: 0.65rem; color: #10d796; font-weight: 700;">Room: -----</div>
 </div>
 </div>
+<button type="button" id="top-online-room-pill" class="room-id-header-pill" title="Tap to copy Room Code &amp; Join URL" style="display: none;">
+<span>📡 ROOM:</span>
+<strong id="top-online-room-code">-----</strong>
+<span style="font-size: 0.65rem; opacity: 0.85;">📋</span>
+</button>
 </div>
 <div class="top-actions">
 <button class="nav-pill-btn" id="btn-tv-board" type="button" title="Toggle Common TV / Laptop Radar Board Mode" style="display: none;">
@@ -75,6 +79,7 @@
 <button class="circle-btn" id="btn-sound-toggle" type="button" title="Toggle Sound">🔊</button>
 </div>
 </header>
+<div id="room-copy-toast" class="room-copy-toast" style="display: none;">📋 Room Code copied!</div>
 <div id="tv-command-banner" class="tv-command-banner" style="display: none;">
 <div class="tv-banner-left">
 <span class="tv-radar-dot"></span>
@@ -617,6 +622,6 @@ Your crew is in the middle of a mission! Leaving now will end the current round 
 </button>
 </div>
 </div>
-<script src="./app.min.js?v=10"></script>
+<script src="./app.min.js?v=11"></script>
 </body>
 </html>
