@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="theme-color" content="#070812" />
   <title>PartyNights.online — Free Instant Party Games Arcade</title>
-  <meta name="description" content="Launch free instant multiplayer party games in your browser at PartyNights.online! Featuring Mr. Alien (500+ Desi Words), Secret Dictator (Social Deduction), and Wavelength (Mind Sync & Spectrum Debate). Pass 1 phone or join room codes, zero app downloads required." />
-  <meta name="keywords" content="free party game online, pass 1 phone, no download, house party games with friends, Mr Alien game, Secret Dictator game, Wavelength game, desi undercover game, partynights.online" />
+  <meta name="description" content="Launch free instant multiplayer party games in your browser at PartyNights.online! Featuring Mr. Alien (500+ Desi Words), Secret Dictator (Social Deduction), Wavelength (Mind Sync), and Paranoia: Exposed (Whisper & 3D Coin Flip). Pass 1 phone or join room codes, zero app downloads required." />
+  <meta name="keywords" content="free party game online, pass 1 phone, no download, house party games with friends, Mr Alien game, Secret Dictator game, Wavelength game, Paranoia game, Most Likely To game, desi undercover game, partynights.online" />
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
   <link rel="canonical" href="https://partynights.online/" />
   <link rel="icon" type="image/png" sizes="192x192" href="/mr-alien/icon-192.png" />
@@ -16,13 +16,14 @@
   <link rel="prefetch" href="/mr-alien/" />
   <link rel="prefetch" href="/secret-dictator/" />
   <link rel="prefetch" href="/wavelength/" />
+  <link rel="prefetch" href="/paranoia/" />
 
   <!-- OpenGraph / WhatsApp / IG Share Preview -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="PartyNights.online" />
   <meta property="og:url" content="https://partynights.online/" />
   <meta property="og:title" content="PartyNights.online — Instant House Party Arcade" />
-  <meta property="og:description" content="Play Mr. Alien, Secret Dictator & Wavelength right in your browser. Pass 1 phone or room code, zero app downloads." />
+  <meta property="og:description" content="Play Mr. Alien, Secret Dictator, Wavelength & Paranoia right in your browser. Pass 1 phone or room code, zero app downloads." />
   <meta property="og:image" content="https://partynights.online/mr-alien/og-banner.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
@@ -30,7 +31,7 @@
   <!-- Twitter / X Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="PartyNights.online — Instant House Party Arcade" />
-  <meta name="twitter:description" content="Zero downloads. Pass 1 phone and play Mr. Alien, Secret Dictator & Wavelength with friends!" />
+  <meta name="twitter:description" content="Zero downloads. Pass 1 phone and play Mr. Alien, Secret Dictator, Wavelength & Paranoia with friends!" />
   <meta name="twitter:image" content="https://partynights.online/mr-alien/og-banner.png" />
 
   <!-- Google AdSense Verification & Auto Ads -->
@@ -126,6 +127,29 @@
         "numberOfPlayers": {
           "@type": "QuantitativeValue",
           "minValue": 2,
+          "maxValue": 20
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "INR",
+          "availability": "https://schema.org/InStock"
+        }
+      },
+      {
+        "@type": "VideoGame",
+        "@id": "https://partynights.online/paranoia/#game",
+        "name": "Paranoia: Exposed — Whisper, 3D Coin Flip & Most Likely To Party Game",
+        "url": "https://partynights.online/paranoia/",
+        "image": "https://partynights.online/paranoia/og-banner.png",
+        "description": "220+ spicy Desi & house party questions. Whisper a secret question, name someone out loud, and flip the 3D Coin of Fate—or vote in Most Likely To: Exposed!",
+        "genre": ["Party Game", "Social Game", "Trivia & Poll"],
+        "playMode": "MultiPlayer",
+        "applicationCategory": "GameApplication",
+        "operatingSystem": "Web Browser, Android, iOS",
+        "numberOfPlayers": {
+          "@type": "QuantitativeValue",
+          "minValue": 3,
           "maxValue": 20
         },
         "offers": {
@@ -1484,10 +1508,11 @@
           </details>
           <details class="faq-box">
             <summary>What games are available to play?</summary>
-            <p>PartyNights.online currently features 3 instant party games:
+            <p>PartyNights.online currently features 4 instant party games:
               <br>• <strong>Mr. Alien (👽)</strong>: 500+ Indian words deduction game.
               <br>• <strong>Secret Dictator (👑)</strong>: 5–10 player social deduction and policy game with AI bots.
               <br>• <strong>Wavelength (🧠)</strong>: 235+ telepathic spectrum dial debate party game.
+              <br>• <strong>Paranoia: Exposed (🪙)</strong>: 220+ spicy whisper + 3D Coin of Fate &amp; Most Likely To room poll game.
             </p>
           </details>
           <details class="faq-box">
@@ -1554,6 +1579,7 @@
       <a href="/mr-alien/">Mr. Alien 👽</a>
       <a href="/secret-dictator/">Secret Dictator 👑</a>
       <a href="/wavelength/">Wavelength 🧠</a>
+      <a href="/paranoia/">Paranoia 🪙</a>
       <a href="/privacy">Privacy &amp; Terms</a>
       <a href="/sitemap.xml">Sitemap</a>
       <a href="mailto:partynights.online.info@gmail.com">✉️ partynights.online.info@gmail.com</a>
@@ -1653,6 +1679,27 @@
                 clearFn: () => {
                   w.screen = 'setup';
                   localStorage.setItem('partynights_wavelength_state_v1', JSON.stringify(w));
+                }
+              };
+            }
+          }
+        } catch (_) {}
+      }
+
+      if (!detectedSession) {
+        try {
+          const prRaw = localStorage.getItem('paranoia_active_session_v1');
+          if (prRaw) {
+            const pr = JSON.parse(prRaw);
+            if (pr && pr.game === 'paranoia') {
+              detectedSession = {
+                gameId: 'paranoia',
+                title: 'Paranoia: Exposed',
+                emoji: '🪙',
+                url: '/paranoia/',
+                round: pr.round || 1,
+                clearFn: () => {
+                  localStorage.removeItem('paranoia_active_session_v1');
                 }
               };
             }

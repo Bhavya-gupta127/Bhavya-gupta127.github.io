@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+<meta name="theme-color" content="#070812" />
+<title>Paranoia &amp; Most Likely To: Exposed — Free Party Game | PartyNights.online</title>
+<meta name="description" content="Play Paranoia (Whisper &amp; 3D Coin Flip) and Who's Most Likely To: Exposed online with friends! 220+ spicy Desi &amp; house party questions, zero app install on PartyNights.online." />
+<link rel="canonical" href="https://partynights.online/paranoia/" />
+<link rel="manifest" href="./manifest.json" />
+<link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="Paranoia" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="PartyNights.online" />
+<meta property="og:title" content="Paranoia &amp; Most Likely To: Exposed — PartyNights.online" />
+<meta property="og:description" content="Whisper a secret question, name someone out loud, and flip the 3D Coin of Fate: HEADS = Exposed to the room, TAILS = Locked in the Vault forever!" />
+<meta property="og:url" content="https://partynights.online/paranoia/" />
+<meta property="og:image" content="https://partynights.online/paranoia/og-banner.png" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Paranoia &amp; Most Likely To: Exposed — PartyNights.online" />
+<meta name="twitter:description" content="Whisper a secret question, name someone out loud, and flip the 3D Coin of Fate! Free browser party game." />
+<meta name="twitter:image" content="https://partynights.online/paranoia/og-banner.png" />
+<meta name="google-adsense-account" content="ca-pub-5935694635631350" id="meta-adsense-account" />
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5935694635631350" crossorigin="anonymous"></script>
+<script defer src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="./styles.min.css?v=1" />
+</head>
+<body>
+<div class="ambient-glow glow-left" aria-hidden="true"></div>
+<div class="ambient-glow glow-right" aria-hidden="true"></div>
+<div class="app-shell">
+<header class="top-bar" id="app-top-bar">
+<div class="brand-group">
+<button type="button" class="ios-back-btn" id="btn-ios-back" aria-label="Go Back" title="Go Back">
+<svg class="ios-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+<span id="ios-back-label">Arcade</span>
+</button>
+<div class="brand" id="brand-home-btn" title="Paranoia Home">
+<div class="brand-icon">🪙</div>
+<div class="brand-text-wrap">
+<span class="brand-name">Paranoia</span>
+<span class="brand-sub">EXPOSED</span>
+</div>
+</div>
+</div>
+<div class="top-actions">
+<a href="https://partynights.online/" class="nav-pill-btn" id="btn-top-hub" title="PartyNights.online Hub">
+<span>🎉</span>
+<span>Hub</span>
+</a>
+<button class="nav-pill-btn" id="btn-top-menu" type="button" title="Game Setup">
+<span>🏠</span>
+<span id="btn-top-menu-label">Setup</span>
+</button>
+<button class="circle-btn" id="btn-open-rules" type="button" title="How to Play">📖</button>
+<button class="circle-btn" id="btn-open-leaderboard" type="button" title="Squad Hall of Fame">🏆</button>
+<button class="circle-btn" id="btn-sound-toggle" type="button" title="Toggle Sound">🔊</button>
+</div>
+</header>
+<section id="screen-landing" class="screen active">
+<div class="landing-wrap">
+<div class="top-hub-bar">
+<a href="https://partynights.online/" class="hub-back-pill">← All PartyNights.online Games</a>
+<span class="signal-pill">
+<span class="signal-dot"></span>
+<span id="landing-vault-count">220+ Spicy Cards Ready</span>
+</span>
+</div>
+<div class="hero-coin-stage" id="hero-coin-trigger" title="Tap to Spin Coin!">
+<div class="hero-coin-3d" id="hero-coin-3d">
+<div class="hero-coin-face hero-coin-front">
+<span class="coin-face-tag">HEADS</span>
+<span class="coin-face-emoji">🔥</span>
+<span class="coin-face-title">EXPOSED</span>
+</div>
+<div class="hero-coin-face hero-coin-back">
+<span class="coin-face-tag">TAILS</span>
+<span class="coin-face-emoji">🔒</span>
+<span class="coin-face-title">VAULTED</span>
+</div>
+</div>
+</div>
+<div class="badge-pill">🔥 #1 VIRAL GEN-Z &amp; DESI HOUSE PARTY GAME</div>
+<h1 class="hero-title">PARANOIA <span class="gradient-text">EXPOSED</span></h1>
+<p class="hero-subtitle">
+Whisper a spicy <em>"Who in this room..."</em> question, say your answer <strong>OUT LOUD</strong>, and flip the <strong>3D Coin of Fate</strong>—or play <strong>Most Likely To: Exposed</strong> with live room polls!
+</p>
+<div class="landing-mode-cards">
+<div class="landing-mode-card mode-card-paranoia" id="card-launch-paranoia">
+<div class="lmc-badge">MODE 1 • WHISPER + 3D COIN</div>
+<div class="lmc-head">
+<span class="lmc-icon">🪙</span>
+<div>
+<h3>Classic Paranoia</h3>
+<p>Secret whisper → Out-loud name drop → 50/50 Coin Flip (Heads = Exposed, Tails = Vaulted!)</p>
+</div>
+</div>
+<button type="button" class="primary-glow-btn" id="btn-start-paranoia">
+<span>🪙 Play Paranoia Mode</span>
+<span class="btn-arrow">→</span>
+</button>
+</div>
+<div class="landing-mode-card mode-card-poll" id="card-launch-poll">
+<div class="lmc-badge">MODE 2 • SECRET ROOM POLL</div>
+<div class="lmc-head">
+<span class="lmc-icon">🎯</span>
+<div>
+<h3>Most Likely To: Exposed</h3>
+<p>Everyone secretly votes who fits the prompt → Reveal the #1 Exposed Receipt Card &amp; % breakdown!</p>
+</div>
+</div>
+<button type="button" class="secondary-glow-btn" id="btn-start-poll">
+<span>🎯 Play Most Likely To Poll</span>
+<span class="btn-arrow">→</span>
+</button>
+</div>
+</div>
+<div class="join-room-strip">
+<div class="join-room-label">🌐 Joining a friend's multi-phone room?</div>
+<div class="join-room-row">
+<input type="text" id="input-join-code" class="room-code-input" placeholder="ROOM CODE (e.g. PR42)" maxlength="6" autocomplete="off" />
+<input type="text" id="input-join-name" class="room-name-input" placeholder="Your Name" maxlength="16" autocomplete="off" />
+<button type="button" class="small-neon-btn" id="btn-join-room">Join →</button>
+</div>
+</div>
+<div class="steps-grid">
+<div class="step-card">
+<div class="step-num">1</div>
+<div class="step-info">
+<strong>Read Secret Question</strong>
+<span>Whisper it to the player next to you so nobody else hears.</span>
+</div>
+</div>
+<div class="step-card">
+<div class="step-num">2</div>
+<div class="step-info">
+<strong>Name Someone Out Loud</strong>
+<span>They must pick someone in this room without explaining why!</span>
+</div>
+</div>
+<div class="step-card">
+<div class="step-num">3</div>
+<div class="step-info">
+<strong>Flip the 3D Coin of Fate</strong>
+<span><strong>HEADS</strong> exposes the question to the room. <strong>TAILS</strong> locks it forever!</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="screen-setup" class="screen">
+<div class="panel-card">
+<div class="panel-header-row">
+<div>
+<span class="section-eyebrow">STEP 1 • CHOOSE GAME MODE</span>
+<h2 class="panel-title">Configure Your Party</h2>
+</div>
+<span class="pill-counter" id="setup-deck-counter">220 Cards</span>
+</div>
+<div class="mode-switch-grid" role="radiogroup" aria-label="Game Mode">
+<button type="button" class="mode-tile active" data-mode="paranoia" id="tile-mode-paranoia">
+<span class="mode-tile-icon">🪙</span>
+<span class="mode-tile-title">Paranoia (Coin Flip)</span>
+<span class="mode-tile-desc">Secret Whisper + 50/50 Expose</span>
+</button>
+<button type="button" class="mode-tile" data-mode="poll" id="tile-mode-poll">
+<span class="mode-tile-icon">🎯</span>
+<span class="mode-tile-title">Most Likely To: Exposed</span>
+<span class="mode-tile-desc">Secret Squad Vote + Receipt</span>
+</button>
+</div>
+<div class="sub-section">
+<label class="field-label">HOW ARE YOU PLAYING?</label>
+<div class="segmented-row">
+<button type="button" class="seg-btn active" data-device="pass" id="btn-device-pass">📱 Pass 1 Phone</button>
+<button type="button" class="seg-btn" data-device="room" id="btn-device-room">🌐 Multi-Phone Room Code</button>
+</div>
+<div id="room-host-banner" class="room-host-banner" style="display: none;">
+<div class="rhb-top">
+<div>
+<span class="rhb-eyebrow">LIVE ROOM CODE</span>
+<div class="rhb-code" id="host-room-code-display">----</div>
+</div>
+<button type="button" class="small-neon-btn" id="btn-copy-room-link">📲 Share Invite</button>
+</div>
+<p class="rhb-hint">Friends can open <strong>partynights.online/paranoia</strong> and enter this code, or you can still play together on this phone!</p>
+</div>
+</div>
+<div class="sub-section">
+<label class="field-label">QUESTION DECK / VIBE</label>
+<div class="deck-chips" id="deck-category-chips">
+<button type="button" class="deck-chip active" data-cat="all">⚡ All Mix (220)</button>
+<button type="button" class="deck-chip" data-cat="desi">🇮🇳 Desi Chaos</button>
+<button type="button" class="deck-chip" data-cat="party">🎉 House Party</button>
+<button type="button" class="deck-chip" data-cat="spicy">🌶️ After Hours</button>
+<button type="button" class="deck-chip" data-cat="awkward">💀 Savage Roast</button>
+<button type="button" class="deck-chip" data-cat="wholesome">💖 Squad Legends</button>
+</div>
+</div>
+<div class="sub-section">
+<label class="field-label">NUMBER OF ROUNDS</label>
+<div class="segmented-row" id="round-count-chips">
+<button type="button" class="seg-btn" data-rounds="5">⚡ 5 Quick</button>
+<button type="button" class="seg-btn active" data-rounds="8">🔥 8 Classic</button>
+<button type="button" class="seg-btn" data-rounds="12">👑 12 Marathon</button>
+</div>
+</div>
+<div class="sub-section">
+<div class="roster-header-row">
+<label class="field-label">SQUAD ROSTER (<span id="player-count-badge">4</span> PLAYERS)</label>
+<div class="roster-quick-btns">
+<button type="button" class="tiny-pill-btn" id="btn-add-ai-friend">+ 🤖 Add Bot</button>
+<button type="button" class="tiny-pill-btn" id="btn-reset-default-squad">↺ Reset</button>
+</div>
+</div>
+<div class="add-player-bar">
+<input type="text" id="input-player-name" class="text-input" placeholder="Add friend's name (e.g. Rohan)..." maxlength="18" autocomplete="off" />
+<button type="button" class="add-btn" id="btn-add-player">+ Add</button>
+</div>
+<div class="players-chip-grid" id="setup-players-list"></div>
+</div>
+<details class="custom-q-drawer">
+<summary>✍️ Add Your Own Secret Squad Questions (<span id="custom-q-count">0</span>)</summary>
+<div class="custom-q-body">
+<p class="custom-q-hint">Slip an inside joke into the deck! Nobody will know you wrote it until the coin lands on HEADS.</p>
+<div class="add-player-bar">
+<input type="text" id="input-custom-question" class="text-input" placeholder="Who in this room is most likely to..." maxlength="140" />
+<button type="button" class="add-btn" id="btn-add-custom-q">+ Save</button>
+</div>
+<div id="custom-q-list" class="custom-q-list"></div>
+</div>
+</details>
+<button type="button" class="primary-glow-btn launch-big-btn" id="btn-launch-match">
+<span id="launch-btn-text">🪙 Start Paranoia Match (4 Players)</span>
+<span class="btn-arrow">→</span>
+</button>
+</div>
+<div class="ad-slot-wrapper" id="ad-setup-slot" aria-label="Sponsored">
+<div class="ad-slot-label">SPONSORED • PARTYNIGHTS ARCADE</div>
+<ins class="adsbygoogle"
+style="display:block; max-height:80px;"
+data-ad-client="ca-pub-5935694635631350"
+data-ad-format="horizontal"
+data-full-width-responsive="true"></ins>
+</div>
+</section>
+<section id="screen-paranoia" class="screen">
+<div class="hud-strip">
+<div class="hud-pill">
+<span class="hud-label">ROUND</span>
+<strong id="paranoia-round-label">1 / 8</strong>
+</div>
+<div class="hud-pill hud-pill-center">
+<span id="paranoia-turn-summary">Aarav → Priya</span>
+</div>
+<div class="hud-pill">
+<span class="hud-label">OVERRIDE</span>
+<strong id="paranoia-tokens-label">💎 1</strong>
+</div>
+</div>
+<div id="paranoia-step-whisper" class="game-stage-card">
+<div id="whisper-locked-gate" class="privacy-gate-box">
+<div class="gate-badge">STEP 1 • PASS THE PHONE</div>
+<div class="gate-avatar-pair">
+<div class="avatar-bubble"><span id="gate-asker-name">Aarav</span><small>Asker</small></div>
+<div class="avatar-arrow">🤫 →</div>
+<div class="avatar-bubble"><span id="gate-answerer-name">Priya</span><small>Answerer</small></div>
+</div>
+<h2 class="gate-title">Hand Phone to <span class="highlight-rose" id="gate-asker-title">Aarav</span></h2>
+<p class="gate-desc">
+<strong id="gate-asker-inline">Aarav</strong> will unlock the secret question and whisper it to <strong id="gate-answerer-inline">Priya</strong> so nobody else in the room hears it!
+</p>
+<button type="button" class="primary-glow-btn" id="btn-unlock-whisper">
+<span>🔓 I am <span id="btn-unlock-asker-name">Aarav</span> — Reveal Question</span>
+</button>
+</div>
+<div id="whisper-unlocked-card" class="whisper-secret-box" style="display: none;">
+<div class="secret-card-top">
+<span class="secret-cat-badge" id="paranoia-q-tag">🌶️ After Hours</span>
+<button type="button" class="tiny-pill-btn" id="btn-swap-paranoia-q">🔄 Swap Card</button>
+</div>
+<div class="secret-question-frame">
+<div class="secret-eye-warning">🤫 WHISPER ONLY TO <span id="whisper-target-caps">PRIYA</span></div>
+<p class="secret-question-text" id="paranoia-q-text">
+"Who in this room is most likely to text their ex at 2 AM tonight?"
+</p>
+</div>
+<div class="inline-custom-whisper">
+<input type="text" id="input-live-whisper" class="text-input" placeholder="Or type your own secret question right now..." maxlength="140" />
+<button type="button" class="small-neon-btn" id="btn-use-live-whisper">Use</button>
+</div>
+<div class="whisper-instruction-banner">
+<span>1️⃣ Whisper this question into <strong id="whisper-inst-answerer">Priya</strong>'s ear.</span>
+<span>2️⃣ Tap below to lock the question &amp; pass the phone to <strong id="whisper-inst-answerer-2">Priya</strong>!</span>
+</div>
+<button type="button" class="primary-glow-btn" id="btn-lock-and-pass">
+<span>🔒 Hide Question &amp; Pass to <span id="btn-pass-answerer-name">Priya</span> →</span>
+</button>
+</div>
+</div>
+<div id="paranoia-step-answer" class="game-stage-card" style="display: none;">
+<div class="stage-top-row">
+<span class="gate-badge">STEP 2 • SAY YOUR ANSWER OUT LOUD!</span>
+<button type="button" class="tiny-pill-btn" id="btn-answerer-peek" title="Forgot what they whispered? Tap to peek privately">👁️ Peek Secret Question</button>
+</div>
+<div id="answerer-peek-box" class="answerer-peek-box" style="display: none;">
+<small>🤫 Secret Question (Hide from others!):</small>
+<p id="answerer-peek-text"></p>
+</div>
+<h2 class="stage-headline">
+<span class="highlight-cyan" id="answerer-headline-name">Priya</span>, say a name OUT LOUD &amp; tap them below:
+</h2>
+<p class="stage-subtext">
+Everyone in the room will hear who you picked—but nobody knows the question unless the coin lands on <strong>HEADS</strong>!
+</p>
+<div class="target-select-grid" id="paranoia-target-grid"></div>
+</div>
+<div id="paranoia-step-coin" class="game-stage-card" style="display: none;">
+<div class="gate-badge">STEP 3 • THE 3D COIN OF FATE</div>
+<h2 class="stage-headline">
+<span class="highlight-cyan" id="coin-answerer-name">Priya</span> named <span class="highlight-rose" id="coin-target-name">Kabir</span> OUT LOUD! 😱
+</h2>
+<p class="stage-subtext">
+Why did <strong id="coin-sub-answerer">Priya</strong> pick <strong id="coin-sub-target">Kabir</strong>?! Flip the 3D Coin of Fate:
+</p>
+<div class="coin-odds-pills">
+<span class="odds-pill odds-heads">🔥 HEADS (50%) = EXPOSE QUESTION</span>
+<span class="odds-pill odds-tails">🔒 TAILS (50%) = VAULT FOREVER</span>
+</div>
+<div class="coin-arena">
+<div class="coin-3d-wrapper" id="active-coin-3d">
+<div class="coin-face coin-face-heads">
+<span class="cf-small">HEADS</span>
+<span class="cf-icon">🔥</span>
+<span class="cf-big">EXPOSED</span>
+</div>
+<div class="coin-face coin-face-tails">
+<span class="cf-small">TAILS</span>
+<span class="cf-icon">🔒</span>
+<span class="cf-big">VAULTED</span>
+</div>
+</div>
+<div class="coin-shadow" id="active-coin-shadow"></div>
+</div>
+<button type="button" class="primary-glow-btn coin-flip-cta" id="btn-flip-coin">
+<span>🪙 TAP TO FLIP THE COIN OF FATE!</span>
+</button>
+</div>
+<div id="paranoia-step-result" class="game-stage-card" style="display: none;">
+<div id="paranoia-receipt-card" class="receipt-card receipt-exposed">
+<div class="receipt-stamp" id="paranoia-result-stamp">🔥 HEADS — QUESTION EXPOSED!</div>
+<div class="receipt-meta" id="paranoia-result-meta">Aarav whispered to Priya • PartyNights.online</div>
+<div class="receipt-target-spotlight">
+<span class="rts-label">NAMED OUT LOUD IN THE ROOM:</span>
+<div class="rts-name" id="paranoia-result-target">👑 KABIR</div>
+</div>
+<div class="receipt-question-box" id="paranoia-result-q-box">
+<span class="rqb-label" id="paranoia-result-q-label">THE SECRET QUESTION WAS:</span>
+<p class="rqb-text" id="paranoia-result-q-text">
+"Who in this room is most likely to text their ex at 2 AM tonight?"
+</p>
+</div>
+<div id="vault-override-box" class="vault-override-box" style="display: none;">
+<p>Want to force the vault open?! Your squad has <strong>1 Override Token</strong> left this match!</p>
+<button type="button" class="override-glow-btn" id="btn-burn-override">
+💎 Burn Squad Override Token to EXPOSE Question!
+</button>
+</div>
+<div class="receipt-footer-brand">
+<span>🪙 PARANOIA EXPOSED</span>
+<span>partynights.online/paranoia</span>
+</div>
+</div>
+<div class="result-actions-row">
+<button type="button" class="whatsapp-share-btn" id="btn-share-paranoia-round">
+<span>📲 Share Exposed Card to WhatsApp / IG</span>
+</button>
+<button type="button" class="primary-glow-btn" id="btn-next-paranoia-turn">
+<span id="next-paranoia-btn-label">Next Whisper Turn →</span>
+</button>
+</div>
+</div>
+</section>
+<section id="screen-poll" class="screen">
+<div class="hud-strip">
+<div class="hud-pill">
+<span class="hud-label">POLL ROUND</span>
+<strong id="poll-round-label">1 / 8</strong>
+</div>
+<div class="hud-pill hud-pill-center">
+<span id="poll-status-summary">Secret Squad Vote</span>
+</div>
+<div class="hud-pill">
+<span class="hud-label">VOTES</span>
+<strong id="poll-votes-counter">0 / 4</strong>
+</div>
+</div>
+<div class="poll-prompt-card">
+<div class="secret-card-top">
+<span class="secret-cat-badge" id="poll-q-tag">🎉 House Party</span>
+<button type="button" class="tiny-pill-btn" id="btn-swap-poll-q">🔄 Swap Prompt</button>
+</div>
+<div class="poll-read-aloud-tag">📢 READ OUT LOUD TO THE ROOM:</div>
+<h2 class="poll-question-text" id="poll-q-text">
+"Who in this room is most likely to lose their phone on the first night of a Goa trip?"
+</h2>
+</div>
+<div id="poll-step-vote" class="game-stage-card">
+<div class="voter-turn-banner">
+<span class="voter-turn-badge" id="poll-voter-badge">📱 PASS PHONE TO VOTER #1</span>
+<h3 class="voter-turn-title">
+<span class="highlight-cyan" id="poll-current-voter">Aarav</span>, cast your secret vote:
+</h3>
+<p class="voter-turn-sub" id="poll-voter-sub">Tap who fits this prompt best. Your vote is hidden until everyone locks in!</p>
+</div>
+<div class="target-select-grid" id="poll-vote-grid"></div>
+</div>
+<div id="poll-step-reveal" class="game-stage-card" style="display: none;">
+<div class="receipt-card receipt-exposed" id="poll-receipt-card">
+<div class="receipt-stamp">🚨 MOST LIKELY TO: EXPOSED!</div>
+<div class="receipt-meta" id="poll-receipt-meta">Official Squad Verdict • PartyNights.online</div>
+<div class="receipt-target-spotlight">
+<span class="rts-label">THE ROOM VOTED #1 MOST LIKELY:</span>
+<div class="rts-name" id="poll-winner-name">👑 KABIR (75%)</div>
+</div>
+<div class="receipt-question-box">
+<span class="rqb-label">FOR THE PROMPT:</span>
+<p class="rqb-text" id="poll-receipt-q-text"></p>
+</div>
+<div class="poll-bars-wrap" id="poll-bars-container"></div>
+<div class="receipt-footer-brand">
+<span>🎯 MOST LIKELY TO: EXPOSED</span>
+<span>partynights.online/paranoia</span>
+</div>
+</div>
+<div class="result-actions-row">
+<button type="button" class="whatsapp-share-btn" id="btn-share-poll-round">
+<span>📲 Share Exposed Receipt to WhatsApp / IG</span>
+</button>
+<button type="button" class="primary-glow-btn" id="btn-next-poll-round">
+<span id="next-poll-btn-label">Next Poll Round →</span>
+</button>
+</div>
+</div>
+</section>
+<section id="screen-gameover" class="screen">
+<div class="panel-card gameover-card">
+<div class="badge-pill">🏆 OFFICIAL PARTY VERDICT</div>
+<h2 class="gameover-title">SQUAD EXPOSED REPORT</h2>
+<p class="gameover-sub" id="gameover-summary-sub">8 Rounds of Chaos Completed on PartyNights.online</p>
+<div class="awards-grid" id="gameover-awards-grid"></div>
+<div class="final-standings-box">
+<h3 class="standings-heading">🔥 Final Chaos &amp; Heat Standings</h3>
+<div class="final-standings-list" id="gameover-standings-list"></div>
+</div>
+<div class="result-actions-row">
+<button type="button" class="whatsapp-share-btn" id="btn-share-final-report">
+<span>📲 Share Party Report to WhatsApp / IG</span>
+</button>
+<button type="button" class="primary-glow-btn" id="btn-play-again-same">
+<span>🔄 Play Again (Same Squad)</span>
+</button>
+<button type="button" class="secondary-glow-btn" id="btn-gameover-setup">
+<span>🏠 Change Mode or Squad</span>
+</button>
+</div>
+</div>
+<div class="ad-slot-wrapper" id="ad-gameover-slot" aria-label="Sponsored">
+<div class="ad-slot-label">SPONSORED • MORE GAMES ON PARTYNIGHTS.ONLINE</div>
+<ins class="adsbygoogle"
+style="display:block; max-height:80px;"
+data-ad-client="ca-pub-5935694635631350"
+data-ad-format="horizontal"
+data-full-width-responsive="true"></ins>
+</div>
+</section>
+</div>
+<div class="modal-backdrop" id="modal-leave-warning" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="leave-modal-title">
+<div class="modal-box leave-modal-box">
+<div class="leave-modal-icon">⚠️</div>
+<h3 class="modal-title" id="leave-modal-title">Leave Active Game?</h3>
+<p class="leave-modal-desc">
+Your current round &amp; Paranoia Vault progress are still live. Are you sure you want to exit?
+</p>
+<div class="leave-modal-actions">
+<button type="button" class="primary-glow-btn" id="btn-leave-stay">Stay &amp; Play</button>
+<button type="button" class="danger-outline-btn" id="btn-leave-confirm">Leave Game</button>
+</div>
+</div>
+</div>
+<div class="modal-backdrop" id="modal-rules" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="rules-modal-title">
+<div class="modal-box">
+<div class="modal-head">
+<h3 class="modal-title" id="rules-modal-title">📖 How to Play Paranoia &amp; Exposed</h3>
+<button type="button" class="circle-btn" id="btn-close-rules">✕</button>
+</div>
+<div class="modal-body-scroll">
+<div class="rule-block">
+<h4>🪙 Mode 1: Classic Paranoia (Whisper + 3D Coin)</h4>
+<p>1. <strong>Secret Whisper:</strong> The Asker unlocks a secret <em>"Who in this room..."</em> question and whispers it to the player next to them (the Answerer).</p>
+<p>2. <strong>Out-Loud Name Drop:</strong> The Answerer must name a person in this room <strong>OUT LOUD</strong>. No context allowed!</p>
+<p>3. <strong>3D Coin of Fate:</strong> Flip the coin! <strong>🔥 HEADS</strong> exposes the secret question to the entire room. <strong>🔒 TAILS</strong> locks the question in the Vault forever!</p>
+</div>
+<div class="rule-block">
+<h4>🎯 Mode 2: Most Likely To: Exposed (Room Poll)</h4>
+<p>1. Read the prompt out loud to the whole room.</p>
+<p>2. Every player secretly votes for who fits the prompt best (Pass 1 Phone or join via Multi-Phone Room Code).</p>
+<p>3. Reveal the <strong>Exposed Receipt Card</strong> showing the #1 voted friend and exact vote percentages!</p>
+</div>
+</div>
+</div>
+</div>
+<div class="modal-backdrop" id="modal-leaderboard" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="lb-modal-title">
+<div class="modal-box">
+<div class="modal-head">
+<h3 class="modal-title" id="lb-modal-title">🏆 All-Time Exposed Hall of Fame</h3>
+<button type="button" class="circle-btn" id="btn-close-leaderboard">✕</button>
+</div>
+<div class="modal-body-scroll">
+<div id="hall-of-fame-list" class="hall-of-fame-list"></div>
+<button type="button" class="danger-outline-btn" id="btn-clear-hall" style="margin-top: 12px; width: 100%;">🗑️ Clear Saved Stats</button>
+</div>
+</div>
+</div>
+<div id="toast-banner" class="toast-banner" aria-live="polite"></div>
+<script src="./app.min.js?v=1"></script>
+</body>
+</html>

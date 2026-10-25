@@ -70,6 +70,26 @@ window.PARTY_GAMES = [
     featured: true,
     description: "One player sees a hidden bullseye on a 180° slider between two extremes (e.g., Overrated ↔ Underrated or Tapri Chai ↔ Starbucks) and gives a 1-word clue. Debate where to drag the dial & tap to reveal your Mind Sync score!",
     url: "/wavelength/"
+  },
+  {
+    id: "paranoia",
+    repo: "Bhavya-gupta127/paranoia",
+    title: "Paranoia: Exposed",
+    subtitle: "Whisper, 3D Coin Flip & Most Likely To Poll",
+    emoji: "🪙",
+    icon: "/paranoia/icon-192.png",
+    banner: "/paranoia/og-banner.png",
+    players: "3–20 Players",
+    minPlayers: 3,
+    maxPlayers: 20,
+    duration: "5–15 Mins",
+    deviceMode: "Room Code or Pass 1 Phone",
+    category: "Mind Sync & Debate",
+    tags: ["3D Coin of Fate", "Most Likely To Poll", "220+ Desi & Spicy Cards", "Pass 1 Phone"],
+    badge: "🪙 #1 Gen-Z Trend",
+    featured: true,
+    description: "Whisper a spicy 'Who in this room...' question, name someone OUT LOUD, and flip the 3D Coin of Fate: HEADS exposes the secret question to the room, TAILS locks it in the Vault forever! Plus live Most Likely To room polls.",
+    url: "/paranoia/"
   }
 ];
 
