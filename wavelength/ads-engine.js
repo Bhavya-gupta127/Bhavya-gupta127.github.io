@@ -665,7 +665,9 @@
       "screen-elimination",
       "screen-game",
       "screen-paranoia",
-      "screen-poll"
+      "screen-poll",
+      "screen-countdown",
+      "screen-play"
     ];
     for (var i = 0; i < gameplayIds.length; i++) {
       var el = document.getElementById(gameplayIds[i]);
@@ -682,24 +684,37 @@
     var gameOver = document.getElementById("screen-gameover");
     if (gameOver && gameOver.classList.contains("active")) return false;
 
-    // 1. Secret Dictator Waiting Lobby
-    var sdLobby = document.getElementById("screen-lobby");
+    // 0. Arcade Hub Main Stage (Central Arcade Hub)
+    if (document.querySelector(".arcade-stage") || document.getElementById("ad-container")) return true;
+
+    // 1. Secret Dictator Waiting Lobby or Setup
+    var sdLobby = document.getElementById("screen-lobby") || document.getElementById("screen-setup");
     if (sdLobby && sdLobby.classList.contains("active")) return true;
 
-    // 2. Mr. Alien Online Waiting Lobby
+    // 2. Mr. Alien Online Waiting Lobby or Setup
+    var maSetup = document.getElementById("screen-setup");
+    if (maSetup && maSetup.classList.contains("active")) return true;
     var maLobby = document.getElementById("online-lobby-box") || document.getElementById("online-lobby-panel");
     if (maLobby && maLobby.offsetParent !== null) return true;
 
-    // 3. Paranoia Multi-Phone Room Lobby
-    var paLobby = document.getElementById("multi-room-lobby");
+    // 3. Paranoia Multi-Phone Room Lobby or Setup
+    var paLobby = document.getElementById("multi-room-lobby") || document.getElementById("room-host-banner");
     if (paLobby && paLobby.offsetParent !== null) return true;
 
-    // 4. Wavelength TV/Room Setup Card open
+    // 4. Wavelength TV/Room Setup Card open or Setup screen
+    var wvSetup = document.getElementById("screen-setup");
+    if (wvSetup && wvSetup.classList.contains("active")) return true;
     var wvLobby = document.getElementById("tv-room-card");
     if (wvLobby && wvLobby.offsetParent !== null) return true;
 
+    // 5. Landing screens across all games
+    var landing = document.getElementById("screen-landing");
+    if (landing && landing.classList.contains("active")) return true;
+
     return false;
   }
+
+  var isSyncingAds = false;
 
   function syncAdVisibilityByScreen() {
     var bar = ensureStickyAnchorBanner();
@@ -710,16 +725,23 @@
     // Desktop floating VIP pill: show on Landing/Setup/Lobby, hide during active gameplay & on Game Over so it never overlaps Play Again
     var fab = document.getElementById("pn-desktop-vip-fab");
     if (fab) {
-      fab.style.display = isFamilyModeActive() || inGameplay || inGameOver ? "none" : "";
+      var desiredDisplay = isFamilyModeActive() || inGameplay || inGameOver ? "none" : "";
+      if (fab.style.display !== desiredDisplay) {
+        fab.style.display = desiredDisplay;
+      }
     }
 
     if (stickyDismissed || inGameplay || inGameOver) {
-      bar.classList.remove("pn-screen-allowed");
+      if (bar.classList.contains("pn-screen-allowed")) {
+        bar.classList.remove("pn-screen-allowed");
+      }
       return;
     }
 
     var allowed = isLobbyOrGameOverActive();
-    bar.classList.toggle("pn-screen-allowed", allowed);
+    if (bar.classList.contains("pn-screen-allowed") !== allowed) {
+      bar.classList.toggle("pn-screen-allowed", allowed);
+    }
 
     if (allowed && !stickyPushed) {
       var ins = bar.querySelector("ins.adsbygoogle");
@@ -871,14 +893,43 @@
     wireRematchInterstitialHook();
     syncAdVisibilityByScreen();
 
-    var bodyObserver = new MutationObserver(function () {
-      checkGameOverTransition();
-      syncAdVisibilityByScreen();
+    var syncTimer = null;
+    var bodyObserver = new MutationObserver(function (mutations) {
+      if (isSyncingAds) return;
+      var hasRelevantChange = false;
+      for (var i = 0; i < mutations.length; i++) {
+        var t = mutations[i].target;
+        if (
+          t &&
+          t.classList &&
+          (t.classList.contains("screen") ||
+            t.id === "screen-gameover" ||
+            t.id === "screen-lobby" ||
+            t.id === "screen-setup" ||
+            t === document.body)
+        ) {
+          hasRelevantChange = true;
+          break;
+        }
+      }
+      if (!hasRelevantChange) return;
+
+      if (syncTimer) clearTimeout(syncTimer);
+      syncTimer = setTimeout(function () {
+        if (isSyncingAds) return;
+        isSyncingAds = true;
+        try {
+          checkGameOverTransition();
+          syncAdVisibilityByScreen();
+        } finally {
+          isSyncingAds = false;
+        }
+      }, 40);
     });
     bodyObserver.observe(document.body, {
       attributes: true,
       subtree: true,
-      attributeFilter: ["class", "style"]
+      attributeFilter: ["class"]
     });
   }
 

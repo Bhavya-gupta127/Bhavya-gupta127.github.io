@@ -86,7 +86,10 @@
 <span class="tv-radar-dot"></span>
 <div>
 <div class="tv-banner-eyebrow">📡 AREA-51 COMMON RADAR BOARD (SECRET-SAFE)</div>
-<div class="tv-banner-code">📡 ROOM CODE: <strong id="tv-banner-room-code">-----</strong> • <span id="tv-banner-join-prompt">Join on your phone</span></div>
+<div class="tv-banner-code">
+📡 ROOM CODE: <strong id="tv-banner-room-code">-----</strong> • <span id="tv-banner-join-prompt">Join on your phone</span>
+<button type="button" class="pill-action" id="btn-tv-show-qr" style="margin-left: 8px; font-size: 0.72rem; padding: 3px 8px; border-color: rgba(0,240,255,0.4); color: var(--cyan); background: rgba(0,240,255,0.1); cursor: pointer;">📱 Scan QR</button>
+</div>
 </div>
 </div>
 <div class="tv-banner-right">
@@ -229,6 +232,7 @@ style="text-transform: uppercase; font-weight: 800; letter-spacing: 0.1em;"
 <div style="font-size: 1.45rem; font-weight: 900; letter-spacing: 0.14em; color: #10d796;" id="online-room-code-badge">-----</div>
 </div>
 <div style="display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end;">
+<button type="button" class="pill-action" id="btn-online-show-qr" style="border-color: rgba(16, 215, 150, 0.45); color: #10d796; background: rgba(16, 215, 150, 0.1);">📱 Room QR</button>
 <button type="button" class="pill-action" id="btn-online-toggle-tv" style="border-color: rgba(0, 240, 255, 0.45); color: var(--cyan);">📺 TV Board</button>
 <button type="button" class="pill-action" id="btn-online-whatsapp-invite" style="border-color: rgba(16, 215, 150, 0.4); color: #10d796;">📲 WhatsApp</button>
 <button type="button" class="pill-action" id="btn-online-copy-link">📋 Copy Link</button>
@@ -279,6 +283,13 @@ style="text-transform: uppercase; font-weight: 800; letter-spacing: 0.1em;"
 <p class="subtle-note" id="role-tip-text" style="font-weight: 700;">
 💬 Give 1-word clue
 </p>
+<div id="word-meaning-helper-box" style="margin-top: 8px; width: 100%; display: flex; flex-direction: column; align-items: center;">
+<button type="button" class="pill-action" id="btn-toggle-word-meaning" style="font-size: 0.74rem; font-weight: 700; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.18); color: var(--cyan); border-radius: 999px; padding: 4px 12px; cursor: pointer;">
+<span>❓ Don't know what this word means?</span>
+</button>
+<div id="word-meaning-explanation" style="display: none; margin-top: 8px; padding: 8px 12px; background: rgba(0, 0, 0, 0.5); border: 1px solid rgba(0, 240, 255, 0.35); border-radius: 10px; font-size: 0.8rem; line-height: 1.4; color: #fff; text-align: center; max-width: 320px;">
+</div>
+</div>
 </div>
 </div>
 <div id="online-ready-strip" style="display: none; flex-direction: column; align-items: center; gap: 6px; text-align: center;">
@@ -602,6 +613,9 @@ Your crew is in the middle of a mission! Leaving now will end the current round 
 <span class="modal-title" id="settings-modal-title">⚙️ Game Settings</span>
 <button class="circle-btn" id="btn-close-settings" type="button" style="width: 32px; height: 32px;">✕</button>
 </div>
+<div id="settings-locked-banner" style="display: none; background: rgba(255, 46, 99, 0.12); border: 1px solid rgba(255, 46, 99, 0.4); color: #ff8da5; font-size: 0.78rem; font-weight: 700; padding: 8px 12px; border-radius: 10px; margin-bottom: 6px; line-height: 1.4; text-align: center;">
+🔒 <strong>Match in Progress:</strong> Game rules, hints, and alien counts are locked until you finish the match or return to Setup.
+</div>
 <div class="panel settings-group" style="border-color: rgba(16, 215, 150, 0.35); background: rgba(16, 215, 150, 0.06);">
 <div class="setting-item">
 <div class="setting-text">
@@ -629,6 +643,18 @@ Your crew is in the middle of a mission! Leaving now will end the current round 
 🔴 <strong>Hard:</strong> Subtle 1–2 word lateral cue that only clicks in hindsight (e.g. <em>&ldquo;Thumb&rdquo;</em> for Pani Puri).
 </div>
 <input type="checkbox" id="toggle-alien-hints" checked style="display: none;" />
+</div>
+<div class="panel settings-group" style="padding: 10px 12px;">
+<div class="setting-item">
+<div class="setting-text">
+<h4 style="color: #fff;">📖 Word Meaning &amp; Context Helper</h4>
+<p>Show &ldquo;Don&rsquo;t know what this means?&rdquo; during role reveal</p>
+</div>
+<label class="ios-switch">
+<input type="checkbox" id="toggle-word-meaning-helper" checked />
+<span class="ios-track"></span>
+</label>
+</div>
 </div>
 <div class="panel settings-group" id="setup-rules-panel">
 <div class="setting-item">
@@ -667,6 +693,28 @@ Your crew is in the middle of a mission! Leaving now will end the current round 
 </button>
 </div>
 </div>
+<div id="modal-squad-room-qr" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="qr-modal-title">
+<div class="modal-sheet" style="text-align: center; max-width: 380px; align-items: center; padding: 1.35rem;">
+<div style="width: 100%; display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
+<span class="modal-title" id="qr-modal-title" style="font-size: 1.15rem; font-weight: 900; letter-spacing: 0.05em; color: var(--cyan);">📡 SQUAD ROOM QR</span>
+<button class="circle-btn" id="btn-close-room-qr" type="button" style="width: 32px; height: 32px;">✕</button>
+</div>
+<p style="font-size: 0.8rem; color: var(--text-secondary); margin: 0 0 10px;">Friends scan this code with their phone camera to join instantly!</p>
+<div style="background: #fff; padding: 10px; border-radius: 16px; display: inline-flex; justify-content: center; align-items: center; box-shadow: 0 8px 30px rgba(0,0,0,0.6);">
+<canvas id="squad-room-qr-canvas" width="180" height="180" style="display: block; border-radius: 8px;"></canvas>
+</div>
+<div style="margin-top: 10px; font-size: 1.25rem; font-weight: 900; letter-spacing: 0.15em; color: #10d796;" id="qr-modal-room-code">-----</div>
+<div style="display: flex; flex-direction: column; width: 100%; gap: 8px; margin-top: 12px;">
+<button type="button" class="btn-main" id="btn-qr-modal-whatsapp" style="height: 42px; background: #25d366; color: #000; font-weight: 800; font-size: 0.86rem;">
+💬 Share to WhatsApp Squad
+</button>
+<button type="button" class="btn-ghost" id="btn-qr-modal-copy" style="height: 40px; font-size: 0.82rem;">
+📋 Copy Direct Join Link
+</button>
+</div>
+</div>
+</div>
+<script src="/qr-engine.min.js"></script>
 <script src="./app.min.js?v=12"></script>
 <script src="/ads-engine.js" defer></script>
 </body>

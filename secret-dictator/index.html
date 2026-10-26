@@ -172,6 +172,9 @@ Join Room
 Friends open <strong>partynights.online/secret-dictator</strong> on their phones and enter this code.
 </p>
 <div class="share-btn-row">
+<button type="button" class="btn-share-invite" id="btn-lobby-show-qr" style="background: rgba(0, 240, 255, 0.12); border-color: rgba(0, 240, 255, 0.4); color: var(--cyan);">
+<span>📱 Squad Room QR</span>
+</button>
 <button type="button" class="btn-share-invite" id="btn-share-invite">
 <span>📲 Share Direct Join Link (WhatsApp / Copy)</span>
 </button>
@@ -484,6 +487,28 @@ A Secret Dictator session is active! Leaving now will disconnect you from the ro
 </div>
 </div>
 <div id="sd-toast" class="sd-toast" style="display:none;" role="status" aria-live="polite"></div>
+<div id="modal-squad-room-qr" class="modal-backdrop" style="display:none;" role="dialog" aria-modal="true" aria-labelledby="sd-qr-modal-title">
+<div class="modal-sheet" style="text-align:center; max-width: 380px; padding: 1.5rem;">
+<div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.4rem;">
+<span class="dossier-classified-stamp" id="sd-qr-modal-title" style="color:var(--cyan); border-color:var(--cyan);">📡 SQUAD ROOM QR</span>
+<button class="small-pill-btn" id="btn-close-sd-qr" type="button">✕</button>
+</div>
+<p style="font-size:0.8rem; color:var(--muted); margin:0 0 10px;">Friends scan this code with their phone camera to join parliamentary session!</p>
+<div style="background:#fff; padding:10px; border-radius:16px; display:inline-flex; justify-content:center; align-items:center; box-shadow:0 8px 30px rgba(0,0,0,0.6);">
+<canvas id="sd-squad-room-qr-canvas" width="180" height="180" style="display:block; border-radius:8px;"></canvas>
+</div>
+<div style="margin-top:10px; font-size:1.35rem; font-weight:900; letter-spacing:0.18em; color:var(--gold);" id="sd-qr-modal-room-code">----</div>
+<div style="display:flex; flex-direction:column; gap:8px; margin-top:12px;">
+<button type="button" class="btn-primary" id="btn-sd-qr-whatsapp" style="background:#25d366; color:#000; font-weight:800; font-size:0.86rem;">
+💬 Send to WhatsApp Squad
+</button>
+<button type="button" class="btn-ghost" id="btn-sd-qr-copy" style="font-size:0.82rem;">
+📋 Copy Direct Join Link
+</button>
+</div>
+</div>
+</div>
+<script src="/qr-engine.min.js"></script>
 <script src="./app.min.js?v=7"></script>
 <script src="/ads-engine.js" defer></script>
 </body>

@@ -94,6 +94,27 @@ window.PARTY_GAMES = [
     featured: true,
     description: "Whisper a spicy 'Who in this room...' question, name someone OUT LOUD, and flip the 3D Coin of Fate on a phone or Common TV/Laptop Stage: HEADS exposes the secret question, TAILS locks it forever!",
     url: "/paranoia/"
+  },
+  {
+    id: "charades-rush",
+    repo: "Bhavya-gupta127/charades-rush",
+    title: "Charades Rush",
+    hook: "Forehead Tilt & Dumb Charades",
+    subtitle: "100% Family-Friendly Forehead & Party Dumb Charades",
+    emoji: "🎭",
+    icon: "/charades-rush/icon-192.png",
+    banner: "/charades-rush/og-banner.png",
+    players: "2–20 Players",
+    minPlayers: 2,
+    maxPlayers: 20,
+    duration: "5–15 Mins",
+    deviceMode: "Pass 1 Phone, Forehead Tilt or Team Duel",
+    category: "Family & Action",
+    tags: ["Forehead Gyro Tilt", "100% Family Friendly", "360+ Cards", "Bollywood & Animals", "Team Duel"],
+    badge: "🎭 All-Ages Hit",
+    featured: true,
+    description: "Hold phone on your forehead and tilt down to score, or act out movies and animals silently! Fast-paced 60s rounds, 100% kid & parent-friendly with zero downloads.",
+    url: "/charades-rush/"
   }
 ];
 

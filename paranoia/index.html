@@ -178,6 +178,7 @@ Whisper a secret question, name a friend out loud &amp; flip the 50/50 Coin!
 </div>
 <div class="rhb-actions">
 <button type="button" class="tiny-pill-btn" id="btn-toggle-tv-setup">📺 TV Stage: OFF</button>
+<button type="button" class="tiny-pill-btn" id="btn-paranoia-show-qr" style="border-color: rgba(16, 215, 150, 0.45); color: #10d796; background: rgba(16, 215, 150, 0.1);">📱 Room QR</button>
 <button type="button" class="small-neon-btn" id="btn-copy-room-link">📲 Share Invite</button>
 </div>
 </div>
@@ -619,7 +620,29 @@ Your current round &amp; Paranoia Vault progress are still live. Are you sure yo
 </div>
 </div>
 </div>
+<div id="modal-squad-room-qr" class="modal-backdrop" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="pr-qr-modal-title">
+<div class="modal-box" style="text-align: center; max-width: 380px; padding: 1.5rem;">
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem;">
+<h3 class="modal-title" id="pr-qr-modal-title" style="color: var(--cyan); font-size: 1.15rem; font-weight: 900;">📡 SQUAD ROOM QR</h3>
+<button class="circle-btn" id="btn-close-pr-qr" type="button">✕</button>
+</div>
+<p style="font-size: 0.8rem; color: var(--text-muted); margin: 0 0 10px;">Friends scan this code with their phone camera to join Paranoia room!</p>
+<div style="background: #fff; padding: 10px; border-radius: 16px; display: inline-flex; justify-content: center; align-items: center; box-shadow: 0 8px 30px rgba(0,0,0,0.6);">
+<canvas id="pr-squad-room-qr-canvas" width="180" height="180" style="display: block; border-radius: 8px;"></canvas>
+</div>
+<div style="margin-top: 10px; font-size: 1.35rem; font-weight: 900; letter-spacing: 0.18em; color: var(--emerald);" id="pr-qr-modal-room-code">----</div>
+<div style="display: flex; flex-direction: column; gap: 8px; margin-top: 12px;">
+<button type="button" class="primary-glow-btn" id="btn-pr-qr-whatsapp" style="background: #25d366; color: #000; font-weight: 800; font-size: 0.86rem;">
+💬 Send to WhatsApp Squad
+</button>
+<button type="button" class="secondary-btn" id="btn-pr-qr-copy" style="font-size: 0.82rem;">
+📋 Copy Direct Join Link
+</button>
+</div>
+</div>
+</div>
 <div id="toast-banner" class="toast-banner" aria-live="polite"></div>
+<script src="/qr-engine.min.js"></script>
 <script src="./app.min.js?v=5"></script>
 <script src="/ads-engine.js" defer></script>
 </body>

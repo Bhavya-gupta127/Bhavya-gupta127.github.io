@@ -603,6 +603,13 @@
       --theme-btn-bg: linear-gradient(135deg, #ff2e93 0%, #a855f7 52%, #f59e0b 100%);
       border-color: rgba(255, 46, 147, 0.38);
     }
+    .cartridge-card[data-game-id="charades-rush"] {
+      --theme-color: #f59e0b;
+      --theme-glow: rgba(245, 158, 11, 0.28);
+      --theme-art-bg: radial-gradient(circle at 50% 35%, #3d1c06 0%, #0c0906 100%);
+      --theme-btn-bg: linear-gradient(135deg, #f59e0b 0%, #ef4444 52%, #a855f7 100%);
+      border-color: rgba(245, 158, 11, 0.38);
+    }
 
     /* Featured Hero Cartridge Layout */
     .cartridge-card.featured-single {
@@ -1087,25 +1094,27 @@
         height: 20px;
       }
       .logo-main { font-size: 1.02rem; }
-      .logo-sub { font-size: 0.52rem; letter-spacing: 0.15em; margin-top: 1px; }
+      .logo-sub { display: none !important; }
       .hud-btn span.btn-label { display: none; }
       .hud-btn { padding: 0.38rem 0.58rem; border-radius: 10px; }
+      #hub-family-mode-btn { padding: 0.38rem 0.52rem !important; }
       main.arcade-stage { padding: 0.5rem 0.6rem 2rem; }
       .arcade-deck-bar {
         gap: 0.35rem;
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.45rem;
       }
       .deck-heading {
         width: 100%;
         justify-content: flex-start;
         gap: 0.4rem;
+        margin-bottom: 0.15rem;
       }
       .live-beacon {
-        font-size: 0.56rem;
-        padding: 0.15rem 0.42rem;
+        display: none !important;
       }
       .deck-title {
-        font-size: 0.9rem;
+        font-size: 0.88rem;
+        letter-spacing: 0.05em;
       }
       .tv-mode-toggle-pill {
         display: none !important;
@@ -1126,7 +1135,7 @@
         white-space: nowrap;
         letter-spacing: 0.01em;
       }
-      /* 2-Column Compact Arcade Grid on Mobile: Zero Clipped Badges or Truncated Ellipses (UI-001) */
+      /* 2-Column Ultra-Clean Arcade Grid on Mobile (UI-UX Lead Master Standard) */
       .games-deck-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 0.55rem;
@@ -1157,7 +1166,7 @@
       }
       .cartridge-body {
         padding: 0.55rem 0.6rem 0.6rem;
-        gap: 0.38rem;
+        gap: 0.32rem;
       }
       .game-app-icon {
         display: none;
@@ -1166,13 +1175,13 @@
         font-size: 0.88rem;
         line-height: 1.12;
       }
+      /* Hide subtitle hook on mobile 2-col to avoid text congestion */
       .game-hook {
-        font-size: 0.66rem;
-        margin-top: 0.12rem;
-        line-height: 1.22;
+        display: none !important;
       }
       .game-meta-pills {
         gap: 0.22rem;
+        margin-top: 0.1rem !important;
       }
       .meta-pill {
         font-size: 0.55rem;
@@ -1194,17 +1203,29 @@
         gap: 0.28rem;
       }
       .coming-soon-slot {
-        margin-top: 0.5rem;
-        padding: 0.42rem 0.6rem;
-        font-size: 0.64rem;
-        border-radius: 10px;
+        display: none !important;
       }
       .hud-steps-strip {
-        grid-template-columns: 1fr;
-        gap: 0.45rem;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.35rem;
       }
       .hud-step-pill {
-        padding: 0.55rem 0.75rem;
+        padding: 0.45rem 0.35rem;
+        flex-direction: column;
+        text-align: center;
+        gap: 0.25rem;
+      }
+      .step-num-orb {
+        width: 22px;
+        height: 22px;
+        font-size: 0.68rem;
+      }
+      .step-pill-text {
+        font-size: 0.66rem;
+        line-height: 1.18;
+      }
+      .step-pill-text small {
+        display: none;
       }
     }
 
@@ -1504,6 +1525,7 @@
         <button type="button" class="deck-tab filter-tab active" data-filter="all" role="tab" aria-selected="true">All</button>
         <button type="button" class="deck-tab filter-tab" data-filter="Social Deduction" role="tab" aria-selected="false">🕵️ Deduction</button>
         <button type="button" class="deck-tab filter-tab" data-filter="Mind Sync & Debate" role="tab" aria-selected="false">🧠 Mind Sync</button>
+        <button type="button" class="deck-tab filter-tab" data-filter="Family & Action" role="tab" aria-selected="false">🎭 Family</button>
         <button type="button" class="deck-tab filter-tab" data-filter="Pass 1 Phone" role="tab" aria-selected="false">📱 1-Phone</button>
       </div>
     </div>
@@ -1527,7 +1549,7 @@
         <div class="hud-steps-strip">
           <div class="hud-step-pill">
             <span class="step-num-orb">1</span>
-            <div class="step-pill-text">Pick a Game Cartridge<small>Mr. Alien, Secret Dictator, Wavelength &amp; Paranoia</small></div>
+            <div class="step-pill-text">Pick a Game Cartridge<small>Mr. Alien, Secret Dictator, Wavelength, Paranoia &amp; Charades Rush</small></div>
           </div>
           <div class="hud-step-pill">
             <span class="step-num-orb">2</span>
@@ -1553,7 +1575,7 @@
           </details>
           <details class="faq-box">
             <summary>What games are live in the Arcade?</summary>
-            <p>Play <strong>Mr. Alien (👽)</strong>, <strong>Secret Dictator (👑)</strong>, <strong>Wavelength (🧠)</strong>, and <strong>Paranoia: Exposed (🪙)</strong>.</p>
+            <p>Play <strong>Mr. Alien (👽)</strong>, <strong>Secret Dictator (👑)</strong>, <strong>Wavelength (🧠)</strong>, <strong>Paranoia: Exposed (🪙)</strong>, and <strong>Charades Rush (🎭)</strong>.</p>
           </details>
           <details class="faq-box">
             <summary>Does it work offline once loaded?</summary>
@@ -1564,26 +1586,62 @@
 
       <!-- AdSense Slot (Strictly at bottom of lobby, never interrupting active rounds) -->
       <div class="ad-slot" id="ad-container">
-        <span>Lobby Sponsor / AdSense Slot • PartyNights.online</span>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-5935694635631350"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
       </div>
     </div>
   </main>
 
-  <!-- Invite / QR Code Modal -->
+  <!-- Invite / Squad Room QR Code Modal -->
   <div class="modal-backdrop" id="share-modal" role="dialog" aria-modal="true" aria-labelledby="share-modal-title">
     <div class="modal-card">
-      <h3 id="share-modal-title" style="font-family: 'Outfit', sans-serif; font-size: 1.3rem; font-weight: 900; text-transform: uppercase;">Squad Room QR</h3>
-      <p style="color: var(--text-secondary); font-size: 0.84rem; margin-top: 0.25rem;">Scan with any camera or beam to your WhatsApp group:</p>
-      <div class="qr-box">
-        <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https%3A%2F%2Fpartynights.online" alt="QR Code for PartyNights.online" width="175" height="175" loading="lazy" />
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+        <h3 id="share-modal-title" style="font-family: 'Outfit', sans-serif; font-size: 1.25rem; font-weight: 900; text-transform: uppercase; margin: 0; color: var(--emerald);">📡 SQUAD ROOM QR</h3>
+        <button type="button" class="btn-copy" id="close-share-x" style="padding: 4px 10px; border-radius: 50%; font-size: 0.85rem; border: none; background: rgba(255,255,255,0.08); cursor: pointer;">✕</button>
       </div>
-      <div class="modal-actions">
-        <a class="btn-wa" href="https://api.whatsapp.com/send?text=%F0%9F%8E%AE%20Join%20our%20house%20party%20games%20now!%20Play%20free%20at%20https%3A%2F%2Fpartynights.online" target="_blank" rel="noopener">
+
+      <!-- Mode Selector Tabs: Active/Instant Squad Room vs Arcade Hub -->
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin: 6px 0 10px;" id="share-tabs-nav">
+        <button type="button" class="filter-tab active" id="tab-share-room" style="font-size: 0.76rem; padding: 6px 8px; justify-content: center; cursor: pointer;">📡 Squad Room</button>
+        <button type="button" class="filter-tab" id="tab-share-hub" style="font-size: 0.76rem; padding: 6px 8px; justify-content: center; cursor: pointer;">🌐 Arcade Hub</button>
+      </div>
+
+      <!-- Active Squad Room Info / Quick Launcher -->
+      <div id="share-room-controls" style="margin-bottom: 6px;">
+        <div id="share-active-room-box" style="display: none; background: rgba(16, 215, 150, 0.08); border: 1px solid rgba(16, 215, 150, 0.35); border-radius: 12px; padding: 8px 10px; margin-bottom: 8px;">
+          <div style="font-size: 0.68rem; text-transform: uppercase; color: var(--text-secondary); letter-spacing: 0.08em;" id="share-room-game-title">ACTIVE SQUAD ROOM</div>
+          <div style="font-size: 1.35rem; font-weight: 900; letter-spacing: 0.16em; color: var(--emerald);" id="share-room-code-badge">----</div>
+        </div>
+
+        <div id="share-create-room-box" style="display: flex; flex-direction: column; gap: 6px; margin-bottom: 8px;">
+          <span style="font-size: 0.72rem; color: var(--text-secondary); font-weight: 700;">SELECT GAME TO GENERATE SQUAD ROOM:</span>
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px;">
+            <button type="button" class="filter-tab active" id="btn-pick-mralien" data-game="mr-alien" style="font-size: 0.72rem; padding: 6px 2px; justify-content: center; cursor: pointer;">👽 Alien</button>
+            <button type="button" class="filter-tab" id="btn-pick-secretdictator" data-game="secret-dictator" style="font-size: 0.72rem; padding: 6px 2px; justify-content: center; cursor: pointer;">👑 Dictator</button>
+            <button type="button" class="filter-tab" id="btn-pick-paranoia" data-game="paranoia" style="font-size: 0.72rem; padding: 6px 2px; justify-content: center; cursor: pointer;">🪙 Paranoia</button>
+          </div>
+        </div>
+      </div>
+
+      <p id="share-modal-sub" style="color: var(--text-secondary); font-size: 0.8rem; margin: 0 0 6px;">Scan with phone camera or share to WhatsApp to join instantly:</p>
+
+      <div class="qr-box" style="margin: 6px 0 10px; padding: 10px; background: #fff; border-radius: 16px; display: inline-flex; justify-content: center; align-items: center; box-shadow: 0 8px 30px rgba(0,0,0,0.5);">
+        <canvas id="share-qr-canvas" width="180" height="180" style="display: block; border-radius: 6px;"></canvas>
+      </div>
+
+      <div class="modal-actions" style="gap: 7px;">
+        <a class="btn-wa" id="share-wa-link" href="#" target="_blank" rel="noopener" style="padding: 0.65rem 1rem; font-size: 0.86rem;">
           <span>💬</span>
-          <span>Send to WhatsApp Squad</span>
+          <span id="share-wa-label">Send to WhatsApp Squad</span>
         </a>
-        <button type="button" class="btn-copy" id="copy-link-btn">🔗 Copy https://partynights.online</button>
-        <button type="button" class="btn-copy" id="close-share-btn" style="background: transparent; border-color: transparent; color: var(--text-secondary);">Close</button>
+        <button type="button" class="btn-copy" id="copy-link-btn" style="font-size: 0.82rem; padding: 0.6rem 1rem;">🔗 Copy Join Link</button>
+        <a id="btn-share-launch-room" href="#" class="btn-copy" style="display: none; background: rgba(0, 240, 255, 0.15); border-color: var(--cyan); color: #fff; text-decoration: none; font-size: 0.82rem; padding: 0.6rem 1rem;">
+          🚀 Open Room as Host
+        </a>
+        <button type="button" class="btn-copy" id="close-share-btn" style="background: transparent; border-color: transparent; color: var(--text-secondary); padding: 0.35rem;">Close</button>
       </div>
     </div>
   </div>
@@ -1625,6 +1683,7 @@
     </div>
   </footer>
 
+  <script src="./qr-engine.min.js"></script>
   <script src="/games.js"></script>
   <script src="/ads-engine.js" defer></script>
   <script>
@@ -2058,10 +2117,222 @@
     window.addEventListener('pageshow', detectSavedActiveSession);
     discoverGitHubGameRepos();
 
-    // Share / QR Modal + iPhone Swipe-Back (popstate) support
+    // ==========================================
+    // 2. DYNAMIC SQUAD ROOM QR & INVITE ENGINE
+    // ==========================================
     const shareModal = document.getElementById('share-modal');
+    let shareCurrentMode = 'room'; // 'room' | 'hub'
+    let selectedSquadGame = 'mr-alien';
+    let generatedSquadRoomCode = '';
+
+    function generate5LetterCode() {
+      const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+      let res = '';
+      for (let i = 0; i < 5; i++) {
+        res += chars.charAt(Math.floor(Math.random() * chars.length));
+      }
+      return res;
+    }
+
+    function getActiveSquadRoom() {
+      // 1. Mr. Alien online room
+      try {
+        const mrAlienRaw = localStorage.getItem('mr_alien_live_session_v1');
+        if (mrAlienRaw) {
+          const s = JSON.parse(mrAlienRaw);
+          if (s && s.playMode === 'online' && s.online && s.online.roomCode) {
+            return {
+              gameId: 'mr-alien',
+              title: 'Mr. Alien 👽',
+              slug: 'mr-alien',
+              code: s.online.roomCode,
+              round: s.round || 1
+            };
+          }
+        }
+      } catch (_) {}
+
+      // 2. Secret Dictator room
+      try {
+        const sdRaw = localStorage.getItem('sd_active_room_session_v1');
+        if (sdRaw) {
+          const s = JSON.parse(sdRaw);
+          if (s && s.roomCode) {
+            return {
+              gameId: 'secret-dictator',
+              title: 'Secret Dictator 👑',
+              slug: 'secret-dictator',
+              code: s.roomCode,
+              round: (s.viewState && s.viewState.round) || 1
+            };
+          }
+        }
+      } catch (_) {}
+
+      // 3. Paranoia room
+      try {
+        const prRaw = localStorage.getItem('paranoia_active_session_v1');
+        if (prRaw) {
+          const s = JSON.parse(prRaw);
+          if (s && s.roomCode && s.deviceMode === 'room') {
+            return {
+              gameId: 'paranoia',
+              title: 'Paranoia: Exposed 🪙',
+              slug: 'paranoia',
+              code: s.roomCode,
+              round: s.round || 1
+            };
+          }
+        }
+      } catch (_) {}
+
+      return null;
+    }
+
+    function renderShareQr(targetUrl) {
+      const canvas = document.getElementById('share-qr-canvas');
+      if (!canvas) return;
+      if (typeof QRCodeLib !== 'undefined' && QRCodeLib.toCanvas) {
+        QRCodeLib.toCanvas(canvas, targetUrl, {
+          width: 180,
+          margin: 1,
+          color: { dark: '#050714', light: '#ffffff' }
+        }, function(err) {
+          if (err) console.error('QR error', err);
+        });
+      }
+    }
+
+    function updateShareModalContent() {
+      const origin = window.location.origin || 'https://partynights.online';
+      const activeRoom = getActiveSquadRoom();
+
+      const tabRoom = document.getElementById('tab-share-room');
+      const tabHub = document.getElementById('tab-share-hub');
+      const activeBox = document.getElementById('share-active-room-box');
+      const createBox = document.getElementById('share-create-room-box');
+      const launchBtn = document.getElementById('btn-share-launch-room');
+      const subEl = document.getElementById('share-modal-sub');
+      const titleEl = document.getElementById('share-modal-title');
+      const waLink = document.getElementById('share-wa-link');
+      const waLabel = document.getElementById('share-wa-label');
+      const copyBtn = document.getElementById('copy-link-btn');
+
+      if (shareCurrentMode === 'hub') {
+        tabRoom.classList.remove('active');
+        tabHub.classList.add('active');
+        document.getElementById('share-room-controls').style.display = 'none';
+        launchBtn.style.display = 'none';
+        titleEl.textContent = '🌐 ARCADE HUB QR';
+        titleEl.style.color = 'var(--cyan)';
+        subEl.textContent = 'Scan with any phone camera or share to WhatsApp to play free:';
+
+        const hubUrl = `${origin}/`;
+        renderShareQr(hubUrl);
+
+        const waMsg = `🎮 Join our house party games arcade on PartyNights.online! Free browser party games: ${hubUrl}`;
+        waLink.href = `https://api.whatsapp.com/send?text=${encodeURIComponent(waMsg)}`;
+        waLabel.textContent = 'Send PartyNights to WhatsApp';
+        copyBtn.textContent = '🔗 Copy Hub Link';
+        copyBtn.onclick = async () => {
+          ArcadeSFX.click();
+          try {
+            await navigator.clipboard.writeText(hubUrl);
+            copyBtn.textContent = '✅ Hub Link Copied!';
+            setTimeout(() => { copyBtn.textContent = '🔗 Copy Hub Link'; }, 2000);
+          } catch (_) {}
+        };
+      } else {
+        tabRoom.classList.add('active');
+        tabHub.classList.remove('active');
+        document.getElementById('share-room-controls').style.display = 'block';
+        titleEl.textContent = '📡 SQUAD ROOM QR';
+        titleEl.style.color = 'var(--emerald)';
+
+        let targetUrl = '';
+        let roomCode = '';
+        let gameName = '';
+
+        if (activeRoom) {
+          activeBox.style.display = 'block';
+          createBox.style.display = 'none';
+          launchBtn.style.display = 'block';
+          document.getElementById('share-room-game-title').textContent = `ACTIVE SQUAD ROOM: ${activeRoom.title}`;
+          document.getElementById('share-room-code-badge').textContent = activeRoom.code;
+
+          roomCode = activeRoom.code;
+          gameName = activeRoom.title;
+          targetUrl = `${origin}/${activeRoom.slug}/?room=${encodeURIComponent(roomCode)}`;
+          launchBtn.href = `/${activeRoom.slug}/?room=${encodeURIComponent(roomCode)}`;
+          launchBtn.textContent = `🚀 Rejoin ${activeRoom.title} Room`;
+          subEl.textContent = `Active squad room found! Friends scan below to join round ${activeRoom.round}:`;
+        } else {
+          activeBox.style.display = 'none';
+          createBox.style.display = 'flex';
+          launchBtn.style.display = 'block';
+          if (!generatedSquadRoomCode) generatedSquadRoomCode = generate5LetterCode();
+          roomCode = generatedSquadRoomCode;
+
+          const gameMap = {
+            'mr-alien': { name: 'Mr. Alien 👽', slug: 'mr-alien' },
+            'secret-dictator': { name: 'Secret Dictator 👑', slug: 'secret-dictator' },
+            'paranoia': { name: 'Paranoia: Exposed 🪙', slug: 'paranoia' }
+          };
+          const sel = gameMap[selectedSquadGame] || gameMap['mr-alien'];
+          gameName = sel.name;
+          targetUrl = `${origin}/${sel.slug}/?room=${encodeURIComponent(roomCode)}`;
+          launchBtn.href = `/${sel.slug}/?room=${encodeURIComponent(roomCode)}`;
+          launchBtn.textContent = `🚀 Launch ${sel.name} Room (${roomCode})`;
+          subEl.textContent = `Scan with phone camera or share to WhatsApp to join Room ${roomCode}:`;
+        }
+
+        renderShareQr(targetUrl);
+
+        const waMsg = `🎮 Join our ${gameName} squad room (${roomCode}) on PartyNights.online! Tap to play: ${targetUrl}`;
+        waLink.href = `https://api.whatsapp.com/send?text=${encodeURIComponent(waMsg)}`;
+        waLabel.textContent = `Send Room ${roomCode} to WhatsApp Squad`;
+        copyBtn.textContent = `🔗 Copy Room ${roomCode} Link`;
+        copyBtn.onclick = async () => {
+          ArcadeSFX.click();
+          try {
+            await navigator.clipboard.writeText(targetUrl);
+            copyBtn.textContent = '✅ Room Link Copied!';
+            setTimeout(() => { copyBtn.textContent = `🔗 Copy Room ${roomCode} Link`; }, 2000);
+          } catch (_) {}
+        };
+      }
+    }
+
+    document.getElementById('tab-share-room').addEventListener('click', () => {
+      ArcadeSFX.click();
+      shareCurrentMode = 'room';
+      updateShareModalContent();
+    });
+    document.getElementById('tab-share-hub').addEventListener('click', () => {
+      ArcadeSFX.click();
+      shareCurrentMode = 'hub';
+      updateShareModalContent();
+    });
+
+    ['btn-pick-mralien', 'btn-pick-secretdictator', 'btn-pick-paranoia'].forEach((btnId) => {
+      const btn = document.getElementById(btnId);
+      if (btn) {
+        btn.addEventListener('click', () => {
+          ArcadeSFX.click();
+          selectedSquadGame = btn.getAttribute('data-game');
+          ['btn-pick-mralien', 'btn-pick-secretdictator', 'btn-pick-paranoia'].forEach((id) => {
+            document.getElementById(id).classList.toggle('active', id === btnId);
+          });
+          generatedSquadRoomCode = generate5LetterCode();
+          updateShareModalContent();
+        });
+      }
+    });
+
     document.getElementById('open-share-btn').addEventListener('click', () => {
       ArcadeSFX.click();
+      generatedSquadRoomCode = generate5LetterCode();
+      updateShareModalContent();
       shareModal.classList.add('open');
       if (window.history && window.history.pushState) {
         try { window.history.pushState({ pnModal: 'share' }, ''); } catch (_) {}
@@ -2070,6 +2341,8 @@
     document.getElementById('close-share-btn').addEventListener('click', () => {
       shareModal.classList.remove('open');
     });
+    const closeShareX = document.getElementById('close-share-x');
+    if (closeShareX) closeShareX.addEventListener('click', () => shareModal.classList.remove('open'));
     shareModal.addEventListener('click', e => {
       if (e.target === shareModal) shareModal.classList.remove('open');
     });
@@ -2090,14 +2363,6 @@
         renderGames();
         updateHubBackButtonState();
       }
-    });
-    document.getElementById('copy-link-btn').addEventListener('click', async function() {
-      ArcadeSFX.click();
-      try {
-        await navigator.clipboard.writeText('https://partynights.online');
-        this.textContent = '✅ Link Copied!';
-        setTimeout(() => { this.textContent = '🔗 Copy https://partynights.online'; }, 2000);
-      } catch (_) {}
     });
 
     // ==========================================

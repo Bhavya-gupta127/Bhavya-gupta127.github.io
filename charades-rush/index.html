@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <title>Charades Rush — Free Forehead & Party Dumb Charades | PartyNights.online</title>
+  <meta name="description" content="Play Charades Rush instantly with family and friends! Forehead tilt, acting and team battle modes. Zero downloads, 100% family friendly party game." />
+  <link rel="canonical" href="https://partynights.online/charades-rush/" />
+
+  <!-- OpenGraph / Social Metadata -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://partynights.online/charades-rush/" />
+  <meta property="og:title" content="Charades Rush — Free Forehead & Party Dumb Charades" />
+  <meta property="og:description" content="Hold phone to your forehead, tilt to guess or pass! 360+ hilarious family-friendly cards. Zero downloads required." />
+  <meta property="og:image" content="https://partynights.online/charades-rush/og-banner.png" />
+  <meta property="og:site_name" content="PartyNights.online" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Charades Rush — Free Forehead & Party Dumb Charades" />
+  <meta name="twitter:description" content="Play free Forehead Charades directly in your browser. Pass 1 phone or team duel." />
+  <meta name="twitter:image" content="https://partynights.online/charades-rush/og-banner.png" />
+
+  <!-- PWA & Mobile Meta -->
+  <meta name="theme-color" content="#070812" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <link rel="manifest" href="./manifest.json" />
+  <link rel="icon" type="image/png" href="./icon-192.png" />
+  <link rel="apple-touch-icon" href="./icon-192.png" />
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5935694635631350" crossorigin="anonymous"></script>
+
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800;900&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <!-- Top Header Bar -->
+    <header class="top-header">
+      <div class="header-left">
+        <button type="button" class="text-pill-btn" id="btn-ios-back" title="Back to Arcade Hub">
+          <span>‹</span>
+          <span id="back-label">Arcade</span>
+        </button>
+        <a href="https://partynights.online/" class="brand-badge" title="PartyNights.online Home">
+          <span class="brand-logo-icon">🎭</span>
+          <span>CHARADES RUSH</span>
+        </a>
+      </div>
+      <div class="header-right">
+        <button type="button" class="icon-btn" id="btn-sound-toggle" title="Toggle Sound">🔊</button>
+        <button type="button" class="icon-btn" id="btn-open-rules" title="How to Play">❓</button>
+        <button type="button" class="icon-btn" id="btn-open-settings" title="Settings">⚙️</button>
+      </div>
+    </header>
+
+    <!-- ==========================================
+         SCREEN 1: LANDING & SETUP
+         ========================================== -->
+    <section id="screen-landing" class="screen active">
+      <div class="hero-card">
+        <span class="family-badge-pill">👨‍👩‍👧‍👦 100% Family &amp; Kids Safe • Zero App Install</span>
+        <h1 class="game-title">CHARADES RUSH</h1>
+        <p class="game-sub">Hold phone on your forehead or act it out! Guess before the 60s timer explodes.</p>
+
+        <!-- Mode Switcher -->
+        <div class="section-label">
+          <span>1. Pick Your Play Style</span>
+        </div>
+        <div class="mode-grid">
+          <div class="mode-card active" data-mode="forehead" id="mode-btn-forehead">
+            <span class="m-icon">📱</span>
+            <span class="m-name">Forehead</span>
+            <span class="m-sub">Tilt to guess</span>
+          </div>
+          <div class="mode-card" data-mode="classic" id="mode-btn-classic">
+            <span class="m-icon">🎭</span>
+            <span class="m-name">Actor Mode</span>
+            <span class="m-sub">Act silently</span>
+          </div>
+          <div class="mode-card" data-mode="team" id="mode-btn-team">
+            <span class="m-icon">👥</span>
+            <span class="m-name">Team Duel</span>
+            <span class="m-sub">Blue vs Red</span>
+          </div>
+        </div>
+
+        <!-- Category Decks Grid -->
+        <div class="section-label">
+          <span>2. Select Card Deck (360+ Cards)</span>
+          <span id="selected-deck-badge" style="color:var(--accent-pink); font-size:0.72rem;">🎬 Bollywood</span>
+        </div>
+        <div class="deck-scroll-grid" id="deck-selector-grid">
+          <!-- Dynamically generated from words.js -->
+        </div>
+
+        <!-- Launch Button -->
+        <button type="button" class="cta-launch-btn" id="btn-launch-round">
+          <span>🚀 START ROUND (60s)</span>
+          <span style="font-size:1.2rem;">→</span>
+        </button>
+      </div>
+
+      <!-- Sponsor / AdSense Slot on Setup Only -->
+      <div id="ad-slot-setup" style="text-align:center; margin-top:0.5rem; min-height:50px;">
+        <!-- Out-of-flow AdSense container -->
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SCREEN 2: COUNTDOWN STAGE (3... 2... 1...)
+         ========================================== -->
+    <section id="screen-countdown" class="screen">
+      <div class="countdown-orb" id="countdown-number">3</div>
+      <div class="countdown-tip" id="countdown-tip-text">
+        📱 Place phone on your forehead facing your friends!
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SCREEN 3: ACTIVE PLAY STAGE
+         ========================================== -->
+    <section id="screen-play" class="screen">
+      <!-- HUD Top Bar -->
+      <div class="play-hud-bar">
+        <div class="timer-box" id="hud-timer">
+          <span>⏳</span>
+          <span id="timer-seconds">60</span>s
+        </div>
+        <div class="score-box" id="hud-score">
+          <span>🎯</span>
+          <span id="score-counter">0</span> Points
+        </div>
+      </div>
+
+      <!-- Massive Central Word Card -->
+      <div class="word-card-stage" id="active-word-card">
+        <div class="word-main-text" id="active-card-title">Dilwale Dulhania Le Jayenge</div>
+        <div class="word-sub-hint" id="active-card-hint">Raj &amp; Simran running for train</div>
+      </div>
+
+      <!-- Rapid Touch Buttons (Always Available Fallback) -->
+      <div class="play-controls-row">
+        <button type="button" class="btn-touch-action btn-touch-pass" id="btn-touch-pass">
+          <span>⏭️ PASS</span>
+        </button>
+        <button type="button" class="btn-touch-action btn-touch-correct" id="btn-touch-correct">
+          <span>✅ GOT IT! (+1)</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SCREEN 4: ROUND OVER / SUMMARY
+         ========================================== -->
+    <section id="screen-gameover" class="screen">
+      <div class="summary-card">
+        <span class="family-badge-pill" id="summary-badge">🏆 ROUND COMPLETED!</span>
+        <div class="summary-score-big" id="summary-final-score">7</div>
+        <p style="color:var(--text-secondary); font-size:0.9rem; font-weight:700;">Cards Guessed in 60s</p>
+
+        <!-- Words Review List -->
+        <div class="words-review-list" id="summary-words-list">
+          <!-- Populated dynamically -->
+        </div>
+
+        <!-- WhatsApp / IG Viral Loop -->
+        <button type="button" class="whatsapp-share-btn" id="btn-share-whatsapp">
+          <span>📲</span>
+          <span>Share Score to WhatsApp / IG</span>
+        </button>
+
+        <button type="button" class="cta-launch-btn" id="btn-play-next-round" style="margin-top:0.5rem;">
+          <span>🔄 Play Another Round →</span>
+        </button>
+      </div>
+
+      <!-- Sponsor Slot on Game Over -->
+      <div id="ad-slot-gameover" style="text-align:center; min-height:50px;"></div>
+    </section>
+  </div>
+
+  <!-- ==========================================
+       MODAL 1: SETTINGS
+       ========================================== -->
+  <div class="modal-backdrop" id="modal-settings">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 class="modal-title">⚙️ Game Settings</h3>
+        <button type="button" class="icon-btn" id="btn-close-settings">✕</button>
+      </div>
+
+      <!-- Round Duration -->
+      <div class="setting-row">
+        <div>
+          <div class="setting-label">⏱️ Round Duration</div>
+          <div class="setting-sub">Time per player / turn</div>
+        </div>
+        <div class="pill-group" id="setting-time-pills">
+          <button type="button" class="time-pill-btn" data-time="30">30s</button>
+          <button type="button" class="time-pill-btn" data-time="45">45s</button>
+          <button type="button" class="time-pill-btn active" data-time="60">60s</button>
+          <button type="button" class="time-pill-btn" data-time="90">90s</button>
+        </div>
+      </div>
+
+      <!-- Controls Mode -->
+      <div class="setting-row">
+        <div>
+          <div class="setting-label">📱 Controls</div>
+          <div class="setting-sub">Tilt phone vs On-screen touch buttons</div>
+        </div>
+        <div class="pill-group" id="setting-control-pills">
+          <button type="button" class="time-pill-btn active" data-ctrl="both">Tilt + Touch</button>
+          <button type="button" class="time-pill-btn" data-ctrl="touch">Touch Only</button>
+        </div>
+      </div>
+
+      <!-- Family Mode Status -->
+      <div class="setting-row">
+        <div>
+          <div class="setting-label">👨‍👩‍👧‍👦 Family Mode</div>
+          <div class="setting-sub">100% clean kid &amp; parent-safe content</div>
+        </div>
+        <span class="family-badge-pill" style="margin:0;">ALWAYS ACTIVE</span>
+      </div>
+
+      <button type="button" class="cta-launch-btn" id="btn-done-settings" style="margin-top:1rem; min-height:46px;">
+        <span>✅ Save &amp; Close</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       MODAL 2: HOW TO PLAY
+       ========================================== -->
+  <div class="modal-backdrop" id="modal-rules">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 class="modal-title">❓ How to Play in 10 Seconds</h3>
+        <button type="button" class="icon-btn" id="btn-close-rules">✕</button>
+      </div>
+      <div style="font-size:0.86rem; color:var(--text-secondary); line-height:1.5; display:flex; flex-direction:column; gap:0.65rem;">
+        <p><strong>1. Hold on Forehead:</strong> When the 60s round starts, place your phone on your forehead facing your squad.</p>
+        <p><strong>2. Friends Give Clues:</strong> Friends shout clues, make sounds, or act out the word without saying it!</p>
+        <p><strong>3. Tilt or Tap:</strong><br/>
+           • 🟢 <strong>Tilt DOWN</strong> (or tap Got It) when you guess correctly (+1 Point)!<br/>
+           • 🔴 <strong>Tilt UP</strong> (or tap Pass) to skip a difficult word.</p>
+      </div>
+      <button type="button" class="cta-launch-btn" id="btn-got-rules" style="margin-top:1rem; min-height:46px;">
+        <span>Got It — Let's Play! 🚀</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       MODAL 3: LEAVE WARNING
+       ========================================== -->
+  <div class="modal-backdrop" id="modal-leave-warning" role="dialog" aria-modal="true" aria-labelledby="leave-modal-title">
+    <div class="modal-box" style="text-align: center;">
+      <div style="font-size: 2.4rem; margin-bottom: 0.35rem;" id="leave-modal-icon">⚠️</div>
+      <span class="family-badge-pill" id="leave-modal-badge" style="display: inline-block; margin-bottom: 0.5rem;">ROUND IN PROGRESS</span>
+      <h3 class="modal-title" id="leave-modal-title" style="margin-bottom: 0.5rem;">Leave Active Round?</h3>
+      <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.25rem; line-height: 1.45;" id="leave-modal-desc">
+        Your round is actively ticking! Leaving now will end this round and discard current score.
+      </p>
+      <div style="display: flex; flex-direction: column; gap: 0.65rem;">
+        <button type="button" class="cta-launch-btn" id="btn-leave-stay" style="min-height: 46px;">
+          <span>🛡️ Stay &amp; Keep Playing</span>
+        </button>
+        <button type="button" class="text-pill-btn" id="btn-leave-confirm" style="width: 100%; min-height: 42px; justify-content: center; background: rgba(255, 46, 99, 0.15); border-color: rgba(255, 46, 99, 0.4); color: #ff6b8b;">
+          <span id="btn-leave-confirm-label">🚪 Leave Game</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="./words.js"></script>
+  <script src="./app.js"></script>
+  <script src="/ads-engine.js" defer></script>
+</body>
+</html>
