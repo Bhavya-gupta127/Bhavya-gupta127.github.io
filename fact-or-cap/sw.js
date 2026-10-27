@@ -1,10 +1,10 @@
-// Fact or Cap: Bluff Trivia — PWA Service Worker v2.0
-const CACHE_NAME = "factorcap-pwa-v2";
+// Fact or Cap: Bluff Trivia — PWA Service Worker v3.0
+const CACHE_NAME = "factorcap-pwa-v3";
 const ASSETS = [
   "/fact-or-cap/",
   "/fact-or-cap/index.html",
-  "/fact-or-cap/styles.min.css?v=2.0",
-  "/fact-or-cap/app.min.js?v=2.0",
+  "/fact-or-cap/styles.min.css?v=3.0",
+  "/fact-or-cap/app.min.js?v=3.0",
   "/fact-or-cap/manifest.json",
   "/fact-or-cap/icon-192.png",
   "/fact-or-cap/icon-512.png",
