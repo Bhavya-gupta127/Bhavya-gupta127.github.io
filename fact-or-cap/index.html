@@ -33,7 +33,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="./styles.min.css?v=1" />
+<link rel="stylesheet" href="./styles.min.css?v=1.1" />
 </head>
 <body>
 <div class="ambient-glow glow-left" aria-hidden="true"></div>
@@ -246,6 +246,7 @@ autocomplete="off"
 </button>
 </div>
 </div>
+<div class="panel online-waiting-card" id="online-write-waiting" style="display:none;">✅ Your lie is locked in. Waiting for the other phones…</div>
 </section>
 <section id="screen-vote" class="screen">
 <div class="hud-strip">
@@ -290,6 +291,7 @@ autocomplete="off"
 </button>
 </div>
 </div>
+<div class="panel online-waiting-card" id="online-vote-waiting" style="display:none;">✅ Vote locked. Waiting for the other phones…</div>
 </section>
 <section id="screen-reveal" class="screen">
 <div class="hud-strip">
@@ -568,7 +570,7 @@ You cannot submit the truth as your lie. Now invent a clever fake answer to fool
 </div>
 <div id="toast-banner" class="toast-banner" aria-live="polite"></div>
 <script src="/qr-engine.min.js"></script>
-<script src="./app.min.js?v=1"></script>
+<script src="./app.min.js?v=1.1"></script>
 <script src="/ads-engine.js" defer></script>
 </body>
 </html>
