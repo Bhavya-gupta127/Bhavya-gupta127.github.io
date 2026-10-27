@@ -548,6 +548,15 @@
       gap: 1.05rem;
       perspective: 1200px;
     }
+    @media (min-width: 960px) {
+      .games-deck-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 1.25rem;
+      }
+      .cartridge-art {
+        height: 135px;
+      }
+    }
 
     .cartridge-card {
       --theme-color: #10d796;
@@ -609,6 +618,13 @@
       --theme-art-bg: radial-gradient(circle at 50% 35%, #3d1c06 0%, #0c0906 100%);
       --theme-btn-bg: linear-gradient(135deg, #f59e0b 0%, #ef4444 52%, #a855f7 100%);
       border-color: rgba(245, 158, 11, 0.38);
+    }
+    .cartridge-card[data-game-id="fact-or-cap"] {
+      --theme-color: #6366f1;
+      --theme-glow: rgba(99, 102, 241, 0.28);
+      --theme-art-bg: radial-gradient(circle at 50% 35%, #1e1b4b 0%, #090818 100%);
+      --theme-btn-bg: linear-gradient(135deg, #6366f1 0%, #a855f7 52%, #ec4899 100%);
+      border-color: rgba(99, 102, 241, 0.38);
     }
 
     /* Featured Hero Cartridge Layout */
@@ -1787,10 +1803,10 @@
         <div>
           <div style="font-weight: 800; color: var(--cyan); font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.6rem;">Trust &amp; Legal</div>
           <div style="display: flex; flex-direction: column; gap: 0.4rem; font-size: 0.84rem;">
-            <a href="/about">About Us &amp; Mission</a>
-            <a href="/contact">Contact Support</a>
-            <a href="/privacy">Privacy Policy</a>
-            <a href="/terms">Terms of Service</a>
+            <a href="/about/">About Us &amp; Mission</a>
+            <a href="/contact/">Contact Support</a>
+            <a href="/privacy/">Privacy Policy</a>
+            <a href="/terms/">Terms of Service</a>
             <a href="/sitemap.xml">XML Sitemap</a>
           </div>
         </div>
@@ -2147,7 +2163,7 @@
 
           <div class="cartridge-art">
             ${g.banner
-              ? `<img class="cartridge-banner-img" src="${g.banner}" alt="${g.title} Artwork" />`
+              ? `<img class="cartridge-banner-img" src="${g.banner}" alt="${g.title} Artwork" onerror="this.onerror=null; this.style.display='none';" />`
               : `<div style="font-size: 4.5rem;">${g.emoji || '🎮'}</div>`
             }
             <div class="art-overlay-gradient"></div>
@@ -2161,7 +2177,7 @@
             <div>
               <div class="game-header-row">
                 ${g.icon
-                  ? `<img class="game-app-icon" src="${g.icon}" alt="${g.title}" width="44" height="44" />`
+                  ? `<img class="game-app-icon" src="${g.icon}" alt="${g.title}" width="44" height="44" onerror="this.onerror=null; this.style.display='none';" />`
                   : ''
                 }
                 <div class="game-title-wrap">
