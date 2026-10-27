@@ -1773,9 +1773,8 @@
       </div>
 
       <div class="hud-controls">
-        <button type="button" class="hud-btn" id="hub-family-mode-btn" title="Toggle Family &amp; Kids Safe Mode Across All Games" aria-pressed="false" style="gap: 0.35rem; padding: 0.42rem 0.65rem;">
+        <button type="button" class="hud-btn icon-only" id="hub-family-mode-btn" title="Toggle Family &amp; Kids Safe Mode Across All Games" aria-pressed="false">
           <span id="hub-family-icon">👨‍👩‍👧‍👦</span>
-          <span class="btn-label" id="hub-family-label">Family: OFF</span>
         </button>
         <button type="button" class="hud-btn icon-only" id="sfx-toggle-btn" title="Toggle Arcade Sound">
           <span id="sfx-icon">🔊</span>
@@ -1809,13 +1808,7 @@
 
     <div class="arcade-deck-bar">
       <div class="deck-heading">
-        <div style="display: flex; align-items: center; gap: 0.55rem;">
-          <span class="live-beacon">
-            <span class="beacon-dot"></span>
-            <span>READY</span>
-          </span>
-          <h1 class="deck-title">Pick a Game</h1>
-        </div>
+        <h1 class="deck-title">Pick a Game</h1>
       </div>
 
       <div class="deck-tabs" id="category-filters" role="tablist">
@@ -2950,12 +2943,13 @@
     // Family Mode Sync Across All 4 Games (localStorage["pn_family_mode_v1"] === "1")
     (function () {
       const btn = document.getElementById('hub-family-mode-btn');
+      if (!btn) return;
       const label = document.getElementById('hub-family-label');
-      if (!btn || !label) return;
 
       function syncHubFamilyBtn() {
         const isFam = localStorage.getItem('pn_family_mode_v1') === '1';
         btn.setAttribute('aria-pressed', isFam ? 'true' : 'false');
+        btn.title = isFam ? 'Family Mode: ON (Safe for kids & all ages)' : 'Family Mode: OFF';
         if (label) label.textContent = isFam ? 'Family: ON' : 'Family: OFF';
         btn.style.borderColor = isFam ? 'rgba(16, 215, 150, 0.65)' : '';
         btn.style.background = isFam ? 'rgba(16, 215, 150, 0.16)' : '';
