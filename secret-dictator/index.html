@@ -508,6 +508,21 @@ A Secret Dictator session is active! Leaving now will disconnect you from the ro
 </div>
 </div>
 </div>
+<div id="modal-squad-quick-join" class="modal-backdrop" style="display:none;" role="dialog" aria-modal="true" aria-labelledby="sd-quick-join-title">
+<div class="modal-sheet" style="text-align:center; max-width: 380px; padding: 1.5rem; border: 1.5px solid var(--cyan, #00f0ff); box-shadow: 0 20px 50px rgba(0,0,0,0.85);">
+<div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.4rem;">
+<span class="dossier-classified-stamp" id="sd-quick-join-title" style="color:var(--cyan); border-color:var(--cyan);">📡 SQUAD ROOM INVITE</span>
+<button class="small-pill-btn" id="btn-close-sd-quick-join" type="button">✕</button>
+</div>
+<p style="font-size:0.82rem; color:var(--muted); margin:0 0 12px;">You scanned an invite to join Secret Dictator Room <strong id="sd-quick-join-code-badge" style="color:var(--gold, #ffd700); font-size:1.1rem; letter-spacing:0.08em;">----</strong>! Enter your agent name:</p>
+<form id="form-sd-quick-join" style="display:flex; flex-direction:column; gap:10px; width:100%;">
+<input type="text" id="input-sd-quick-join-name" placeholder="Agent Name (e.g. Kabir)..." maxlength="16" autocomplete="nickname" class="text-input" style="text-align:center; font-size:1rem; font-weight:700;" required />
+<button type="submit" id="btn-submit-sd-quick-join" class="btn-primary" style="height:48px; width:100%; font-size:1rem; font-weight:800; border-radius:12px; border:none; background:linear-gradient(135deg, #00f0ff, #10d796); color:#05060d; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:8px;">
+<span>🚀 Join Parliamentary Session</span>
+</button>
+</form>
+</div>
+</div>
 <script src="/qr-engine.min.js"></script>
 <script src="./app.min.js?v=7"></script>
 <script src="/ads-engine.js" defer></script>
