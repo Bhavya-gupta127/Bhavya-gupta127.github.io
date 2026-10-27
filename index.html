@@ -2000,6 +2000,8 @@
             <a href="/secret-dictator/?host=1" class="filter-tab" style="font-size: 0.72rem; padding: 5px 6px; justify-content: center; text-decoration: none; color: #fff; background: rgba(255,255,255,0.04); border-radius: 8px;">👑 Dictator</a>
             <a href="/wavelength/?host=1" class="filter-tab" style="font-size: 0.72rem; padding: 5px 6px; justify-content: center; text-decoration: none; color: #fff; background: rgba(255,255,255,0.04); border-radius: 8px;">🧠 Wavelength</a>
             <a href="/paranoia/?host=1" class="filter-tab" style="font-size: 0.72rem; padding: 5px 6px; justify-content: center; text-decoration: none; color: #fff; background: rgba(255,255,255,0.04); border-radius: 8px;">🪙 Paranoia</a>
+            <a href="/fact-or-cap/?host=1" class="filter-tab" style="font-size: 0.72rem; padding: 5px 6px; justify-content: center; text-decoration: none; color: #fff; background: rgba(255,255,255,0.04); border-radius: 8px;">🧢 Fact or Cap</a>
+            <a href="/charades-rush/" class="filter-tab" style="font-size: 0.72rem; padding: 5px 6px; justify-content: center; text-decoration: none; color: #fff; background: rgba(255,255,255,0.04); border-radius: 8px;">🎭 Charades</a>
           </div>
         </div>
 
@@ -2199,6 +2201,48 @@
                 round: pr.round || 1,
                 clearFn: () => {
                   localStorage.removeItem('paranoia_active_session_v1');
+                }
+              };
+            }
+          }
+        } catch (_) {}
+      }
+
+      if (!detectedSession) {
+        try {
+          const sdRaw = localStorage.getItem('sd_active_room_session_v1');
+          if (sdRaw) {
+            const sd = JSON.parse(sdRaw);
+            if (sd && sd.roomCode) {
+              detectedSession = {
+                gameId: 'secret-dictator',
+                title: 'Secret Dictator',
+                emoji: '👑',
+                url: `/secret-dictator/?room=${encodeURIComponent(sd.roomCode)}`,
+                round: (sd.viewState && sd.viewState.round) || 1,
+                clearFn: () => {
+                  localStorage.removeItem('sd_active_room_session_v1');
+                }
+              };
+            }
+          }
+        } catch (_) {}
+      }
+
+      if (!detectedSession) {
+        try {
+          const fcRaw = localStorage.getItem('factorcap_active_session_v1');
+          if (fcRaw) {
+            const fc = JSON.parse(fcRaw);
+            if (fc && fc.game === 'factorcap' && (fc.activeMatch || fc.deviceMode === 'room')) {
+              detectedSession = {
+                gameId: 'fact-or-cap',
+                title: 'Fact or Cap',
+                emoji: '🧢',
+                url: fc.roomCode ? `/fact-or-cap/?room=${encodeURIComponent(fc.roomCode)}` : '/fact-or-cap/',
+                round: fc.currentRound || 1,
+                clearFn: () => {
+                  localStorage.removeItem('factorcap_active_session_v1');
                 }
               };
             }
@@ -2590,6 +2634,23 @@
               slug: 'wavelength',
               code: s.roomCode,
               round: (s.matchState && s.matchState.round) || 1
+            };
+          }
+        }
+      } catch (_) {}
+
+      // 5. Fact or Cap room
+      try {
+        const fcRaw = localStorage.getItem('factorcap_active_session_v1');
+        if (fcRaw) {
+          const s = JSON.parse(fcRaw);
+          if (s && s.roomCode && s.deviceMode === 'room') {
+            return {
+              gameId: 'fact-or-cap',
+              title: 'Fact or Cap 🧢',
+              slug: 'fact-or-cap',
+              code: s.roomCode,
+              round: s.currentRound || 1
             };
           }
         }

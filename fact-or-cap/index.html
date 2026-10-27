@@ -99,22 +99,6 @@
 <p class="hero-subtitle">
 Write clever lies. Spot the real truth.
 </p>
-<div id="landing-example-card" class="example-duel-card" title="Tap for 10-Second How-to-Play Guide">
-<div class="example-header-row">
-<span class="example-header-tag">💡 10-SECOND REAL EXAMPLE</span>
-<span class="example-header-rules">Tap for Rules ❓</span>
-</div>
-<div class="example-duel-grid">
-<div class="example-duel-box fact-side">
-<div class="duel-side-label">📜 REAL FACT</div>
-<div class="duel-side-val">🐊 Live alligator</div>
-</div>
-<div class="example-duel-box cap-side">
-<div class="duel-side-label">✍️ SQUAD'S LIE (CAP)</div>
-<div class="duel-side-val">Baby python</div>
-</div>
-</div>
-</div>
 </div>
 <div class="landing-actions-cluster">
 <button type="button" id="btn-play-couch" class="btn-launch">
@@ -170,6 +154,7 @@ PARTYNIGHTS.ONLINE • P2P & SERVER VAULT PROTECTED
 </div>
 <div class="rhb-actions">
 <button type="button" class="tiny-pill-btn" id="btn-toggle-tv-setup">📺 TV Stage: OFF</button>
+<button type="button" class="tiny-pill-btn" id="btn-factorcap-show-qr" title="Show QR Code for phones to scan">📡 Squad QR</button>
 <button type="button" class="small-neon-btn" id="btn-copy-room-link">📲 Share Invite</button>
 </div>
 </div>
@@ -204,13 +189,7 @@ autocomplete="off"
 <span class="pulse-icon">⏳</span>
 <span>Waiting for host to launch the match...</span>
 </div>
-<div class="ad-slot-wrapper" id="ad-setup-slot" aria-label="Sponsored" style="display: none;">
-<ins class="adsbygoogle"
-style="display:block; max-height:60px;"
-data-ad-client="ca-pub-5935694635631350"
-data-ad-format="horizontal"
-data-full-width-responsive="true"></ins>
-</div>
+<div class="ad-slot-wrapper" id="ad-setup-slot" aria-label="Sponsored" style="display: none;"></div>
 </section>
 <section id="screen-write" class="screen">
 <div class="hud-strip">
@@ -398,11 +377,6 @@ data-full-width-responsive="true"></ins>
 </div>
 <div class="ad-slot-wrapper" id="ad-gameover-slot" aria-label="Sponsored">
 <div class="ad-slot-label">SPONSORED • PARTYNIGHTS ARCADE</div>
-<ins class="adsbygoogle"
-style="display:block; max-height:80px;"
-data-ad-client="ca-pub-5935694635631350"
-data-ad-format="horizontal"
-data-full-width-responsive="true"></ins>
 </div>
 </section>
 <footer class="app-footer">
@@ -555,7 +529,45 @@ You cannot submit the truth as your lie. Now invent a clever fake answer to fool
 </div>
 </div>
 </div>
+<div id="modal-squad-room-qr" class="modal-backdrop" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="fc-qr-modal-title">
+<div class="modal-sheet" style="text-align: center; max-width: 380px; padding: 1.35rem; background: #121426; border: 1px solid rgba(16, 215, 150, 0.35); border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.8); margin: auto;">
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem;">
+<span class="modal-title" id="fc-qr-modal-title" style="font-size: 1.15rem; font-weight: 900; letter-spacing: 0.05em; color: var(--cyan, #00f0ff);">📡 SQUAD ROOM QR</span>
+<button class="circle-btn" id="btn-close-fc-qr" type="button" style="width: 32px; height: 32px; border-radius: 50%; border: none; background: rgba(255,255,255,0.08); color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center;">✕</button>
+</div>
+<p style="font-size: 0.8rem; color: rgba(255,255,255,0.65); margin: 0 0 10px;">Friends scan this code with their phone camera to join Fact or Cap room!</p>
+<div style="background: #fff; padding: 10px; border-radius: 16px; display: inline-flex; justify-content: center; align-items: center; box-shadow: 0 8px 30px rgba(0,0,0,0.6);">
+<canvas id="fc-squad-room-qr-canvas" width="180" height="180" style="display: block; border-radius: 8px;"></canvas>
+</div>
+<div style="margin-top: 10px; font-size: 1.35rem; font-weight: 900; letter-spacing: 0.18em; color: #10d796;" id="fc-qr-modal-room-code">----</div>
+<div style="display: flex; flex-direction: column; width: 100%; gap: 8px; margin-top: 12px;">
+<button type="button" class="btn-launch" id="btn-fc-qr-whatsapp" style="height: 42px; background: #25d366; color: #000; font-weight: 800; font-size: 0.86rem; border-radius: 12px; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;">
+<span>💬</span>
+<span>Send to WhatsApp Squad</span>
+</button>
+<button type="button" class="btn-ghost" id="btn-fc-qr-copy" style="height: 40px; font-size: 0.82rem; border-radius: 12px; cursor: pointer;">
+📋 Copy Direct Join Link
+</button>
+</div>
+</div>
+</div>
+<div id="modal-squad-quick-join" class="modal-backdrop" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="fc-quick-join-title">
+<div class="modal-sheet" style="text-align: center; max-width: 380px; padding: 1.35rem; background: #121426; border: 1.5px solid rgba(0, 240, 255, 0.45); border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.85); margin: auto;">
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem;">
+<span class="modal-title" id="fc-quick-join-title" style="font-size: 1.15rem; font-weight: 900; letter-spacing: 0.05em; color: var(--cyan, #00f0ff);">📡 SQUAD ROOM INVITE</span>
+<button class="circle-btn" id="btn-close-quick-join" type="button" style="width: 32px; height: 32px; border-radius: 50%; border: none; background: rgba(255,255,255,0.08); color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center;">✕</button>
+</div>
+<p style="font-size: 0.82rem; color: rgba(255,255,255,0.7); margin: 0 0 12px;">You scanned an invite to join Room <strong id="fc-quick-join-code-badge" style="color: #10d796; font-size: 1.1rem; letter-spacing: 0.08em;">----</strong>! Enter your name to play:</p>
+<form id="form-quick-join" style="display: flex; flex-direction: column; gap: 10px; width: 100%;">
+<input type="text" id="input-quick-join-name" placeholder="Your Name (e.g. Priya)..." maxlength="16" autocomplete="nickname" style="width: 100%; height: 48px; border-radius: 12px; border: 1.5px solid rgba(0, 240, 255, 0.4); background: rgba(0,0,0,0.4); color: #fff; padding: 0 14px; font-size: 1rem; font-weight: 700; text-align: center;" required />
+<button type="submit" id="btn-submit-quick-join" class="btn-launch" style="height: 48px; width: 100%; font-size: 1rem; font-weight: 800; border-radius: 12px; border: none; background: linear-gradient(135deg, #00f0ff, #10d796); color: #05060d; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;">
+<span>🚀 Join Squad Room</span>
+</button>
+</form>
+</div>
+</div>
 <div id="toast-banner" class="toast-banner" aria-live="polite"></div>
+<script src="/qr-engine.min.js"></script>
 <script src="./app.min.js?v=1"></script>
 <script src="/ads-engine.js" defer></script>
 </body>
