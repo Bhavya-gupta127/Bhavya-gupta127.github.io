@@ -96,10 +96,13 @@ body.tv-board-mode .app-shell {
   align-items: center;
   gap: 0.4rem;
   font-weight: 800;
-  font-size: 0.88rem;
+  font-size: clamp(11px, 3.2vw, 15px);
   letter-spacing: 0.04em;
   color: #fff;
   text-decoration: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .brand-logo-icon {
@@ -268,10 +271,15 @@ body.tv-board-mode .app-shell {
 /* Category Decks Grid */
 .deck-scroll-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.6rem;
-  margin-bottom: 1.25rem;
+  margin-bottom: 0.8rem;
+  overflow-x: hidden;
 }
+
+/* BUG-UI-044: Show only first 6 deck chips by default */
+.deck-chip:nth-child(n+7) { display: none; }
+.deck-chip.show-all { display: flex !important; }
 
 .deck-chip {
   background: var(--surface);

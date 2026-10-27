@@ -485,6 +485,7 @@
   // SCREEN SWITCHER
   // ==========================================================================
   function showScreen(screenId) {
+    const wasActiveRound = state.screen === "countdown" || state.screen === "play";
     state.screen = screenId;
     document.querySelectorAll(".screen").forEach((s) => s.classList.remove("active"));
     const target = $(`screen-${screenId}`);
@@ -493,6 +494,10 @@
     const backLabel = $("back-label");
     if (backLabel) {
       backLabel.textContent = screenId === "landing" ? "Arcade" : "Exit";
+    }
+
+    if (!wasActiveRound && (screenId === "countdown" || screenId === "play")) {
+      try { window.history.pushState({ charadesRound: true }, "", "#charades-round"); } catch (_) {}
     }
 
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -519,6 +524,25 @@
     window.open(waUrl, "_blank", "noopener");
   }
 
+  function isRoundActive() {
+    return state.screen === "countdown" || state.screen === "play";
+  }
+
+  function openLeaveWarning() {
+    if (isRoundActive()) $("modal-leave-warning").classList.add("open");
+  }
+
+  function leaveActiveRound() {
+    if (state.timerId) clearInterval(state.timerId);
+    if (state.countdownId) clearInterval(state.countdownId);
+    state.timerId = null;
+    state.countdownId = null;
+    disableDeviceTiltListeners();
+    $("modal-leave-warning").classList.remove("open");
+    showScreen("landing");
+    try { window.history.replaceState(null, "", window.location.pathname); } catch (_) {}
+  }
+
   // ==========================================================================
   // EVENT BINDINGS
   // ==========================================================================
@@ -527,15 +551,29 @@
     $("btn-ios-back").addEventListener("click", () => {
       if (state.screen === "landing") {
         window.location.href = "https://partynights.online/";
-      } else if (state.screen === "play") {
-        if (confirm("End current round and return to setup?")) {
-          if (state.timerId) clearInterval(state.timerId);
-          disableDeviceTiltListeners();
-          showScreen("landing");
-        }
+      } else if (isRoundActive()) {
+        openLeaveWarning();
       } else {
         showScreen("landing");
       }
+    });
+
+    $("btn-stay-in-game").addEventListener("click", () => $("modal-leave-warning").classList.remove("open"));
+    $("btn-leave-confirm").addEventListener("click", leaveActiveRound);
+    $("brand-home-link").addEventListener("click", (event) => {
+      if (!isRoundActive()) return;
+      event.preventDefault();
+      openLeaveWarning();
+    });
+    window.addEventListener("popstate", () => {
+      if (!isRoundActive()) return;
+      try { window.history.pushState({ charadesRound: true }, "", "#charades-round"); } catch (_) {}
+      openLeaveWarning();
+    });
+    window.addEventListener("beforeunload", (event) => {
+      if (!isRoundActive()) return;
+      event.preventDefault();
+      event.returnValue = "";
     });
 
     // Sound Toggle
@@ -624,45 +662,6 @@
     });
     $("btn-got-rules").addEventListener("click", () => {
       $("modal-rules").classList.remove("open");
-    });
-
-    // iOS Back Button & Leave Warning Interceptor
-    const showLeaveWarning = () => {
-      $("modal-leave-warning").classList.add("open");
-    };
-    const hideLeaveWarning = () => {
-      $("modal-leave-warning").classList.remove("open");
-    };
-
-    $("btn-ios-back").addEventListener("click", (e) => {
-      e.preventDefault();
-      if (state.screen === "play" || state.screen === "countdown") {
-        showLeaveWarning();
-      } else if (state.screen === "gameover") {
-        showScreen("landing");
-      } else {
-        window.location.href = "https://partynights.online/";
-      }
-    });
-
-    $("btn-leave-stay").addEventListener("click", () => {
-      SoundFX.ding();
-      hideLeaveWarning();
-    });
-
-    $("btn-leave-confirm").addEventListener("click", () => {
-      SoundFX.buzzer();
-      hideLeaveWarning();
-      if (state.timerId) {
-        clearInterval(state.timerId);
-        state.timerId = null;
-      }
-      if (state.countdownId) {
-        clearInterval(state.countdownId);
-        state.countdownId = null;
-      }
-      disableDeviceTiltListeners();
-      showScreen("landing");
     });
   }
 

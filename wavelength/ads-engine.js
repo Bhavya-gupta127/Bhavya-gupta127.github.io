@@ -230,24 +230,24 @@
       /* Lever 3: Compact Sticky 320x50 Anchor Dock (Only visible when filled & on Lobby/GameOver) */
       "#pn-sticky-anchor-ad {",
       "  position: fixed;",
-      "  bottom: max(4px, env(safe-area-inset-bottom, 4px));",
+      "  bottom: -150px;",
       "  left: 50%;",
       "  transform: translateX(-50%);",
       "  width: 324px;",
-      "  height: 0px;",
+      "  height: 54px;",
       "  opacity: 0;",
       "  pointer-events: none;",
       "  overflow: hidden;",
       "  z-index: 88;",
       "  background: rgba(12, 14, 28, 0.95);",
       "  border-radius: 10px;",
-      "  transition: opacity 0.25s ease, height 0.25s ease;",
+      "  transition: opacity 0.25s ease, bottom 0.25s ease;",
       "  display: flex;",
       "  align-items: center;",
       "  justify-content: center;",
       "}",
       "#pn-sticky-anchor-ad.pn-ad-filled.pn-screen-allowed {",
-      "  height: 54px;",
+      "  bottom: max(4px, env(safe-area-inset-bottom, 4px));",
       "  opacity: 1;",
       "  pointer-events: auto;",
       "  border: 1px solid rgba(255, 255, 255, 0.14);",
@@ -638,6 +638,8 @@
     ins.style.width = "320px";
     ins.style.height = "50px";
     ins.setAttribute("data-ad-client", PUB_ID);
+    ins.setAttribute("data-ad-format", "horizontal");
+    ins.setAttribute("data-full-width-responsive", "false");
 
     bar.appendChild(closeBtn);
     bar.appendChild(ins);
@@ -748,7 +750,8 @@
       if (
         ins &&
         !ins.getAttribute("data-adsbygoogle-status") &&
-        window.innerWidth >= 320
+        window.innerWidth >= 320 &&
+        bar.offsetWidth >= 300
       ) {
         stickyPushed = true;
         try {

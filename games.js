@@ -131,7 +131,7 @@ window.PARTY_GAMES = [
     duration: "8–15 Mins",
     deviceMode: "Pass 1 Phone, Multi-Phone or 📺 TV Board",
     category: "Bluffing & Trivia",
-    tags: ["TV / Laptop Board", "Multi-Phone Room Code", "Pass 1 Phone", "205+ Bizarre Facts", "Genius Bonus"],
+    tags: ["TV / Laptop Board", "Multi-Phone Room Code", "Pass 1 Phone", "113 Curated Facts", "Genius Bonus"],
     badge: "🧢 #1 Viral Bluff",
     featured: true,
     description: "Write believable fake answers to bizarre real-world stories and fool your friends! Sniff out the actual Fact, collect big points when opponents fall for your Cap, and watch dramatic receipt reveals on a TV or phone.",
