@@ -625,6 +625,45 @@
     $("btn-got-rules").addEventListener("click", () => {
       $("modal-rules").classList.remove("open");
     });
+
+    // iOS Back Button & Leave Warning Interceptor
+    const showLeaveWarning = () => {
+      $("modal-leave-warning").classList.add("open");
+    };
+    const hideLeaveWarning = () => {
+      $("modal-leave-warning").classList.remove("open");
+    };
+
+    $("btn-ios-back").addEventListener("click", (e) => {
+      e.preventDefault();
+      if (state.screen === "play" || state.screen === "countdown") {
+        showLeaveWarning();
+      } else if (state.screen === "gameover") {
+        showScreen("landing");
+      } else {
+        window.location.href = "https://partynights.online/";
+      }
+    });
+
+    $("btn-leave-stay").addEventListener("click", () => {
+      SoundFX.ding();
+      hideLeaveWarning();
+    });
+
+    $("btn-leave-confirm").addEventListener("click", () => {
+      SoundFX.buzzer();
+      hideLeaveWarning();
+      if (state.timerId) {
+        clearInterval(state.timerId);
+        state.timerId = null;
+      }
+      if (state.countdownId) {
+        clearInterval(state.countdownId);
+        state.countdownId = null;
+      }
+      disableDeviceTiltListeners();
+      showScreen("landing");
+    });
   }
 
   // ==========================================================================
