@@ -28,12 +28,21 @@
 <meta name="twitter:description" content="Write clever lies, trick your friends, and expose bizarre real facts! Free browser party game." />
 <meta name="twitter:image" content="https://partynights.online/fact-or-cap/og-banner.png" />
 <meta name="google-adsense-account" content="ca-pub-5935694635631350" id="meta-adsense-account" />
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5935694635631350" crossorigin="anonymous"></script>
+<script>
+window.PN_FACTORCAP_READ_ONLY = new URLSearchParams(location.search).has("board") || new URLSearchParams(location.search).has("tv");
+if (!window.PN_FACTORCAP_READ_ONLY) {
+const ads = document.createElement("script");
+ads.async = true;
+ads.crossOrigin = "anonymous";
+ads.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5935694635631350";
+document.head.appendChild(ads);
+}
+</script>
 <script defer src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="./styles.min.css?v=1.1" />
+<link rel="stylesheet" href="./styles.min.css?v=2.0" />
 </head>
 <body>
 <div class="ambient-glow glow-left" aria-hidden="true"></div>
@@ -59,11 +68,11 @@
 </button>
 </div>
 <div class="top-actions">
-<button class="nav-pill-btn desktop-only" id="btn-tv-stage" type="button" title="Toggle TV / Laptop Board Mode">
+<button class="nav-pill-btn desktop-only" id="btn-tv-stage" type="button" title="TV board joins separately" style="display:none">
 <span>📺</span>
 <span id="btn-tv-stage-label">TV Stage</span>
 </button>
-<button class="nav-pill-btn desktop-only" id="btn-top-menu" type="button" title="Game Setup">
+<button class="nav-pill-btn" id="btn-top-menu" type="button" title="Game Setup">
 <span>🏠</span>
 <span id="btn-top-menu-label">Setup</span>
 </button>
@@ -102,11 +111,11 @@ Write clever lies. Spot the real truth.
 </div>
 <div class="landing-actions-cluster">
 <button type="button" id="btn-play-couch" class="btn-launch">
-<span>📱 Pass 1 Phone (Couch Mode)</span>
+<span>📱 Offline Game</span>
 <span>→</span>
 </button>
 <button type="button" id="btn-play-room" class="btn-ghost btn-room-ghost">
-<span>🌐 Play Online (Multi-Phone / TV Board)</span>
+<span>🌐 Host Online Game</span>
 </button>
 <div class="landing-tri-actions">
 <button type="button" id="btn-landing-rules" class="btn-ghost btn-sub-action">
@@ -120,11 +129,13 @@ Write clever lies. Spot the real truth.
 </button>
 </div>
 <div class="join-room-card">
+<div class="join-room-heading">JOIN A HOSTED GAME</div>
 <div class="join-input-group">
 <input type="text" id="input-join-code" class="code-input" placeholder="CODE" maxlength="5" autocomplete="off" autocorrect="off" autocapitalize="characters" />
 <input type="text" id="input-join-name" class="name-input" placeholder="Your Name" maxlength="18" autocomplete="off" />
 <button type="button" class="join-btn" id="btn-submit-join">Join →</button>
 </div>
+<button type="button" class="board-join-link" id="btn-submit-board-join">📺 Join this room as a read-only TV / projector board</button>
 </div>
 <div class="landing-footer-meta">
 PARTYNIGHTS.ONLINE • P2P & SERVER VAULT PROTECTED
@@ -152,17 +163,18 @@ PARTYNIGHTS.ONLINE • P2P & SERVER VAULT PROTECTED
 <span class="rhb-eyebrow">LIVE ROOM CODE</span>
 <div class="rhb-code" id="host-room-code-display">----</div>
 </div>
+<label class="host-name-field">HOST PLAYER NAME<input type="text" id="input-host-name" maxlength="18" value="Host" autocomplete="nickname" /></label>
 <div class="rhb-actions">
-<button type="button" class="tiny-pill-btn" id="btn-toggle-tv-setup">📺 TV Stage: OFF</button>
 <button type="button" class="tiny-pill-btn" id="btn-factorcap-show-qr" title="Show QR Code for phones to scan">📡 Squad QR</button>
 <button type="button" class="small-neon-btn" id="btn-copy-room-link">📲 Share Invite</button>
+<button type="button" class="tiny-pill-btn" id="btn-copy-board-link">📺 Copy TV Link</button>
 </div>
 </div>
-<p class="rhb-hint">Players join with code on their phones at <strong>partynights.online/fact-or-cap</strong></p>
+<p class="rhb-hint">Only real people appear here. Friends join with the code; a TV joins in read-only mode.</p>
 </div>
 <div class="panel" id="local-players-panel">
 <div class="panel-header">
-<span class="panel-label">PLAYERS (<span id="player-count-badge">4</span>)</span>
+<span class="panel-label"><span id="setup-roster-title">PLAYERS</span> (<span id="player-count-badge">0</span>)</span>
 <div class="panel-header-actions">
 <button class="pill-action" id="btn-add-ai-friend" type="button">+ 🤖 Add Bot</button>
 <button class="pill-action" id="btn-reset-default-squad" type="button">↺ Reset</button>
@@ -247,6 +259,17 @@ autocomplete="off"
 </div>
 </div>
 <div class="panel online-waiting-card" id="online-write-waiting" style="display:none;">✅ Your lie is locked in. Waiting for the other phones…</div>
+</section>
+<section id="screen-board" class="screen board-only-screen">
+<div class="board-room-tag">📡 FACT OR CAP • ROOM <strong id="board-room-code">----</strong></div>
+<div class="board-stage-card">
+<div class="board-stage-kicker" id="board-stage-kicker">READ-ONLY TABLE DISPLAY</div>
+<h1 id="board-stage-title">Waiting for the host</h1>
+<p id="board-stage-prompt">Players' phones are the controllers. This screen only presents the shared game.</p>
+<div id="board-stage-choices" class="board-stage-choices"></div>
+<div id="board-stage-progress" class="board-stage-progress"></div>
+<p id="board-stage-detail" class="board-stage-detail"></p>
+</div>
 </section>
 <section id="screen-vote" class="screen">
 <div class="hud-strip">
@@ -406,18 +429,15 @@ autocomplete="off"
 </div>
 <button type="button" class="family-toggle-btn" id="toggle-family-mode" aria-pressed="false">OFF</button>
 </div>
+<div class="settings-mode-note" id="settings-mode-note">Offline game • Pass one phone between players, or add AI friends.</div>
 <div class="sub-section">
-<label class="field-label">HOW ARE YOU PLAYING?</label>
-<div class="segmented-row">
-<button type="button" class="seg-btn active" id="btn-device-pass" data-device="pass">
-📱 Pass 1 Phone (Couch)
-</button>
-<button type="button" class="seg-btn" id="btn-device-room" data-device="room">
-🌐 Multi-Phone Room
-</button>
-<button type="button" class="seg-btn" id="btn-device-tv" data-device="tv">
-📺 TV / Laptop Stage
-</button>
+<label class="field-label">QUESTION DIFFICULTY</label>
+<div class="deck-chips difficulty-chips" id="question-difficulty-chips">
+<button type="button" class="deck-chip active" data-difficulty="all">🎲 Mixed</button>
+<button type="button" class="deck-chip" data-difficulty="easy">🟢 Easy</button>
+<button type="button" class="deck-chip" data-difficulty="medium">🟡 Medium</button>
+<button type="button" class="deck-chip" data-difficulty="hard">🔴 Hard</button>
+<button type="button" class="deck-chip" data-difficulty="mystery">🫠 No idea</button>
 </div>
 </div>
 <div class="sub-section">
@@ -570,7 +590,14 @@ You cannot submit the truth as your lie. Now invent a clever fake answer to fool
 </div>
 <div id="toast-banner" class="toast-banner" aria-live="polite"></div>
 <script src="/qr-engine.min.js"></script>
-<script src="./app.min.js?v=1.1"></script>
-<script src="/ads-engine.js" defer></script>
+<script src="./app.min.js?v=2.0"></script>
+<script>
+if (!window.PN_FACTORCAP_READ_ONLY) {
+const engine = document.createElement("script");
+engine.src = "/ads-engine.js";
+engine.defer = true;
+document.body.appendChild(engine);
+}
+</script>
 </body>
 </html>
