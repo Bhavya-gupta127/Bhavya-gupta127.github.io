@@ -3,12 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>Privacy Policy & Terms — PartyNights.online</title>
-  <meta name="description" content="Privacy Policy, Cookie Policy, and Google AdSense disclosures for PartyNights.online free browser party games." />
+  <title>Privacy Policy — PartyNights.online</title>
+  <meta name="description" content="Privacy Policy, Cookie Policy, Google AdSense disclosures, CCPA, and GDPR compliance guidelines for PartyNights.online free browser games." />
   <link rel="canonical" href="https://partynights.online/privacy" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5935694635631350" crossorigin="anonymous"></script>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="icon" type="image/png" sizes="192x192" href="/mr-alien/icon-192.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="/mr-alien/apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     :root {
       --bg: #070812;
@@ -24,34 +28,46 @@
       font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
       background: radial-gradient(circle at 50% 0%, #1d153b 0%, var(--bg) 75%);
       color: var(--text);
-      line-height: 1.65;
+      line-height: 1.7;
       padding: max(2rem, calc(env(safe-area-inset-top, 0px) + 1rem)) 1.25rem calc(2.5rem + env(safe-area-inset-bottom, 0px));
-      max-width: 780px;
+      max-width: 820px;
       margin: 0 auto;
       min-height: 100vh;
     }
-    .privacy-card {
+    .content-card {
       background: var(--card);
       border: 1px solid var(--card-border);
       border-radius: 20px;
-      padding: 2rem 1.8rem;
+      padding: 2.2rem 2rem;
       box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
       margin-top: 1.2rem;
     }
     h1 {
       margin: 0.5rem 0 0.6rem;
       color: #fff;
-      font-size: 1.85rem;
+      font-size: 2.1rem;
       font-weight: 800;
       letter-spacing: -0.02em;
     }
-    h2 {
-      margin: 1.6rem 0 0.5rem;
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(16, 215, 150, 0.15);
       color: var(--cyan);
-      font-size: 1.2rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      border: 1px solid rgba(16, 215, 150, 0.3);
+    }
+    h2 {
+      margin: 1.8rem 0 0.5rem;
+      color: var(--cyan);
+      font-size: 1.25rem;
       font-weight: 700;
     }
-    p, li { color: var(--text-muted); margin-bottom: 0.75rem; }
+    p, li { color: var(--text-muted); margin-bottom: 0.85rem; font-size: 0.98rem; }
+    ul { padding-left: 1.4rem; margin-bottom: 1rem; }
     a { color: var(--pink); text-decoration: none; }
     a:hover { text-decoration: underline; }
     .ios-back-btn {
@@ -69,33 +85,93 @@
       text-decoration: none;
       box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
     }
-    .ios-back-btn svg {
-      width: 17px;
-      height: 17px;
-      stroke: #10d796;
+    .ios-back-btn svg { width: 17px; height: 17px; stroke: #10d796; }
+    .highlight-box {
+      background: rgba(16, 215, 150, 0.05);
+      border-left: 4px solid var(--cyan);
+      padding: 1rem 1.2rem;
+      border-radius: 0 12px 12px 0;
+      margin: 1.2rem 0;
+    }
+    .footer-nav {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--card-border);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      font-size: 0.88rem;
     }
   </style>
 </head>
 <body>
   <p>
-    <a href="/" class="ios-back-btn" id="btn-privacy-back">
+    <a href="/" class="ios-back-btn">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
       <span>Back to PartyNights Arcade</span>
     </a>
   </p>
-  <main class="privacy-card">
-    <h1>Privacy Policy & Terms of Use</h1>
-    <p>Effective Date: October 2026 • Domain: <strong>partynights.online</strong></p>
 
-    <h2>1. Overview</h2>
-    <p>PartyNights.online provides free browser-based party games for friends and groups. Most game state runs directly in your browser without requiring personal account registration.</p>
+  <main class="content-card">
+    <span class="badge">Privacy & Data Policy</span>
+    <h1>Privacy Policy</h1>
+    <p>Last Updated: October 27, 2026 • Website: <strong>https://partynights.online</strong></p>
 
-    <h2>2. Cookies & Google AdSense</h2>
-    <p>Third-party vendors, including Google, use cookies to serve ads based on a user's prior visits to this website or other websites. Google's use of advertising cookies enables it and its partners to serve ads to users based on their visit to PartyNights.online and/or other sites on the Internet.</p>
-    <p>Users may opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener">Google Ads Settings</a>.</p>
+    <div class="highlight-box">
+      <p style="margin:0; color:#f8fafc;"><strong>Summary:</strong> PartyNights.online is built with privacy-by-design. We do not require account registration, passwords, email logins, or phone numbers to play any of our party games. Multiplayer room states run ephemerally in your browser.</p>
+    </div>
 
-    <h2>3. Contact</h2>
-    <p>For questions, game suggestions, feedback, or partnership inquiries regarding PartyNights.online, please email us at <a href="mailto:partynights.online.info@gmail.com">partynights.online.info@gmail.com</a>.</p>
+    <h2>1. Introduction</h2>
+    <p>This Privacy Policy explains how <strong>PartyNights.online</strong> ("we", "our", or "us") collects, uses, and safeguards information when you visit and play games on <code>https://partynights.online</code>. We are committed to transparency and honoring user privacy rights under global regulations, including the General Data Protection Regulation (GDPR) and the California Consumer Privacy Act (CCPA).</p>
+
+    <h2>2. Information We Do NOT Collect</h2>
+    <p>Because PartyNights.online operates as a zero-friction party game arcade:</p>
+    <ul>
+      <li>We do <strong>not</strong> collect personal names, email addresses, passwords, home addresses, or phone numbers.</li>
+      <li>We do <strong>not</strong> require credit card or financial billing information; all our core party games are completely free.</li>
+      <li>We do <strong>not</strong> record audio, video, or camera streams. Forehead games (like Charades Rush) utilize native device orientation sensors (gyroscope/accelerometer) processed entirely on your local device without sending sensor data across the internet.</li>
+    </ul>
+
+    <h2>3. Cookies, Web Beacons & Google AdSense</h2>
+    <p>To support hosting, multiplayer bandwidth, and continuous game additions, PartyNights.online works with third-party advertising vendors, including <strong>Google AdSense</strong>:</p>
+    <ul>
+      <li>Third-party vendors, including Google, use cookies to serve ads based on a user's prior visits to this website or other websites across the Internet.</li>
+      <li>Google's use of advertising cookies enables it and its partners to serve ads to our users based on their visits to PartyNights.online and/or other sites on the Internet.</li>
+      <li>Users may opt out of personalized advertising by visiting the <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener">Google Ads Settings</a> page.</li>
+      <li>Alternatively, you can opt out of a third-party vendor's use of cookies for personalized advertising by visiting <a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener">www.aboutads.info/choices</a> or the <a href="https://www.youronlinechoices.eu/" target="_blank" rel="noopener">Your Online Choices</a> portal for EU residents.</li>
+    </ul>
+
+    <h2>4. Browser Local Storage & Peer-to-Peer Networking</h2>
+    <p>Our games utilize modern web technologies to deliver instant multiplayer gaming without server-side database accounts:</p>
+    <ul>
+      <li><strong>Local Storage (localStorage & sessionStorage):</strong> We store lightweight preferences locally on your device, such as your chosen player nickname, Family Mode toggle, audio mute preferences, and active room codes so that refreshing the page does not disconnect you from an ongoing match. This data never leaves your browser.</li>
+      <li><strong>Peer-to-Peer WebRTC Data Channels:</strong> Online room games connect player controllers to the Host or TV Board using encrypted client-side data channels. Match data (such as secret words or votes) is transmitted ephemerally between players in the room and is wiped upon room termination.</li>
+    </ul>
+
+    <h2>5. Log Files & Analytics</h2>
+    <p>Like standard web servers, our static hosting providers (such as GitHub Pages and Fastly CDN) may automatically log standard technical information, including your IP address, browser user-agent, operating system, referring URL, and date/time stamps. This aggregate data is used strictly for server health, DDoS prevention, and traffic diagnostics.</p>
+
+    <h2>6. GDPR Compliance (For EEA / UK Users)</h2>
+    <p>Under the EU General Data Protection Regulation, EEA and UK residents have specific rights regarding their personal data, including the right to request access, rectification, or erasure of any data processed. Because we do not store identifying personal accounts, most user data exists solely in your browser's local cache, which you can clear at any time via your browser settings.</p>
+
+    <h2>7. CCPA / CPRA Compliance (For California Residents)</h2>
+    <p>The California Consumer Privacy Act provides California residents with rights regarding their personal information. We do not sell user personal data. Third-party advertising cookies are managed in accordance with California law, and users can opt out through the industry tools linked above.</p>
+
+    <h2>8. Children's Online Privacy (COPPA Compliance)</h2>
+    <p>PartyNights.online does not knowingly collect any personal information from children under the age of 13. Furthermore, every game includes a dedicated <strong>👨‍👩‍👧‍👦 Family Mode</strong> toggle that disables all adult, spicy, or mature prompts to ensure safe, kid-friendly entertainment at all times.</p>
+
+    <h2>9. Updates to This Policy</h2>
+    <p>We may periodically update this Privacy Policy to reflect technical, legal, or operational enhancements. Updates will be published on this page with an updated revision date.</p>
+
+    <h2>10. Contact Us</h2>
+    <p>If you have any questions, concerns, or requests regarding this Privacy Policy, please reach out via email to our official privacy desk: <a href="mailto:partynights.online.info@gmail.com">partynights.online.info@gmail.com</a>.</p>
+
+    <div class="footer-nav">
+      <a href="/">Arcade Lobby</a> •
+      <a href="/about">About Us</a> •
+      <a href="/terms">Terms of Service</a> •
+      <a href="/contact">Contact Support</a>
+    </div>
   </main>
 </body>
 </html>
