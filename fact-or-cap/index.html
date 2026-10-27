@@ -42,7 +42,7 @@ document.head.appendChild(ads);
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="./styles.min.css?v=3.2" />
+<link rel="stylesheet" href="./styles.min.css?v=3.3" />
 </head>
 <body>
 <div class="ambient-glow glow-left" aria-hidden="true"></div>
@@ -94,7 +94,7 @@ document.head.appendChild(ads);
 <div class="landing-wrap">
 <div class="signal-pill">
 <span class="signal-dot"></span>
-<span id="landing-vault-count">113 Curated Facts • Or Play Online Free</span>
+<span id="landing-vault-count">Curated Facts • Or Play Online Free</span>
 </div>
 <div class="holo-stage" id="easter-egg-holo" title="Fact or Cap Core">
 <div class="holo-ring r1"></div>
@@ -192,6 +192,13 @@ autocomplete="off"
 <button type="button" id="btn-add-player" class="pill-submit-btn">Add</button>
 </div>
 <div class="player-list-stack" id="setup-players-list"></div>
+</div>
+<div class="panel first-question-picker" id="first-question-picker">
+<div>
+<strong>🎲 First question</strong>
+<p id="first-question-preview">The first question will be picked randomly from your selected deck.</p>
+</div>
+<button type="button" class="pill-action" id="btn-shuffle-first-question">🔀 Shuffle question</button>
 </div>
 <button type="button" class="btn-launch" id="btn-launch-match">
 <span id="launch-btn-text">Start Match (4 Players)</span>
@@ -339,6 +346,7 @@ autocomplete="off"
 <div class="real-fact-box" id="reveal-fact-box">
 <div class="rf-badge">📖 THE REAL BACKSTORY</div>
 <p class="rf-detail" id="reveal-fact-detail">Loading verified backstory...</p>
+<a id="reveal-fact-source" class="rf-source" target="_blank" rel="noopener noreferrer" style="display:none">🔎 Read the source</a>
 </div>
 <div class="round-standings-card" id="round-standings-card">
 <div class="rsc-header">
@@ -443,7 +451,7 @@ autocomplete="off"
 <div class="sub-section">
 <label class="field-label">FACT DECK / CATEGORY</label>
 <div class="deck-chips" id="deck-category-chips">
-<button type="button" class="deck-chip active" data-cat="all">⚡ All Mix (113)</button>
+<button type="button" class="deck-chip active" data-cat="all">⚡ All Mix</button>
 <button type="button" class="deck-chip" data-cat="florida">🐊 Florida Man &amp; Law</button>
 <button type="button" class="deck-chip" data-cat="animals">🐾 Animal Planet</button>
 <button type="button" class="deck-chip" data-cat="desi">🇮🇳 Desi Bizarre</button>
@@ -466,15 +474,14 @@ autocomplete="off"
 <div class="modal-backdrop" id="modal-genius-bonus" style="display: none;" role="dialog" aria-modal="true">
 <div class="modal-box genius-modal-box">
 <div class="genius-icon">🧠✨</div>
-<h3 class="genius-title">YOU'RE TOO SMART!</h3>
+<h3 class="genius-title">VERY CLOSE TO THE TRUTH</h3>
 <p class="genius-copy">
-Whoa, you actually know it! That is the <strong>100% REAL FACT</strong>!
+That is very close to the truth or another player's hint. Change it and try a different cap.
 </p>
-<div class="genius-pts-tag">+500 GENIUS BONUS POINTS AWARDED!</div>
 <p class="genius-hint">
-You cannot submit the truth as your lie. Now invent a clever fake answer to fool everyone else!
+The game keeps the real answer and other players' entries hidden until the reveal.
 </p>
-<button type="button" class="primary-glow-btn" id="btn-close-genius">Got It — Write My Lie →</button>
+<button type="button" class="primary-glow-btn" id="btn-close-genius">Got it — try another answer →</button>
 </div>
 </div>
 <div class="modal-backdrop" id="modal-rules" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="rules-modal-title">
@@ -590,7 +597,7 @@ You cannot submit the truth as your lie. Now invent a clever fake answer to fool
 </div>
 <div id="toast-banner" class="toast-banner" aria-live="polite"></div>
 <script src="/qr-engine.min.js"></script>
-<script src="./app.min.js?v=3.2"></script>
+<script src="./app.min.js?v=3.3"></script>
 <script>
 if (!window.PN_FACTORCAP_READ_ONLY) {
 const engine = document.createElement("script");
