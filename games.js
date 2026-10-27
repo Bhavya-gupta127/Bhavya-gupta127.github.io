@@ -115,7 +115,29 @@ window.PARTY_GAMES = [
     featured: true,
     description: "Hold phone on your forehead and tilt down to score, or act out movies and animals silently! Fast-paced 60s rounds, 100% kid & parent-friendly with zero downloads.",
     url: "/charades-rush/"
+  },
+  {
+    id: "fact-or-cap",
+    repo: "Bhavya-gupta127/fact-or-cap",
+    title: "Fact or Cap",
+    hook: "Bluff Your Squad with Crazy Lies",
+    subtitle: "Bizarre Real Facts & Bluff Trivia",
+    emoji: "🧢",
+    icon: "/fact-or-cap/icon-192.png",
+    banner: "/fact-or-cap/og-banner.png",
+    players: "2–20 Players",
+    minPlayers: 2,
+    maxPlayers: 20,
+    duration: "8–15 Mins",
+    deviceMode: "Pass 1 Phone, Multi-Phone or 📺 TV Board",
+    category: "Bluffing & Trivia",
+    tags: ["TV / Laptop Board", "Multi-Phone Room Code", "Pass 1 Phone", "205+ Bizarre Facts", "Genius Bonus"],
+    badge: "🧢 #1 Viral Bluff",
+    featured: true,
+    description: "Write believable fake answers to bizarre real-world stories and fool your friends! Sniff out the actual Fact, collect big points when opponents fall for your Cap, and watch dramatic receipt reveals on a TV or phone.",
+    url: "/fact-or-cap/"
   }
 ];
+
 
 

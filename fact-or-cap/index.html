@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+<meta name="theme-color" content="#070812" />
+<title>Fact or Cap: Bluff Trivia — Free Viral Party Game | PartyNights.online</title>
+<meta name="description" content="Play Fact or Cap: Bluff Trivia online with friends! Fool your squad with crazy believable lies while sniffing out bizarre real facts. Zero downloads on PartyNights.online." />
+<link rel="canonical" href="https://partynights.online/fact-or-cap/" />
+<link rel="manifest" href="./manifest.json" />
+<link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="Fact or Cap" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="PartyNights.online" />
+<meta property="og:title" content="Fact or Cap: Bluff Trivia — PartyNights.online" />
+<meta property="og:description" content="Fool your squad with crazy believable lies while sniffing out the unbelievable truth! Pass 1 phone, join room code, or play on TV." />
+<meta property="og:url" content="https://partynights.online/fact-or-cap/" />
+<meta property="og:image" content="https://partynights.online/fact-or-cap/og-banner.png" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Fact or Cap: Bluff Trivia — PartyNights.online" />
+<meta name="twitter:description" content="Write clever lies, trick your friends, and expose bizarre real facts! Free browser party game." />
+<meta name="twitter:image" content="https://partynights.online/fact-or-cap/og-banner.png" />
+<meta name="google-adsense-account" content="ca-pub-5935694635631350" id="meta-adsense-account" />
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5935694635631350" crossorigin="anonymous"></script>
+<script defer src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="./styles.min.css?v=1" />
+</head>
+<body>
+<div class="ambient-glow glow-left" aria-hidden="true"></div>
+<div class="ambient-glow glow-right" aria-hidden="true"></div>
+<div class="app-shell">
+<header class="top-bar" id="app-top-bar">
+<div class="brand-group">
+<button type="button" class="ios-back-btn" id="btn-ios-back" aria-label="Go Back" title="Go Back">
+<svg class="ios-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+<span id="ios-back-label">Arcade</span>
+</button>
+<div class="brand" id="brand-home-btn" title="Fact or Cap Home">
+<div class="brand-icon">🧢</div>
+<div class="brand-text-wrap">
+<span class="brand-name">Fact or Cap</span>
+<span class="brand-sub">BLUFF TRIVIA</span>
+</div>
+</div>
+<button type="button" class="top-room-id-pill" id="top-room-id-pill" style="display: none;" title="Tap to Copy Room Code &amp; Invite Link">
+<span>📡</span>
+<span class="top-room-label">ROOM:</span>
+<strong id="top-room-code-text">----</strong>
+</button>
+</div>
+<div class="top-actions">
+<a href="https://partynights.online/" class="nav-pill-btn" id="btn-top-hub" title="PartyNights.online Hub">
+<span>🎉</span>
+<span>Hub</span>
+</a>
+<button class="nav-pill-btn" id="btn-tv-stage" type="button" title="Toggle TV / Laptop Board Mode">
+<span>📺</span>
+<span id="btn-tv-stage-label">TV Stage</span>
+</button>
+<button class="nav-pill-btn" id="btn-top-menu" type="button" title="Game Setup">
+<span>🏠</span>
+<span id="btn-top-menu-label">Setup</span>
+</button>
+<button class="circle-btn" id="btn-open-settings" type="button" title="Game Settings &amp; Family Mode">⚙️</button>
+<button class="circle-btn" id="btn-open-rules" type="button" title="How to Play">📖</button>
+<button class="circle-btn" id="btn-open-leaderboard" type="button" title="Squad Hall of Fame">🏆</button>
+<button class="circle-btn" id="btn-sound-toggle" type="button" title="Toggle Sound">🔊</button>
+</div>
+</header>
+<div id="tv-stage-banner" class="tv-stage-banner" style="display: none;">
+<div class="tv-stage-left">
+<span class="tv-live-badge">📺 TV / STAGE MODE</span>
+<span class="tv-room-pill">📡 ROOM: <strong id="tv-banner-room-code">----</strong></span>
+<span class="tv-join-hint">Join on your phone at <strong>partynights.online/fact-or-cap</strong></span>
+</div>
+<button type="button" class="tiny-pill-btn" id="btn-exit-tv-stage">📱 Phone View</button>
+</div>
+<section id="screen-landing" class="screen active">
+<div class="hero-badge">
+<span class="badge-dot"></span>
+<span id="landing-vault-count">205+ Bizarre Facts Ready</span>
+</div>
+<div class="hero-centerpiece">
+<div class="hero-cap-stage">
+<div class="hero-stamp stamp-fact">FACT ✅</div>
+<div class="hero-cap-icon">🧢</div>
+<div class="hero-stamp stamp-cap">CAP ❌</div>
+</div>
+<h1 class="hero-title">
+<span>Fact or</span>
+<span class="title-gradient">Cap?</span>
+</h1>
+<p class="hero-subtitle">
+Write convincing lies. Fool your friends. Guess the unbelievable truth!
+</p>
+</div>
+<div class="example-card-wrapper" role="region" aria-label="10-Second Example">
+<div class="example-badge">💡 10-SECOND REAL EXAMPLE</div>
+<div class="example-body">
+<div class="example-scenario">
+<span class="example-q-tag">PROMPT</span>
+<div class="example-q">"In 2016, a Florida man threw a live <strong class="q-blank">________</strong> into a Wendy's drive-thru."</div>
+</div>
+<div class="example-flow-row">
+<div class="example-bubble lie-bubble">
+<span class="bubble-tag">AARAV'S LIE (CAP)</span>
+<strong>"Baby Python"</strong>
+<small>Fooled 2 friends! (+2,000 pts 🤑)</small>
+</div>
+<div class="example-vs">VS</div>
+<div class="example-bubble truth-bubble">
+<span class="bubble-tag">THE REAL FACT</span>
+<strong>"Alligator"</strong>
+<small>Guessed by Priya! (+500 pts 🎯)</small>
+</div>
+</div>
+</div>
+</div>
+<div class="landing-action-grid">
+<button type="button" class="primary-glow-btn" id="btn-play-couch">
+<div class="btn-icon">📱</div>
+<div class="btn-copy">
+<strong>Pass 1 Phone (Couch Mode)</strong>
+<span>One phone passed around the squad circle</span>
+</div>
+<div class="btn-arrow">→</div>
+</button>
+<button type="button" class="secondary-neon-btn" id="btn-play-room">
+<div class="btn-icon">🌐</div>
+<div class="btn-copy">
+<strong>Multi-Phone Room</strong>
+<span>Everyone joins on their own phone with 4-letter code</span>
+</div>
+<div class="btn-arrow">→</div>
+</button>
+<button type="button" class="secondary-neon-btn" id="btn-play-tv">
+<div class="btn-icon">📺</div>
+<div class="btn-copy">
+<strong>TV / Laptop Stage Mode</strong>
+<span>Big screen table board + private phone controllers</span>
+</div>
+<div class="btn-arrow">→</div>
+</button>
+</div>
+<div class="join-room-card">
+<span class="join-label">HAVE A ROOM CODE?</span>
+<div class="join-input-group">
+<input type="text" id="input-join-code" class="code-input" placeholder="CODE" maxlength="5" autocomplete="off" autocorrect="off" autocapitalize="characters" />
+<input type="text" id="input-join-name" class="name-input" placeholder="Your Name" maxlength="18" autocomplete="off" />
+<button type="button" class="join-btn" id="btn-submit-join">Join Room →</button>
+</div>
+</div>
+<div class="ad-slot-wrapper" id="ad-landing-slot" aria-label="Sponsored">
+<div class="ad-slot-label">SPONSORED • PARTYNIGHTS ARCADE</div>
+<ins class="adsbygoogle"
+style="display:block; max-height:80px;"
+data-ad-client="ca-pub-5935694635631350"
+data-ad-format="horizontal"
+data-full-width-responsive="true"></ins>
+</div>
+</section>
+<section id="screen-setup" class="screen">
+<div class="card-panel">
+<div class="panel-header-row">
+<div>
+<span class="section-eyebrow">READY TO PLAY</span>
+<h2 class="panel-title">Squad &amp; Game Setup</h2>
+</div>
+<span class="pill-counter" id="setup-deck-counter">205 Facts</span>
+</div>
+<div class="setup-summary-bar" id="setup-settings-summary-bar" role="button" tabindex="0" title="Tap to Customize Game Settings">
+<span class="setup-summary-text" id="setup-summary-text">🧢 Fact or Cap • 📱 Pass 1 Phone • 🔥 7 Rounds • ⚡ All Mix</span>
+<span class="setup-summary-gear">⚙️ Customize</span>
+</div>
+<div class="setup-quick-pills" id="setup-quick-toggles">
+<button type="button" class="tiny-pill-btn" id="btn-quick-family-mode">👨‍👩‍👧‍👦 Family Mode: OFF</button>
+<button type="button" class="tiny-pill-btn" id="btn-quick-room-toggle">🌐 Host Multi-Phone Room</button>
+<button type="button" class="tiny-pill-btn" id="btn-setup-open-settings">⚙️ Decks &amp; Rounds</button>
+</div>
+<div id="room-host-banner" class="room-host-banner" style="display: none;">
+<div class="rhb-top">
+<div>
+<span class="rhb-eyebrow">LIVE ROOM CODE</span>
+<div class="rhb-code" id="host-room-code-display">----</div>
+</div>
+<div class="rhb-actions">
+<button type="button" class="tiny-pill-btn" id="btn-toggle-tv-setup">📺 TV Stage: OFF</button>
+<button type="button" class="small-neon-btn" id="btn-copy-room-link">📲 Share Invite</button>
+</div>
+</div>
+<p class="rhb-hint">Players join with code on their phones at <strong>partynights.online/fact-or-cap</strong></p>
+</div>
+<div class="sub-section">
+<div class="roster-header-row">
+<label class="field-label">SQUAD ROSTER (<span id="player-count-badge">4</span> PLAYERS)</label>
+<div class="roster-quick-btns">
+<button type="button" class="tiny-pill-btn" id="btn-add-ai-friend">+ 🤖 Add Bot</button>
+<button type="button" class="tiny-pill-btn" id="btn-reset-default-squad">↺ Reset</button>
+</div>
+</div>
+<div class="add-player-bar">
+<input type="text" id="input-player-name" class="text-input" placeholder="Add friend's name (e.g. Rohan)..." maxlength="18" autocomplete="off" />
+<button type="button" class="add-btn" id="btn-add-player">+ Add</button>
+</div>
+<div class="players-chip-grid" id="setup-players-list"></div>
+</div>
+<button type="button" class="primary-glow-btn launch-big-btn" id="btn-launch-match">
+<span id="launch-btn-text">🧢 Start Fact or Cap Match (4 Players)</span>
+<span class="btn-arrow">→</span>
+</button>
+</div>
+<div class="ad-slot-wrapper" id="ad-setup-slot" aria-label="Sponsored">
+<div class="ad-slot-label">SPONSORED • PARTYNIGHTS ARCADE</div>
+<ins class="adsbygoogle"
+style="display:block; max-height:80px;"
+data-ad-client="ca-pub-5935694635631350"
+data-ad-format="horizontal"
+data-full-width-responsive="true"></ins>
+</div>
+</section>
+<section id="screen-write" class="screen">
+<div class="hud-strip">
+<div class="hud-pill">
+<span class="hud-label">ROUND</span>
+<strong id="write-round-label">1 / 7</strong>
+</div>
+<div class="hud-pill hud-pill-center">
+<span class="hud-cat-tag" id="write-category-tag">🐊 Florida Man &amp; Law</span>
+</div>
+<div class="hud-pill">
+<span class="hud-label">PHASE</span>
+<strong id="write-phase-label">✍️ Invent Lie</strong>
+</div>
+</div>
+<div class="card-panel tv-only-view" id="write-tv-board" style="display: none;">
+<span class="tv-step-eyebrow">📺 BIG SCREEN STAGE • PHASE 1</span>
+<h2 class="tv-prompt-headline" id="tv-prompt-text">Loading bizarre fact...</h2>
+<div class="tv-instructions-box">
+<p>🤫 Players are writing their most convincing <strong>Caps (Lies)</strong> secretly on their phones!</p>
+<div class="squad-readiness-grid" id="tv-squad-status-list"></div>
+</div>
+</div>
+<div class="privacy-gate-box" id="write-pass-gate-box" style="display: none;">
+<div class="gate-lock-icon">🔒</div>
+<h3>PASS PHONE TO <span class="highlight-cyan" id="gate-writer-name">Aarav</span></h3>
+<p>No peeking! Keep your screen hidden from the room while you write your lie.</p>
+<button type="button" class="primary-glow-btn" id="btn-unlock-write-gate">
+<span>🔓 I am <span id="gate-writer-btn-name">Aarav</span> — Write My Lie →</span>
+</button>
+</div>
+<div class="card-panel" id="write-active-card">
+<div class="writer-header">
+<span class="writer-badge" id="writer-name-badge">✍️ Aarav's Turn to Lie</span>
+<span class="tip-pill">💡 Trick your friends!</span>
+</div>
+<div class="prompt-box">
+<span class="prompt-label">COMPLETE THE BIZARRE FACT:</span>
+<h2 class="prompt-sentence" id="active-prompt-text">
+"In 2016, a Florida man threw a live <span class="active-blank">________</span> into a Wendy's drive-thru."
+</h2>
+</div>
+<div class="write-input-card">
+<label class="field-label" for="input-lie-text">YOUR CONVINCING LIE (CAP):</label>
+<div class="input-with-counter">
+<input type="text" id="input-lie-text" class="text-input big-input" placeholder="e.g. Baby python..." maxlength="45" autocomplete="off" />
+<span class="char-count" id="lie-char-count">0/45</span>
+</div>
+<p class="input-hint">Write something that sounds plausible enough to fool the squad!</p>
+<button type="button" class="primary-glow-btn submit-lie-btn" id="btn-submit-lie">
+<span>🚀 Lock In My Lie →</span>
+</button>
+</div>
+</div>
+</section>
+<section id="screen-vote" class="screen">
+<div class="hud-strip">
+<div class="hud-pill">
+<span class="hud-label">ROUND</span>
+<strong id="vote-round-label">1 / 7</strong>
+</div>
+<div class="hud-pill hud-pill-center">
+<span id="vote-turn-summary">🎯 Sniff Out The Truth</span>
+</div>
+<div class="hud-pill">
+<span class="hud-label">VOTED</span>
+<strong id="vote-progress-counter">0 / 4</strong>
+</div>
+</div>
+<div class="privacy-gate-box" id="vote-pass-gate-box" style="display: none;">
+<div class="gate-lock-icon">🔒</div>
+<h3>PASS PHONE TO <span class="highlight-cyan" id="gate-voter-name">Priya</span></h3>
+<p>Pick the answer you believe is the 100% real Fact!</p>
+<button type="button" class="primary-glow-btn" id="btn-unlock-vote-gate">
+<span>🔓 I am <span id="gate-voter-btn-name">Priya</span> — Cast My Secret Vote →</span>
+</button>
+</div>
+<div class="card-panel" id="vote-active-card">
+<div class="prompt-box vote-prompt-box">
+<span class="prompt-label">WHICH ONE IS THE ACTUAL FACT?</span>
+<h3 class="vote-prompt-sentence" id="vote-prompt-text">
+"In 2016, a Florida man threw a live <span class="vote-blank">?</span> into a Wendy's drive-thru."
+</h3>
+</div>
+<div class="voter-badge-bar">
+<span class="voter-name-indicator" id="voter-name-indicator">🎯 Priya's Secret Vote</span>
+<span class="voter-rule-note">You cannot vote for your own lie!</span>
+</div>
+<div class="vote-options-grid" id="vote-options-grid"></div>
+<div class="vote-confirm-strip" id="vote-confirm-strip" style="display: none;">
+<div class="vcs-text">Selected: <strong id="vcs-selection-text">Flamingo</strong></div>
+<button type="button" class="primary-glow-btn" id="btn-confirm-vote">
+<span id="vcs-confirm-label">✅ Confirm Vote &amp; Pass Phone →</span>
+</button>
+</div>
+</div>
+</section>
+<section id="screen-reveal" class="screen">
+<div class="hud-strip">
+<div class="hud-pill">
+<span class="hud-label">ROUND</span>
+<strong id="reveal-round-label">1 / 7</strong>
+</div>
+<div class="hud-pill hud-pill-center">
+<span>🧾 The Receipts</span>
+</div>
+<div class="hud-pill">
+<span class="hud-label">SCORE</span>
+<strong id="reveal-hud-pts">+0</strong>
+</div>
+</div>
+<div class="card-panel">
+<div class="reveal-header">
+<span class="section-eyebrow">WHO FOOLED WHO?</span>
+<h2 class="panel-title" id="reveal-prompt-title">The Bizarre Truth Revealed</h2>
+</div>
+<div class="reveal-cards-container" id="reveal-cards-container"></div>
+<div class="real-fact-box" id="reveal-fact-box">
+<div class="rf-badge">📖 THE REAL BACKSTORY</div>
+<p class="rf-detail" id="reveal-fact-detail">Loading verified backstory...</p>
+</div>
+<button type="button" class="primary-glow-btn launch-big-btn" id="btn-next-round">
+<span id="btn-next-round-label">Next Round →</span>
+<span class="btn-arrow">→</span>
+</button>
+</div>
+</section>
+<section id="screen-gameover" class="screen">
+<div class="card-panel">
+<div class="gameover-header">
+<span class="section-eyebrow">MATCH COMPLETED</span>
+<h2 class="hero-title title-gradient">Squad Final Receipts</h2>
+<p class="gameover-sub">The Master of Lies has been crowned!</p>
+</div>
+<div class="podium-stage" id="podium-stage"></div>
+<div class="superlatives-grid" id="superlatives-grid">
+<div class="superlative-card">
+<div class="sc-icon">👑</div>
+<div class="sc-title">MASTER OF LIES</div>
+<div class="sc-name" id="badge-master-lies">Aarav</div>
+<div class="sc-desc" id="badge-master-desc">Fooled 6 friends (+6,000 pts)</div>
+</div>
+<div class="superlative-card">
+<div class="sc-icon">🧠</div>
+<div class="sc-title">LIE DETECTOR</div>
+<div class="sc-name" id="badge-lie-detector">Priya</div>
+<div class="sc-desc" id="badge-detector-desc">Found 5 Real Facts</div>
+</div>
+<div class="superlative-card">
+<div class="sc-icon">🤡</div>
+<div class="sc-title">MOST GULLIBLE</div>
+<div class="sc-name" id="badge-most-gullible">Kabir</div>
+<div class="sc-desc" id="badge-gullible-desc">Fell for 7 fake lies</div>
+</div>
+</div>
+<div class="final-score-list" id="final-score-list"></div>
+<div class="viral-share-box">
+<button type="button" class="whatsapp-share-btn" id="btn-share-gameover">
+<span>📲 Share Squad Report to WhatsApp / IG</span>
+</button>
+</div>
+<div class="gameover-actions-row">
+<button type="button" class="primary-glow-btn" id="btn-play-again-same">
+<span>↺ Play Again (Same Squad)</span>
+</button>
+<button type="button" class="secondary-neon-btn" id="btn-gameover-setup">
+<span>⚙️ Change Settings</span>
+</button>
+</div>
+</div>
+<div class="ad-slot-wrapper" id="ad-gameover-slot" aria-label="Sponsored">
+<div class="ad-slot-label">SPONSORED • PARTYNIGHTS ARCADE</div>
+<ins class="adsbygoogle"
+style="display:block; max-height:80px;"
+data-ad-client="ca-pub-5935694635631350"
+data-ad-format="horizontal"
+data-full-width-responsive="true"></ins>
+</div>
+</section>
+<footer class="app-footer">
+<div class="footer-links">
+<a href="https://partynights.online/">PartyNights Hub</a>
+<span>•</span>
+<a href="https://partynights.online/privacy.html">Privacy</a>
+<span>•</span>
+<a href="https://partynights.online/contact.html">Support</a>
+</div>
+<p class="footer-copy">© 2026 PartyNights.online • Zero Downloads • Pass 1 Phone, Room Code or 📺 TV Board</p>
+</footer>
+</div>
+<div class="modal-backdrop" id="modal-settings" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="settings-modal-title">
+<div class="modal-box">
+<div class="modal-head">
+<h3 class="modal-title" id="settings-modal-title">⚙️ Game Settings &amp; Decks</h3>
+<button type="button" class="circle-btn" id="btn-close-settings">✕</button>
+</div>
+<div class="modal-body-scroll">
+<div class="family-mode-card" id="family-mode-card">
+<div class="fmc-copy">
+<strong>👨‍👩‍👧‍👦 Family-Safe Mode</strong>
+<span>100% clean, kid- &amp; parent-friendly nature, space &amp; science facts. Disables Florida Man / law chaos.</span>
+</div>
+<button type="button" class="family-toggle-btn" id="toggle-family-mode" aria-pressed="false">OFF</button>
+</div>
+<div class="sub-section">
+<label class="field-label">HOW ARE YOU PLAYING?</label>
+<div class="segmented-row">
+<button type="button" class="seg-btn active" id="btn-device-pass" data-device="pass">
+📱 Pass 1 Phone (Couch)
+</button>
+<button type="button" class="seg-btn" id="btn-device-room" data-device="room">
+🌐 Multi-Phone Room
+</button>
+<button type="button" class="seg-btn" id="btn-device-tv" data-device="tv">
+📺 TV / Laptop Stage
+</button>
+</div>
+</div>
+<div class="sub-section">
+<label class="field-label">FACT DECK / CATEGORY</label>
+<div class="deck-chips" id="deck-category-chips">
+<button type="button" class="deck-chip active" data-cat="all">⚡ All Mix (205+)</button>
+<button type="button" class="deck-chip" data-cat="florida">🐊 Florida Man &amp; Law</button>
+<button type="button" class="deck-chip" data-cat="animals">🐾 Animal Planet</button>
+<button type="button" class="deck-chip" data-cat="desi">🇮🇳 Desi Bizarre</button>
+<button type="button" class="deck-chip" data-cat="history">📜 Dumb History</button>
+<button type="button" class="deck-chip" data-cat="wholesome">💖 Family &amp; Nature</button>
+</div>
+</div>
+<div class="sub-section">
+<label class="field-label">NUMBER OF ROUNDS</label>
+<div class="segmented-row" id="round-count-chips">
+<button type="button" class="seg-btn" data-rounds="5">⚡ 5 Quick</button>
+<button type="button" class="seg-btn active" data-rounds="7">🔥 7 Standard</button>
+<button type="button" class="seg-btn" data-rounds="10">👑 10 Marathon</button>
+</div>
+</div>
+<button type="button" class="primary-glow-btn" id="btn-done-settings" style="width: 100%; margin-top: 6px;">✓ Save &amp; Close</button>
+</div>
+</div>
+</div>
+<div class="modal-backdrop" id="modal-genius-bonus" style="display: none;" role="dialog" aria-modal="true">
+<div class="modal-box genius-modal-box">
+<div class="genius-icon">🧠✨</div>
+<h3 class="genius-title">YOU'RE TOO SMART!</h3>
+<p class="genius-copy">
+Whoa, you actually know it! That is the <strong>100% REAL FACT</strong>!
+</p>
+<div class="genius-pts-tag">+500 GENIUS BONUS POINTS AWARDED!</div>
+<p class="genius-hint">
+You cannot submit the truth as your lie. Now invent a clever fake answer to fool everyone else!
+</p>
+<button type="button" class="primary-glow-btn" id="btn-close-genius">Got It — Write My Lie →</button>
+</div>
+</div>
+<div class="modal-backdrop" id="modal-rules" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="rules-modal-title">
+<div class="modal-box">
+<div class="modal-head">
+<h3 class="modal-title" id="rules-modal-title">📖 How to Play Fact or Cap</h3>
+<button type="button" class="circle-btn" id="btn-close-rules">✕</button>
+</div>
+<div class="modal-body-scroll">
+<div class="rule-block">
+<h4>1. 📜 The Incomplete Bizarre Fact</h4>
+<p>Every round, an outrageous real-world event or science oddity appears with a missing blank <em>(e.g., "In 2016, a man threw a live ________ into a Wendy's")</em>.</p>
+</div>
+<div class="rule-block">
+<h4>2. ✍️ Write A Convincing Lie (Cap)</h4>
+<p>Every player secretly writes a believable fake answer. If you accidentally know the real answer, the game awards you a <strong>+500 Genius Bonus</strong> and lets you write a lie!</p>
+</div>
+<div class="rule-block">
+<h4>3. 🎯 Vote: Fact or Cap?</h4>
+<p>All player lies are shuffled together with the one real fact. Everyone votes for what they believe is the real truth!</p>
+</div>
+<div class="rule-block">
+<h4>4. 🤑 Scoring The Receipts</h4>
+<p>• <strong>+500 pts</strong> for sniffing out the actual <strong>Fact</strong>.<br/>
+• <strong>+1,000 pts</strong> for every friend who got tricked and voted for your <strong>Cap</strong>!</p>
+</div>
+</div>
+</div>
+</div>
+<div class="modal-backdrop" id="modal-leaderboard" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="lb-modal-title">
+<div class="modal-box">
+<div class="modal-head">
+<h3 class="modal-title" id="lb-modal-title">🏆 All-Time Bluffers Hall of Fame</h3>
+<button type="button" class="circle-btn" id="btn-close-leaderboard">✕</button>
+</div>
+<div class="modal-body-scroll">
+<div id="hall-of-fame-list" class="hall-of-fame-list"></div>
+<button type="button" class="danger-outline-btn" id="btn-clear-hall" style="margin-top: 12px; width: 100%;">🗑️ Clear Saved Stats</button>
+</div>
+</div>
+</div>
+<div class="modal-backdrop" id="modal-leave-warning" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="leave-modal-title">
+<div class="modal-box">
+<div class="modal-head">
+<h3 class="modal-title" id="leave-modal-title">⚠️ Leave Active Match?</h3>
+</div>
+<div class="modal-body-scroll">
+<p>A Fact or Cap match is currently in progress. If you leave now, your score and squad seat will be forfeited!</p>
+<div class="leave-btn-grid" style="margin-top: 16px;">
+<button type="button" class="primary-glow-btn" id="btn-leave-cancel">Stay in Match</button>
+<button type="button" class="danger-outline-btn" id="btn-leave-confirm">Leave Match</button>
+</div>
+</div>
+</div>
+</div>
+<div id="toast-banner" class="toast-banner" aria-live="polite"></div>
+<script src="./app.min.js?v=1"></script>
+<script src="/ads-engine.js" defer></script>
+</body>
+</html>
