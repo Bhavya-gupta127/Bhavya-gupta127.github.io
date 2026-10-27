@@ -1958,51 +1958,59 @@
 
   <!-- Invite / Squad Room QR Code Modal -->
   <div class="modal-backdrop" id="share-modal" role="dialog" aria-modal="true" aria-labelledby="share-modal-title">
-    <div class="modal-card">
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
-        <h3 id="share-modal-title" style="font-family: 'Outfit', sans-serif; font-size: 1.25rem; font-weight: 900; text-transform: uppercase; margin: 0; color: var(--emerald);">📡 SQUAD ROOM QR</h3>
-        <button type="button" class="btn-copy" id="close-share-x" style="padding: 4px 10px; border-radius: 50%; font-size: 0.85rem; border: none; background: rgba(255,255,255,0.08); cursor: pointer;">✕</button>
+    <div class="modal-card" style="max-height: 92vh; overflow-y: auto; padding: 1.25rem 1.15rem;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.45rem;">
+        <h3 id="share-modal-title" style="font-family: 'Outfit', sans-serif; font-size: 1.18rem; font-weight: 900; text-transform: uppercase; margin: 0; color: var(--cyan);">📲 INVITE YOUR SQUAD</h3>
+        <button type="button" class="btn-copy" id="close-share-x" aria-label="Close" style="padding: 4px 10px; border-radius: 50%; font-size: 0.85rem; border: none; background: rgba(255,255,255,0.08); cursor: pointer;">✕</button>
       </div>
 
-      <!-- Mode Selector Tabs: Active/Instant Squad Room vs Arcade Hub -->
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin: 6px 0 10px;" id="share-tabs-nav">
-        <button type="button" class="filter-tab active" id="tab-share-room" style="font-size: 0.76rem; padding: 6px 8px; justify-content: center; cursor: pointer;">📡 Squad Room</button>
-        <button type="button" class="filter-tab" id="tab-share-hub" style="font-size: 0.76rem; padding: 6px 8px; justify-content: center; cursor: pointer;">🌐 Arcade Hub</button>
+      <!-- Active Squad Room Info (Auto-detected from active game session) -->
+      <div id="share-active-room-box" style="display: none; background: rgba(16, 215, 150, 0.1); border: 1.5px solid rgba(16, 215, 150, 0.45); border-radius: 14px; padding: 9px 12px; margin-bottom: 8px; text-align: center;">
+        <div style="font-size: 0.68rem; text-transform: uppercase; color: var(--text-secondary); font-weight: 800; letter-spacing: 0.08em;" id="share-room-game-title">ACTIVE SQUAD ROOM</div>
+        <div style="font-size: 1.45rem; font-weight: 900; letter-spacing: 0.18em; color: var(--emerald); margin: 2px 0; cursor: pointer;" id="share-room-code-badge" title="Tap to copy Room Code">----</div>
+        <a id="btn-share-rejoin-room" href="#" class="btn-copy" style="display: inline-block; background: rgba(0, 240, 255, 0.15); border-color: var(--cyan); color: #fff; text-decoration: none; font-size: 0.78rem; padding: 5px 12px; border-radius: 8px; margin-top: 4px; font-weight: 700;">
+          🚀 Rejoin Active Room
+        </a>
       </div>
 
-      <!-- Active Squad Room Info / Quick Launcher -->
-      <div id="share-room-controls" style="margin-bottom: 6px;">
-        <div id="share-active-room-box" style="display: none; background: rgba(16, 215, 150, 0.08); border: 1px solid rgba(16, 215, 150, 0.35); border-radius: 12px; padding: 8px 10px; margin-bottom: 8px;">
-          <div style="font-size: 0.68rem; text-transform: uppercase; color: var(--text-secondary); letter-spacing: 0.08em;" id="share-room-game-title">ACTIVE SQUAD ROOM</div>
-          <div style="font-size: 1.35rem; font-weight: 900; letter-spacing: 0.16em; color: var(--emerald);" id="share-room-code-badge">----</div>
-        </div>
+      <p id="share-modal-sub" style="color: var(--text-secondary); font-size: 0.78rem; margin: 0 0 8px; line-height: 1.4;">
+        Scan with any phone camera or share to WhatsApp to play free with friends:
+      </p>
 
-        <div id="share-create-room-box" style="display: flex; flex-direction: column; gap: 6px; margin-bottom: 8px;">
-          <span style="font-size: 0.72rem; color: var(--text-secondary); font-weight: 700;">SELECT GAME TO GENERATE SQUAD ROOM:</span>
-          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px;">
-            <button type="button" class="filter-tab active" id="btn-pick-mralien" data-game="mr-alien" style="font-size: 0.72rem; padding: 6px 2px; justify-content: center; cursor: pointer;">👽 Alien</button>
-            <button type="button" class="filter-tab" id="btn-pick-secretdictator" data-game="secret-dictator" style="font-size: 0.72rem; padding: 6px 2px; justify-content: center; cursor: pointer;">👑 Dictator</button>
-            <button type="button" class="filter-tab" id="btn-pick-paranoia" data-game="paranoia" style="font-size: 0.72rem; padding: 6px 2px; justify-content: center; cursor: pointer;">🪙 Paranoia</button>
-          </div>
-        </div>
-      </div>
-
-      <p id="share-modal-sub" style="color: var(--text-secondary); font-size: 0.8rem; margin: 0 0 6px;">Scan with phone camera or share to WhatsApp to join instantly:</p>
-
-      <div class="qr-box" style="margin: 6px 0 10px; padding: 10px; background: #fff; border-radius: 16px; display: inline-flex; justify-content: center; align-items: center; box-shadow: 0 8px 30px rgba(0,0,0,0.5);">
-        <canvas id="share-qr-canvas" width="180" height="180" style="display: block; border-radius: 6px;"></canvas>
+      <div class="qr-box" style="margin: 4px 0 10px; padding: 10px; background: #fff; border-radius: 16px; display: inline-flex; justify-content: center; align-items: center; box-shadow: 0 8px 30px rgba(0,0,0,0.5);">
+        <canvas id="share-qr-canvas" width="170" height="170" style="display: block; border-radius: 6px;"></canvas>
       </div>
 
       <div class="modal-actions" style="gap: 7px;">
-        <a class="btn-wa" id="share-wa-link" href="#" target="_blank" rel="noopener" style="padding: 0.65rem 1rem; font-size: 0.86rem;">
+        <a class="btn-wa" id="share-wa-link" href="#" target="_blank" rel="noopener" style="padding: 0.65rem 1rem; font-size: 0.86rem; background: #25d366; color: #000; font-weight: 800; border-radius: 12px; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 6px;">
           <span>💬</span>
-          <span id="share-wa-label">Send to WhatsApp Squad</span>
+          <span id="share-wa-label">Invite Squad on WhatsApp</span>
         </a>
-        <button type="button" class="btn-copy" id="copy-link-btn" style="font-size: 0.82rem; padding: 0.6rem 1rem;">🔗 Copy Join Link</button>
-        <a id="btn-share-launch-room" href="#" class="btn-copy" style="display: none; background: rgba(0, 240, 255, 0.15); border-color: var(--cyan); color: #fff; text-decoration: none; font-size: 0.82rem; padding: 0.6rem 1rem;">
-          🚀 Open Room as Host
-        </a>
-        <button type="button" class="btn-copy" id="close-share-btn" style="background: transparent; border-color: transparent; color: var(--text-secondary); padding: 0.35rem;">Close</button>
+        <button type="button" class="btn-copy" id="copy-link-btn" style="font-size: 0.82rem; padding: 0.6rem 1rem; border-radius: 12px; cursor: pointer;">
+          🔗 Copy Invite Link
+        </button>
+        <button type="button" class="btn-copy" id="share-native-btn" style="display: none; font-size: 0.82rem; padding: 0.55rem 1rem; border-radius: 12px; cursor: pointer; background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.15);">
+          📲 More Share Options
+        </button>
+
+        <button type="button" id="share-toggle-hub-btn" style="display: none; background: transparent; border: none; color: var(--cyan); font-size: 0.74rem; text-decoration: underline; cursor: pointer; padding: 3px; margin-top: 1px;">
+          🌐 Or Share Arcade Hub Link Instead
+        </button>
+
+        <!-- Quick 1-Tap Room Hosting Launcher (shown when NO active room exists) -->
+        <div id="share-host-games-box" style="margin-top: 6px; padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.08); text-align: center;">
+          <div style="font-size: 0.66rem; text-transform: uppercase; color: var(--text-secondary); font-weight: 800; letter-spacing: 0.08em; margin-bottom: 6px;">
+            🎮 HOST A MULTI-PHONE ROOM:
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 5px;">
+            <a href="/mr-alien/?host=1" class="filter-tab" style="font-size: 0.72rem; padding: 5px 6px; justify-content: center; text-decoration: none; color: #fff; background: rgba(255,255,255,0.04); border-radius: 8px;">👽 Mr. Alien</a>
+            <a href="/secret-dictator/?host=1" class="filter-tab" style="font-size: 0.72rem; padding: 5px 6px; justify-content: center; text-decoration: none; color: #fff; background: rgba(255,255,255,0.04); border-radius: 8px;">👑 Dictator</a>
+            <a href="/wavelength/?host=1" class="filter-tab" style="font-size: 0.72rem; padding: 5px 6px; justify-content: center; text-decoration: none; color: #fff; background: rgba(255,255,255,0.04); border-radius: 8px;">🧠 Wavelength</a>
+            <a href="/paranoia/?host=1" class="filter-tab" style="font-size: 0.72rem; padding: 5px 6px; justify-content: center; text-decoration: none; color: #fff; background: rgba(255,255,255,0.04); border-radius: 8px;">🪙 Paranoia</a>
+          </div>
+        </div>
+
+        <button type="button" class="btn-copy" id="close-share-btn" style="background: transparent; border-color: transparent; color: var(--text-secondary); padding: 0.35rem; font-size: 0.8rem; cursor: pointer;">Close</button>
       </div>
     </div>
   </div>
@@ -2523,18 +2531,7 @@
     // 2. DYNAMIC SQUAD ROOM QR & INVITE ENGINE
     // ==========================================
     const shareModal = document.getElementById('share-modal');
-    let shareCurrentMode = 'room'; // 'room' | 'hub'
-    let selectedSquadGame = 'mr-alien';
-    let generatedSquadRoomCode = '';
-
-    function generate5LetterCode() {
-      const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
-      let res = '';
-      for (let i = 0; i < 5; i++) {
-        res += chars.charAt(Math.floor(Math.random() * chars.length));
-      }
-      return res;
-    }
+    let shareForceHubMode = false;
 
     function getActiveSquadRoom() {
       // 1. Mr. Alien online room
@@ -2588,20 +2585,39 @@
         }
       } catch (_) {}
 
+      // 4. Wavelength room
+      try {
+        const wlRaw = localStorage.getItem('wavelength_active_room_v1');
+        if (wlRaw) {
+          const s = JSON.parse(wlRaw);
+          if (s && s.roomCode) {
+            return {
+              gameId: 'wavelength',
+              title: 'Wavelength 🧠',
+              slug: 'wavelength',
+              code: s.roomCode,
+              round: (s.matchState && s.matchState.round) || 1
+            };
+          }
+        }
+      } catch (_) {}
+
       return null;
     }
 
-    function renderShareQr(targetUrl) {
+    function renderShareQr(targetUrl, retryCount = 0) {
       const canvas = document.getElementById('share-qr-canvas');
       if (!canvas) return;
       if (typeof QRCodeLib !== 'undefined' && QRCodeLib.toCanvas) {
         QRCodeLib.toCanvas(canvas, targetUrl, {
-          width: 180,
+          width: 170,
           margin: 1,
           color: { dark: '#050714', light: '#ffffff' }
         }, function(err) {
           if (err) console.error('QR error', err);
         });
+      } else if (retryCount < 6) {
+        setTimeout(() => renderShareQr(targetUrl, retryCount + 1), 200);
       }
     }
 
@@ -2609,137 +2625,144 @@
       const origin = window.location.origin || 'https://partynights.online';
       const activeRoom = getActiveSquadRoom();
 
-      const tabRoom = document.getElementById('tab-share-room');
-      const tabHub = document.getElementById('tab-share-hub');
       const activeBox = document.getElementById('share-active-room-box');
-      const createBox = document.getElementById('share-create-room-box');
-      const launchBtn = document.getElementById('btn-share-launch-room');
+      const hostBox = document.getElementById('share-host-games-box');
+      const toggleHubBtn = document.getElementById('share-toggle-hub-btn');
       const subEl = document.getElementById('share-modal-sub');
       const titleEl = document.getElementById('share-modal-title');
       const waLink = document.getElementById('share-wa-link');
       const waLabel = document.getElementById('share-wa-label');
       const copyBtn = document.getElementById('copy-link-btn');
+      const nativeShareBtn = document.getElementById('share-native-btn');
+      const rejoinBtn = document.getElementById('btn-share-rejoin-room');
 
-      if (shareCurrentMode === 'hub') {
-        tabRoom.classList.remove('active');
-        tabHub.classList.add('active');
-        document.getElementById('share-room-controls').style.display = 'none';
-        launchBtn.style.display = 'none';
-        titleEl.textContent = '🌐 ARCADE HUB QR';
-        titleEl.style.color = 'var(--cyan)';
-        subEl.textContent = 'Scan with any phone camera or share to WhatsApp to play free:';
+      let targetUrl = `${origin}/`;
+      let shareTitle = 'PartyNights.online — Free Instant Party Games';
+      let shareText = '🎮 Play free party games with me on PartyNights.online! Zero downloads, pass 1 phone or join rooms: ' + targetUrl;
 
-        const hubUrl = `${origin}/`;
-        renderShareQr(hubUrl);
-
-        const waMsg = `🎮 Join our house party games arcade on PartyNights.online! Free browser party games: ${hubUrl}`;
-        waLink.href = `https://api.whatsapp.com/send?text=${encodeURIComponent(waMsg)}`;
-        waLabel.textContent = 'Send PartyNights to WhatsApp';
-        copyBtn.textContent = '🔗 Copy Hub Link';
-        copyBtn.onclick = async () => {
-          ArcadeSFX.click();
-          try {
-            await navigator.clipboard.writeText(hubUrl);
-            copyBtn.textContent = '✅ Hub Link Copied!';
-            setTimeout(() => { copyBtn.textContent = '🔗 Copy Hub Link'; }, 2000);
-          } catch (_) {}
-        };
-      } else {
-        tabRoom.classList.add('active');
-        tabHub.classList.remove('active');
-        document.getElementById('share-room-controls').style.display = 'block';
-        titleEl.textContent = '📡 SQUAD ROOM QR';
+      if (activeRoom && !shareForceHubMode) {
+        titleEl.textContent = '📡 ACTIVE SQUAD ROOM';
         titleEl.style.color = 'var(--emerald)';
-
-        let targetUrl = '';
-        let roomCode = '';
-        let gameName = '';
-
-        if (activeRoom) {
-          activeBox.style.display = 'block';
-          createBox.style.display = 'none';
-          launchBtn.style.display = 'block';
-          document.getElementById('share-room-game-title').textContent = `ACTIVE SQUAD ROOM: ${activeRoom.title}`;
-          document.getElementById('share-room-code-badge').textContent = activeRoom.code;
-
-          roomCode = activeRoom.code;
-          gameName = activeRoom.title;
-          targetUrl = `${origin}/${activeRoom.slug}/?room=${encodeURIComponent(roomCode)}`;
-          launchBtn.href = `/${activeRoom.slug}/?room=${encodeURIComponent(roomCode)}`;
-          launchBtn.textContent = `🚀 Rejoin ${activeRoom.title} Room`;
-          subEl.textContent = `Active squad room found! Friends scan below to join round ${activeRoom.round}:`;
-        } else {
-          activeBox.style.display = 'none';
-          createBox.style.display = 'flex';
-          launchBtn.style.display = 'block';
-          if (!generatedSquadRoomCode) generatedSquadRoomCode = generate5LetterCode();
-          roomCode = generatedSquadRoomCode;
-
-          const gameMap = {
-            'mr-alien': { name: 'Mr. Alien 👽', slug: 'mr-alien' },
-            'secret-dictator': { name: 'Secret Dictator 👑', slug: 'secret-dictator' },
-            'paranoia': { name: 'Paranoia: Exposed 🪙', slug: 'paranoia' }
-          };
-          const sel = gameMap[selectedSquadGame] || gameMap['mr-alien'];
-          gameName = sel.name;
-          targetUrl = `${origin}/${sel.slug}/?room=${encodeURIComponent(roomCode)}`;
-          launchBtn.href = `/${sel.slug}/?room=${encodeURIComponent(roomCode)}`;
-          launchBtn.textContent = `🚀 Launch ${sel.name} Room (${roomCode})`;
-          subEl.textContent = `Scan with phone camera or share to WhatsApp to join Room ${roomCode}:`;
+        if (activeBox) activeBox.style.display = 'block';
+        if (hostBox) hostBox.style.display = 'none';
+        if (toggleHubBtn) {
+          toggleHubBtn.style.display = 'inline-block';
+          toggleHubBtn.textContent = '🌐 Or Share Arcade Hub Link Instead';
         }
 
-        renderShareQr(targetUrl);
+        const roomGameTitle = document.getElementById('share-room-game-title');
+        if (roomGameTitle) roomGameTitle.textContent = `ACTIVE ROOM: ${activeRoom.title}`;
+        const roomCodeBadge = document.getElementById('share-room-code-badge');
+        if (roomCodeBadge) roomCodeBadge.textContent = activeRoom.code;
 
-        const waMsg = `🎮 Join our ${gameName} squad room (${roomCode}) on PartyNights.online! Tap to play: ${targetUrl}`;
-        waLink.href = `https://api.whatsapp.com/send?text=${encodeURIComponent(waMsg)}`;
-        waLabel.textContent = `Send Room ${roomCode} to WhatsApp Squad`;
-        copyBtn.textContent = `🔗 Copy Room ${roomCode} Link`;
+        if (rejoinBtn) {
+          rejoinBtn.href = `/${activeRoom.slug}/?room=${encodeURIComponent(activeRoom.code)}`;
+          rejoinBtn.textContent = `🚀 Rejoin ${activeRoom.title}`;
+        }
+
+        subEl.textContent = `Friends scan below with phone cameras to join Round ${activeRoom.round} instantly:`;
+        targetUrl = `${origin}/${activeRoom.slug}/?room=${encodeURIComponent(activeRoom.code)}`;
+        shareTitle = `${activeRoom.title} Squad Room (${activeRoom.code})`;
+        shareText = `🎮 Join our ${activeRoom.title} squad room (${activeRoom.code}) on PartyNights.online! Tap to play: ${targetUrl}`;
+
+        waLabel.textContent = `Send Room ${activeRoom.code} to WhatsApp`;
+        copyBtn.textContent = `🔗 Copy Room ${activeRoom.code} Link`;
         copyBtn.onclick = async () => {
           ArcadeSFX.click();
           try {
             await navigator.clipboard.writeText(targetUrl);
             copyBtn.textContent = '✅ Room Link Copied!';
-            setTimeout(() => { copyBtn.textContent = `🔗 Copy Room ${roomCode} Link`; }, 2000);
+            setTimeout(() => { copyBtn.textContent = `🔗 Copy Room ${activeRoom.code} Link`; }, 2000);
+          } catch (_) {}
+        };
+      } else {
+        titleEl.textContent = '📲 INVITE YOUR SQUAD';
+        titleEl.style.color = 'var(--cyan)';
+        if (activeBox) activeBox.style.display = 'none';
+        if (hostBox) hostBox.style.display = 'block';
+        if (toggleHubBtn) {
+          if (activeRoom) {
+            toggleHubBtn.style.display = 'inline-block';
+            toggleHubBtn.textContent = `📡 Switch Back to ${activeRoom.title} Room (${activeRoom.code})`;
+          } else {
+            toggleHubBtn.style.display = 'none';
+          }
+        }
+
+        subEl.textContent = 'Scan with any phone camera or share to WhatsApp to play free with friends:';
+        targetUrl = `${origin}/`;
+        shareTitle = 'PartyNights.online — Free Instant Party Games';
+        shareText = `🎮 Play free party games with me on PartyNights.online! Zero downloads, pass 1 phone or join rooms: ${targetUrl}`;
+
+        waLabel.textContent = 'Invite Squad on WhatsApp';
+        copyBtn.textContent = '🔗 Copy Invite Link';
+        copyBtn.onclick = async () => {
+          ArcadeSFX.click();
+          try {
+            await navigator.clipboard.writeText(targetUrl);
+            copyBtn.textContent = '✅ Invite Link Copied!';
+            setTimeout(() => { copyBtn.textContent = '🔗 Copy Invite Link'; }, 2000);
           } catch (_) {}
         };
       }
+
+      waLink.href = `https://api.whatsapp.com/send?text=${encodeURIComponent(shareText)}`;
+      renderShareQr(targetUrl);
+
+      // Web Share API for native mobile sheet
+      if (nativeShareBtn) {
+        if (typeof navigator !== 'undefined' && typeof navigator.share === 'function') {
+          nativeShareBtn.style.display = 'inline-block';
+          nativeShareBtn.onclick = async () => {
+            ArcadeSFX.click();
+            try {
+              await navigator.share({
+                title: shareTitle,
+                text: shareText,
+                url: targetUrl
+              });
+            } catch (_) {}
+          };
+        } else {
+          nativeShareBtn.style.display = 'none';
+        }
+      }
     }
 
-    document.getElementById('tab-share-room').addEventListener('click', () => {
-      ArcadeSFX.click();
-      shareCurrentMode = 'room';
-      updateShareModalContent();
-    });
-    document.getElementById('tab-share-hub').addEventListener('click', () => {
-      ArcadeSFX.click();
-      shareCurrentMode = 'hub';
-      updateShareModalContent();
-    });
+    const toggleHubBtn = document.getElementById('share-toggle-hub-btn');
+    if (toggleHubBtn) {
+      toggleHubBtn.addEventListener('click', () => {
+        ArcadeSFX.click();
+        shareForceHubMode = !shareForceHubMode;
+        updateShareModalContent();
+      });
+    }
 
-    ['btn-pick-mralien', 'btn-pick-secretdictator', 'btn-pick-paranoia'].forEach((btnId) => {
-      const btn = document.getElementById(btnId);
-      if (btn) {
-        btn.addEventListener('click', () => {
-          ArcadeSFX.click();
-          selectedSquadGame = btn.getAttribute('data-game');
-          ['btn-pick-mralien', 'btn-pick-secretdictator', 'btn-pick-paranoia'].forEach((id) => {
-            document.getElementById(id).classList.toggle('active', id === btnId);
-          });
-          generatedSquadRoomCode = generate5LetterCode();
-          updateShareModalContent();
-        });
-      }
-    });
+    const roomCodeBadge = document.getElementById('share-room-code-badge');
+    if (roomCodeBadge) {
+      roomCodeBadge.addEventListener('click', async () => {
+        const activeRoom = getActiveSquadRoom();
+        if (!activeRoom) return;
+        ArcadeSFX.click();
+        try {
+          await navigator.clipboard.writeText(activeRoom.code);
+          const orig = roomCodeBadge.textContent;
+          roomCodeBadge.textContent = 'COPIED!';
+          setTimeout(() => { roomCodeBadge.textContent = orig; }, 1500);
+        } catch (_) {}
+      });
+    }
 
     document.getElementById('open-share-btn').addEventListener('click', () => {
       ArcadeSFX.click();
-      generatedSquadRoomCode = generate5LetterCode();
+      shareForceHubMode = false;
       updateShareModalContent();
       shareModal.classList.add('open');
       if (window.history && window.history.pushState) {
         try { window.history.pushState({ pnModal: 'share' }, ''); } catch (_) {}
       }
     });
+
     document.getElementById('close-share-btn').addEventListener('click', () => {
       shareModal.classList.remove('open');
     });

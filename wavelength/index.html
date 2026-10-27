@@ -7,76 +7,9 @@
 <title>Wavelength (Mind Sync) — Free Instant Party Game | PartyNights.online</title>
 <meta name="description" content="Play Wavelength (Mind Sync) with friends directly in your browser. Zero downloads, pass one phone or play in teams!" />
 <link rel="canonical" href="https://partynights.online/wavelength/" />
-<link rel="icon" href="/favicon.ico" sizes="any" />
-<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
-<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
-<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png" />
-<link rel="icon" type="image/png" sizes="512x512" href="/favicon-512x512.png" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-<link rel="shortcut icon" href="/favicon.ico" />
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": ["VideoGame", "SoftwareApplication"],
-      "@id": "https://partynights.online/wavelength/#game",
-      "name": "Wavelength — Telepathic Spectrum Dial Party Game",
-      "alternateName": ["Wavelength", "Wavelength Online", "Wavelength Game Free"],
-      "url": "https://partynights.online/wavelength/",
-      "image": "https://partynights.online/wavelength/og-banner.png",
-      "description": "235+ telepathic spectrum cards across 6 decks. Turn the semicircular dial, tune in to your psychic's clue, and score bullseyes with friends.",
-      "genre": ["Mind Sync", "Party Game", "Debate Game"],
-      "gamePlatform": ["Web Browser", "Mobile Phone", "Smart TV", "Tablet"],
-      "applicationCategory": "GameApplication",
-      "operatingSystem": "All (Web Browser, iOS, Android, TV)",
-      "playMode": "MultiPlayer",
-      "numberOfPlayers": {
-        "@type": "QuantitativeValue",
-        "minValue": 2,
-        "maxValue": 20
-      },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.8",
-        "ratingCount": "1150",
-        "bestRating": "5",
-        "worstRating": "1"
-      },
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD",
-        "availability": "https://schema.org/InStock"
-      },
-      "author": {
-        "@type": "Organization",
-        "name": "PartyNights.online",
-        "url": "https://partynights.online/"
-      }
-    },
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Arcade Home",
-          "item": "https://partynights.online/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Wavelength",
-          "item": "https://partynights.online/wavelength/"
-        }
-      ]
-    }
-  ]
-}
-</script>
+<link rel="manifest" href="./manifest.json" />
+<link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png" />
 <meta name="mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -254,8 +187,9 @@ FREE PARTY GAME ONLINE • HOUSE PARTY GAMES WITH FRIENDS
 <span class="room-code-val" id="tv-room-code-val">WAVE</span>
 </div>
 <div class="room-code-buttons">
+<button type="button" class="btn-copy-code" id="btn-show-wl-qr" title="Scan QR Code" style="border-color: rgba(16, 215, 150, 0.45); color: #10d796; background: rgba(16, 215, 150, 0.1);">📱 QR</button>
 <button type="button" class="btn-copy-code" id="btn-copy-room-link" title="Copy Invite Link">🔗 Link</button>
-<button type="button" class="btn-copy-code" id="btn-share-room-whatsapp" title="Share via WhatsApp">📲 WhatsApp</button>
+<button type="button" class="btn-copy-code" id="btn-share-room-whatsapp" title="Share via WhatsApp">💬 WhatsApp</button>
 </div>
 </div>
 <div class="room-join-banner">
@@ -840,6 +774,29 @@ Your squad is in the middle of a Wavelength match! Leaving now will end the curr
 <label id="ios-haptic-label" for="ios-haptic-switch" aria-hidden="true" style="position:fixed;left:-9999px;top:-9999px;opacity:0;pointer-events:none;">
 <input type="checkbox" switch id="ios-haptic-switch" />
 </label>
+<div id="modal-squad-room-qr" class="modal-backdrop" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="wl-qr-modal-title">
+<div class="modal-sheet" style="text-align: center; max-width: 380px; padding: 1.35rem; background: #121426; border: 1px solid rgba(16, 215, 150, 0.35); border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.8); margin: auto;">
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem;">
+<span class="modal-title" id="wl-qr-modal-title" style="font-size: 1.15rem; font-weight: 900; letter-spacing: 0.05em; color: var(--cyan, #00f0ff);">📡 SQUAD ROOM QR</span>
+<button class="circle-btn" id="btn-close-wl-qr" type="button" style="width: 32px; height: 32px; border-radius: 50%; border: none; background: rgba(255,255,255,0.08); color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center;">✕</button>
+</div>
+<p style="font-size: 0.8rem; color: rgba(255,255,255,0.65); margin: 0 0 10px;">Friends scan this code with their phone camera to join Wavelength room!</p>
+<div style="background: #fff; padding: 10px; border-radius: 16px; display: inline-flex; justify-content: center; align-items: center; box-shadow: 0 8px 30px rgba(0,0,0,0.6);">
+<canvas id="wl-squad-room-qr-canvas" width="180" height="180" style="display: block; border-radius: 8px;"></canvas>
+</div>
+<div style="margin-top: 10px; font-size: 1.35rem; font-weight: 900; letter-spacing: 0.18em; color: #10d796;" id="wl-qr-modal-room-code">----</div>
+<div style="display: flex; flex-direction: column; width: 100%; gap: 8px; margin-top: 12px;">
+<button type="button" class="btn-launch" id="btn-wl-qr-whatsapp" style="height: 42px; background: #25d366; color: #000; font-weight: 800; font-size: 0.86rem; border-radius: 12px; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;">
+<span>💬</span>
+<span>Send to WhatsApp Squad</span>
+</button>
+<button type="button" class="btn-ghost" id="btn-wl-qr-copy" style="height: 40px; font-size: 0.82rem; border-radius: 12px; cursor: pointer;">
+📋 Copy Direct Join Link
+</button>
+</div>
+</div>
+</div>
+<script src="/qr-engine.min.js"></script>
 <script src="./app.min.js?v=6"></script>
 <script src="/ads-engine.js" defer></script>
 </body>

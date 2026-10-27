@@ -82,61 +82,70 @@
 <button type="button" class="tiny-pill-btn" id="btn-exit-tv-stage">📱 Phone View</button>
 </div>
 <section id="screen-landing" class="screen active">
-<div class="landing-top-cluster">
-<div class="hero-badge">
-<span class="badge-dot"></span>
-<span id="landing-vault-count">205+ Bizarre Facts Ready</span>
+<div class="landing-wrap">
+<div class="signal-pill">
+<span class="signal-dot"></span>
+<span id="landing-vault-count">205+ Bizarre Facts • Or Play Online Free</span>
 </div>
-<div class="hero-centerpiece">
-<div class="hero-cap-stage">
-<div class="hero-stamp stamp-fact">FACT ✅</div>
-<div class="hero-cap-icon">🧢</div>
-<div class="hero-stamp stamp-cap">CAP ❌</div>
+<div class="holo-stage" id="easter-egg-holo" title="Fact or Cap Core">
+<div class="holo-ring r1"></div>
+<div class="holo-ring r2"></div>
+<div class="holo-ring r3"></div>
+<div class="holo-beam"></div>
+<div class="holo-core">🧢</div>
 </div>
-<h1 class="hero-title">
-<span>Fact or</span>
-<span class="title-gradient">Cap?</span>
-</h1>
+<div class="hero-text-block">
+<h1 class="hero-title">FACT OR CAP?</h1>
 <p class="hero-subtitle">
 Write clever lies. Spot the real truth.
 </p>
-<button type="button" class="rules-hint-pill" id="btn-landing-rules">💡 How to Play (10-Sec Rules) →</button>
+<div id="landing-example-card" class="example-duel-card" title="Tap for 10-Second How-to-Play Guide">
+<div class="example-header-row">
+<span class="example-header-tag">💡 10-SECOND REAL EXAMPLE</span>
+<span class="example-header-rules">Tap for Rules ❓</span>
+</div>
+<div class="example-duel-grid">
+<div class="example-duel-box fact-side">
+<div class="duel-side-label">📜 REAL FACT</div>
+<div class="duel-side-val">🐊 Live alligator</div>
+</div>
+<div class="example-duel-box cap-side">
+<div class="duel-side-label">✍️ SQUAD'S LIE (CAP)</div>
+<div class="duel-side-val">Baby python</div>
 </div>
 </div>
-<div class="landing-bottom-cluster">
-<div class="landing-action-grid">
-<button type="button" class="primary-glow-btn" id="btn-play-couch">
-<span class="btn-icon">📱</span>
-<strong class="btn-main-label">Pass 1 Phone (Couch Mode)</strong>
-<span class="btn-arrow">→</span>
-</button>
-<div class="landing-secondary-grid">
-<button type="button" class="secondary-neon-btn" id="btn-play-room">
-<span class="btn-icon">🌐</span>
-<span>Online Room</span>
-</button>
-<button type="button" class="secondary-neon-btn" id="btn-play-tv">
-<span class="btn-icon">📺</span>
-<span>TV Stage</span>
-</button>
 </div>
+</div>
+<div class="landing-actions-cluster">
+<button type="button" id="btn-play-couch" class="btn-launch">
+<span>📱 Pass 1 Phone (Couch Mode)</span>
+<span>→</span>
+</button>
+<button type="button" id="btn-play-room" class="btn-ghost btn-room-ghost">
+<span>🌐 Play Online (Multi-Phone / TV Board)</span>
+</button>
+<div class="landing-tri-actions">
+<button type="button" id="btn-landing-rules" class="btn-ghost btn-sub-action">
+<span>❓ How to Play</span>
+</button>
+<button type="button" id="btn-landing-ranks" class="btn-ghost btn-sub-action">
+<span>🏆 Ranks</span>
+</button>
+<button type="button" id="btn-landing-share" class="btn-ghost btn-sub-action">
+<span>📲 Share</span>
+</button>
 </div>
 <div class="join-room-card">
-<span class="join-label">ENTER ROOM CODE</span>
 <div class="join-input-group">
 <input type="text" id="input-join-code" class="code-input" placeholder="CODE" maxlength="5" autocomplete="off" autocorrect="off" autocapitalize="characters" />
 <input type="text" id="input-join-name" class="name-input" placeholder="Your Name" maxlength="18" autocomplete="off" />
 <button type="button" class="join-btn" id="btn-submit-join">Join →</button>
 </div>
 </div>
+<div class="landing-footer-meta">
+PARTYNIGHTS.ONLINE • P2P & SERVER VAULT PROTECTED
 </div>
-<div class="ad-slot-wrapper" id="ad-landing-slot" aria-label="Sponsored">
-<div class="ad-slot-label">SPONSORED • PARTYNIGHTS ARCADE</div>
-<ins class="adsbygoogle"
-style="display:block; max-height:80px;"
-data-ad-client="ca-pub-5935694635631350"
-data-ad-format="horizontal"
-data-full-width-responsive="true"></ins>
+</div>
 </div>
 </section>
 <section id="screen-setup" class="screen">
