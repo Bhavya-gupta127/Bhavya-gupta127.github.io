@@ -1471,16 +1471,15 @@
       </div>
 
       <div class="hud-controls">
-        <button type="button" class="hud-btn" id="hub-family-mode-btn" title="Toggle Family & Kids Safe Mode Across All 4 Games" aria-pressed="false" style="gap: 0.35rem; padding: 0.42rem 0.7rem;">
+        <button type="button" class="hud-btn" id="hub-family-mode-btn" title="Toggle Family &amp; Kids Safe Mode Across All Games" aria-pressed="false" style="gap: 0.35rem; padding: 0.42rem 0.65rem;">
           <span id="hub-family-icon">👨‍👩‍👧‍👦</span>
-          <span class="btn-label" id="hub-family-label">Family Mode: Off</span>
+          <span class="btn-label" id="hub-family-label">Family: OFF</span>
         </button>
-        <button type="button" class="hud-btn icon-only" id="sfx-toggle-btn" title="Toggle Arcade UI Sound">
+        <button type="button" class="hud-btn icon-only" id="sfx-toggle-btn" title="Toggle Arcade Sound">
           <span id="sfx-icon">🔊</span>
         </button>
-        <button type="button" class="hud-btn" id="open-share-btn">
+        <button type="button" class="hud-btn icon-only" id="open-share-btn" title="Squad Room QR / Invite">
           <span>📲</span>
-          <span class="btn-label">Room QR / Invite</span>
         </button>
       </div>
     </div>
@@ -1513,12 +1512,8 @@
             <span class="beacon-dot"></span>
             <span>READY</span>
           </span>
-          <h1 class="deck-title">Select Game Cartridge</h1>
+          <h1 class="deck-title">Pick a Game</h1>
         </div>
-        <button type="button" class="tv-mode-toggle-pill" id="tv-mode-toggle-btn" aria-pressed="false" title="Toggle Common Screen TV / Laptop / Projector Board Mode (?tv=1)">
-          <span>📺</span>
-          <span id="tv-mode-toggle-label">TV / Projector Mode</span>
-        </button>
       </div>
 
       <div class="deck-tabs" id="category-filters" role="tablist">
@@ -1533,65 +1528,15 @@
     <!-- 3D GAME CARTRIDGES GRID (IMMEDIATELY ABOVE THE FOLD) -->
     <section aria-label="Playable Party Games">
       <div class="games-deck-grid" id="games-grid"></div>
-
-      <div class="coming-soon-slot">
-        <div style="display: flex; align-items: center; gap: 0.55rem;">
-          <span class="slot-pill">Next Drops</span>
-          <span>New party cartridges unlock automatically.</span>
-        </div>
-      </div>
     </section>
 
-    <!-- SECONDARY ZONES BELOW THE GAMES (1-ROW HOW IT WORKS + COLLAPSED FAQ + AD SLOT) -->
-    <div class="secondary-zones">
-      <section id="how-it-works">
-        <h2 class="zone-title"><span>🕹️</span> <span>How The Arcade Works</span></h2>
-        <div class="hud-steps-strip">
-          <div class="hud-step-pill">
-            <span class="step-num-orb">1</span>
-            <div class="step-pill-text">Pick a Game Cartridge<small>Mr. Alien, Secret Dictator, Wavelength, Paranoia &amp; Charades Rush</small></div>
-          </div>
-          <div class="hud-step-pill">
-            <span class="step-num-orb">2</span>
-            <div class="step-pill-text">1-Phone, Room Code or 📺 TV<small>Project the board on Laptop/TV &amp; use phones as controllers</small></div>
-          </div>
-          <div class="hud-step-pill">
-            <span class="step-num-orb">3</span>
-            <div class="step-pill-text">Bluff, Sync &amp; Share<small>One-tap victory cards for WhatsApp &amp; IG</small></div>
-          </div>
-        </div>
-      </section>
-
-      <section id="faq">
-        <h2 class="zone-title"><span>⚡</span> <span>House Party FAQ</span></h2>
-        <div class="faq-grid">
-          <details class="faq-box">
-            <summary>Do friends need to install an app?</summary>
-            <p>No! Every game on <strong>PartyNights.online</strong> runs directly in your browser with zero downloads.</p>
-          </details>
-          <details class="faq-box">
-            <summary>Can we play on 1 phone, multiple phones, or a TV / Laptop?</summary>
-            <p>Yes! Pass 1 Phone on the couch, join on your own phones via Room Code, or toggle <strong>📺 TV / Projector Mode</strong> on a laptop/TV to display the shared board while everyone uses their phone as a private controller.</p>
-          </details>
-          <details class="faq-box">
-            <summary>What games are live in the Arcade?</summary>
-            <p>Play <strong>Mr. Alien (👽)</strong>, <strong>Secret Dictator (👑)</strong>, <strong>Wavelength (🧠)</strong>, <strong>Paranoia: Exposed (🪙)</strong>, and <strong>Charades Rush (🎭)</strong>.</p>
-          </details>
-          <details class="faq-box">
-            <summary>Does it work offline once loaded?</summary>
-            <p>Yes—games cache their assets via a PWA Service Worker so your round never drops on weak Wi-Fi.</p>
-          </details>
-        </div>
-      </section>
-
-      <!-- AdSense Slot (Strictly at bottom of lobby, never interrupting active rounds) -->
-      <div class="ad-slot" id="ad-container">
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-5935694635631350"
-             data-ad-format="auto"
-             data-full-width-responsive="true"></ins>
-      </div>
+    <!-- AdSense Slot (Strictly at bottom of lobby, never interrupting active rounds) -->
+    <div class="ad-slot" id="ad-container" style="margin-top: 1.5rem;">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-5935694635631350"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
     </div>
   </main>
 
@@ -1684,8 +1629,8 @@
   </footer>
 
   <script src="./qr-engine.min.js"></script>
-  <script src="/games.js"></script>
-  <script src="/ads-engine.js" defer></script>
+  <script src="./games.js"></script>
+  <script src="./ads-engine.js" defer></script>
   <script>
     // ==========================================
     // 1. ARCADE SYNTH UI SOUND FX (WebAudio API)
@@ -1985,6 +1930,9 @@
     }
 
     function renderGames() {
+      if (gamesList.length === 0 && window.PARTY_GAMES && window.PARTY_GAMES.length > 0) {
+        gamesList.push(...window.PARTY_GAMES);
+      }
       const filtered = gamesList.filter(g => {
         if (activeFilter === 'all') return true;
         const f = activeFilter.toLowerCase();
@@ -2531,7 +2479,7 @@
       function syncHubFamilyBtn() {
         const isFam = localStorage.getItem('pn_family_mode_v1') === '1';
         btn.setAttribute('aria-pressed', isFam ? 'true' : 'false');
-        label.textContent = isFam ? 'Family Mode: ON' : 'Family Mode: Off';
+        if (label) label.textContent = isFam ? 'Family: ON' : 'Family: OFF';
         btn.style.borderColor = isFam ? 'rgba(16, 215, 150, 0.65)' : '';
         btn.style.background = isFam ? 'rgba(16, 215, 150, 0.16)' : '';
         btn.style.color = isFam ? '#10d796' : '';
