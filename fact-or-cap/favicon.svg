@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <radialGradient id="bgGlow" cx="50%" cy="40%" r="65%">
+      <stop offset="0%" stop-color="#1e1338" />
+      <stop offset="100%" stop-color="#070812" />
+    </radialGradient>
+    <linearGradient id="pnGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff2e63" />
+      <stop offset="55%" stop-color="#a855f7" />
+      <stop offset="100%" stop-color="#10d796" />
+    </linearGradient>
+    <linearGradient id="borderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff2e63" />
+      <stop offset="45%" stop-color="#7c3aed" />
+      <stop offset="100%" stop-color="#10d796" />
+    </linearGradient>
+  </defs>
+
+  <!-- Outer Rounded Crest / App Shield -->
+  <rect x="20" y="20" width="472" height="472" rx="108" fill="url(#bgGlow)" stroke="url(#borderGrad)" stroke-width="20" />
+  
+  <!-- Gamepad & Crown -->
+  <g transform="translate(256, 260) scale(11.2) translate(-18, -18)">
+    <!-- Crown Sparks -->
+    <path d="M11 8L14.5 12L18 6.5L21.5 12L25 8L23.5 13.5H12.5L11 8Z" fill="url(#pnGrad)" />
+    <!-- Futuristic Gamepad Body -->
+    <path d="M7.5 17.5C8.3 14.8 10.7 13 13.5 13H22.5C25.3 13 27.7 14.8 28.5 17.5L30.2 23.4C31 26.2 28.9 29 26 29C24.3 29 22.8 28 22 26.5L20.8 24.5H15.2L14 26.5C13.2 28 11.7 29 10 29C7.1 29 5 26.2 5.8 23.4L7.5 17.5Z" stroke="url(#pnGrad)" stroke-width="2.2" fill="rgba(16,215,150,0.12)" />
+    <!-- D-Pad -->
+    <path d="M12.5 17.8V21.8M10.5 19.8H14.5" stroke="#10d796" stroke-width="2" stroke-linecap="round" />
+    <!-- Action Buttons -->
+    <circle cx="24" cy="18.5" r="1.4" fill="#ff2e63" />
+    <circle cx="21.5" cy="21" r="1.4" fill="#a855f7" />
+  </g>
+</svg>

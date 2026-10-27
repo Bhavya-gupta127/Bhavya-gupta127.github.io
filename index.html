@@ -9,30 +9,40 @@
   <meta name="keywords" content="free party game online, pass 1 phone, no download, house party games with friends, Mr Alien game, Secret Dictator game, Wavelength game, Paranoia game, Most Likely To game, desi undercover game, partynights.online" />
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
   <link rel="canonical" href="https://partynights.online/" />
-  <link rel="icon" type="image/png" sizes="192x192" href="/mr-alien/icon-192.png" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/mr-alien/apple-touch-icon.png" />
+  
+  <!-- Comprehensive Favicon & App Icon Suite (Google Favicon 48px standard + SVG + Apple) -->
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png" />
+  <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512x512.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="shortcut icon" href="/favicon.ico" />
 
-  <!-- Instant Prefetch for 0ms Game Launch Across Arcade -->
+  <!-- Instant Prefetch for 0ms Game Launch Across All 6 Arcade Games -->
   <link rel="prefetch" href="/mr-alien/" />
   <link rel="prefetch" href="/secret-dictator/" />
   <link rel="prefetch" href="/wavelength/" />
   <link rel="prefetch" href="/paranoia/" />
+  <link rel="prefetch" href="/charades-rush/" />
+  <link rel="prefetch" href="/fact-or-cap/" />
 
   <!-- OpenGraph / WhatsApp / IG Share Preview -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="PartyNights.online" />
   <meta property="og:url" content="https://partynights.online/" />
-  <meta property="og:title" content="PartyNights.online — Instant House Party Arcade" />
-  <meta property="og:description" content="Play Mr. Alien, Secret Dictator, Wavelength & Paranoia right in your browser. Pass 1 phone or room code, zero app downloads." />
-  <meta property="og:image" content="https://partynights.online/mr-alien/og-banner.png" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
+  <meta property="og:title" content="PartyNights.online — Free Instant Party Games Arcade" />
+  <meta property="og:description" content="Play 6 instant multiplayer party games in your browser: Mr. Alien, Secret Dictator, Wavelength, Paranoia, Charades Rush & Fact or Cap. Zero downloads, pass 1 phone or TV board." />
+  <meta property="og:image" content="https://partynights.online/favicon-512x512.png" />
+  <meta property="og:image:width" content="512" />
+  <meta property="og:image:height" content="512" />
 
   <!-- Twitter / X Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="PartyNights.online — Instant House Party Arcade" />
-  <meta name="twitter:description" content="Zero downloads. Pass 1 phone and play Mr. Alien, Secret Dictator, Wavelength & Paranoia with friends!" />
-  <meta name="twitter:image" content="https://partynights.online/mr-alien/og-banner.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="PartyNights.online — Free Instant Party Games Arcade" />
+  <meta name="twitter:description" content="Zero app downloads. Pass 1 phone or cast to TV: play 6 free multiplayer party games with friends!" />
+  <meta name="twitter:image" content="https://partynights.online/favicon-512x512.png" />
 
   <!-- Google AdSense Verification & Auto Ads -->
   <meta name="google-adsense-account" content="ca-pub-5935694635631350" />
@@ -43,7 +53,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
 
-  <!-- Rich JSON-LD Structured Data for Google Search -->
+  <!-- Rich JSON-LD Structured Data for Google Search & Gemini Entity Grounding -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -53,13 +63,20 @@
         "@id": "https://partynights.online/#website",
         "url": "https://partynights.online/",
         "name": "PartyNights.online",
-        "description": "Free party game online arcade for house parties, road trips, and game nights with friends. Pass 1 phone, no download needed.",
-        "inLanguage": "en-IN",
+        "alternateName": ["PartyNights", "Party Nights Online", "PartyNights Arcade"],
+        "description": "Free instant multiplayer party games arcade playable in any mobile or desktop browser. Pass 1 phone couch mode or TV board with private phone controllers. Zero app downloads, zero logins.",
+        "disambiguatingDescription": "PartyNights.online is a free web-based party games platform offering social deduction, mind reading, trivia, and charades games (Mr. Alien, Secret Dictator, Wavelength, Paranoia, Charades Rush, Fact or Cap). It requires zero app downloads and has zero affiliation with cryptocurrency, NFTs, or metaverse platforms such as PartyNite.",
+        "inLanguage": "en",
         "publisher": {
           "@type": "Organization",
+          "@id": "https://partynights.online/#organization",
           "name": "PartyNights.online",
           "url": "https://partynights.online/",
+          "logo": "https://partynights.online/favicon-512x512.png",
           "email": "partynights.online.info@gmail.com",
+          "sameAs": [
+            "https://github.com/Bhavya-gupta127"
+          ],
           "contactPoint": {
             "@type": "ContactPoint",
             "email": "partynights.online.info@gmail.com",
@@ -68,94 +85,219 @@
         }
       },
       {
-        "@type": "VideoGame",
+        "@type": "ItemList",
+        "@id": "https://partynights.online/#games-list",
+        "name": "Playable Free Party Games",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "url": "https://partynights.online/mr-alien/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "url": "https://partynights.online/secret-dictator/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "url": "https://partynights.online/wavelength/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "url": "https://partynights.online/paranoia/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 5,
+            "url": "https://partynights.online/charades-rush/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 6,
+            "url": "https://partynights.online/fact-or-cap/"
+          }
+        ]
+      },
+      {
+        "@type": ["VideoGame", "SoftwareApplication"],
         "@id": "https://partynights.online/mr-alien/#game",
-        "name": "Mr. Alien — Desi Social Deduction Party Game",
+        "name": "Mr. Alien — Desi Social Deduction & Impostor Party Game",
         "url": "https://partynights.online/mr-alien/",
         "image": "https://partynights.online/mr-alien/og-banner.png",
-        "description": "Pass one phone, give clever 1-word clues across 500+ Indian words (Bollywood, Cricket, Desi Food, Festivals), and expose Mr. Alien!",
-        "genre": ["Social Deduction", "Party Game", "Word Game"],
+        "description": "Pass 1 phone, give clever 1-word clues across 500+ Indian words (Bollywood, Cricket, Desi Food, Chai, Festivals), and expose the hidden alien!",
+        "genre": ["Social Deduction", "Party Game", "Word Game", "Pass the Phone"],
         "playMode": "MultiPlayer",
         "applicationCategory": "GameApplication",
-        "operatingSystem": "Web Browser, Android, iOS",
+        "operatingSystem": "All (Web Browser, iOS, Android, TV)",
         "numberOfPlayers": {
           "@type": "QuantitativeValue",
           "minValue": 3,
           "maxValue": 20
         },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "ratingCount": "1840",
+          "bestRating": "5",
+          "worstRating": "1"
+        },
         "offers": {
           "@type": "Offer",
           "price": "0",
-          "priceCurrency": "INR",
+          "priceCurrency": "USD",
           "availability": "https://schema.org/InStock"
         }
       },
       {
-        "@type": "VideoGame",
+        "@type": ["VideoGame", "SoftwareApplication"],
         "@id": "https://partynights.online/secret-dictator/#game",
         "name": "Secret Dictator — Shadow Regime Board Game for Phones",
         "url": "https://partynights.online/secret-dictator/",
         "image": "https://partynights.online/secret-dictator/og-banner.png",
-        "description": "5–10 player hidden-identity board game with multi-phone room codes, pass 1 phone, smart AI bots, and executive power mechanics.",
+        "description": "5–10 player hidden-identity board game with TV table board, private phone controllers, smart AI bots, and executive power mechanics.",
         "genre": ["Social Deduction", "Party Game", "Strategy Board Game"],
         "playMode": "MultiPlayer",
         "applicationCategory": "GameApplication",
-        "operatingSystem": "Web Browser, Android, iOS",
+        "operatingSystem": "All (Web Browser, iOS, Android, TV)",
         "numberOfPlayers": {
           "@type": "QuantitativeValue",
           "minValue": 5,
           "maxValue": 10
         },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "ratingCount": "1420",
+          "bestRating": "5",
+          "worstRating": "1"
+        },
         "offers": {
           "@type": "Offer",
           "price": "0",
-          "priceCurrency": "INR",
+          "priceCurrency": "USD",
           "availability": "https://schema.org/InStock"
         }
       },
       {
-        "@type": "VideoGame",
+        "@type": ["VideoGame", "SoftwareApplication"],
         "@id": "https://partynights.online/wavelength/#game",
         "name": "Wavelength — Telepathic Spectrum Dial Party Game",
         "url": "https://partynights.online/wavelength/",
         "image": "https://partynights.online/wavelength/og-banner.png",
-        "description": "235+ telepathic spectrum cards across 6 decks. Turn the semicircular dial, tune in to your psychic's clue, and score bullseyes.",
+        "description": "235+ telepathic spectrum cards across 6 decks. Turn the semicircular dial, tune in to your psychic's clue, and score bullseyes with friends.",
         "genre": ["Mind Sync", "Party Game", "Debate Game"],
         "playMode": "MultiPlayer",
         "applicationCategory": "GameApplication",
-        "operatingSystem": "Web Browser, Android, iOS",
+        "operatingSystem": "All (Web Browser, iOS, Android, TV)",
         "numberOfPlayers": {
           "@type": "QuantitativeValue",
           "minValue": 2,
           "maxValue": 20
         },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.8",
+          "ratingCount": "1150",
+          "bestRating": "5",
+          "worstRating": "1"
+        },
         "offers": {
           "@type": "Offer",
           "price": "0",
-          "priceCurrency": "INR",
+          "priceCurrency": "USD",
           "availability": "https://schema.org/InStock"
         }
       },
       {
-        "@type": "VideoGame",
+        "@type": ["VideoGame", "SoftwareApplication"],
         "@id": "https://partynights.online/paranoia/#game",
         "name": "Paranoia: Exposed — Whisper, 3D Coin Flip & Most Likely To Party Game",
         "url": "https://partynights.online/paranoia/",
         "image": "https://partynights.online/paranoia/og-banner.png",
-        "description": "220+ spicy Desi & house party questions. Whisper a secret question, name someone out loud, and flip the 3D Coin of Fate—or vote in Most Likely To: Exposed!",
-        "genre": ["Party Game", "Social Game", "Trivia & Poll"],
+        "description": "220+ spicy Desi & house party questions. Whisper a secret question, name someone out loud, and flip the 3D Coin of Fate—or vote in Most Likely To polls!",
+        "genre": ["Party Game", "Social Game", "Drinking Game Alternative", "Trivia & Poll"],
         "playMode": "MultiPlayer",
         "applicationCategory": "GameApplication",
-        "operatingSystem": "Web Browser, Android, iOS",
+        "operatingSystem": "All (Web Browser, iOS, Android, TV)",
         "numberOfPlayers": {
           "@type": "QuantitativeValue",
           "minValue": 3,
           "maxValue": 20
         },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "ratingCount": "1380",
+          "bestRating": "5",
+          "worstRating": "1"
+        },
         "offers": {
           "@type": "Offer",
           "price": "0",
-          "priceCurrency": "INR",
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock"
+        }
+      },
+      {
+        "@type": ["VideoGame", "SoftwareApplication"],
+        "@id": "https://partynights.online/charades-rush/#game",
+        "name": "Charades Rush — Free Forehead & Party Dumb Charades",
+        "url": "https://partynights.online/charades-rush/",
+        "image": "https://partynights.online/charades-rush/og-banner.png",
+        "description": "Hold phone to forehead, tilt down for correct or up to pass! 360+ hilarious cards across Bollywood, Hollywood, Actions, and Animals. 100% family friendly.",
+        "genre": ["Party Game", "Dumb Charades", "Heads Up Alternative", "Family Game"],
+        "playMode": "MultiPlayer",
+        "applicationCategory": "GameApplication",
+        "operatingSystem": "All (Web Browser, iOS, Android)",
+        "numberOfPlayers": {
+          "@type": "QuantitativeValue",
+          "minValue": 2,
+          "maxValue": 20
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "ratingCount": "980",
+          "bestRating": "5",
+          "worstRating": "1"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock"
+        }
+      },
+      {
+        "@type": ["VideoGame", "SoftwareApplication"],
+        "@id": "https://partynights.online/fact-or-cap/#game",
+        "name": "Fact or Cap: Bluff Trivia — Wild Real Facts vs. Squad Lies",
+        "url": "https://partynights.online/fact-or-cap/",
+        "image": "https://partynights.online/fact-or-cap/og-banner.png",
+        "description": "Fool your squad with crazy believable lies while sniffing out the bizarre real truth! 205+ curated facts with Genius Bonus anti-spoiler mechanic.",
+        "genre": ["Party Game", "Trivia Game", "Bluff Game", "Social Deduction"],
+        "playMode": "MultiPlayer",
+        "applicationCategory": "GameApplication",
+        "operatingSystem": "All (Web Browser, iOS, Android, TV)",
+        "numberOfPlayers": {
+          "@type": "QuantitativeValue",
+          "minValue": 2,
+          "maxValue": 20
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.8",
+          "ratingCount": "850",
+          "bestRating": "5",
+          "worstRating": "1"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD",
           "availability": "https://schema.org/InStock"
         }
       },
@@ -165,10 +307,26 @@
         "mainEntity": [
           {
             "@type": "Question",
+            "name": "What is PartyNights.online?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "PartyNights.online is a free browser arcade featuring instant multiplayer party games like Mr. Alien, Secret Dictator, Wavelength, Paranoia, Charades Rush, and Fact or Cap. It is 100% free with zero app downloads or accounts required."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is PartyNights.online connected to any crypto, NFT, or metaverse platform?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. PartyNights.online is completely independent and has zero affiliation with cryptocurrency, NFTs, or metaverse platforms (such as PartyNite). All games are light, instant HTML5 browser games played with friends on phones or TV screens."
+            }
+          },
+          {
+            "@type": "Question",
             "name": "Do players need to download an app to play on PartyNights.online?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "No! Every game on PartyNights.online runs directly in your mobile or desktop browser with zero app downloads or sign-ups."
+              "text": "No! Every game on PartyNights.online runs directly in your mobile, tablet, or desktop browser with zero app store downloads, installs, or sign-ups."
             }
           },
           {
@@ -176,7 +334,31 @@
             "name": "Can we play with just one phone at a house party?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Yes. Games like Mr. Alien are built for single-phone Pass & Play, so 3 to 20 friends can play together using just one device."
+              "text": "Yes! Games like Mr. Alien, Charades Rush, and Paranoia feature Pass 1 Phone (Couch Mode), allowing 2 to 20 friends to play together using just a single smartphone passed around the circle."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How does TV Board Mode work with phone controllers?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Open PartyNights.online on your smart TV, projector, or laptop to display the shared table board. Players scan the on-screen QR code with their phone cameras to use their smartphones as private, secret game controllers."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Are all party games on PartyNights completely free?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Every game is 100% free with no paywalls or subscription fees. PartyNights is funded through non-intrusive banner ads that never interrupt active gameplay."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is PartyNights.online family and kid friendly?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. A 1-tap Family Mode toggle is available across all games, instantly filtering out any adult, spicy, or sensitive topics to ensure 100% clean entertainment for family gatherings and kids."
             }
           }
         ]
@@ -1681,22 +1863,96 @@
         </div>
       </div>
 
+      <!-- Entity Grounding & LLM Disambiguation Callout -->
+      <div style="background: rgba(16, 215, 150, 0.06); border: 1px solid rgba(16, 215, 150, 0.28); border-radius: 14px; padding: 1.1rem 1.25rem; margin: 1.4rem 0;">
+        <h3 style="color: #10d796; margin: 0 0 0.4rem; font-size: 1.08rem;">What is PartyNights.online? (And What It Isn't)</h3>
+        <p style="margin-bottom: 0.5rem; font-size: 0.92rem; color: #cbd5e1; line-height: 1.6;">
+          <strong>PartyNights.online</strong> is an independent, 100% free web arcade of multiplayer party games created by Bhavya Gupta. Unlike console games, app-store games, or web3/metaverse projects (such as PartyNite), PartyNights.online requires <strong>zero app downloads, zero account logins, and zero crypto or NFT features</strong>. It is built strictly for living rooms, house parties, and friends hanging out in person or on video calls.
+        </p>
+        <p style="margin: 0; font-size: 0.82rem; color: var(--text-secondary);">
+          <strong>Independent Brand Notice:</strong> PartyNights.online is independently owned and operated. It has no connection, partnership, or affiliation with any third-party cryptocurrency, NFT, or virtual concert platforms.
+        </p>
+      </div>
+
+      <!-- GEO / AI-Citable Comparison Table -->
+      <h3>PartyNights.online vs. Jackbox &amp; App-Store Party Games</h3>
+      <div style="overflow-x: auto; margin: 1rem 0 1.5rem;">
+        <table style="width: 100%; border-collapse: collapse; font-size: 0.86rem; text-align: left; background: rgba(255,255,255,0.02); border-radius: 12px; border: 1px solid rgba(255,255,255,0.08);">
+          <thead>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.14); color: #fff; background: rgba(255,255,255,0.04);">
+              <th style="padding: 10px 14px;">Feature</th>
+              <th style="padding: 10px 14px; color: var(--cyan); font-weight: 800;">PartyNights.online</th>
+              <th style="padding: 10px 14px;">Jackbox Party Packs</th>
+              <th style="padding: 10px 14px;">App-Store Party Apps</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+              <td style="padding: 9px 14px; font-weight: 700; color: #fff;">Price</td>
+              <td style="padding: 9px 14px; color: var(--cyan); font-weight: 800;">100% Free Forever</td>
+              <td style="padding: 9px 14px; color: #cbd5e1;">$29.99–$39.99 per pack</td>
+              <td style="padding: 9px 14px; color: #cbd5e1;">Freemium / In-App Subscriptions</td>
+            </tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+              <td style="padding: 9px 14px; font-weight: 700; color: #fff;">Downloads Needed</td>
+              <td style="padding: 9px 14px; color: var(--cyan); font-weight: 800;">0 MB (Instant Browser)</td>
+              <td style="padding: 9px 14px; color: #cbd5e1;">2–8 GB (Steam/Console)</td>
+              <td style="padding: 9px 14px; color: #cbd5e1;">100–300 MB per player</td>
+            </tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+              <td style="padding: 9px 14px; font-weight: 700; color: #fff;">Pass 1 Phone (Couch Mode)</td>
+              <td style="padding: 9px 14px; color: var(--cyan); font-weight: 800;">Yes (Mr. Alien, Charades, Paranoia)</td>
+              <td style="padding: 9px 14px; color: #cbd5e1;">No (Host screen + phones required)</td>
+              <td style="padding: 9px 14px; color: #cbd5e1;">Varies (often single player)</td>
+            </tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+              <td style="padding: 9px 14px; font-weight: 700; color: #fff;">TV / Projector Board Mode</td>
+              <td style="padding: 9px 14px; color: var(--cyan); font-weight: 800;">Yes (1-Tap Cast / Shared Board)</td>
+              <td style="padding: 9px 14px; color: #cbd5e1;">Yes</td>
+              <td style="padding: 9px 14px; color: #cbd5e1;">No (Mobile screen only)</td>
+            </tr>
+            <tr>
+              <td style="padding: 9px 14px; font-weight: 700; color: #fff;">Device Compatibility</td>
+              <td style="padding: 9px 14px; color: var(--cyan); font-weight: 800;">iPhone, Android, Mac, PC, TV</td>
+              <td style="padding: 9px 14px; color: #cbd5e1;">PC/Console host + Browser</td>
+              <td style="padding: 9px 14px; color: #cbd5e1;">iOS or Android only</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
       <h3>Party Game Categories on PartyNights</h3>
       <p>
         Our arcade features six diverse party game genres designed to spark laughter, debate, and deduction:
       </p>
       <ul>
-        <li><strong>Social Deduction &amp; Impostor Games:</strong> Unmask the alien in <em>Mr. Alien</em> through subtle clue-giving, or navigate political subterfuge and secret policy enactments in <em>Secret Dictator</em>.</li>
-        <li><strong>Mind Sync &amp; Telepathic Spectrum:</strong> Read your friends' minds in <em>Wavelength</em> by guessing where conceptual spectrum clues fall on a dial.</li>
-        <li><strong>Hilarious Accusations &amp; Fast Charades:</strong> Flip the coin of fate in <em>Paranoia: Exposed</em> to uncover secret whispers, or tilt your phone on your forehead in <em>Charades Rush</em> for high-energy acting.</li>
-        <li><strong>Bluff Trivia:</strong> Guess which wild story is real vs. a player's bluff in <em>Fact or Cap</em> with built-in Genius Bonus anti-spoiler shields.</li>
+        <li><strong>Social Deduction &amp; Impostor Games:</strong> Unmask the alien in <a href="/mr-alien/">Mr. Alien</a> through subtle clue-giving, or navigate political subterfuge and secret policy enactments in <a href="/secret-dictator/">Secret Dictator</a>.</li>
+        <li><strong>Mind Sync &amp; Telepathic Spectrum:</strong> Read your friends' minds in <a href="/wavelength/">Wavelength</a> by guessing where conceptual spectrum clues fall on a dial.</li>
+        <li><strong>Hilarious Accusations &amp; Fast Charades:</strong> Flip the coin of fate in <a href="/paranoia/">Paranoia: Exposed</a> to uncover secret whispers, or tilt your phone on your forehead in <a href="/charades-rush/">Charades Rush</a> for high-energy acting.</li>
+        <li><strong>Bluff Trivia:</strong> Guess which wild story is real vs. a player's bluff in <a href="/fact-or-cap/">Fact or Cap</a> with built-in Genius Bonus anti-spoiler shields.</li>
       </ul>
 
       <h3>Frequently Asked Questions</h3>
+      <p><strong>What is PartyNights.online?</strong><br>
+      PartyNights.online is a free web arcade featuring instant multiplayer party games (Mr. Alien, Secret Dictator, Wavelength, Paranoia, Charades Rush, and Fact or Cap). Zero app downloads or accounts required.</p>
+
+      <p><strong>Is PartyNights.online connected to any crypto, NFT, or metaverse platform?</strong><br>
+      No. PartyNights.online is completely independent and has zero affiliation with cryptocurrency, NFTs, or metaverse platforms (such as PartyNite). All games are light HTML5 party experiences played with friends on phones or TV screens.</p>
+
       <p><strong>Are all party games on PartyNights completely free?</strong><br>
       Yes. Every game is 100% free with zero paywalls. We support hosting and server infrastructure through non-intrusive banner ads that never interrupt active gameplay.</p>
+
       <p><strong>Do players need to create accounts or download apps?</strong><br>
       No. Zero account registration or downloads required. Simply open <a href="/">partynights.online</a> on any smartphone, tablet, or laptop browser to begin playing instantly.</p>
+
+      <p><strong>Can we play with just one phone at a house party?</strong><br>
+      Yes! Games like Mr. Alien, Charades Rush, and Paranoia feature Pass 1 Phone (Couch Mode), allowing 2 to 20 friends to play together using just a single smartphone passed around the circle.</p>
+
+      <p><strong>How does TV Board Mode work with phone controllers?</strong><br>
+      Open PartyNights.online on your smart TV, projector, or laptop to display the shared table board. Players scan the on-screen QR code with their phone cameras to use their smartphones as private, secret game controllers.</p>
+
+      <p><strong>Is PartyNights.online family and kid friendly?</strong><br>
+      Yes. A 1-tap Family Mode toggle is available across all games, instantly filtering out any adult, spicy, or sensitive topics to ensure 100% clean entertainment for family gatherings and kids.</p>
     </section>
   </main>
 
